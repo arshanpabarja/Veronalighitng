@@ -1,0 +1,773 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ product.get_meta_title|default:product.name }}
+{% endblock %}
+
+{% block meta %}
+
+<meta name="description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
+
+<meta property="og:type" content="product">
+<meta property="og:title" content="{{ product.get_meta_title|default:product.name }}">
+<meta property="og:description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ product.get_meta_title|default:product.name }}">
+<meta name="twitter:description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
+
+{% if product.image1 %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}">
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}">
+{% endif %}
+
+<!-- Canonical -->
+{% if product.canonical_url %}
+<link rel="canonical" href="{{ product.canonical_url }}">
+{% else %}
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+{% endif %}
+
+<!-- Product Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ product.name|escapejs }}",
+  "description": "{{ product.get_meta_description|default:product.subtitle|striptags|escapejs }}",
+
+  {% if product.image1 %}
+  "image": [
+    "{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}"
+  ],
+  {% endif %}
+
+  "sku": "{{ product.slug }}",
+
+  "category": "{{ product.category.name|escapejs }}",
+
+  "brand": {
+    "@type": "Brand",
+    "name": "Lumex"
+  },
+
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
+  }
+
+  {% if product.cri %}
+  ,"additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "CRI",
+      "value": "{{ product.cri }}"
+    }
+    {% if product.color_temperature %}
+    ,
+    {
+      "@type": "PropertyValue",
+      "name": "Color Temperature",
+      "value": "{{ product.color_temperature }}K"
+    }
+    {% endif %}
+    {% if product.ip_rating %}
+    ,
+    {
+      "@type": "PropertyValue",
+      "name": "IP Rating",
+      "value": "{{ product.ip_rating }}"
+    }
+    {% endif %}
+  ]
+  {% endif %}
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}"
+    },
+
+    {% if product.category.parent %}
+
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ product.category.parent.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' product.category.parent.slug %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{ product.category.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:child_detail' product.category.parent.slug product.category.slug %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "{{ product.family.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail' product.category.parent.slug product.category.slug product.family.slug %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "{{ product.name|escapejs }}"
+    }
+
+    {% else %}
+
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ product.category.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' product.category.slug %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{ product.family.name|escapejs }}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "{{ product.name|escapejs }}"
+    }
+
+    {% endif %}
+  ]
+}
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-spinner"></div>
+</div>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>/</span>
+
+  <a href="{% url 'products:product_list' %}">
+    Products
+  </a><span>/</span>
+
+  {% if product.category.parent %}
+
+    <a href="{% url 'products:category_detail' product.category.parent.slug %}">
+      {{ product.category.parent }}
+    </a><span>/</span>
+
+    <a href="{% url 'products:child_detail' product.category.parent.slug product.category.slug %}">
+      {{ product.category }}
+    </a><span>/</span>
+
+    <a href="{% url 'products:family_detail' product.category.parent.slug product.category.slug product.family.slug %}">
+      {{ product.family }}
+    </a><span>/</span>
+
+  {% else %}
+
+    <a href="{% url 'products:category_detail' product.category.slug %}">
+      {{ product.category }}
+    </a><span>/</span>
+
+    <a href="{% url 'products:family_detail_no_child' product.category.slug product.family.slug %}">
+      {{ product.family }}
+    </a><span>/</span>
+
+  {% endif %}
+
+  <span class="current">{{ product.name }}</span>
+</div>
+
+
+
+<!-- PRODUCT HERO -->
+<div class="product-hero">
+  
+  <!-- Gallery -->
+  <div class="gallery-wrap">
+    <div class="main-image-wrap" id="mainImgWrap">
+      {% if product.image1 %}
+      <img id="mainImg" src="{{ product.image1.url }}" loading="eager"
+     alt="{{ product.get_image1_alt }}" onclick="openLightbox()" />
+
+      {% endif %}
+    </div>
+
+    <div class="thumb-row">
+      {% if product.image1 %}
+      <div class="thumb active " onclick="changeImg(this, '{{ product.image1.url }}')">
+        <img src="{{ product.image1.url }}" loading="eager" alt="{{ product.name }} - image 1" />
+      </div>
+      {% endif %}
+      {% if product.image2 %}
+      <div class="thumb" onclick="changeImg(this, '{{ product.image2.url }}')">
+        <img src="{{ product.image2.url }}" loading="lazy" alt="{{ product.name }} - image 2" />
+      </div>
+      {% endif %}
+      {% if product.image3 %}
+      <div class="thumb" onclick="changeImg(this, '{{ product.image3.url }}')">
+        <img src="{{ product.image3.url }}" loading="lazy" alt="{{ product.name }} - image 3" />
+      </div>
+      {% endif %}
+      {% if product.image4 %}
+      <div class="thumb" onclick="changeImg(this, '{{ product.image4.url }}')">
+        <img src="{{ product.image4.url }}" loading="lazy" alt="{{ product.name }} - image 4" />
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="product-info">
+    <div class="product-category">{{ product.category }}</div>
+    <h1 class="product-title">{{ product.name }}</h1>
+    <p class="product-subtitle">{{ product.subtitle }}</p>
+
+    <div class="key-specs">
+      {% if product.lumens %}
+      <div class="spec-item">
+        <span class="spec-label">Lumens Output</span>
+        <span class="spec-value">{{ product.lumens }} lm</span>
+      </div>
+      {% endif %}
+      {% if product.voltage %}
+      <div class="spec-item">
+        <span class="spec-label">Power</span>
+        <span class="spec-value">{{ product.voltage }}</span>
+      </div>
+      {% endif %}
+      {% if product.color_temperature %}
+      <div class="spec-item">
+        <span class="spec-label">Color Temperature</span>
+        <span class="spec-value">{{ product.color_temperature }} K</span>
+      </div>
+      {% endif %}
+      {% if product.ip_rating %}
+      <div class="spec-item">
+        <span class="spec-label">IP Rating</span>
+        <span class="spec-value">{{ product.ip_rating }}</span>
+      </div>
+      {% endif %}
+      {% if product.beam_angle %}
+      <div class="spec-item">
+        <span class="spec-label">Beam Angle</span>
+        <span class="spec-value">{{ product.beam_angle }}°</span>
+      </div>
+      {% endif %}
+      {% if product.lifespan %}
+      <div class="spec-item">
+        <span class="spec-label">Lifespan</span>
+        <span class="spec-value">{{ product.lifespan }} hrs</span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Finish Selector -->
+    {% with finishes=product.finishes.all %}
+    {% if finishes %}
+    <div class="finish-section">
+      <p class="finish-title">
+        Finish — <span id="finishName">{{ finishes.0.name }}</span>
+      </p>
+      <div class="finish-swatches">
+        {% for finish in finishes %}
+        <div class="swatch outline outline-1 {% if forloop.first %}active{% endif %}"
+          style="background-color: {{ finish.color }}"
+          data-label="{{ finish.name }}"
+          title="{{ finish.name }}"
+          onclick="selectFinish(this, '{{ finish.name }}')">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="divider"></div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Buttons — fixed: removed <a> inside <button>, fixed icon, fixed typo -->
+    <div class="action-btns">
+      <button class="btn-primary">
+        <i class="fa-solid fa-envelope"></i>
+        Request a Quote
+      </button>
+      <a href="{{ product.catalog.url }}" download class="btn-outline">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        Download Product Sheet
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- INFO TABS -->
+<div class="info-section" style="margin-top:80px;">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('desc', this)">Description</button>
+    <button class="tab-btn" onclick="switchTab('spec', this)">Specifications</button>
+    <button class="tab-btn" onclick="switchTab('materials', this)">Materials</button>
+    <button class="tab-btn" onclick="switchTab('install', this)">Installation</button>
+  </div>
+
+  <!-- DESCRIPTION TAB -->
+  <div class="tab-content active" id="tab-desc">
+    <div class="description-grid">
+      <div class="desc-text text-justify">
+        <p>{{ product.full_description }}</p>
+      </div>
+      <div class="desc-highlights">
+        <h4>Key Features</h4>
+        <ul class="highlight-list">
+          {% if product.color_temperature %}
+          <li><i class="fa-solid fa-check"></i> Color Temperature: {{ product.color_temperature }} K</li>
+          {% endif %}
+          {% if product.dimmable %}
+          <li><i class="fa-solid fa-check"></i> Dimmable</li>
+          {% endif %}
+          {% if product.cri %}
+          <li><i class="fa-solid fa-check"></i> CRI ≥ {{ product.cri }}</li>
+          {% endif %}
+          {% if product.lifespan %}
+          <li><i class="fa-solid fa-check"></i> {{ product.lifespan }} hour LED lifespan</li>
+          {% endif %}
+          {% if product.ip_rating %}
+          <li><i class="fa-solid fa-check"></i> {{ product.ip_rating }} rated</li>
+          {% endif %}
+          {% if product.lamp_base_type %}
+          <li><i class="fa-solid fa-check"></i> Base: {{ product.lamp_base_type }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECIFICATIONS TAB -->
+  <div class="tab-content" id="tab-spec">
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if product.wattage %}
+        <tr><td>Power Consumption</td><td>{{ product.wattage }} W</td></tr>
+        {% endif %}
+        {% if product.lumens %}
+        <tr><td>Luminous Flux</td><td>{{ product.lumens }} lm</td></tr>
+        {% endif %}
+        {% if product.color_temperature %}
+        <tr><td>Color Temperature</td><td>{{ product.color_temperature }} K</td></tr>
+        {% endif %}
+        {% if product.cri %}
+        <tr><td>Color Rendering Index</td><td>{{ product.cri }}</td></tr>
+        {% endif %}
+        {% if product.beam_angle %}
+        <tr><td>Beam Angle</td><td>{{ product.beam_angle }}°</td></tr>
+        {% endif %}
+        {% if product.voltage %}
+        <tr><td>Input Voltage</td><td>{{ product.voltage }}</td></tr>
+        {% endif %}
+        {% if product.lifespan %}
+        <tr><td>LED Lifespan</td><td>{{ product.lifespan }} hrs</td></tr>
+        {% endif %}
+        {% if product.ip_rating %}
+        <tr><td>IP Rating</td><td>{{ product.ip_rating }}</td></tr>
+        {% endif %}
+        {% if product.dimmable %}
+        <tr><td>Dimmable</td><td>Yes</td></tr>
+        {% endif %}
+        {% if product.lamp_base_type %}
+        <tr><td>Lamp Base</td><td>{{ product.lamp_base_type }}</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MATERIALS TAB -->
+  <div class="tab-content" id="tab-materials">
+    {{ product.materials }}
+  </div>
+
+  <!-- INSTALLATION TAB -->
+  <div class="tab-content" id="tab-install">
+    <div class="install-steps">
+      {% for step in product.installment.all %}
+      <div class="install-step">
+        <div class="step-num">0{{ step.step }}</div>
+        <div class="step-body">
+          <div class="step-title">{{ step.name }}</div>
+          <div class="step-text">{{ step.description }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<!-- MODELS / SIZES -->
+<div class="models-section">
+  <div class="models-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Complete Range</div>
+        <h2 class="section-title">Models & Sizes</h2>
+      </div>
+    </div>
+    <div class="models-table-wrap">
+      <table class="models-table">
+        <thead>
+          <tr>
+            <th>Model Code</th>
+            <th>Power</th>
+            <th>Dimensions</th>
+            <th>Weight</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for variant in product.variants.all %}
+          {% if variant.is_active %}
+          <tr>
+            <td>{{ variant.model_name }}</td>
+            <td>{{ variant.wattage }}W</td>
+            <td>
+              {% if variant.dimension %}
+                {% if variant.dimension.label %}<strong>{{ variant.dimension.label }}</strong><br>{% endif %}
+                {% if variant.dimension.width and variant.dimension.height and variant.dimension.depth %}
+                  {{ variant.dimension.depth }} × {{ variant.dimension.height }} × {{ variant.dimension.width }}
+                {% else %}—{% endif %}
+              {% else %}—{% endif %}
+            </td>
+            <td>
+              {% if variant.dimension and variant.dimension.weight %}
+                {{ variant.dimension.weight }} kg
+              {% else %}—{% endif %}
+            </td>
+            <td>{% if variant.note %}{{ variant.note }}{% else %}—{% endif %}</td>
+          </tr>
+          {% endif %}
+          {% empty %}
+          <tr>
+            <td colspan="6" style="text-align:center; color: var(--gray-text);">No variants available</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<div class="related-section">
+  <div class="section-header" style="margin-bottom:48px;">
+    <div>
+      <div class="section-label">You May Also Like</div>
+      <h2 class="section-title">Related Products</h2>
+    </div>
+    <a href="#" class="view-all-link">Browse Collection</a>
+  </div>
+  <div class="products-grid">
+    {% for related in related_products %}
+    <div class="product-card">
+      <div class="product-card-img">
+        {% if related.image1 %}
+        <img src="{{ related.image1.url }}" loading="lazy" alt="{{ related.name }}" />
+        {% endif %}
+      <div class="product-card-overlay">
+      
+        {% if related.category.parent %}
+      
+          <a href="{% url 'products:product_detail' related.category.parent.slug related.category.slug related.family.slug related.slug %}"
+             class="overlay-btn">
+      
+            View Details
+      
+          </a>
+        
+        {% else %}
+        
+          <a href="{% url 'products:product_detail_no_child' related.category.slug related.family.slug related.slug %}"
+             class="overlay-btn">
+        
+            View Details
+        
+          </a>
+        
+        {% endif %}
+        
+      </div>
+      </div>
+      <div class="product-card-cat">{{ related.category }}</div>
+      <div class="product-card-name">{{ related.name }}</div>
+      <div class="product-card-sub">
+        {% if related.wattage %}{{ related.wattage }}W · {% endif %}
+        {% if related.cri %}CRI ≥ {{ related.cri }} · {% endif %}
+        {% with finish_count=related.finishes.count %}
+        {% if finish_count > 0 %}{{ finish_count }} finishes{% endif %}
+        {% endwith %}
+      </div>
+    </div>
+    {% empty %}
+    <p style="color: var(--gray-text);">No related products found.</p>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- CATALOG BANNER -->
+<div class="relative bg-gray-50 border-t border-gray-200 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-red-50 to-transparent pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 py-16 relative flex flex-col sm:flex-row items-center justify-between gap-8">
+    <div>
+      <span class="text-red-600 text-xs font-semibold uppercase tracking-widest">Full Product Range</span>
+      <h2 class="text-2xl font-bold text-gray-900 mt-2">Explore the Complete Lumex Catalogue 2025</h2>
+      <p class="text-gray-500 mt-2 text-sm">Download our full 2025 product catalogue featuring over 400 luminaires.</p>
+    </div>
+    <a href="#"
+       class="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-7 rounded-md transition-colors whitespace-nowrap">
+      <i class="fa-solid fa-file-arrow-down"></i>
+      Download Catalogue
+    </a>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
+</div>
+
+<script>
+/* ── Page Loader ── */
+
+// hide loader on normal load
+window.addEventListener('load', () => {
+  const loader = document.getElementById('page-loader');
+  loader.classList.add('hidden');
+  setTimeout(() => loader.style.display = 'none', 300);
+});
+
+// FIX: handle browser back/forward cache
+window.addEventListener('pageshow', function(event) {
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    loader.classList.add('hidden');
+    loader.style.display = 'none';
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link) return;
+
+  const isExternal = link.hostname !== location.hostname;
+  const isAnchor = link.getAttribute('href')?.startsWith('#');
+  const isDownload = link.hasAttribute('download');
+
+  if (isExternal || isAnchor || isDownload) return;
+
+  const loader = document.getElementById('page-loader');
+  loader.style.display = 'flex';
+  loader.classList.remove('hidden');
+});
+
+
+  /* ── Tabs ── */
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  /* ── Gallery ── */
+  function changeImg(thumb, src) {
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    const main = document.getElementById('mainImg');
+    main.style.opacity = '0';
+    main.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => {
+      main.src = src;
+      document.getElementById('lightboxImg').src = src;
+      main.style.opacity = '1';
+    }, 200);
+  }
+
+  /* ── Finish ── */
+  function selectFinish(el, name) {
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('finishName').textContent = name;
+  }
+
+  /* ── Lightbox zoom & pan ── */
+  let currentScale = 1;
+  let isDragging = false;
+  let startX, startY, translateX = 0, translateY = 0;
+  let lastTranslateX = 0, lastTranslateY = 0;
+  let initialPinchDistance = 0;
+  let initialPinchScale = 1;
+
+  function openLightbox() {
+    const src = document.getElementById('mainImg').src;
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    resetZoom();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
+
+  function resetZoom() {
+    currentScale = 1;
+    translateX = 0;
+    translateY = 0;
+    lastTranslateX = 0;
+    lastTranslateY = 0;
+    applyTransform();
+  }
+
+  function applyTransform() {
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+  }
+
+  function getPinchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+
+    lightbox.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.15 : 0.15;
+      currentScale = Math.min(Math.max(1, currentScale + delta), 4);
+      applyTransform();
+    }, { passive: false });
+
+    lbImg.addEventListener('mousedown', (e) => {
+      if (currentScale <= 1) return;
+      isDragging = true;
+      startX = e.clientX - lastTranslateX;
+      startY = e.clientY - lastTranslateY;
+      lbImg.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      lastTranslateX = translateX;
+      lastTranslateY = translateY;
+      lbImg.style.cursor = 'grab';
+    });
+
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        initialPinchDistance = getPinchDistance(e.touches);
+        initialPinchScale = currentScale;
+        e.preventDefault();
+      } else if (e.touches.length === 1 && currentScale > 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - lastTranslateX;
+        startY = e.touches[0].clientY - lastTranslateY;
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        const distance = getPinchDistance(e.touches);
+        currentScale = Math.min(Math.max(1, initialPinchScale * (distance / initialPinchDistance)), 4);
+        applyTransform();
+        e.preventDefault();
+      } else if (e.touches.length === 1 && isDragging) {
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        applyTransform();
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.touches.length < 2) {
+        isDragging = false;
+        lastTranslateX = translateX;
+        lastTranslateY = translateY;
+      }
+      if (currentScale < 1) { currentScale = 1; applyTransform(); }
+    });
+
+    lbImg.addEventListener('dblclick', () => {
+      if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+    });
+
+    let lastTap = 0;
+    lbImg.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTap < 300) {
+        if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+      }
+      lastTap = now;
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+{% endblock %}

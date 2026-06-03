@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="bg-slate-50 min-h-screen text-slate-800">
+
+  <!-- Top Header -->
+  <div class="relative overflow-hidden border-b border-slate-200 bg-white">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900">
+            All Projects
+          </h1>
+          <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+            Explore our completed lighting projects across residential, retail, office, and hospitality spaces.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
+          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
+            <p class="text-2xl font-extrabold text-red-600">250+</p>
+            <p class="text-xs text-slate-500 mt-1">Completed</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
+            <p class="text-2xl font-extrabold text-red-600">12+</p>
+            <p class="text-xs text-slate-500 mt-1">Years</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
+            <p class="text-2xl font-extrabold text-red-600">40+</p>
+            <p class="text-xs text-slate-500 mt-1">Cities</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
+            <p class="text-2xl font-extrabold text-red-600">4.9</p>
+            <p class="text-xs text-slate-500 mt-1">Avg Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters / Search -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+    <form method="get" action="" class="bg-white border border-slate-200 rounded-2xl p-4 lg:p-5 shadow-sm">
+      <div class="grid md:grid-cols-12 gap-4">
+
+        <!-- Search -->
+        <div class="md:col-span-5">
+          <label class="sr-only" for="search">Search projects</label>
+          <div class="relative">
+            <input id="search" type="text" name="q" value="{{ q }}"
+                   placeholder="Search by project name, city, or type..."
+                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+            <svg class="w-5 h-5 text-slate-400 absolute right-3 top-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Type filter -->
+        <div class="md:col-span-3">
+          <select name="type" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+            <option value="">All Categories</option>
+            {% for t in all_types %}
+              <option value="{{ t }}" {% if selected_type == t %}selected{% endif %}>{{ t }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- City filter -->
+        <div class="md:col-span-2">
+          <select name="city" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+            <option value="">All Cities</option>
+            {% for c in all_cities %}
+              <option value="{{ c }}" {% if selected_city == c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Actions -->
+        <div class="md:col-span-2 flex gap-2">
+          <button type="submit"
+                  class="w-full rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-3 transition">
+            Apply
+          </button>
+          <a href="{% url 'products:project_list' %}"
+             class="w-full rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 text-sm font-semibold px-4 py-3 transition text-center">
+            Reset
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Project Grid -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
+    <div class="flex items-center justify-between mb-6">
+      <p class="text-sm text-slate-600">
+        Showing <span class="font-semibold text-slate-800">{{ total_count }}</span> project{{ total_count|pluralize }}
+      </p>
+      <form method="get" id="sort-form">
+        {# preserve other filters when sorting #}
+        {% if q %}<input type="hidden" name="q" value="{{ q }}">{% endif %}
+        {% if selected_type %}<input type="hidden" name="type" value="{{ selected_type }}">{% endif %}
+        {% if selected_city %}<input type="hidden" name="city" value="{{ selected_city }}">{% endif %}
+        <select name="sort" onchange="document.getElementById('sort-form').submit()"
+                class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+          <option value="newest" {% if sort == 'newest' %}selected{% endif %}>Newest First</option>
+          <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Oldest First</option>
+        </select>
+      </form>
+    </div>
+
+    {% if projects %}
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+        {% for project in projects %}
+          <article class="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+            <a href="{% url 'products:project_detail' project.slug %}">
+              <div class="relative">
+                <!-- Image container: fixed aspect ratio, never breaks layout -->
+<div class="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
+  {% if project.hero_image %}
+    <img src="{{ project.hero_image.url }}" alt="{{ project.name }}"
+         class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+  {% else %}
+    <!-- Placeholder -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+      <svg class="w-12 h-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5
+                 l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3 3h18"/>
+      </svg>
+      <span class="text-xs text-slate-400">No image</span>
+    </div>
+  {% endif %}
+
+  {% if project.project_type %}
+    <span class="absolute top-3 left-3 text-xs font-semibold bg-white/90 backdrop-blur
+                 px-3 py-1 rounded-full text-red-700 border border-red-200 z-10">
+      {{ project.project_type }}
+    </span>
+  {% endif %}
+</div>
+
+                {% if project.project_type %}
+                  <span class="absolute top-3 left-3 text-xs font-semibold bg-white/90 backdrop-blur px-3 py-1 rounded-full text-red-700 border border-red-200">
+                    {{ project.project_type }}
+                  </span>
+                {% endif %}
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition">
+                  {{ project.name }}
+                </h3>
+                {% if project.intro_text %}
+                  <p class="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">
+                    {{ project.intro_text }}
+                  </p>
+                {% endif %}
+                <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+                  <span>{{ project.location|default:"—" }}</span>
+                  <span>{{ project.completion_year|default:"" }}</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if page_obj.paginator.num_pages > 1 %}
+        <div class="mt-12 flex items-center justify-center gap-2">
+
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
+               class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-100 text-sm">Prev</a>
+          {% else %}
+            <span class="px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 text-sm cursor-not-allowed">Prev</span>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+              <span class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm font-semibold">{{ num }}</span>
+            {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+              <a href="?page={{ num }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
+                 class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 text-sm">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
+               class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-100 text-sm">Next</a>
+          {% else %}
+            <span class="px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 text-sm cursor-not-allowed">Next</span>
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+    {% else %}
+      <!-- Empty state -->
+      <div class="text-center py-24">
+        <svg class="mx-auto w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
+        </svg>
+        <p class="text-slate-500 text-lg font-medium">No projects found</p>
+        <p class="text-slate-400 text-sm mt-1">Try adjusting your filters or search term.</p>
+        <a href="{% url 'products:project_list' %}"
+           class="mt-6 inline-block rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-3 transition">
+          Clear filters
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+</section>
+{% endblock %}

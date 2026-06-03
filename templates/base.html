@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Verona Lighting{% endblock %}</title>
+
+    {% block meta_tags %}
+    <!-- default meta for pages that don't override -->
+    <meta name="description" content="Verona Lighting - Premium architectural lighting solutions">
+    {% endblock %}
+
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
+</head>
+
+
+<body class="font-sans">
+    <div class="">
+        <header> {% include "includes/navbar.html" %} </header>
+
+        <main class="{% if request.path != '/' %}pt-24{% endif %}">
+            {% block content%}
+            {% endblock %}
+        </main>
+
+
+        {% include "includes/footer.html" %}
+
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

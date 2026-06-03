@@ -1,0 +1,31 @@
+<a href="{% if child %}{% url 'products:product_detail' child.parent.slug child.slug family.slug product.slug %}{% else %}{% url 'products:product_detail_no_child' category.slug family.slug product.slug %}{% endif %}" 
+   class="group flex flex-col w-full text-left cursor-pointer transition-opacity duration-300 hover:opacity-90">
+
+  <!-- Image Container -->
+  <div class="relative aspect-square w-full bg-[#f4f5f6] overflow-hidden mb-4 flex items-center justify-center">
+    
+    <!-- Added mix-blend-multiply here -->
+    <img src="{{ product.image1.url }}" 
+         alt="{{ product.image1.alt }}" 
+         class="w-[85%] h-[85%] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+         
+  </div>
+
+  <!-- Text Content -->
+  <div class="flex flex-col flex-1 px-1">
+    
+    <span class="text-[11px] sm:text-[12px] font-black uppercase tracking-widest text-[#001427] mb-1.5">
+      {{ product.family.name|default:"LUNA" }}
+    </span>
+
+    <h3 class="text-[17px] sm:text-[19px] font-bold text-[#001427] mb-2.5 leading-[1.25]">
+      {{ product.name }}
+    </h3>
+
+    <div class="text-[14px] text-[#4a4a4a] leading-[1.5]">
+      {{ product.subtitle|truncatechars:100 }}
+    </div>
+
+  </div>
+
+</a>

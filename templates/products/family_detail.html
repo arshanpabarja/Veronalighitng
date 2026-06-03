@@ -1,0 +1,392 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ family.meta_title|default:family.name }}{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ family.meta_description|default:family.description|striptags|truncatechars:160 }}">
+<meta name="keywords" content="{{ family.name }}{% if child %}, {{ child.name }}{% endif %}{% if child.parent %}, {{ child.parent.name }}{% endif %}{% for app in family.applications.all %}, {{ app.name }}{% endfor %}">
+
+<!-- Canonical -->
+{% if family.canonical_url %}
+<link rel="canonical" href="{{ family.canonical_url }}">
+{% else %}
+    {% if child %}
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail' child.parent.slug child.slug family.slug %}">
+    {% else %}
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail_no_child' category.slug family.slug %}">
+    {% endif %}
+{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ family.meta_title|default:family.name }}">
+<meta property="og:description" content="{{ family.meta_description|default:family.description|striptags|truncatechars:160 }}">
+
+{% if child %}
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail' child.parent.slug child.slug family.slug %}">
+{% else %}
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail_no_child' category.slug family.slug %}">
+{% endif %}
+
+{% if family.image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ family.image.url }}">
+{% endif %}
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+    },
+
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}"
+    },
+
+    {% if child %}
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ child.parent.name }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' child.parent.slug %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{ child.name }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:child_detail' child.parent.slug child.slug %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "{{ family.name }}"
+    }
+    {% else %}
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ category.name }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' category.slug %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{ family.name }}"
+    }
+    {% endif %}
+  ]
+}
+</script>
+
+<!-- JSON-LD: ItemList -->
+{% if products %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ family.name }} Products",
+  "numberOfItems": {{ page_obj.paginator.count }},
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "name": "{{ product.name|escapejs }}",
+      "url": "{% if child %}{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_detail' child.parent.slug child.slug family.slug product.slug %}{% else %}{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_detail_no_child' category.slug family.slug product.slug %}{% endif %}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
+  <span class="text-[11px] sm:text-sm text-gray-500">
+    <a href="{% url 'home' %}" class="hover:text-[#800000]">Home</a>
+    <span class="mx-1 sm:mx-2">›</span>
+
+    <a href="/products/" class="hover:text-[#800000]">Products</a>
+    <span class="mx-1 sm:mx-2">›</span>
+
+    <a href="{% url 'products:category_detail' family.category.slug %}" class="hover:text-[#800000]">
+      {{ family.category.name }}
+    </a>
+
+    {% if child %}
+    <span class="mx-1 sm:mx-2">›</span>
+
+    <a href="{% url 'products:child_detail' child.parent.slug child.slug %}"
+       class="font-medium hover:text-[#800000] text-gray-500">
+       {{ child.name }}
+    </a>
+    {% endif %}
+
+    <span class="mx-1 sm:mx-2">›</span>
+
+    <span class="font-medium text-gray-800">
+      {{ family.name }}
+    </span>
+  </span>
+</div>
+
+<!-- Thorn-Style Hero -->
+<section class="bg-white">
+
+  <!-- Hero Content -->
+  <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <h1 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+      {{ family.name|upper }}
+    </h1>
+
+    <p class="mt-3 sm:mt-6 text-xs sm:text-base text-justify md:text-md text-gray-600 leading-relaxed max-w-4xl mx-auto">
+      {{ family.subtitle|default:"Browse our range of indoor lighting solutions designed for performance, efficiency, and visual comfort." }}
+    </p>
+  </div>
+</section>
+
+{% include 'includes/filter_sections.html' %}
+
+<!-- ─── PRODUCTS SECTION ─── -->
+<section class="py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-[60px] bg-white">
+
+  <div class="flex items-center justify-between gap-3 mb-6 sm:mb-9">
+    <p class="text-[13px] sm:text-[14px] text-[#888]">
+      Showing <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> products in
+      <strong class="text-[#800000]">{{ family.name }}</strong>
+    </p>
+
+    <button type="button"
+            onclick="openFilterOverlay()"
+            class="sm:hidden flex items-center gap-2 px-4 py-2 border-[1.5px] border-[#1a1a1a] rounded-[7px] text-[12px] font-semibold text-[#1a1a1a] hover:border-[#800000] hover:text-[#800000] transition-colors">
+
+      <svg viewBox="0 0 24 24"
+           class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round] [stroke-linejoin:round]">
+        <path d="M4 6h16M7 12h10M10 18h4"/>
+      </svg>
+
+      Filters
+    </button>
+  </div>
+
+  {% if page_obj.paginator.count == 0 %}
+
+  <div class="text-center py-16">
+    <p class="text-lg text-gray-700">No products match your filters.</p>
+    <p class="text-sm text-gray-400 mt-2">Try adjusting the specs or reset to browse all.</p>
+  </div>
+
+  {% else %}
+
+  <div id="product-grid"
+       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 lg:gap-4">
+
+    {% for product in products %}
+      {% include 'includes/product_cart.html' %}
+    {% endfor %}
+
+  </div>
+
+  {% endif %}
+
+  {% if page_obj.has_next %}
+  <div class="text-center mt-8">
+    <button id="load-more-btn" data-next-page="{{ page_obj.next_page_number }}">
+      <div class="flex space-x-2 justify-center">
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_infinite]"></div>
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.2s_infinite]"></div>
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.4s_infinite]"></div>
+      </div>
+    </button>
+  </div>
+  {% endif %}
+
+</section>
+
+<script>
+
+// ─── LOAD MORE (Infinite Scroll) ───
+const loadMoreBtn = document.getElementById('load-more-btn');
+const productGrid = document.getElementById('product-grid');
+
+if (loadMoreBtn) {
+
+  let loading = false;
+
+  async function loadMoreProducts() {
+
+    if (loading) return;
+
+    const nextPage = loadMoreBtn.dataset.nextPage;
+    if (!nextPage) return;
+
+    loading = true;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', nextPage);
+
+    const response = await fetch(url);
+    const html = await response.text();
+
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    const newItems = doc.querySelectorAll('#product-grid > *');
+
+    newItems.forEach(card => {
+      productGrid.appendChild(card);
+    });
+
+    const newButton = doc.querySelector('#load-more-btn');
+
+    if (newButton) {
+      loadMoreBtn.dataset.nextPage = newButton.dataset.nextPage;
+    } else {
+      loadMoreBtn.remove();
+      loadMoreObserver.disconnect();
+    }
+
+    loading = false;
+  }
+
+  const loadMoreObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) loadMoreProducts();
+  }, { rootMargin: '200px' });
+
+  loadMoreObserver.observe(loadMoreBtn);
+}
+
+// ─── SCROLL ANIMATE ───
+const scrollObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('animate-in');
+      scrollObserver.unobserve(entry.target);
+
+    }
+
+  });
+
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    scrollObserver.observe(el);
+  });
+
+});
+
+</script>
+
+<style>
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate:nth-child(1) { transition-delay: 0s; }
+.scroll-animate:nth-child(2) { transition-delay: 0.1s; }
+.scroll-animate:nth-child(3) { transition-delay: 0.2s; }
+.scroll-animate:nth-child(4) { transition-delay: 0.3s; }
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 0.8s ease-out 0.3s both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-slide-up-delay {
+  animation: slide-up 0.8s ease-out 0.2s both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 3s ease-in-out 1.5s infinite;
+}
+
+</style>
+
+{% endblock %}
+

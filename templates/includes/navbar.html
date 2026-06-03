@@ -1,0 +1,580 @@
+{% load static %}
+<nav class="z-50
+{% if request.path == '/' %}
+absolute top-0 bg-transparent text-white w-full sm:hover:bg-white transition-colors sm:hover:text-black overflow-hidden
+{% else %}
+fixed top-0 left-0 right-0 bg-white border-b border-gray-200
+{% endif %}
+" id="navbar">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-0">
+        <div class="flex h-24 items-center justify-between">
+
+            <a href="/" class="flex items-center shrink-0">
+                {% if request.path == '/' %}
+                <img id="navbar-logo-img" src="{% static 'images/logo4.png' %}" alt="logo" class="h-12 lg:h-16 transition-all duration-300">
+                <logo id="logo" class="font-orbitron text-2xl lg:text-3xl text-white transition-colors duration-150">VERONA</logo>
+                {% else %}
+                <img src="{% static 'images/logo3.png' %}" alt="logo" class="h-12 lg:h-16">
+                <logo class="font-orbitron text-2xl lg:text-3xl text-[#800000]">VERONA</logo>
+                {% endif %}
+            </a>
+
+
+            <div class="hidden lg:flex gap-10 h-full">
+
+                <div class="group relative">
+                    <a href="/products" class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                        Products
+                    </a>
+                    <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
+                    <div class="fixed top-24 left-0 w-full text-black bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-40">
+                        <div class="mx-auto max-w-[1440px] px-10">
+                            <div class="grid grid-cols-5 gap-14">
+                                <div class="col-span-2 space-y-4 py-14">
+                                    <a href="{% url 'products:product_list' %}" class="block text-xl font-medium hover:text-[#800000]">All Products</a>
+                                    <p class="text-sm text-gray-500 max-w-xs">Explore our complete range of professional lighting solutions.</p>
+                                </div>
+                                <div class="space-y-1 text-[16px] py-14">
+                                    {% for category in categories %}
+                                    <div class="flex w-full justify-between">
+                                        <button type="button" data-category="{{ category.slug }}"
+                                            class="category-item flex items-center justify-between text-left hover:text-[#800000] transition-colors">
+                                            <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
+                                        </button>
+                                        <div class="arrow text-2xl opacity-0 transition-opacity">→</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div id="product-panel-wrapper" class="col-span-2 ml-28 p-6 hidden bg-gray-200 mr-[calc(50%-50vw)] pr-[calc(50vw-720px)]">
+                                    {% for category in categories %}
+                                    <div data-panel="{{ category.slug }}" class="category-panel hidden space-y-2 text-sm">
+                                        <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="font-medium mb-4 hover:text-[#800000] block">
+                                            {{ category }} – All Products
+                                        </a>
+                                        {% for children in category.children.all %}
+                                        <a href="{% url 'products:child_detail' cat_slug=category.slug child_slug=children.slug %}" class="block hover:text-[#800000]">
+                                            {{ children.name }}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="group relative">
+                    <a href="/applications" class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                        Applications
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="group relative">
+                    <a href="/contact" class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                        Company
+                    </a>
+                    <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
+                    <div class="fixed top-24 left-0 w-full bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-40">
+                        <div class="mx-auto max-w-[1440px] px-10 py-14">
+                            <div class="grid grid-cols-5 gap-14">
+                                <div class="col-span-2 space-y-4">
+                                    <a href="/about" class="block text-xl font-medium hover:text-[#800000]">About Company</a>
+                                    <p class="text-sm text-gray-500 max-w-xs">Learn about our lighting philosophy, craftsmanship, innovation, and brand story.</p>
+                                </div>
+                                <div class="space-y-3 text-sm">
+                                    <a href="/about" class="block hover:text-[#800000]">About Verona</a>
+                                    <a href="/story" class="block hover:text-[#800000]">Our Story</a>
+                                    <a href="/contact" class="block hover:text-[#800000]">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="group relative">
+                    <a class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 transition-colors cursor-pointer">
+                        Services
+                    </a>
+                    <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
+                    <div class="fixed top-24 left-0 w-full bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-40">
+                        <div class="mx-auto max-w-[1440px] px-10 py-14">
+                            <div class="grid grid-cols-5 gap-14">
+                                <div class="col-span-2 space-y-4">
+                                    <a href="#" class="block text-xl font-medium hover:text-[#800000]">All Projects</a>
+                                    <p class="text-sm text-gray-500 max-w-xs">Discover lighting projects and real‑world applications.</p>
+                                </div>
+                                <div class="space-y-3 text-sm">
+                                    <a href="#" class="block hover:text-[#800000]">Office</a>
+                                    <a href="#" class="block hover:text-[#800000]">Retail</a>
+                                    <a href="#" class="block hover:text-[#800000]">Urban</a>
+                                    <a href="#" class="block hover:text-[#800000]">Sports</a>
+                                </div>
+                                <div class="col-span-2 space-y-2 text-sm">
+                                    <a href="#" class="block hover:text-[#800000]">Featured Project One</a>
+                                    <a href="#" class="block hover:text-[#800000]">Featured Project Two</a>
+                                    <a href="#" class="block hover:text-[#800000]">Featured Project Three</a>
+                                    <a href="#" class="block hover:text-[#800000]">Featured Project Four</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="">
+                    <a href="/projects" class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                        Projects
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+                <div class="">
+                    <a href="/news" class="flex items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                        News
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <img src="{% static 'images/search.svg' %}" alt="">
+                </div>
+
+            </div>
+
+            <button id="hamburger-btn"
+                class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
+                aria-label="Open menu">
+                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+
+<div id="mobile-drawer" class="fixed inset-0 z-[100] pointer-events-none">
+
+    <div id="drawer-backdrop" class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300"></div>
+
+    <div id="drawer-panel" class="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl
+                                   translate-x-full transition-transform duration-300 flex flex-col overflow-hidden">
+
+        <!-- ── MAIN SCREEN ── -->
+        <div id="screen-main" class="drawer-screen flex flex-col h-full">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <a href="/" class="flex items-center">
+                    <img class="h-12" src="{% static 'images/logo3.png' %}" alt="logo">
+                    <logo class="font-orbitron text-2xl text-[#800000]">VERONA</logo>
+                </a>
+                <button id="close-drawer-btn" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">All</p>
+
+                <!-- Products -->
+                <button type="button" data-target="screen-products"
+                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    <span>Products</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Applications -->
+                <button type="button" data-target="screen-applications"
+                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    <span>Applications</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Company -->
+                <button type="button" data-target="screen-company"
+                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    <span>Company</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Services -->
+                <button type="button" data-target="screen-services"
+                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    <span>Services</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Projects — direct link, no sub-screen -->
+                <a href="/projects"
+                    class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Projects
+                </a>
+                <a href="/news"
+                    class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    News
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ── PRODUCTS SCREEN ── -->
+        <div id="screen-products"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    All
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Products</p>
+                <a href="{% url 'products:product_list' %}"
+                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    All Products
+                </a>
+                {% for category in categories %}
+                <button type="button" data-target="screen-category" data-category="{{ category.slug }}"
+                    data-label="{{ category.name }}"
+                    class="mobile-category-trigger w-full flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    <span>{{ category.name }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <!-- ── CATEGORY SCREEN ── -->
+        <div id="screen-category"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800" data-back="screen-products">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Products
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p id="mobile-category-title" class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4"></p>
+                <div id="mobile-product-list" class="space-y-1"></div>
+            </div>
+        </div>
+
+
+        <!-- ── APPLICATIONS SCREEN ── -->
+        <div id="screen-applications"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    All
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Applications</p>
+                <a href="{% url 'products:application_list' %}"
+                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    All Applications
+                </a>
+                {% if applications %}
+                {% for app in applications %}
+                <a href="{% url 'products:application_detail' app.slug %}"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    {{ app.name }}
+                </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+
+        <!-- ── COMPANY SCREEN ── -->
+        <div id="screen-company"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    All
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Company</p>
+                <a href="/about"
+                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    About Verona
+                </a>
+                <a href="/story"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Our Story
+                </a>
+                <a href="/contact"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ── SERVICES SCREEN ── -->
+        <div id="screen-services"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    All
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Services</p>
+                <a href="#"
+                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    All Services
+                </a>
+                <a href="#"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Office
+                </a>
+                <a href="#"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Retail
+                </a>
+                <a href="#"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Urban
+                </a>
+                <a href="#"
+                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    Sports
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    // ── Desktop category hover ──
+    const items = document.querySelectorAll('.category-item');
+    const panels = document.querySelectorAll('.category-panel');
+    const wrapper = document.getElementById('product-panel-wrapper');
+
+    function activateCategory(slug) {
+        wrapper.classList.remove('hidden');
+        panels.forEach(panel => {
+            panel.classList.toggle('hidden', panel.dataset.panel !== slug);
+        });
+        items.forEach(item => {
+            const active = item.dataset.category === slug;
+            item.classList.toggle('text-[#800000]', active);
+            const arrow = item.parentElement.querySelector('.arrow');
+            if (arrow) {
+                arrow.classList.toggle('opacity-100', active);
+                arrow.classList.toggle('opacity-0', !active);
+            }
+        });
+    }
+
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => activateCategory(item.dataset.category));
+    });
+
+
+    // ── Mobile drawer ──
+    const drawer      = document.getElementById('mobile-drawer');
+    const drawerPanel = document.getElementById('drawer-panel');
+    const backdrop    = document.getElementById('drawer-backdrop');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const hamburgerLines = hamburgerBtn.querySelectorAll('.hamburger-line');
+
+    function openDrawer() {
+        drawer.classList.remove('pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+        drawerPanel.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+        hamburgerLines[0].classList.add('rotate-45', 'translate-y-2');
+        hamburgerLines[1].classList.add('opacity-0');
+        hamburgerLines[2].classList.add('-rotate-45', '-translate-y-2');
+    }
+
+    function closeDrawer() {
+        drawer.classList.add('pointer-events-none');
+        backdrop.classList.add('opacity-0');
+        drawerPanel.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+        hamburgerLines[0].classList.remove('rotate-45', 'translate-y-2');
+        hamburgerLines[1].classList.remove('opacity-0');
+        hamburgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
+        // reset all screens after the panel slides out
+        setTimeout(() => {
+            screenStack.forEach(id => {
+                if (id !== 'screen-main') slideScreenOut(document.getElementById(id));
+            });
+            screenStack = ['screen-main'];
+        }, 300);
+    }
+
+    let screenStack = ['screen-main'];
+
+    function slideScreenIn(el) {
+        el.classList.remove('translate-x-full');
+    }
+
+    function slideScreenOut(el) {
+        el.classList.add('translate-x-full');
+    }
+
+    function pushScreen(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        slideScreenIn(el);
+        screenStack.push(id);
+    }
+
+    function popScreen() {
+        if (screenStack.length <= 1) return;
+        const current = screenStack.pop();
+        slideScreenOut(document.getElementById(current));
+    }
+
+    // open / close
+    hamburgerBtn.addEventListener('click', openDrawer);
+    document.getElementById('close-drawer-btn').addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+
+    // inner close buttons (on sub-screens)
+    document.querySelectorAll('.close-drawer-inner').forEach(btn => {
+        btn.addEventListener('click', closeDrawer);
+    });
+
+    // back buttons
+    document.querySelectorAll('.back-btn').forEach(btn => {
+        btn.addEventListener('click', () => popScreen());
+    });
+
+    // generic nav triggers: Products, Applications, Company, Services
+    document.querySelectorAll('.mobile-nav-trigger').forEach(btn => {
+        btn.addEventListener('click', () => pushScreen(btn.dataset.target));
+    });
+
+    // category triggers (inside Products screen)
+    const categoryData = {
+        {% for category in categories %}
+        "{{ category.slug }}": {
+            label: "{{ category.name }}",
+            allUrl: "{% url 'products:category_detail' cat_slug=category.slug %}",
+            children: [
+                {% for child in category.children.all %}
+                {
+                    name: "{{ child.name }}",
+                    url: "{% url 'products:child_detail' cat_slug=category.slug child_slug=child.slug %}"
+                },
+                {% endfor %}
+            ]
+        },
+        {% endfor %}
+    };
+
+    document.querySelectorAll('.mobile-category-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const slug = btn.dataset.category;
+            const data = categoryData[slug];
+            if (!data) return;
+
+            document.getElementById('mobile-category-title').textContent = data.label;
+
+            const list = document.getElementById('mobile-product-list');
+            list.innerHTML =
+                `<a href="${data.allUrl}"
+                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                    ${data.label} – All Products
+                </a>`
+                + data.children.map(c =>
+                    `<a href="${c.url}"
+                        class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
+                        ${c.name}
+                    </a>`
+                ).join('');
+
+            pushScreen('screen-category');
+        });
+    });
+
+
+    // ── Logo swap on homepage hover ──
+    {% if request.path == '/' %}
+    const logo = document.getElementById('logo');
+    const navbar = document.getElementById('navbar');
+    if (logo && navbar) {
+        navbar.addEventListener('mouseenter', () => {
+            
+            logo.classList.remove('text-white');
+            logo.classList.add('text-[#800000]');
+        });
+        navbar.addEventListener('mouseleave', () => {
+            logo.classList.remove('text-[#800000]');
+            logo.classList.add('text-white');
+        });
+    }
+    {% endif %}
+
+
+    const navbar_logo = document.getElementById('navbar-logo-img');
+    if (navbar_logo && navbar) {
+        navbar.addEventListener('mouseenter', () => {
+            navbar_logo.src = "{% static 'images/logo3.png' %}";
+        });
+        navbar.addEventListener('mouseleave', () => {
+            navbar_logo.src = "{% static 'images/logo4.png' %}";
+        });
+    }
+</script>

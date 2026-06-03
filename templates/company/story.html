@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="bg-white text-gray-800">
+  <!-- HERO -->
+  <div class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-36 -right-36 w-[34rem] h-[34rem] bg-red-100 rounded-full blur-3xl opacity-60"></div>
+      <div class="absolute -bottom-36 -left-36 w-[30rem] h-[30rem] bg-red-50 rounded-full blur-3xl opacity-60"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div class="space-y-8">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-700 ring-1 ring-red-200">
+            Our Story
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+            Lighting a Path of
+            <span class="text-red-600">Craftsmanship & Trust</span>
+          </h1>
+          <p class="text-lg text-gray-600 leading-relaxed max-w-xl">
+            What began as a small workshop grew into a lighting brand trusted by homes, offices, and commercial projects.
+            We believe great lighting is a blend of beauty, performance, and long-term reliability.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#timeline" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition shadow-md">
+              Our Journey
+            </a>
+            <a href="#values" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-red-700 hover:bg-red-50 font-semibold transition">
+              Our Values
+            </a>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
+            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
+              <p class="text-2xl font-bold text-red-600">12+</p>
+              <p class="text-sm text-gray-600 mt-1">Years</p>
+            </div>
+            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
+              <p class="text-2xl font-bold text-red-600">2,500+</p>
+              <p class="text-sm text-gray-600 mt-1">Projects</p>
+            </div>
+            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
+              <p class="text-2xl font-bold text-red-600">180+</p>
+              <p class="text-sm text-gray-600 mt-1">Products</p>
+            </div>
+            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
+              <p class="text-2xl font-bold text-red-600">99%</p>
+              <p class="text-sm text-gray-600 mt-1">Satisfaction</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 bg-gradient-to-tr from-red-200 to-red-50 rounded-3xl blur-2xl opacity-70"></div>
+          <div class="relative bg-white border border-red-100 rounded-3xl shadow-xl p-5">
+            <img src="https://via.placeholder.com/900x700" alt="Our story placeholder" class="w-full h-[440px] object-cover rounded-2xl">
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
+                <p class="text-sm text-gray-500">Founded</p>
+                <p class="mt-1 font-semibold text-gray-800">2013</p>
+              </div>
+              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
+                <p class="text-sm text-gray-500">Focus</p>
+                <p class="mt-1 font-semibold text-gray-800">Design + Reliability</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STORY -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div class="space-y-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">How It Started</h2>
+        <p class="text-gray-600 leading-relaxed">
+          We started with a clear idea: lighting should be reliable, energy-efficient, and beautiful. In the early days,
+          we focused on learning every detail—optics, materials, heat management, and the craft that makes fixtures last.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          As our reputation grew, architects, contractors, and homeowners trusted us with larger projects. We expanded
+          our catalog while keeping a strict standard for quality control.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          Today, our team works on projects across residential, commercial, and hospitality spaces, providing solutions that
+          balance performance with design.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900">Our Mission</h3>
+          <p class="mt-3 text-gray-600">Deliver lighting solutions that elevate everyday environments with lasting value.</p>
+        </div>
+        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900">Our Vision</h3>
+          <p class="mt-3 text-gray-600">Be the most trusted lighting partner known for craftsmanship and service.</p>
+        </div>
+        <div id="values" class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900">Our Values</h3>
+          <ul class="mt-3 space-y-2 text-gray-600 list-disc list-inside">
+            <li>Quality without compromise</li>
+            <li>Transparent guidance</li>
+            <li>Thoughtful design</li>
+            <li>Long-term partnerships</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div id="timeline" class="bg-red-50/60 border-y border-red-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Our Journey</h2>
+      <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
+        Milestones that shaped our growth and commitment to lighting excellence.
+      </p>
+
+      <div class="mt-12 grid lg:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
+          <p class="text-sm text-red-600 font-semibold">2013</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900">The Beginning</h3>
+          <p class="mt-2 text-gray-600">Opened our first workshop and launched our initial product lineup.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
+          <p class="text-sm text-red-600 font-semibold">2016</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900">First Commercial Projects</h3>
+          <p class="mt-2 text-gray-600">Partnered with local businesses to deliver large-scale lighting solutions.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
+          <p class="text-sm text-red-600 font-semibold">2019</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900">Expanded Product Range</h3>
+          <p class="mt-2 text-gray-600">Introduced smart controls and architectural-grade fixtures.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
+          <p class="text-sm text-red-600 font-semibold">2022</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900">Regional Growth</h3>
+          <p class="mt-2 text-gray-600">Built a broader distribution network with reliable logistics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM SNAPSHOT -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">People Behind the Light</h2>
+    <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
+      A dedicated team of designers, engineers, and support specialists.
+    </p>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
+        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
+        <p class="mt-4 font-semibold text-gray-900">Project Lead</p>
+        <p class="text-sm text-gray-600">Lighting Design</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
+        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
+        <p class="mt-4 font-semibold text-gray-900">Engineering Head</p>
+        <p class="text-sm text-gray-600">Product Development</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
+        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
+        <p class="mt-4 font-semibold text-gray-900">Client Success</p>
+        <p class="text-sm text-gray-600">Support & Solutions</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENT LOGOS -->
+  <div class="bg-white border-y border-red-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Trusted by Clients</h2>
+      <p class="mt-3 text-center text-gray-600">Proud to collaborate with brands and organizations across industries.</p>
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 1</div>
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 2</div>
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 3</div>
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 4</div>
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 5</div>
+        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Project Gallery</h2>
+    <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
+      A quick look at selected lighting installations and design outcomes.
+    </p>
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 1" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 2" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 3" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 4" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 5" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+      <img src="https://via.placeholder.com/700x500" alt="Gallery 6" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-red-600">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white">Let’s Build Something Bright Together</h2>
+      <p class="mt-4 text-red-100 max-w-2xl mx-auto">
+        Whether you’re planning a home upgrade or a large commercial project, our team is ready to help.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-red-600 font-semibold hover:bg-red-50 transition">
+          View Products
+        </a>
+        <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-white font-semibold hover:bg-red-700 transition">
+          Talk to Our Team
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

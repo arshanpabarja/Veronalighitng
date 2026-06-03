@@ -1,0 +1,812 @@
+<!-- Desktop Filter Bar -->
+<div id="filtersBar" class="hidden xl:block sticky top-24 z-40 bg-white border-b border-t border-gray-200 shadow-sm">
+    <div class="px-7 py-2">
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+            <!-- Application Filter -->
+            <div class="relative">
+                <button type="button" onclick="toggleDropdown('applicationDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Application</span>
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                
+                <div id="applicationDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                    <div class="p-3 space-y-2">
+                        {% for app in available_applications %}
+                        <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                            <input type="checkbox" name="application" value="{{ app.slug }}" 
+                                   {% if app.slug in selected_applications %}checked{% endif %}
+                                   onchange="updateFilterBadge(); applyFilters();"
+                                   class="w-4 h-4 text-blue-600 rounded">
+                            <span class="text-sm text-gray-700">{{ app.name }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Family Filter -->
+            <div class="relative">
+                <button type="button" onclick="toggleDropdown('productFamilyDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Product Family</span>
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                
+                <div id="productFamilyDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                    <div class="p-3 space-y-2">
+{% for family in available_product_families %}
+<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+  <input type="checkbox" name="product_family" value="{{ family.slug }}"
+         {% if family.slug in selected_product_families %}checked{% endif %}
+         onchange="updateFilterBadge(); applyFilters();"
+         class="w-4 h-4 text-blue-600 rounded">
+  <span class="text-sm text-gray-700">{{ family.name }}</span>
+</label>
+{% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mounting Type Filter -->
+            <div class="relative">
+                <button type="button" onclick="toggleDropdown('mountingDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Mounting Type</span>
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                
+                <div id="mountingDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                    <div class="p-3 space-y-2">
+                        {% for mount in available_mounting_types %}
+                        <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                            <input type="checkbox" name="mounting_type" value="{{ mount }}" 
+                                   {% if mount in selected_mounting_types %}checked{% endif %}
+                                   onchange="updateFilterBadge(); applyFilters();"
+                                   class="w-4 h-4 text-blue-600 rounded">
+                            <span class="text-sm text-gray-700">{{ mount }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Temperature Filter -->
+            <div class="relative">
+                <button type="button" onclick="toggleDropdown('colorTempDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Color Temperature</span>
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                
+                <div id="colorTempDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                    <div class="p-3 space-y-2">
+                        {% for temp in available_color_temps %}
+                        <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                            <input type="checkbox" name="color_temp" value="{{ temp }}" 
+                                   {% if temp in selected_color_temps %}checked{% endif %}
+                                   onchange="updateFilterBadge(); applyFilters();"
+                                   class="w-4 h-4 text-blue-600 rounded">
+                            <span class="text-sm text-gray-700">{{ temp }}K</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Filters Button -->
+            <div class="relative">
+                <button type="button" onclick="toggleDropdown('moreFiltersDropdown')" class="flex items-center gap-2 px-4 py-2.5 text-black rounded-lg transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                    </svg>
+                    <span class="text-sm font-medium">More Filters</span>
+                    <span id="moreFiltersBadge" class="hidden ml-1 px-2 py-0.5 bg-white text-blue-600 text-xs font-bold rounded-full">0</span>
+                    <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+
+                <!-- More Filters Dropdown -->
+                <div id="moreFiltersDropdown" class="hidden absolute top-full right-0 mt-2 w-[600px] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="grid grid-cols-3 gap-6">
+                            <!-- Lumens -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Lumens</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    {% for lumen in available_lumens %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="checkbox" name="lumens" value="{{ lumen }}" 
+                                               {% if lumen in selected_lumens %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600 rounded">
+                                        <span class="text-sm text-gray-700">{{ lumen }}lm</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- Voltage -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Voltage</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    {% for volt in available_voltages %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="checkbox" name="voltage" value="{{ volt }}" 
+                                               {% if volt in selected_voltages %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600 rounded">
+                                        <span class="text-sm text-gray-700">{{ volt }}V</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- Beam Angle -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Beam Angle</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    {% for angle in available_beam_angles %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="checkbox" name="beam_angle" value="{{ angle }}" 
+                                               {% if angle in selected_beam_angles %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600 rounded">
+                                        <span class="text-sm text-gray-700">{{ angle }}°</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="grid grid-cols-3 gap-6">
+                            <!-- IP Rating -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">IP Rating</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    {% for ip in available_ip_ratings %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="checkbox" name="ip_rating" value="{{ ip }}" 
+                                               {% if ip in selected_ip_ratings %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600 rounded">
+                                        <span class="text-sm text-gray-700">{{ ip }}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- Dimmable -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Dimmable</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="radio" name="dimmable" value="yes" 
+                                               {% if request.GET.dimmable == 'yes' %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600">
+                                        <span class="text-sm text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="radio" name="dimmable" value="no" 
+                                               {% if request.GET.dimmable == 'no' %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600">
+                                        <span class="text-sm text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- CRI/Ra -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">CRI/Ra</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    {% for cri in available_cri %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                        <input type="checkbox" name="cri" value="{{ cri }}" 
+                                               {% if cri in selected_cri %}checked{% endif %}
+                                               onchange="updateMoreFiltersBadge()"
+                                               class="w-4 h-4 text-blue-600 rounded">
+                                        <span class="text-sm text-gray-700">{{ cri }}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="grid grid-cols-3 gap-6">
+                            <!-- Certifications -->
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Certifications</h4>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+{% for cert in available_certifications %}
+<label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+  <input type="checkbox" name="certifications" value="{{ cert.slug }}"
+         {% if cert.slug in selected_certifications %}checked{% endif %}
+         onchange="updateMoreFiltersBadge()"
+         class="w-4 h-4 text-blue-600 rounded">
+  <span class="text-sm text-gray-700">{{ cert.name }}</span>
+</label>
+{% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 border-t border-gray-200 flex gap-3 rounded-b-lg">
+                        <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-2 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors">
+                            Reset
+                        </button>
+                        <button type="button" onclick="applyMoreFilters()" class="flex-1 px-4 py-2 bg-[#800000] text-white font-medium rounded-lg hover:bg-red-700 transition-colors">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reset Button -->
+            <button type="button" onclick="resetFilters()" class="px-4 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
+                Reset All
+            </button>
+
+            <!-- Active Filters Badge -->
+            <span id="filterBadge" class="hidden px-3 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">
+                0 filters
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Filter Overlay (keep as is, just fix the form submission) -->
+<div id="filterBackdrop"
+    class="fixed inset-0 bg-black/50 z-[1000] hidden opacity-0 transition-opacity duration-300"
+    onclick="closeFilterOverlay()"></div>
+
+<div id="filterOverlay"
+    class="fixed bottom-0 left-0 right-0 z-[1001] bg-white rounded-t-[20px] shadow-[0_-8px_32px_rgba(0,0,0,0.15)]
+           translate-y-full transition-transform duration-300 ease-out max-h-[85vh] flex flex-col sm:hidden">
+
+  <div class="flex-shrink-0 px-4 pt-3 pb-4 border-b border-[#f0f0f0]">
+    <div class="w-10 h-1 bg-[#e0e0e0] rounded-full mx-auto mb-4"></div>
+    <div class="flex items-center justify-between">
+      <span class="text-[14px] font-bold text-[#1a1a1a] uppercase tracking-[0.5px]">Filters</span>
+      <button onclick="closeFilterOverlay()" class="w-8 h-8 flex items-center justify-center rounded-full bg-[#f0f0f0] text-[#444]">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round]">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex-1 overflow-y-auto px-4 py-4">
+    <div id="mobileFiltersForm" class="grid grid-cols-1 gap-3">
+
+      <!-- Application -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Application</label>
+        <div class="flex flex-wrap gap-2">
+          {% for app in available_applications %}
+<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+  <input type="checkbox" name="application" value="{{ app.slug }}"
+         {% if app.slug in selected_applications %}checked{% endif %}
+         onchange="updateFilterBadge(); applyFilters();"
+         class="w-4 h-4 text-blue-600 rounded">
+  <span class="text-sm text-gray-700">{{ app.name }}</span>
+</label>
+{% endfor %}
+
+        </div>
+      </div>
+
+      <!-- Product Family -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Product Family</label>
+        <div class="flex flex-wrap gap-2">
+          {% for family in available_product_families %}
+<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+  <input type="checkbox" name="product_family" value="{{ family.slug }}"
+         {% if family.slug in selected_product_families %}checked{% endif %}
+         onchange="updateFilterBadge(); applyFilters();"
+         class="w-4 h-4 text-blue-600 rounded">
+  <span class="text-sm text-gray-700">{{ family.name }}</span>
+</label>
+{% endfor %}
+
+        </div>
+      </div>
+
+      <!-- Mounting Type -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Mounting Type</label>
+        <div class="flex flex-wrap gap-2">
+          {% for mount in available_mounting_types %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="mounting_type" value="{{ mount }}"
+                {% if mount in selected_mounting_types %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ mount }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Color Temperature -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Color Temperature</label>
+        <div class="flex flex-wrap gap-2">
+          {% for temp in available_color_temps %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="color_temp" value="{{ temp }}"
+                {% if temp in selected_color_temps %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ temp }}K</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Wattage -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Wattage (W)</label>
+        <div class="flex items-center gap-2">
+          <input type="number" name="wattage_min" placeholder="Min" value="{{ request.GET.wattage_min }}"
+              min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
+              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
+          <span class="text-[13px] text-[#888]">to</span>
+          <input type="number" name="wattage_max" placeholder="Max" value="{{ request.GET.wattage_max }}"
+              min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
+              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
+        </div>
+      </div>
+
+      <!-- Lumens -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Lumens</label>
+        <div class="flex flex-wrap gap-2">
+          {% for lumen in available_lumens %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="lumens" value="{{ lumen }}"
+                {% if lumen in selected_lumens %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ lumen }}lm</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Voltage -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Voltage</label>
+        <div class="flex flex-wrap gap-2">
+          {% for volt in available_voltages %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="voltage" value="{{ volt }}"
+                {% if volt in selected_voltages %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ volt }}V</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Beam Angle -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Beam Angle</label>
+        <div class="flex flex-wrap gap-2">
+          {% for angle in available_beam_angles %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="beam_angle" value="{{ angle }}"
+                {% if angle in selected_beam_angles %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ angle }}°</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- IP Rating -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">IP Rating</label>
+        <div class="flex flex-wrap gap-2">
+          {% for ip in available_ip_ratings %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="ip_rating" value="{{ ip }}"
+                {% if ip in selected_ip_ratings %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ ip }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Dimmable -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Dimmable</label>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="radio" name="dimmable" value="yes"
+                {% if request.GET.dimmable == 'yes' %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">Yes</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="radio" name="dimmable" value="no"
+                {% if request.GET.dimmable == 'no' %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">No</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- CRI/Ra -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">CRI/Ra</label>
+        <div class="flex flex-wrap gap-2">
+          {% for cri in available_cri %}
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" name="cri" value="{{ cri }}"
+                {% if cri in selected_cri %}checked{% endif %}
+                class="w-4 h-4 accent-[#800000] cursor-pointer">
+            <span class="text-[13px] text-[#444]">{{ cri }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Certifications</label>
+        <div class="flex flex-wrap gap-2">
+          {% for cert in available_certifications %}
+<label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+  <input type="checkbox" name="certifications" value="{{ cert.slug }}"
+         {% if cert.slug in selected_certifications %}checked{% endif %}
+         onchange="updateMoreFiltersBadge()"
+         class="w-4 h-4 text-blue-600 rounded">
+  <span class="text-sm text-gray-700">{{ cert.name }}</span>
+</label>
+{% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="flex-shrink-0 p-4 bg-white border-t border-[#f0f0f0] flex gap-3">
+    <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-3 bg-white border border-[#e0e0e0] text-[#444] text-[13px] font-bold rounded-md hover:bg-[#f5f5f5] transition-colors uppercase tracking-[0.5px]">
+      Reset
+    </button>
+    <button type="button" onclick="applyMobileFilters()" class="flex-1 px-4 py-3 bg-[#800000] text-white text-[13px] font-bold rounded-md hover:bg-[#b01717] transition-colors uppercase tracking-[0.5px]">
+      Apply Filters
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Filter Button -->
+<button id="mobileFilterBtn" onclick="openFilterOverlay()"
+    class="sm:hidden fixed bottom-6 right-6 z-50 bg-[#800000] text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-[#b01717] transition-all">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+  </svg>
+  <span class="text-sm font-semibold">Filters</span>
+  <span id="mobileFilterBadge" class="hidden ml-1 px-2 py-0.5 bg-white text-[#800000] text-xs font-bold rounded-full">0</span>
+</button>
+
+<script>
+// Desktop dropdown toggle
+function toggleDropdown(id) {
+    const dropdown = document.getElementById(id);
+    const allDropdowns = document.querySelectorAll('[id$="Dropdown"]');
+    const allButtons = document.querySelectorAll('[onclick^="toggleDropdown"]');
+    
+    allDropdowns.forEach(dd => {
+        if (dd.id !== id) {
+            dd.classList.add('hidden');
+        }
+    });
+    
+    allButtons.forEach(btn => {
+        const svg = btn.querySelector('svg:last-child');
+        if (btn.getAttribute('onclick') !== `toggleDropdown('${id}')`) {
+            svg?.classList.remove('rotate-180');
+        }
+    });
+    
+    dropdown.classList.toggle('hidden');
+    
+    const button = document.querySelector(`[onclick="toggleDropdown('${id}')"]`);
+    const chevron = button?.querySelector('svg:last-child');
+    if (chevron) {
+        chevron.classList.toggle('rotate-180');
+    }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    const isFilterButton = event.target.closest('[onclick^="toggleDropdown"]');
+    const isDropdown = event.target.closest('[id$="Dropdown"]');
+    
+    if (!isFilterButton && !isDropdown) {
+        const allDropdowns = document.querySelectorAll('[id$="Dropdown"]');
+        const allButtons = document.querySelectorAll('[onclick^="toggleDropdown"]');
+        
+        allDropdowns.forEach(dd => dd.classList.add('hidden'));
+        allButtons.forEach(btn => {
+            const svg = btn.querySelector('svg:last-child');
+            svg?.classList.remove('rotate-180');
+        });
+    }
+});
+
+// Update desktop filter badge (main filters only)
+function updateFilterBadge() {
+    const mainFilters = ['application', 'product_family', 'mounting_type', 'color_temp'];
+    let count = 0;
+    
+    mainFilters.forEach(name => {
+        const checked = document.querySelectorAll(`#filtersBar input[name="${name}"]:checked`);
+        count += checked.length;
+    });
+    
+    const badge = document.getElementById('filterBadge');
+    if (count > 0) {
+        badge.textContent = `${count} filter${count !== 1 ? 's' : ''}`;
+        badge.classList.remove('hidden');
+    } else {
+        badge.classList.add('hidden');
+    }
+}
+
+// Update "More Filters" badge
+function updateMoreFiltersBadge() {
+    const moreFilters = ['lumens', 'voltage', 'beam_angle', 'ip_rating', 'cri', 'certifications'];
+    let count = 0;
+    
+    moreFilters.forEach(name => {
+        const checked = document.querySelectorAll(`#moreFiltersDropdown input[name="${name}"]:checked`);
+        count += checked.length;
+    });
+    
+    const dimmable = document.querySelector('#moreFiltersDropdown input[name="dimmable"]:checked');
+    if (dimmable) count++;
+    
+    const badge = document.getElementById('moreFiltersBadge');
+    if (count > 0) {
+        badge.textContent = count;
+        badge.classList.remove('hidden');
+    } else {
+        badge.classList.add('hidden');
+    }
+}
+
+// Apply desktop main filters (Application, Product Family, Mounting Type, Color Temperature)
+function applyFilters() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams();
+    
+    // Preserve search query if exists
+    const searchQuery = url.searchParams.get('q');
+    if (searchQuery) {
+        params.append('q', searchQuery);
+    }
+    
+    // Collect main filter values
+    const filterNames = ['application', 'product_family', 'mounting_type', 'color_temp'];
+    
+    filterNames.forEach(name => {
+        const checked = document.querySelectorAll(`#filtersBar input[name="${name}"]:checked`);
+        checked.forEach(input => {
+            params.append(name, input.value);
+        });
+    });
+    
+    // Preserve "More Filters" values
+    const moreFilterNames = ['lumens', 'voltage', 'beam_angle', 'ip_rating', 'cri', 'certifications'];
+    moreFilterNames.forEach(name => {
+        const checked = document.querySelectorAll(`#moreFiltersDropdown input[name="${name}"]:checked`);
+        checked.forEach(input => {
+            params.append(name, input.value);
+        });
+    });
+    
+    const dimmable = document.querySelector('#moreFiltersDropdown input[name="dimmable"]:checked');
+    if (dimmable) {
+        params.append('dimmable', dimmable.value);
+    }
+    
+    window.location.href = `${url.pathname}?${params.toString()}`;
+}
+
+// Apply "More Filters"
+function applyMoreFilters() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams();
+    
+    // Preserve search query
+    const searchQuery = url.searchParams.get('q');
+    if (searchQuery) {
+        params.append('q', searchQuery);
+    }
+    
+    // Collect all filter values (main + more)
+    const allFilterNames = ['application', 'product_family', 'mounting_type', 'color_temp', 
+                            'lumens', 'voltage', 'beam_angle', 'ip_rating', 'cri', 'certifications'];
+    
+    allFilterNames.forEach(name => {
+        const checked = document.querySelectorAll(`#filtersBar input[name="${name}"]:checked, #moreFiltersDropdown input[name="${name}"]:checked`);
+        checked.forEach(input => {
+            params.append(name, input.value);
+        });
+    });
+    
+    const dimmable = document.querySelector('#moreFiltersDropdown input[name="dimmable"]:checked');
+    if (dimmable) {
+        params.append('dimmable', dimmable.value);
+    }
+    
+    window.location.href = `${url.pathname}?${params.toString()}`;
+}
+
+// Mobile overlay functions
+function openFilterOverlay() {
+    const backdrop = document.getElementById('filterBackdrop');
+    const overlay = document.getElementById('filterOverlay');
+    
+    backdrop.classList.remove('hidden');
+    overlay.classList.remove('translate-y-full');
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+    }, 10);
+}
+
+function closeFilterOverlay() {
+    const backdrop = document.getElementById('filterBackdrop');
+    const overlay = document.getElementById('filterOverlay');
+    
+    backdrop.classList.add('opacity-0');
+    overlay.classList.add('translate-y-full');
+    document.body.style.overflow = '';
+    
+    setTimeout(() => {
+        backdrop.classList.add('hidden');
+    }, 300);
+}
+
+// Update mobile filter badge
+function updateMobileFilterBadge() {
+    const filterNames = ['application', 'product_family', 'mounting_type', 'color_temp', 
+                        'lumens', 'voltage', 'beam_angle', 'ip_rating', 'cri', 'certifications'];
+    let count = 0;
+    
+    filterNames.forEach(name => {
+        const checked = document.querySelectorAll(`#mobileFiltersForm input[name="${name}"]:checked`);
+        count += checked.length;
+    });
+    
+    const dimmable = document.querySelector('#mobileFiltersForm input[name="dimmable"]:checked');
+    if (dimmable) count++;
+    
+    const wattageMin = document.querySelector('#mobileFiltersForm input[name="wattage_min"]');
+    const wattageMax = document.querySelector('#mobileFiltersForm input[name="wattage_max"]');
+    if ((wattageMin && wattageMin.value) || (wattageMax && wattageMax.value)) count++;
+    
+    const badge = document.getElementById('mobileFilterBadge');
+    if (count > 0) {
+        badge.textContent = count;
+        badge.classList.remove('hidden');
+    } else {
+        badge.classList.add('hidden');
+    }
+}
+
+// Apply mobile filters
+function applyMobileFilters() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams();
+    
+    // Preserve search query
+    const searchQuery = url.searchParams.get('q');
+    if (searchQuery) {
+        params.append('q', searchQuery);
+    }
+    
+    // Collect all mobile filter values
+    const filterNames = ['application', 'product_family', 'mounting_type', 'color_temp', 
+                        'lumens', 'voltage', 'beam_angle', 'ip_rating', 'cri', 'certifications'];
+    
+    filterNames.forEach(name => {
+        const checked = document.querySelectorAll(`#mobileFiltersForm input[name="${name}"]:checked`);
+        checked.forEach(input => {
+            params.append(name, input.value);
+        });
+    });
+    
+    const dimmable = document.querySelector('#mobileFiltersForm input[name="dimmable"]:checked');
+    if (dimmable) {
+        params.append('dimmable', dimmable.value);
+    }
+    
+    const wattageMin = document.querySelector('#mobileFiltersForm input[name="wattage_min"]');
+    const wattageMax = document.querySelector('#mobileFiltersForm input[name="wattage_max"]');
+    if (wattageMin && wattageMin.value) {
+        params.append('wattage_min', wattageMin.value);
+    }
+    if (wattageMax && wattageMax.value) {
+        params.append('wattage_max', wattageMax.value);
+    }
+    
+    window.location.href = `${url.pathname}?${params.toString()}`;
+}
+
+// Reset all filters
+function resetFilters() {
+    const url = new URL(window.location.href);
+    const searchQuery = url.searchParams.get('q');
+    
+    if (searchQuery) {
+        window.location.href = `${url.pathname}?q=${searchQuery}`;
+    } else {
+        window.location.href = url.pathname;
+    }
+}
+
+// Initialize badges on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateFilterBadge();
+    updateMoreFiltersBadge();
+    updateMobileFilterBadge();
+    
+    // Add event listeners to mobile inputs
+    const mobileInputs = document.querySelectorAll('#mobileFiltersForm input');
+    mobileInputs.forEach(input => {
+        input.addEventListener('change', updateMobileFilterBadge);
+        if (input.type === 'number') {
+            input.addEventListener('input', updateMobileFilterBadge);
+        }
+    });
+});
+
+// Handle mobile filter button visibility on scroll
+let lastScroll = 0;
+const mobileBtn = document.getElementById('mobileFilterBtn');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        if (currentScroll > lastScroll) {
+            mobileBtn.style.transform = 'translateY(100px)';
+        } else {
+            mobileBtn.style.transform = 'translateY(0)';
+        }
+    }
+    
+    lastScroll = currentScroll;
+});
+</script>
