@@ -1,0 +1,8 @@
+1.404 page [Tick]
+2.applications family for empty child [Tick]
+3.import projects to admin [Tick]
+5.put correct info in footer [Tick]
+6.create contact us [Tick]
+7.create services [Tick]
+8.fix news page color [Tick]
+9.debug = 'False' []

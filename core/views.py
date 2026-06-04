@@ -15,6 +15,16 @@ def story(request):
     context = {"site_settings": SiteSettings.get()}
     return render(request, 'company/story.html', context)
 
+def contact(request):
+    context = {"site_settings": SiteSettings.get()}
+    return render(request, 'company/contact.html', context)
+
+def services(request):
+    context = {"site_settings": SiteSettings.get()}
+    return render(request, 'company/services.html', context)
+
+
+
 def news_list(request):
     category_slug = request.GET.get('category')
     articles = NewsArticle.objects.filter(is_published=True).select_related('category')
@@ -62,3 +72,8 @@ def news_detail(request, slug):
         "related": related,
     }
     return render(request, 'news/news_detail.html', context)
+
+
+
+def custom_404_view(request, exception):
+    return render(request, "404.html", status=404)

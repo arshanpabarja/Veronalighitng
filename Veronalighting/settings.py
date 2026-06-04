@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-l$m0t@wvb)-(u8(!&m=4gy=noy91ay8-6undiu5u4+@1#di7+-
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['veronalighting.co', 'www.veronalighting.co', '127.0.0.1', 'https://veronalighting.co']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -95,5 +95,8 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
+
+
+

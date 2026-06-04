@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}404 — Page Not Found | Verona Lighting{% endblock %}
+
+{% block content %}
+<style>
+  /* ── Reset & tokens ─────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pg404 {
+    position: relative;
+    min-height: 100vh;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px 24px;
+    font-family: inherit; /* keeps site font */
+  }
+
+  /* ── Cinematic grain overlay ─────────────────────── */
+  .pg404::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 180px;
+    opacity: 0.028;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Giant ghost "404" background text ───────────── */
+  .ghost-404 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(180px, 30vw, 380px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    animation: ghostPulse 6s ease-in-out infinite;
+    z-index: 0;
+  }
+  @keyframes ghostPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+
+  /* ── Crimson spotlight from top ──────────────────── */
+  .spotlight {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse at top, rgba(128,0,0,0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: spotMove 8s ease-in-out infinite;
+  }
+  @keyframes spotMove {
+    0%, 100% { transform: translateX(-50%) scaleX(1); }
+    50%       { transform: translateX(-40%) scaleX(1.15); }
+  }
+
+  /* ── Thin horizontal line accents ───────────────── */
+  .line-top, .line-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(128,0,0,0.6) 30%, rgba(128,0,0,0.6) 70%, transparent);
+    z-index: 1;
+    animation: lineFade 3s ease-in-out infinite;
+  }
+  .line-top    { top: 0; }
+  .line-bottom { bottom: 0; }
+  @keyframes lineFade {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+  }
+
+  /* ── Main content ────────────────────────────────── */
+  .pg404-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    animation: contentIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  @keyframes contentIn {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Eyebrow label */
+  .pg404-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+    animation: contentIn 0.9s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .pg404-label::before,
+  .pg404-label::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: rgba(128,0,0,0.7);
+  }
+
+  /* Error code */
+  .pg404-code {
+    font-size: clamp(80px, 16vw, 148px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 20px;
+    animation: contentIn 0.9s 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .pg404-code span { color: #800000; }
+
+  /* Divider */
+  .pg404-divider {
+    width: 48px;
+    height: 2px;
+    background: #800000;
+    margin: 0 auto 28px;
+    animation: contentIn 0.9s 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* Heading */
+  .pg404-heading {
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+    animation: contentIn 0.9s 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* Sub text */
+  .pg404-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+    max-width: 420px;
+    margin: 0 auto 44px;
+    animation: contentIn 0.9s 0.34s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* Actions */
+  .pg404-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: contentIn 0.9s 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .btn-primary-404 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 34px;
+    background: #800000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .btn-primary-404:hover {
+    background: #a01010;
+    box-shadow: 0 0 36px rgba(128,0,0,0.4);
+    transform: translateY(-1px);
+  }
+  .btn-primary-404 .arr { transition: transform 0.3s ease; }
+  .btn-primary-404:hover .arr { transform: translateX(4px); }
+
+  .btn-ghost-404 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 34px;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+  .btn-ghost-404:hover {
+    border-color: rgba(255,255,255,0.45);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  /* ── Quick links ─────────────────────────────────── */
+  .pg404-links {
+    position: relative;
+    z-index: 2;
+    margin-top: 72px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.07);
+    animation: contentIn 0.9s 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .pg404-link {
+    padding: 18px 28px;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s ease;
+    min-width: 100px;
+  }
+  .pg404-link:last-child { border-right: none; }
+  .pg404-link:hover { background: rgba(128,0,0,0.12); }
+  .pg404-link-icon {
+    font-size: 18px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .pg404-link:hover .pg404-link-icon { opacity: 1; }
+  .pg404-link-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.3s;
+  }
+  .pg404-link:hover .pg404-link-label { color: rgba(255,255,255,0.75); }
+
+  /* ── Animated beam lines (decorative) ───────────── */
+  .beam {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(128,0,0,0.18) 40%, rgba(128,0,0,0.18) 60%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+    animation: beamSlide 10s linear infinite;
+    opacity: 0;
+  }
+  .beam:nth-child(1) { left: 20%;  animation-delay: 0s;   animation-duration: 12s; }
+  .beam:nth-child(2) { left: 50%;  animation-delay: 3.5s; animation-duration: 9s;  }
+  .beam:nth-child(3) { left: 78%;  animation-delay: 6s;   animation-duration: 14s; }
+  @keyframes beamSlide {
+    0%   { opacity: 0; transform: scaleY(0.3) translateY(-30%); }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { opacity: 0; transform: scaleY(0.3) translateY(30%); }
+  }
+
+  @media (max-width: 600px) {
+    .pg404-links { flex-wrap: wrap; }
+    .pg404-link  { min-width: 80px; padding: 14px 18px; }
+    .pg404-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary-404, .btn-ghost-404 { justify-content: center; }
+  }
+</style>
+
+<div class="pg404">
+
+    <!-- Decorative beams -->
+    <div class="beam"></div>
+    <div class="beam"></div>
+    <div class="beam"></div>
+
+    <!-- Ghost BG text -->
+    <div class="ghost-404" aria-hidden="true">404</div>
+
+    <!-- Spotlight -->
+    <div class="spotlight" aria-hidden="true"></div>
+
+    <!-- Line accents -->
+    <div class="line-top"    aria-hidden="true"></div>
+    <div class="line-bottom" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="pg404-inner">
+
+        <div class="pg404-label" aria-hidden="true">Error</div>
+
+        <div class="pg404-code" aria-label="Error 404">
+            4<span>0</span>4
+        </div>
+
+        <div class="pg404-divider"></div>
+
+        <h1 class="pg404-heading">Light Not Found</h1>
+
+        <p class="pg404-sub">
+            This page has gone dark. The space you're looking for no longer exists, was moved, or never did.
+            Let us guide you back.
+        </p>
+
+        <div class="pg404-actions">
+            <a href="/" class="btn-primary-404">
+                Back to Home <span class="arr">→</span>
+            </a>
+            <a href="/products" class="btn-ghost-404">
+                Browse Products
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Quick links bar -->
+    <nav class="pg404-links" aria-label="Quick navigation">
+        <a href="/"         class="pg404-link"><span class="pg404-link-icon">⌂</span><span class="pg404-link-label">Home</span></a>
+        <a href="/products" class="pg404-link"><span class="pg404-link-icon">◈</span><span class="pg404-link-label">Products</span></a>
+        <a href="/projects" class="pg404-link"><span class="pg404-link-icon">◉</span><span class="pg404-link-label">Projects</span></a>
+        <a href="/about"    class="pg404-link"><span class="pg404-link-icon">◎</span><span class="pg404-link-label">About</span></a>
+        <a href="/contact"  class="pg404-link"><span class="pg404-link-icon">◌</span><span class="pg404-link-label">Contact</span></a>
+    </nav>
+
+</div>
+
+{% endblock %}

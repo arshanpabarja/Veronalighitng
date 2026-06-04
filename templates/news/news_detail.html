@@ -12,7 +12,7 @@
   .prose li { margin-bottom: 0.5rem; }
   .prose a  { color: #f59e0b; text-decoration: underline; }
   .prose a:hover { color: #d97706; }
-  .prose blockquote { border-left: 4px solid #fbbf24; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #6b7280; }
+  .prose blockquote { border-left: 4px solid #800000; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #6b7280; }
   .prose img { border-radius: 0.75rem; margin: 2rem 0; }
 </style>
 {% endblock %}
@@ -43,13 +43,13 @@
   <nav class="bg-white border-b border-gray-200 py-4" aria-label="Breadcrumb">
     <div class="max-w-4xl mx-auto px-4">
       <ol class="flex items-center gap-2 text-sm text-gray-500">
-        <li><a href="{% url 'home' %}" class="hover:text-amber-500 transition-colors">Home</a></li>
+        <li><a href="{% url 'home' %}" class="hover:text-[#800000] transition-colors">Home</a></li>
         <li aria-hidden="true">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
           </svg>
         </li>
-        <li><a href="{% url 'news_list' %}" class="hover:text-amber-500 transition-colors">News</a></li>
+        <li><a href="{% url 'news_list' %}" class="hover:text-[#800000] transition-colors">News</a></li>
         <li aria-hidden="true">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
@@ -70,7 +70,7 @@
 
       {% if article.category %}
         <a href="{% url 'news_list' %}?category={{ article.category.slug }}"
-           class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 hover:bg-amber-200 transition-colors">
+           class="inline-block bg-[#800000]  text-white  text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 hover:bg-[#800000]  transition-colors">
           {{ article.category.name }}
         </a>
       {% endif %}
@@ -196,12 +196,12 @@
               {% endif %}
               <div class="p-5 flex flex-col flex-1 gap-3">
                 {% if rel.category %}
-                  <span class="inline-block self-start bg-amber-100 text-amber-700 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                  <span class="inline-block self-start bg-[#800000]  text-white  text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
                     {{ rel.category.name }}
                   </span>
                 {% endif %}
                 <a href="{% url 'news_detail' rel.slug %}">
-                  <h3 class="font-bold text-lg leading-snug hover:text-amber-500 transition-colors line-clamp-2">
+                  <h3 class="font-bold text-lg leading-snug hover:text- transition-colors line-clamp-2">
                     {{ rel.title }}
                   </h3>
                 </a>
@@ -238,7 +238,7 @@
   <div class="bg-white pb-12">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <a href="{% url 'news_list' %}"
-         class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-white font-semibold rounded-full hover:bg-amber-600 transition-colors">
+         class="inline-flex items-center gap-2 px-6 py-3 bg-[#800000] text-white font-semibold rounded-full hover:bg-[#800000]  transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15 19l-7-7 7-7"/>
         </svg>

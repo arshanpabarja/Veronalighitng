@@ -198,16 +198,7 @@
   {% for family in families %}
 
   {# Mobile #}
-  <a href="{% if family.category.parent %}
-              {% url 'products:family_detail'
-                  family.category.parent.slug
-                  family.category.slug
-                  family.slug %}
-            {% else %}
-                {% url 'products:family_detail_no_child'
-                    family.category.slug
-                    family.slug %}
-            {% endif %}"
+  <a href="{% if family.category.parent %}{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}{% else %}{% url 'products:family_detail_no_child' family.category.slug family.slug %}{% endif %}"
      class="product-card sm:hidden relative block aspect-[342/472] overflow-hidden bg-[#eef0f3]">
     <div class="absolute inset-x-0 top-0 h-[65%] overflow-hidden flex items-center justify-center p-4">
       {% if family.icon %}

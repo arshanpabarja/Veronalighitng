@@ -9,6 +9,8 @@ urlpatterns = [
     path('', index, name='home'),
     path('about/', about, name='about'),
     path('story/', story, name='story'),
+    path('contact/', contact, name='contact'),
+    path('services/', services, name='services'),
     path('news/', news_list, name='news_list'),
     path('news/<slug:slug>/', news_detail, name='news_detail'),
     path('', include('Products.urls', namespace='products')),
@@ -17,3 +19,6 @@ urlpatterns = [
 # برای serve کردن media در development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = "core.views.custom_404_view"

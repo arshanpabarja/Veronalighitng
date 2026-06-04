@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services | Verona Lighting{% endblock %}
+
+{% block meta_tags %}
+<meta name="description" content="Professional architectural lighting services: design, installation, technical support, and maintenance. Custom solutions for every project.">
+{% endblock %}
+
+{% block content %}
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- HERO SECTION                                         -->
+<!-- ════════════════════════════════════════════════════ -->
+<section class="bg-white pt-24 pb-32 md:pt-32 md:pb-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        <div class="inline-flex items-center gap-3 mb-8">
+            <div class="w-10 h-0.5 bg-[#800000]"></div>
+            <span class="text-xs font-semibold tracking-[4px] uppercase text-[#800000]">What We Do</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold text-black mb-8 leading-tight max-w-4xl">
+            End-to-End<br>
+            Lighting<br>
+            <span class="text-[#800000]">Solutions</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-500 font-light max-w-2xl leading-relaxed">
+            From initial concept to installation and ongoing support, we handle every aspect of your architectural lighting project with precision and expertise.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- SERVICES GRID — 6 CORE SERVICES                     -->
+<!-- ════════════════════════════════════════════════════ -->
+<section class="bg-[#f9f9f7] py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold text-black">
+                Our Core Services
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-10">
+
+            <!-- Service 1: Design Consultation -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ◆
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Lighting Design
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Our team of certified lighting designers collaborate with architects and interior designers to create custom lighting concepts that enhance your space.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• Concept development & mood boards</li>
+                    <li>• 3D visualization & renderings</li>
+                    <li>• Energy-efficient strategies</li>
+                    <li>• Compliance & code reviews</li>
+                </ul>
+            </div>
+
+            <!-- Service 2: Installation -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ◎
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Professional Installation
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Certified installers handle all aspects of your project—from electrical integration to final testing and commissioning.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• Site assessment & preparation</li>
+                    <li>• Professional wiring & integration</li>
+                    <li>• Quality assurance testing</li>
+                    <li>• Minimal disruption approach</li>
+                </ul>
+            </div>
+
+            <!-- Service 3: Control Systems -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ◉
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Smart Control Systems
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Integrate DALI, DMX, or wireless controls for flexible, intuitive lighting management across your entire space.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• DALI & DMX programming</li>
+                    <li>• Wireless dimming solutions</li>
+                    <li>• Scene creation & scheduling</li>
+                    <li>• App-based control interfaces</li>
+                </ul>
+            </div>
+
+            <!-- Service 4: Retrofits & Upgrades -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ⬡
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Retrofits & Upgrades
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Upgrade your existing lighting to modern LED systems with minimal disruption and maximum energy savings.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• Legacy system assessment</li>
+                    <li>• LED retrofit planning</li>
+                    <li>• Fixture replacement</li>
+                    <li>• Cost & energy analysis</li>
+                </ul>
+            </div>
+
+            <!-- Service 5: Technical Support -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ◈
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Technical Support & Maintenance
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Ongoing support to keep your lighting systems performing optimally, with preventative maintenance and emergency response.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• 24/7 emergency support</li>
+                    <li>• Preventative maintenance plans</li>
+                    <li>• System troubleshooting</li>
+                    <li>• Parts replacement & repair</li>
+                </ul>
+            </div>
+
+            <!-- Service 6: Project Management -->
+            <div class="flex flex-col">
+                <div class="w-14 h-14 rounded-lg bg-[#800000] flex items-center justify-center text-white text-2xl font-bold mb-8">
+                    ◌
+                </div>
+                <h3 class="text-2xl font-bold text-black mb-4">
+                    Project Management
+                </h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Dedicated project managers coordinate every detail—timelines, budgets, and stakeholder communication.
+                </p>
+                <ul class="space-y-3 text-gray-700 font-light text-sm">
+                    <li>• Schedule coordination</li>
+                    <li>• Budget oversight</li>
+                    <li>• Contractor liaison</li>
+                    <li>• Documentation & reporting</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- HOW WE WORK — PROCESS                               -->
+<!-- ════════════════════════════════════════════════════ -->
+<section class="bg-white py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+
+        <h2 class="text-4xl md:text-5xl font-bold text-black mb-20">
+            Our Process
+        </h2>
+
+        <div class="space-y-16 md:space-y-20">
+
+            <!-- Step 1 -->
+            <div class="flex gap-8 md:gap-12">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#800000] text-white flex items-center justify-center text-2xl md:text-3xl font-bold">
+                        1
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-black mb-3">
+                        Discovery & Consultation
+                    </h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-4">
+                        We meet with you to understand your vision, requirements, budget, and timeline. Our team conducts site assessments and gathers technical information needed for accurate design.
+                    </p>
+                    <p class="text-sm text-gray-500 font-light">
+                        Duration: 1–2 weeks
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-8 md:gap-12">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#800000] text-white flex items-center justify-center text-2xl md:text-3xl font-bold">
+                        2
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-black mb-3">
+                        Design & Planning
+                    </h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-4">
+                        Our lighting designers create custom concepts with 3D renderings, technical specifications, and detailed lighting plans. We incorporate your feedback and refine the design until it's perfect.
+                    </p>
+                    <p class="text-sm text-gray-500 font-light">
+                        Duration: 2–4 weeks
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-8 md:gap-12">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#800000] text-white flex items-center justify-center text-2xl md:text-3xl font-bold">
+                        3
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-black mb-3">
+                        Detailed Specification & Procurement
+                    </h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-4">
+                        We finalize specifications, source all materials, and provide detailed documentation. You'll have complete transparency on fixtures, controls, and electrical requirements.
+                    </p>
+                    <p class="text-sm text-gray-500 font-light">
+                        Duration: 1–2 weeks
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex gap-8 md:gap-12">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#800000] text-white flex items-center justify-center text-2xl md:text-3xl font-bold">
+                        4
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-black mb-3">
+                        Installation & Commissioning
+                    </h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-4">
+                        Our certified installers handle all electrical work, fixture mounting, and system integration. We conduct thorough testing and commission all controls before handoff.
+                    </p>
+                    <p class="text-sm text-gray-500 font-light">
+                        Duration: Varies by project scope
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex gap-8 md:gap-12">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#800000] text-white flex items-center justify-center text-2xl md:text-3xl font-bold">
+                        5
+                    </div>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-black mb-3">
+                        Training & Ongoing Support
+                    </h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-4">
+                        We train your team on operating the lighting system and controls. Then we provide ongoing support, maintenance, and service to ensure optimal performance.
+                    </p>
+                    <p class="text-sm text-gray-500 font-light">
+                        Ongoing: Maintenance plans available
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- SPECIALIZATIONS                                      -->
+<!-- ════════════════════════════════════════════════════ -->
+<section class="bg-[#f9f9f7] py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <h2 class="text-4xl md:text-5xl font-bold text-black mb-16">
+            Industry Specializations
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 md:gap-10">
+
+            <!-- Retail -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Retail Spaces</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Precision lighting that highlights products and creates immersive shopping environments. We design systems that enhance merchandise visibility while setting the perfect ambiance.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: Track lighting, accent lighting, color-accurate spotlights, smart dimming.
+                </p>
+            </div>
+
+            <!-- Hospitality -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Hospitality</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Dynamic lighting solutions for hotels, restaurants, and lounges. We create mood lighting that adapts from morning through evening service, enhancing guest experience.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: Ambiance lighting, scene programming, guest-facing controls, energy efficiency.
+                </p>
+            </div>
+
+            <!-- Office & Workplace -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Office & Workplace</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Human-centric lighting designed to improve productivity, comfort, and well-being. Our solutions support circadian rhythms while reducing eye strain and energy consumption.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: Task lighting, ambient systems, circadian controls, flicker-free tech.
+                </p>
+            </div>
+
+            <!-- Residential -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Residential</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Custom lighting for homes that combines beauty with functionality. From living spaces to kitchens, we design systems that adapt to your lifestyle.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: Dimming, color selection, architectural integration, smart home compatibility.
+                </p>
+            </div>
+
+            <!-- Facade & Exterior -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Facade & Exterior</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Bold architectural lighting that transforms buildings and landscapes. We design facade systems that showcase structure while creating stunning nighttime presence.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: RGB systems, facade accents, landscape lighting, DMX control, weatherproofing.
+                </p>
+            </div>
+
+            <!-- Museums & Galleries -->
+            <div class="bg-white p-8 md:p-10 border border-gray-200">
+                <h3 class="text-xl font-bold text-black mb-4 uppercase tracking-wide">Museums & Galleries</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                    Specialized lighting for art and artifacts. CRI 95+ spotlights ensure true color rendering while UV-filtered systems protect valuable pieces.
+                </p>
+                <p class="text-sm text-gray-500 font-light">
+                    Expertise: High CRI, UV filtration, artwork accentuation, conservation-grade systems.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- VALUE PROPOSITION                                    -->
+<!-- ════════════════════════════════════════════════════ -->
+<section class="bg-white py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+
+        <h2 class="text-4xl md:text-5xl font-bold text-black mb-16">
+            Why Choose Verona for Your Services?
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-16 md:gap-12">
+
+            <div>
+                <h3 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">Experience & Expertise</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-8">
+                    With 30+ years in the industry and over 1200 completed projects, our team brings deep knowledge to every project. We understand how light transforms space.
+                </p>
+
+                <h3 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">Custom Solutions</h3>
+                <p class="text-gray-600 font-light leading-relaxed">
+                    No two projects are the same. We design and engineer custom solutions tailored to your unique requirements, aesthetic, and budget.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">End-to-End Service</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-8">
+                    From concept through installation and beyond, we handle every aspect. One team, one vision, one point of accountability.
+                </p>
+
+                <h3 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">Committed Support</h3>
+                <p class="text-gray-600 font-light leading-relaxed">
+                    We don't disappear after installation. Our team is here for training, maintenance, and support—ensuring your lighting system performs for years to come.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

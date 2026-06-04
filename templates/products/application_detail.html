@@ -122,35 +122,33 @@
     </div>
 
     <div id="product-grid"
-       class="max-w-[1800px] mx-auto px-4 sm:px-8 py-6 sm:py-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+       class="max-w-[1800px] mx-auto px-4 sm:px-8 py-6 sm:py-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
 
     {% for family in families %}
 
-    {# Mobile: whole card is a plain link #}
-    <a href="{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}"
-       class="product-card sm:hidden relative block aspect-[342/472] overflow-hidden bg-[#eef0f3]">
+    {# Mobile #}
+  <a href="{% if family.category.parent %}{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}{% else %}{% url 'products:family_detail_no_child' family.category.slug family.slug %}{% endif %}"
+     class="product-card sm:hidden relative block aspect-[342/472] overflow-hidden bg-[#eef0f3]">
+    <div class="absolute inset-x-0 top-0 h-[65%] overflow-hidden flex items-center justify-center p-4">
+      {% if family.icon %}
+      <img src="{{ family.icon.url }}" alt="{{ family.name }}" class="w-full h-full object-contain">
+      {% else %}
+      <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+      </svg>
+      {% endif %}
+    </div>
+    <div class="absolute inset-x-3 bottom-3 pointer-events-none">
+      <h5 class="text-[13px] font-bold text-[#0d1f3c] uppercase tracking-wide leading-tight">
+        {{ family.name }}
+      </h5>
+    </div>
+  </a>
 
-      <div class="absolute inset-x-0 top-0 h-[65%] overflow-hidden flex items-center justify-center p-4">
-        {% if family.icon %}
-        <img src="{{ family.icon.url }}" alt="{{ family.name }}" class="w-full h-full object-contain">
-        {% else %}
-        <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-        </svg>
-        {% endif %}
-      </div>
-
-      <div class="absolute inset-x-3 bottom-3 pointer-events-none">
-        <h5 class="text-[13px] font-bold text-[#0d1f3c] uppercase tracking-wide leading-tight">
-          {{ family.name }}
-        </h5>
-      </div>
-
-    </a>
-
-    {# Desktop: hover reveals buttons #}
-    <div class="product-card group relative aspect-[342/472] overflow-hidden bg-[#eef0f3]
+  {# Desktop #}
+  <a href="{% if family.category.parent %}{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}{% else %}{% url 'products:family_detail_no_child' family.category.slug family.slug %}{% endif %}"
+       class="product-card group relative aspect-[342/472] overflow-hidden bg-[#eef0f3]
                 transition-all duration-300 ease-in-out hover:scale-[1.03] cursor-pointer
                 hidden sm:block">
 
@@ -176,30 +174,30 @@
       <!-- BUTTONS -->
       <div class="absolute inset-x-6  bottom-6 flex flex-col gap-3
                   transition-all duration-300 ease-in-out
-                  opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
+                  opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
 
-        <a href="{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}"
-            class="flex items-center justify-between w-full rounded-full px-4 py-3
+        <button type="button"
+            class="flex items-center justify-between w-full rounded-full px-4 py-2.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
           <span>View Products</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>
-        </a>
+        </button>
 
-        <a href="{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}"
-            class="flex items-center justify-between w-full rounded-full px-4 py-3
+        <button type="button"
+            class="items-center hidden justify-between w-full rounded-full px-4 py-1.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
-          <span>Explore {{ child.name }}</span>
+          <span>Explore Product Sheet</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>
-        </a>
+        </button>
 
       </div>
-    </div>
+    </a>
 
     {% endfor %}
   </div>

@@ -518,3 +518,8 @@ def product_detail_no_child(request, cat_slug, family_slug, slug):
     }
 
     return render(request, "products/product_detail.html", context)
+
+
+
+
+# def applications_detail_no_child()
