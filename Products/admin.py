@@ -162,14 +162,14 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display        = [
+    list_display        = ['order',
         'name', 'category', 'family',
         'wattage', 'dimmable',
         'thumbnail_preview', 'is_active', 'updated_at'
     ]
     list_filter         = ['category', 'family', 'is_active', 'dimmable', 'lamp_base_type', 'finishes']
     search_fields       = ['name', 'subtitle', 'slug', 'description']
-    ordering            = ['-id']
+    ordering            = ['order']
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields     = ['images_preview']
     filter_horizontal   = ['finishes']
@@ -177,7 +177,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('اطلاعات اصلی', {
-            'fields': ('name', 'slug', 'category', 'family', 'is_active')
+            'fields': ('name', 'slug', 'category', 'family', 'is_active', 'order')
         }),
         ('محتوا', {
             'fields': ('subtitle', 'description', 'full_description', 'catelog')

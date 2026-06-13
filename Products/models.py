@@ -319,7 +319,7 @@ class Installment(models.Model):
 
 
 class Product(models.Model):
-
+    order = models.PositiveIntegerField(default=0, verbose_name='ترتیب نمایش', blank=True, null=True)
     LAMP_BASE_CHOICES = [
         ('E27', 'E27'),
         ('E14', 'E14'),
@@ -414,7 +414,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
-        ordering = ['-id']
+        ordering = ['order']
 
     def save(self, *args, **kwargs):
         if not self.slug:

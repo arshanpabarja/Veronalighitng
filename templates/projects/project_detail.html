@@ -167,7 +167,7 @@
 
   <!-- Gallery -->
   {% if project.gallery_images.exists %}
-  <section id="gallery" class="py-8 sm:py-10 md:py-12 bg-gray-50 border-y border-gray-200">
+  <section id="gallery" class="py-8 scroll-mt-24 sm:py-10 md:py-12 bg-gray-50 border-y border-gray-200">
     <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
       <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
         GALLERY
@@ -188,7 +188,7 @@
 
   <!-- Products Used -->
   {% if project.products.exists %}
-  <section id="products" class="py-8 sm:py-10 md:py-12 bg-white">
+  <section id="products" class="py-8 sm:py-10 scroll-mt-24 md:py-12 bg-white">
     <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
       <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
         PRODUCTS USED
@@ -272,7 +272,7 @@
 
   <!-- Downloads -->
   {% if project.downloads.exists %}
-  <section id="downloads" class="py-8 sm:py-10 md:py-12 bg-white">
+  <section id="downloads" class="py-8 scroll-mt-24 sm:py-10 md:py-12 bg-white">
     <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
       <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
         DOWNLOADS
@@ -323,7 +323,7 @@
 
   <!-- About Project -->
   {% if project.about_content %}
-  <section id="about" class="py-12 sm:py-14 lg:py-16 bg-gray-50 border-t border-gray-200">
+  <section id="about" class="py-12 scroll-mt-24 sm:py-14 lg:py-16 bg-gray-50 border-t border-gray-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-[#2d3748]">About This Project</h2>
       <div class="mt-5 space-y-5 text-gray-700 leading-8">
@@ -343,22 +343,44 @@
   </button>
 
 </main>
-
 <script>
-  (function () {
-    const btn = document.getElementById('backToTop');
-    const toggleBtn = () => {
-      if (window.scrollY > 450) {
-        btn.classList.remove('hidden');
-        btn.classList.add('flex');
-      } else {
-        btn.classList.add('hidden');
-        btn.classList.remove('flex');
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav[aria-label='Project sections'] a");
+
+  const linkMap = {};
+  navLinks.forEach(link => {
+    const hash = link.getAttribute("href");
+    if (hash && hash.startsWith("#")) {
+      linkMap[hash.replace("#", "")] = link;
+    }
+  });
+
+  const setActive = (id) => {
+    navLinks.forEach(l => {
+      l.classList.remove("border-red-600", "text-gray-900");
+      l.classList.add("border-transparent", "text-gray-600");
+    });
+
+    if (linkMap[id]) {
+      linkMap[id].classList.add("border-red-600", "text-gray-900");
+      linkMap[id].classList.remove("border-transparent", "text-gray-600");
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActive(entry.target.id);
       }
-    };
-    window.addEventListener('scroll', toggleBtn);
-    toggleBtn();
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  })();
+    });
+  }, {
+    root: null,
+    threshold: 0.35,
+    rootMargin: "-120px 0px -60% 0px"
+  });
+
+  sections.forEach(section => observer.observe(section));
+});
 </script>
 {% endblock %}
