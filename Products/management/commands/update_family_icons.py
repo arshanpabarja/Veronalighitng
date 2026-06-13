@@ -15,7 +15,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        category_name = options['category']
+        category_name = options['Magnet Curve']
         
         # Find the category (case-insensitive)
         try:
