@@ -28,24 +28,27 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </a>
                     <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
                     <div class="fixed top-24 left-0 w-full text-black bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-40">
-                        <div class="mx-auto max-w-[1440px] px-10">
+                        <div class="mx-auto px-10 pl-40">
                             <div class="grid grid-cols-5 gap-14">
-                                <div class="col-span-2 space-y-4 py-14">
+                                <div class="col-span-1 space-y-4 py-14">
                                     <a href="{% url 'products:product_list' %}" class="block text-xl font-medium hover:text-[#800000]">All Products</a>
                                     <p class="text-sm text-gray-500 max-w-xs">Explore our complete range of professional lighting solutions.</p>
                                 </div>
-                                <div class="space-y-1 text-[16px] py-14">
+                                <div class="col-span-2 pl-40 space-y-1 text-[16px] py-14">
                                     {% for category in categories %}
                                     <div class="flex w-full justify-between">
                                         <button type="button" data-category="{{ category.slug }}"
-                                            class="category-item flex items-center justify-between text-left hover:text-[#800000] transition-colors">
+                                            class="category-item flex items-center gap-3 text-left hover:text-[#800000] transition-colors">
+                                            {% if category.icon %}
+                                            <img src="{{ category.icon.url }}" alt="" class="w-28 object-contain shrink-0">
+                                            {% endif %}
                                             <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
                                         </button>
                                         <div class="arrow text-2xl opacity-0 transition-opacity">→</div>
                                     </div>
                                     {% endfor %}
                                 </div>
-                                <div id="product-panel-wrapper" class="col-span-2 ml-[10px] p-6 hidden bg-gray-200 mr-[calc(50%-50vw)] pr-[calc(50vw-720px)]">
+                                <div id="product-panel-wrapper" class="col-span-2 ml-28 p-6 hidden bg-gray-200 mr-[calc(50%-50vw)] pr-[calc(50vw-720px)]">
                                     {% for category in categories %}
                                     <div data-panel="{{ category.slug }}" class="category-panel hidden space-y-2 text-sm">
                                         <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="font-medium mb-4 hover:text-[#800000] block">

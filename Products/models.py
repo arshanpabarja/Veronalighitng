@@ -16,6 +16,7 @@ class Category(models.Model):
         related_name='children'
     )
     icon = models.FileField('ایکون', blank=True, null=True, upload_to='icons/')
+    image = models.FileField('عکس', blank=True, null=True, upload_to='category/')
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
 
