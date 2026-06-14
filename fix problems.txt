@@ -3,10 +3,10 @@
 11.fix mirdamad mini image [Tick]
 12.sort by number [Tick]
 13.high bay [] *ask later
-14.text of category []
-15.ghachi []
-16.cob => Arin []
-17.surface & pendant []
+14.text of category [Tick]
+15.ghachi [Tick]
+16.cob => Arin [] *ask later
+17.surface & pendant [Tick]
 18.bambo stand 2x []
 19.magnet belt & felexy []
 20.tak faze & 3 faze []

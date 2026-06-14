@@ -174,6 +174,7 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields     = ['images_preview']
     filter_horizontal   = ['finishes']
     inlines             = [ProductInstallmentInline, ProductVariantInline]
+    actions= ['copy']
 
     fieldsets = (
         ('اطلاعات اصلی', {
@@ -251,6 +252,13 @@ class ProductAdmin(admin.ModelAdmin):
             mark_safe(''.join(parts))
         )
     images_preview.short_description = 'پیش‌نمایش همه تصاویر'
+
+    def copy(self, request, queryset):
+        for product in queryset:
+            product.pk = None  # This will create a new instance when saved
+            product.name += " (Copy)"
+            product.slug += "-copy"
+            product.save()
 
 
 @admin.register(Download)
