@@ -7,8 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l$m0t@wvb)-(u8(!&m=4gy=noy91ay8-6undiu5u4+@1#di7+-'
 
-DEBUG = False
-ALLOWED_HOSTS = ["veronalighting.co", "www.veronalighting.co", "185.205.203.15", "127.0.0.1"]
+DEBUG = True
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = ["veronalighting.co", "www.veronalighting.co", "185.205.203.15"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

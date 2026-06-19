@@ -1,26 +1,40 @@
 {% load static %}
-<nav class="z-50
+<nav
+id="navbar"
+class="z-50 top-0 left-0 right-0 bg-white
+
 {% if request.path == '/' %}
-absolute top-0 bg-transparent text-white w-full sm:hover:bg-white transition-colors sm:hover:text-black overflow-hidden
-{% else %}
-fixed top-0 left-0 right-0 bg-white border-b border-gray-200
+    fixed lg:absolute lg:bg-transparent lg:border-none{% else %}
+    fixed bg-white border-b border-gray-200
 {% endif %}
-" id="navbar">
+">
     <div class="mx-auto max-w-[1440px] px-5 sm:px-0">
-        <div class="flex h-24 items-center justify-between">
+        <!-- h-16 on mobile, h-24 on desktop -->
+        <div class="flex h-16 lg:h-24 items-center justify-between">
 
             <a href="/" class="flex items-center shrink-0">
-                {% if request.path == '/' %}
-                <img id="navbar-logo-img" src="{% static 'images/logo4.png' %}" alt="logo" class="h-12 lg:h-16 transition-all duration-300">
-                <logo id="logo" class="font-orbitron text-2xl lg:text-3xl text-white transition-colors duration-150">VERONA</logo>
-                {% else %}
-                <img src="{% static 'images/logo3.png' %}" alt="logo" class="h-12 lg:h-16">
-                <logo class="font-orbitron text-2xl lg:text-3xl text-[#800000]">VERONA</logo>
-                {% endif %}
+                <!-- Mobile -->
+                <img
+                src="{% static 'images/logo3.png' %}"
+                alt="logo"
+                class="h-8 sm:h-12 lg:hidden">
+
+                <!-- Desktop -->
+                <img
+                id="navbar-logo-img"
+                src="{% if request.path == '/' %}{% static 'images/logo4.png' %}{% else %}{% static 'images/logo3.png' %}{% endif %}"
+                alt="logo"
+                class="hidden lg:block h-16">
+
+                <logo
+                    id="logo"
+                    class="font-orbitron text-lg sm:text-2xl lg:text-3xl {% if request.path == '/' %}lg:text-white text-[#800000]{% else %}text-[#800000]{% endif %}">
+                    VERONA
+                </logo>
             </a>
 
-
-            <div class="hidden lg:flex gap-10 h-full">
+            <!-- Desktop nav -->
+            <div class="hidden lg:flex gap-10 h-full {% if request.path == '/' %}text-white{% endif %}">
 
                 <div class="group relative">
                     <a href="/products" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
@@ -34,17 +48,17 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                                     <a href="{% url 'products:product_list' %}" class="block text-xl font-medium hover:text-[#800000]">All Products</a>
                                     <p class="text-sm text-gray-500 max-w-xs">Explore our complete range of professional lighting solutions.</p>
                                 </div>
-                                <div class="col-span-2 space-y-3 text-[16px] py-14" style="padding-left: 160px;">
+                                <div class="col-span-2 space-y-1 text-[16px] py-14" style="padding-left: 160px;">
                                     {% for category in categories %}
                                     <div class="flex w-full justify-between">
                                         <button type="button" data-category="{{ category.slug }}"
-                                        class="category-item flex items-center gap-3 text-left hover:text-[#800000] transition-colors">
-                                        <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
-                                    </button>
-                                    {% if category.image %}
-                                    <img src="{{ category.image.url }}" alt="" class="w-24 object-contain shrink-0">
-                                    {% endif %}
-                                        <!-- <div class="arrow text-2xl opacity-0 transition-opacity">→</div> -->
+                                            class="category-item flex items-center gap-3 text-left hover:text-[#800000] transition-colors">
+                                            {% if category.image %}
+                                            <img src="{{ category.image.url }}" alt="" class="w-28 object-contain shrink-0">
+                                            {% endif %}
+                                            <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
+                                        </button>
+                                        <div class="arrow text-2xl opacity-0 transition-opacity">→</div>
                                     </div>
                                     {% endfor %}
                                 </div>
@@ -61,7 +75,6 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                                         {% endfor %}
                                     </div>
                                     {% endfor %}
-                                    
                                 </div>
                             </div>
                         </div>
@@ -100,54 +113,44 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                 </div>
 
                 <div class="group relative">
-                    <a href="/services" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                    <a href="/services" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 transition-colors cursor-pointer">
                         Services
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-                
+
                 <div class="">
                     <a href="/projects" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         Projects
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-                <!-- <div class="">
-                    <a href="/news" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
-                        News
-                    </a>
-                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
-                </div> -->
-                <div class="group relative">
-                    <a id="search" href="/search" class="flex font-medium items-center h-24 border-b-2 border-transparent transition-colors cursor-pointer">
-                        <img loading="eager" class="w-8 h-8" src="{% static 'images/search2.svg' %}" alt="Search">
-                    </a>
-                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
-                </div>
-                
-            </div>
-            <div class="flex items-center justify-center gap-4 lg:hidden">
 
-                <div class="group relative">
-                    <a id="search" href="/search" class="flex font-medium items-center h-24 border-b-2 border-transparent transition-colors cursor-pointer">
-                        <img loading="eager" class="w-6 h-6" src="{% static 'images/search2.svg' %}" alt="Search">
-                    </a>
-                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
-                </div>
+            </div>
+
+            <!-- Mobile: search + hamburger -->
+            <div class="flex items-center gap-3 lg:hidden">
+                <a href="/search" class="flex items-center justify-center w-8 h-8">
+                    <img loading="eager" class="w-5 h-5" src="{% static 'images/search2.svg' %}" alt="Search"
+                         id="mobile-search-icon">
+                </a>
                 <button id="hamburger-btn"
-                class=" flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
-                aria-label="Open menu">
-                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
-                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
-                <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
-            </button>
-        </div>
+                    class="flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
+                    aria-label="Open menu">
+                    <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
+                    <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
+                    <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
+                </button>
+            </div>
 
         </div>
     </div>
 </nav>
 
 
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- MOBILE DRAWER                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
 <div id="mobile-drawer" class="fixed inset-0 z-[100] pointer-events-none">
 
     <div id="drawer-backdrop" class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300"></div>
@@ -159,8 +162,8 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
         <div id="screen-main" class="drawer-screen flex flex-col h-full">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                 <a href="/" class="flex items-center">
-                    <img class="h-12" src="{% static 'images/logo3.png' %}" alt="logo">
-                    <logo class="font-orbitron text-2xl text-[#800000]">VERONA</logo>
+                    <img class="h-10" src="{% static 'images/logo3.png' %}" alt="logo">
+                    <logo class="font-orbitron text-xl text-[#800000]">VERONA</logo>
                 </a>
                 <button id="close-drawer-btn" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -170,9 +173,8 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             </div>
 
             <div class="flex-1 overflow-y-auto px-6 py-4">
-                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">All</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Menu</p>
 
-                <!-- Products -->
                 <button type="button" data-target="screen-products"
                     class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>Products</span>
@@ -181,7 +183,6 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </svg>
                 </button>
 
-                <!-- Applications -->
                 <button type="button" data-target="screen-applications"
                     class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>Applications</span>
@@ -190,7 +191,6 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </svg>
                 </button>
 
-                <!-- Company -->
                 <button type="button" data-target="screen-company"
                     class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>Company</span>
@@ -199,7 +199,6 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </svg>
                 </button>
 
-                <!-- Services -->
                 <button type="button" data-target="screen-services"
                     class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>Services</span>
@@ -208,15 +207,10 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </svg>
                 </button>
 
-                <!-- Projects — direct link, no sub-screen -->
                 <a href="/projects"
                     class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     Projects
                 </a>
-                <!-- <a href="/news"
-                    class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    News
-                </a> -->
             </div>
         </div>
 
@@ -247,11 +241,10 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                 <button type="button" data-target="screen-category" data-category="{{ category.slug }}"
                     data-label="{{ category.name }}"
                     class="mobile-category-trigger w-full flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                        <span>{{ category.name }}</span>
-                        <img src="{{ category.image.url }}" alt="{{ category.name }}" class="h-6 mr-2" />
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <span>{{ category.name }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg> -->
+                    </svg>
                 </button>
                 {% endfor %}
             </div>
@@ -333,18 +326,9 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             </div>
             <div class="flex-1 overflow-y-auto px-6 py-4">
                 <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Company</p>
-                <a href="/about"
-                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    About Verona
-                </a>
-                <a href="/story"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Our Story
-                </a>
-                <a href="/contact"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Contact Us
-                </a>
+                <a href="/about" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">About Verona</a>
+                <a href="/story" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Our Story</a>
+                <a href="/contact" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Contact Us</a>
             </div>
         </div>
 
@@ -367,26 +351,11 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             </div>
             <div class="flex-1 overflow-y-auto px-6 py-4">
                 <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Services</p>
-                <a href="#"
-                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    All Services
-                </a>
-                <a href="#"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Office
-                </a>
-                <a href="#"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Retail
-                </a>
-                <a href="#"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Urban
-                </a>
-                <a href="#"
-                    class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    Sports
-                </a>
+                <a href="#" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">All Services</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Office</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Retail</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Urban</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Sports</a>
             </div>
         </div>
 
@@ -415,16 +384,15 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             }
         });
     }
-
     items.forEach(item => {
         item.addEventListener('mouseenter', () => activateCategory(item.dataset.category));
     });
 
 
     // ── Mobile drawer ──
-    const drawer      = document.getElementById('mobile-drawer');
-    const drawerPanel = document.getElementById('drawer-panel');
-    const backdrop    = document.getElementById('drawer-backdrop');
+    const drawer       = document.getElementById('mobile-drawer');
+    const drawerPanel  = document.getElementById('drawer-panel');
+    const backdrop     = document.getElementById('drawer-backdrop');
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const hamburgerLines = hamburgerBtn.querySelectorAll('.hamburger-line');
 
@@ -446,7 +414,6 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
         hamburgerLines[0].classList.remove('rotate-45', 'translate-y-2');
         hamburgerLines[1].classList.remove('opacity-0');
         hamburgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
-        // reset all screens after the panel slides out
         setTimeout(() => {
             screenStack.forEach(id => {
                 if (id !== 'screen-main') slideScreenOut(document.getElementById(id));
@@ -456,49 +423,28 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
     }
 
     let screenStack = ['screen-main'];
-
-    function slideScreenIn(el) {
-        el.classList.remove('translate-x-full');
-    }
-
-    function slideScreenOut(el) {
-        el.classList.add('translate-x-full');
-    }
-
+    function slideScreenIn(el)  { el.classList.remove('translate-x-full'); }
+    function slideScreenOut(el) { el.classList.add('translate-x-full'); }
     function pushScreen(id) {
         const el = document.getElementById(id);
         if (!el) return;
         slideScreenIn(el);
         screenStack.push(id);
     }
-
     function popScreen() {
         if (screenStack.length <= 1) return;
         const current = screenStack.pop();
         slideScreenOut(document.getElementById(current));
     }
 
-    // open / close
     hamburgerBtn.addEventListener('click', openDrawer);
     document.getElementById('close-drawer-btn').addEventListener('click', closeDrawer);
     backdrop.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.close-drawer-inner').forEach(btn => btn.addEventListener('click', closeDrawer));
+    document.querySelectorAll('.back-btn').forEach(btn => btn.addEventListener('click', () => popScreen()));
+    document.querySelectorAll('.mobile-nav-trigger').forEach(btn => btn.addEventListener('click', () => pushScreen(btn.dataset.target)));
 
-    // inner close buttons (on sub-screens)
-    document.querySelectorAll('.close-drawer-inner').forEach(btn => {
-        btn.addEventListener('click', closeDrawer);
-    });
-
-    // back buttons
-    document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', () => popScreen());
-    });
-
-    // generic nav triggers: Products, Applications, Company, Services
-    document.querySelectorAll('.mobile-nav-trigger').forEach(btn => {
-        btn.addEventListener('click', () => pushScreen(btn.dataset.target));
-    });
-
-    // category triggers (inside Products screen)
+    // Category triggers
     const categoryData = {
         {% for category in categories %}
         "{{ category.slug }}": {
@@ -506,10 +452,7 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             allUrl: "{% url 'products:category_detail' cat_slug=category.slug %}",
             children: [
                 {% for child in category.children.all %}
-                {
-                    name: "{{ child.name }}",
-                    url: "{% url 'products:child_detail' cat_slug=category.slug child_slug=child.slug %}"
-                },
+                { name: "{{ child.name }}", url: "{% url 'products:child_detail' cat_slug=category.slug child_slug=child.slug %}" },
                 {% endfor %}
             ]
         },
@@ -521,60 +464,65 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
             const slug = btn.dataset.category;
             const data = categoryData[slug];
             if (!data) return;
-
             document.getElementById('mobile-category-title').textContent = data.label;
-
             const list = document.getElementById('mobile-product-list');
             list.innerHTML =
-                `<a href="${data.allUrl}"
-                    class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    ${data.label} – All Products
-                </a>`
+                `<a href="${data.allUrl}" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">${data.label} – All Products</a>`
                 + data.children.map(c =>
-                    `<a href="${c.url}"
-                        class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                        ${c.name}
-                    </a>`
+                    `<a href="${c.url}" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">${c.name}</a>`
                 ).join('');
-
             pushScreen('screen-category');
         });
     });
 
+{% if request.path == '/' %}
+document.addEventListener('DOMContentLoaded', function () {
 
-    // ── Logo swap on homepage hover ──
-    {% if request.path == '/' %}
-    const logo = document.getElementById('logo');
+    if (window.innerWidth < 1024) return;
+
     const navbar = document.getElementById('navbar');
-    if (logo && navbar) {
-        navbar.addEventListener('mouseenter', () => {
-            
-            logo.classList.remove('text-white');
-            logo.classList.add('text-[#800000]');
-        });
-        navbar.addEventListener('mouseleave', () => {
-            logo.classList.remove('text-[#800000]');
-            logo.classList.add('text-white');
-        });
-    }
-    {% endif %}
+    const logo = document.getElementById('logo');
+    const logoImg = document.getElementById('navbar-logo-img');
+    const desktopNav = document.querySelector('.hidden.lg\\:flex');
 
-    const searchIcon = document.getElementById('search');
-    if (searchIcon && navbar) {
-        navbar.addEventListener('mouseenter', () => {
-            searchIcon.querySelector('img').src = "{% static 'images/search.svg' %}";
-        });
-        navbar  .addEventListener('mouseleave', () => {
-            searchIcon.querySelector('img').src = "{% static 'images/search2.svg' %}";
-        });
-    }
-    const navbar_logo = document.getElementById('navbar-logo-img');
-    if (navbar_logo && navbar) {
-        navbar.addEventListener('mouseenter', () => {
-            navbar_logo.src = "{% static 'images/logo3.png' %}";
-        });
-        navbar.addEventListener('mouseleave', () => {
-            navbar_logo.src = "{% static 'images/logo4.png' %}";
-        });
-    }
+    navbar.addEventListener('mouseenter', () => {
+
+        // Navbar background
+        navbar.classList.remove('lg:bg-transparent');
+        navbar.classList.add('bg-white');
+
+        // Logo text
+        logo.style.color = '#800000';
+
+        // Desktop menu text
+        if (desktopNav) {
+            desktopNav.classList.remove('text-white');
+            desktopNav.classList.add('text-black');
+        }
+
+        // Logo image
+        logoImg.src = "{% static 'images/logo3.png' %}";
+    });
+
+    navbar.addEventListener('mouseleave', () => {
+
+        // Navbar background
+        navbar.classList.remove('bg-white');
+        navbar.classList.add('lg:bg-transparent');
+
+        // Logo text
+        logo.style.color = 'white';
+
+        // Desktop menu text
+        if (desktopNav) {
+            desktopNav.classList.remove('text-black');
+            desktopNav.classList.add('text-white');
+        }
+
+        // Logo image
+        logoImg.src = "{% static 'images/logo4.png' %}";
+    });
+
+});
+{% endif %}
 </script>

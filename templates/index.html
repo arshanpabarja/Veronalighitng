@@ -30,7 +30,6 @@
 {% endblock %}
 
 {% block content %}
-
 <style>
   /* ── Scroll reveal ─────────────────────────────────── */
   .animate-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
@@ -44,11 +43,10 @@
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
   @media (max-width: 900px) { .philosophy-grid { grid-template-columns: 1fr; } }
 
-  /* ── Cat card circle arrow ─────────────────────────── */
+  /* ── Cat card arrow ────────────────────────────────── */
   .cat-arrow {
     width: 36px; height: 36px; border-radius: 9999px;
-    background: #800000;
-    display: flex; align-items: center; justify-content: center;
+    background: #800000; display: flex; align-items: center; justify-content: center;
     color: #fff; font-size: 14px; flex-shrink: 0;
     opacity: 0; transform: translateY(6px) scale(0.8);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -56,11 +54,10 @@
   }
   .cat-card-link:hover .cat-arrow { opacity: 1; transform: translateY(0) scale(1); }
 
-  /* ── Project card circle arrow ─────────────────────── */
+  /* ── Project card arrow ────────────────────────────── */
   .proj-arrow {
     width: 36px; height: 36px; border-radius: 9999px;
-    background: #800000;
-    display: flex; align-items: center; justify-content: center;
+    background: #800000; display: flex; align-items: center; justify-content: center;
     color: #fff; font-size: 14px;
     opacity: 0; transform: scale(0.7) rotate(-45deg);
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -68,635 +65,689 @@
   }
   .group:hover .proj-arrow { opacity: 1; transform: scale(1) rotate(0deg); }
 
-  /* ── Hero SVG ring dots ────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     HERO — Desktop: full viewport, Navbar is absolute over it
+  ══════════════════════════════════════════════════════ */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    background: #0a0a0a;
+    overflow: hidden;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-slide {
+    position: absolute; inset: 0;
+  }
+  .hero-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+  }
+
+  /* ── SVG ring dots ─────────────────────────────────── */
   .dot-wrap {
     position: relative; width: 32px; height: 32px;
     flex-shrink: 0; cursor: pointer; background: transparent; border: none; padding: 0;
   }
   .dot-wrap svg { position: absolute; inset: 0; transform: rotate(-90deg); pointer-events: none; }
   .dot-track { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 1.8; }
-  .dot-fill  {
+  .dot-fill {
     fill: none; stroke: #ff0000; stroke-width: 1.8; stroke-linecap: round;
-    stroke-dasharray: 75.4;
-    stroke-dashoffset: 75.4;
+    stroke-dasharray: 75.4; stroke-dashoffset: 75.4;
     transition: stroke-dashoffset 0.12s linear;
   }
-  .dot-center {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center; pointer-events: none;
-  }
+  .dot-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
   .dot-center span {
     width: 7px; height: 7px; border-radius: 9999px;
     background: rgba(255,255,255,0.3);
-    transition: background 0.3s, transform 0.3s;
-    display: block;
+    transition: background 0.3s, transform 0.3s; display: block;
   }
   .dot-wrap.active .dot-center span { background: #fff; transform: scale(1.2); }
   .dot-wrap:not(.active):hover .dot-center span { background: rgba(255,255,255,0.65); }
 
-  /* ── Hero prev/next arrow buttons ─────────────────── */
+  /* ── Prev/Next ─────────────────────────────────────── */
   .hero-nav-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
-    z-index: 20;
-    width: 48px; height: 48px; border-radius: 9999px;
+    z-index: 20; width: 48px; height: 48px; border-radius: 9999px;
     border: 1.5px solid rgba(255,255,255,0.25);
-    background: rgba(0,0,0,0.25);
-    color: #fff;
+    background: rgba(0,0,0,0.25); color: #fff;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    cursor: pointer; backdrop-filter: blur(4px);
+    transition: background 0.25s, border-color 0.25s;
   }
-  .hero-nav-btn:hover {
-    background: #800000;
-    border-color: #800000;
-    color: #fff;
-  }
+  .hero-nav-btn:hover { background: #800000; border-color: #800000; }
   .hero-nav-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; }
   #hero-prev { left: 24px; }
   #hero-next { right: 24px; }
-  @media (max-width: 640px) {
-    .hero-nav-btn { width: 38px; height: 38px; }
-    #hero-prev { left: 12px; }
-    #hero-next { right: 12px; }
+
+  /* ══════════════════════════════════════════════════════
+     MOBILE OVERRIDES  max-width: 639px
+  ══════════════════════════════════════════════════════ */
+  @media (max-width: 639px) {
+
+    /* ── Hero: sits below fixed navbar (h-16 = 64px) ── */
+    .hero-section {
+      min-height: unset;
+      height: 35vh;
+      margin-top: 64px;  /* push below fixed navbar */
+    }
+
+    /* Hide desktop text content on mobile */
+    .hero-desktop-content { display: none !important; }
+
+    /* Hide scroll hint */
+    .hero-scroll-hint { display: none !important; }
+
+    /* Smaller nav arrows */
+    .hero-nav-btn { width: 32px; height: 32px; }
+    #hero-prev { left: 8px; }
+    #hero-next { right: 8px; }
+
+    /* Smaller dots, closer to bottom */
+    .dot-wrap { width: 22px; height: 22px; }
+    .hero-dots-wrap { bottom: 10px; }
+
+    /* ── Featured Projects: tighter padding ── */
+    .section-projects { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .section-projects h2 { font-size: 1.75rem !important; margin-bottom: 8px !important; }
+    .section-projects .section-desc { font-size: 0.85rem !important; }
+
+    /* ── Categories: tighter padding ── */
+    .section-categories { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .section-categories h2 { font-size: 1.75rem !important; }
+    .section-categories .section-desc { font-size: 0.85rem !important; }
+
+    /* ── Applications: tighter ── */
+    .section-applications { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .section-applications h2 { font-size: 1.75rem !important; }
+    .section-applications .section-desc { font-size: 0.85rem !important; }
+
+    /* ── Philosophy ── */
+    .philosophy-grid { min-height: unset !important; }
+    .philosophy-text { padding: 40px 24px !important; }
+    .philosophy-text h2 { font-size: 1.6rem !important; }
+    .philosophy-text p { font-size: 0.85rem !important; margin-bottom: 24px !important; }
+
+    /* ── CTA ── */
+    .section-cta { padding-top: 48px !important; padding-bottom: 48px !important; }
+    .section-cta h2 { font-size: 1.6rem !important; }
+    .section-cta p { font-size: 0.85rem !important; }
+  }
+
+  /* Desktop: never show mobile-only helpers */
+  @media (min-width: 640px) {
+    .hero-mobile-only { display: none !important; }
   }
 </style>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 1. HERO — 5 slides (1 video + 4 images)            -->
-<!--    video capped at 5s · images 2.5s each           -->
-<!-- ════════════════════════════════════════════════════ -->
-<div class="hero-section relative min-h-screen bg-[#0a0a0a] overflow-hidden flex items-center">
+<!-- ════════════════════════════════════════════════════
+     1. HERO
+════════════════════════════════════════════════════ -->
+<div class="hero-section">
 
-    <!-- SLIDE BACKGROUNDS -->
-    <div class="hero-slide absolute inset-0 opacity-100">
-    <img
-        src="{% static 'images/hero55.png' %}"
-        alt="Verona Lighting"
-        class="w-full h-full object-cover"
-    >
-    </div>
-    <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="1" data-type="image">
-        <img src="{% static 'images/hero2.webp' %}" alt="Architectural lighting slide 2" class="w-full h-full object-cover">
-    </div>
-    <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="2" data-type="image">
-        <img src="{% static 'images/hero3.png' %}" alt="Architectural lighting slide 3" class="w-full h-full object-cover">
-    </div>
-    <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="3" data-type="image">
-        <img src="{% static 'images/hero4.jpg' %}" alt="Architectural lighting slide 4" class="w-full h-full object-cover">
-    </div>
-    <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="4" data-type="image">
-        <img src="{% static 'images/hero6.png' %}" alt="Architectural lighting slide 5" class="w-full h-full object-cover">
-    </div>
+  <!-- Slides -->
+  <div class="hero-slide" style="opacity:1;">
+    <img src="{% static 'images/hero55.png' %}" alt="Verona Lighting">
+  </div>
+  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="1" data-type="image">
+    <img src="{% static 'images/hero2.webp' %}" alt="Architectural lighting slide 2">
+  </div>
+  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="2" data-type="image">
+    <img src="{% static 'images/hero3.png' %}" alt="Architectural lighting slide 3">
+  </div>
+  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="3" data-type="image">
+    <img src="{% static 'images/hero4.jpg' %}" alt="Architectural lighting slide 4">
+  </div>
+  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="4" data-type="image">
+    <img src="{% static 'images/hero6.png' %}" alt="Architectural lighting slide 5">
+  </div>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black opacity-40 md:opacity-30 z-[1]"></div>
+  <!-- Overlay -->
+  <div class="absolute inset-0 z-[1]"
+       style="background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.6) 100%);">
+  </div>
 
-    <!-- Prev / Next nav buttons -->
-    <button id="hero-prev" class="hero-nav-btn" aria-label="Previous slide">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button id="hero-next" class="hero-nav-btn" aria-label="Next slide">
-        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-    </button>
+  <!-- Prev / Next -->
+  <button id="hero-prev" class="hero-nav-btn" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button id="hero-next" class="hero-nav-btn" aria-label="Next slide">
+    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
 
-    <!-- Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-32 w-full">
-        <div class="max-w-3xl text-center md:text-left">
-            <h1 class="font-black uppercase leading-tight md:leading-[0.95] tracking-tight text-white mb-6 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-                Precision Lighting<br>
-                <span class="text-[#800000]">for Modern</span><br>
-                Architecture
-            </h1>
-            <p class="text-[16px] md:text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12 mx-auto md:mx-0">
-                Engineered luminaires for facade, landscape and exterior spaces.
-            </p>
-            <div class="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4">
-                <a href="/projects"
-                    class="group px-8 md:px-10 py-4 md:py-5 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold transition-all duration-300 hover:bg-[#b91c1c] hover:shadow-[0_0_40px_rgba(204,26,26,0.4)] text-center w-full sm:w-auto">
-                    View Projects
-                    <span class="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-                </a>
-                <a href="/products"
-                    class="group px-8 md:px-10 py-4 md:py-5 border-2 border-white/20 text-white text-[11px] tracking-[3px] uppercase font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/5 text-center w-full sm:w-auto">
-                    Explore Products
-                    <span class="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-                </a>
-            </div>
-        </div>
+  <!-- Desktop content -->
+  <div class="hero-desktop-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
+              min-h-[100svh] flex items-center">
+    <div class="max-w-3xl text-center md:text-left">
+      <h1 class="font-black uppercase leading-[0.95] tracking-tight text-white mb-6
+                 text-5xl md:text-6xl lg:text-7xl">
+        Precision Lighting<br>
+        <span class="text-[#800000]">for Modern</span><br>
+        Architecture
+      </h1>
+      <p class="text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12">
+        Engineered luminaires for facade, landscape and exterior spaces.
+      </p>
+      <div class="flex flex-row flex-wrap gap-4">
+        <a href="/projects"
+           class="group px-10 py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
+                  uppercase font-semibold transition-all duration-300 hover:bg-[#b91c1c]
+                  hover:shadow-[0_0_40px_rgba(204,26,26,0.4)]">
+          View Projects <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+        <a href="/products"
+           class="group px-10 py-5 border-2 border-white/20 text-white text-[11px]
+                  tracking-[3px] uppercase font-semibold transition-all duration-300
+                  hover:border-white/40 hover:bg-white/5">
+          Explore Products <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- Scroll hint -->
-    <div class="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 opacity-50" aria-hidden="true">
-        <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-2">
-            <div class="w-1 h-2 bg-[#800000] rounded-full animate-bounce"></div>
-        </div>
+  <!-- Scroll hint (desktop only) -->
+  <div class="hero-scroll-hint absolute bottom-24 left-1/2 -translate-x-1/2 z-10
+              hidden md:flex flex-col items-center gap-2 opacity-50" aria-hidden="true">
+    <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-2">
+      <div class="w-1 h-2 bg-[#800000] rounded-full animate-bounce"></div>
     </div>
+  </div>
 
-    <!-- Pagination: dots + arrows grouped at bottom-center -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
-
-        <!-- Dot ring pagination -->
-        <div id="hero-dots" class="flex items-center gap-2" role="tablist" aria-label="Hero slides">
-            <button class="dot-wrap active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1">
-                <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-                <div class="dot-center"><span></span></div>
-            </button>
-            <button class="dot-wrap" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2">
-                <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-                <div class="dot-center"><span></span></div>
-            </button>
-            <button class="dot-wrap" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3">
-                <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-                <div class="dot-center"><span></span></div>
-            </button>
-            <button class="dot-wrap" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4">
-                <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-                <div class="dot-center"><span></span></div>
-            </button>
-            <button class="dot-wrap" data-index="4" role="tab" aria-selected="false" aria-label="Slide 5">
-                <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-                <div class="dot-center"><span></span></div>
-            </button>
-        </div>
-
+  <!-- Dots -->
+  <div class="hero-dots-wrap absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+    <div id="hero-dots" class="flex items-center gap-2" role="tablist" aria-label="Hero slides">
+      <button class="dot-wrap active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1">
+        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
+        <div class="dot-center"><span></span></div>
+      </button>
+      <button class="dot-wrap" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2">
+        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
+        <div class="dot-center"><span></span></div>
+      </button>
+      <button class="dot-wrap" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3">
+        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
+        <div class="dot-center"><span></span></div>
+      </button>
+      <button class="dot-wrap" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4">
+        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
+        <div class="dot-center"><span></span></div>
+      </button>
+      <button class="dot-wrap" data-index="4" role="tab" aria-selected="false" aria-label="Slide 5">
+        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
+        <div class="dot-center"><span></span></div>
+      </button>
     </div>
+  </div>
+
 </div>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 2. FEATURED PROJECTS                                -->
-<!-- ════════════════════════════════════════════════════ -->
-<section class="py-20 md:py-32 animate-section bg-[#f3f4f6]" aria-labelledby="projects-heading">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<!-- ════════════════════════════════════════════════════
+     2. FEATURED PROJECTS
+════════════════════════════════════════════════════ -->
+<section class="section-projects py-20 md:py-32 animate-section bg-[#f3f4f6]" aria-labelledby="projects-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
-            <div class="max-w-2xl">
-                <h2 id="projects-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-4 uppercase">
-                    Featured <span class="text-[#800000]">Projects</span>
-                </h2>
-                <p class="text-gray-500 text-base md:text-lg font-light">
-                    Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments.
-                </p>
-            </div>
-            <a href="/projects" class="shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start md:self-auto">
-                All Projects <span>→</span>
-            </a>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 md:mb-16">
+      <div class="max-w-2xl">
+        <h2 id="projects-heading"
+            class="text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
+          Featured <span class="text-[#800000]">Projects</span>
+        </h2>
+        <p class="section-desc text-gray-500 text-sm md:text-lg font-light">
+          Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments.
+        </p>
+      </div>
+      <a href="/projects"
+         class="all-btn hidden shrink-0 md:inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4
+                bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
+                font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
+        All Projects <span>→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+      <a href="/projects/diamond-boutique/" class="group block">
+        <div class="relative overflow-hidden rounded-xl">
+          <img src="{% static 'images/projects/project1.jpg' %}"
+               alt="Diamond Boutique"
+               class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+          <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
+          <div class="proj-arrow absolute top-3 right-3">→</div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+            <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
+                         bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
+              Retail · Tehran, Iran
+            </span>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">Diamond Boutique</h3>
+            <p class="text-xs sm:text-sm text-white/60 font-light">Track lighting system · 3000K warm white</p>
+          </div>
         </div>
+      </a>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <a href="projects/private-villa/" class="group block">
+        <div class="relative overflow-hidden rounded-xl">
+          <img src="{% static 'images/projects/project2.jpg' %}"
+               alt="Private Villa"
+               class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+          <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
+          <div class="proj-arrow absolute top-3 right-3">→</div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+            <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
+                         bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
+              Residential · Tehran, Iran
+            </span>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">Private Villa</h3>
+            <p class="text-xs sm:text-sm text-white/60 font-light">Custom linear LED · DALI control</p>
+          </div>
+        </div>
+      </a>
 
-            <a href="/projects/diamond-boutique/" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project1.jpg' %}" alt="Diamond Boutique — track lighting retail space, Tehran"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Retail · Tehran, Iran</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Diamond Boutique</h3>
-                        <p class="text-sm text-white/60 font-light">Track lighting system · 3000K warm white</p>
-                    </div>
-                </div>
+    </div>
+        <div class="w-full items-center justify-center flex">
+            <a href="/projects"
+            class="all-btn mt-4 inline-flex md:hidden items-center gap-2 px-6 sm:px-8 py-4 sm:py-4
+                    bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
+                    font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
+            All Projects <span>→</span>
             </a>
-
-            <a href="projects/private-villa/" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project2.jpg' %}" alt="Private Villa — custom linear LED, Tehran"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Residential · Tehran, Iran</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Private Villa</h3>
-                        <p class="text-sm text-white/60 font-light">Custom linear LED · DALI control</p>
-                    </div>
-                </div>
-            </a>
-
-            <!-- <a href="#" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project3.jpg' %}" alt="Corporate HQ — human-centric downlight, Istanbul"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Office · Istanbul, Turkey</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Corporate Headquarters</h3>
-                        <p class="text-sm text-white/60 font-light">Human-centric downlight system</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project4.jpg' %}" alt="Art Gallery — CRI 95+ spotlights, Paris"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Museum · Paris, France</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Contemporary Art Gallery</h3>
-                        <p class="text-sm text-white/60 font-light">Precision spotlights · CRI 95+</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project5.jpg' %}" alt="Commercial Tower — RGB facade DMX, Riyadh"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Facade · Riyadh, KSA</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Commercial Tower</h3>
-                        <p class="text-sm text-white/60 font-light">RGB facade lighting · DMX control</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="group block">
-                <div class="relative overflow-hidden rounded-xl">
-                    <img src="{% static 'images/projects/project6.jpg' %}" alt="Public Park Pathway — bollard & ground lights, Doha"
-                        class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-                    <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
-                    <div class="proj-arrow absolute top-4 right-4">→</div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6">
-                        <span class="inline-block text-[9px] font-semibold uppercase tracking-[3px] bg-white/10 backdrop-blur-sm text-white/80 px-3 py-1 rounded-full mb-3">Landscape · Doha, Qatar</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">Public Park Pathway</h3>
-                        <p class="text-sm text-white/60 font-light">Outdoor bollard &amp; ground lights</p>
-                    </div>
-                </div>
-            </a> -->
-
         </div>
     </div>
 </section>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 3. PRODUCT CATEGORIES                               -->
-<!-- ════════════════════════════════════════════════════ -->
-<section class="py-20 md:py-28 animate-section bg-[#181818] overflow-hidden" aria-labelledby="categories-heading">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<!-- ════════════════════════════════════════════════════
+     3. PRODUCT CATEGORIES
+════════════════════════════════════════════════════ -->
+<section class="section-categories py-20 md:py-28 animate-section bg-[#181818] overflow-hidden"
+         aria-labelledby="categories-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-end mb-12 md:mb-16">
-            <div>
-                <h2 id="categories-heading" class="text-4xl md:text-5xl font-bold uppercase text-white">
-                    Product <span class="text-[#800000]">Categories</span>
-                </h2>
-                <p class="text-base md:text-lg text-white/60 mt-4 font-light">
-                    Architectural lighting solutions designed for commercial, residential and outdoor applications.
-                </p>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-5">
-                <div class="flex gap-3" aria-label="Category navigation">
-                    <button id="cat-prev"
-                        class="w-11 h-11 rounded-full border border-white/20 bg-transparent text-white flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all duration-300"
-                        aria-label="Previous category">←</button>
-                    <button id="cat-next"
-                        class="w-11 h-11 rounded-full border border-white/20 bg-transparent text-white flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all duration-300"
-                        aria-label="Next category">→</button>
-                </div>
-                <div class="flex gap-3 flex-wrap">
-                    <a href="/products" class="px-6 py-3 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300">All Products</a>
-                    <a href="/catalog" class="px-6 py-3 border border-white/20 text-white text-[11px] tracking-[3px] uppercase font-semibold hover:border-white/50 hover:bg-white/5 transition-all duration-300">Catalog</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="cat-carousel" class="flex gap-4 md:gap-5 overflow-x-auto scroll-smooth cursor-grab pb-2" role="list">
-
-            <a href="/low-voltage-magnet-light/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/magnet.jpg' %}" alt="Magnet Linear track lights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-2 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-md font-semibold tracking-wide">Low Voltage Magneto</h3>
-                    <!-- <div class="cat-arrow">→</div> -->
-                </div>
-            </a>
-            <a href="/linear/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/linear.jpg' %}" alt="Magnet Linear track lights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-2 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-md font-semibold tracking-wide">Linear</h3>
-                    <!-- <div class="cat-arrow">→</div> -->
-                </div>
-            </a>
-
-            <a href="/industrial/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/industrail.jpg' %}" alt="Linear LED luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Industrial</h3>
-                </div>
-            </a>
-
-            <a href="/panel-downlight/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/panel.jpg' %}" alt="Recessed downlights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Panel & Downlights</h3>
-                </div>
-            </a>
-
-            <a href="/decorative" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <img src="{% static 'images/categories/deco.jpg' %}" alt="Decorative lighting" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Decorative</h3>
-                </div>
-            </a>
-
-            <a href="/outdoor/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/i.jpg' %}" alt="Outdoor luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Outdoor</h3>
-                </div>
-            </a>
-
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-20 items-end mb-8 md:mb-16">
+      <div>
+        <h2 id="categories-heading"
+            class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase text-white">
+          Product <span class="text-[#800000]">Categories</span>
+        </h2>
+        <p class="section-desc text-sm md:text-lg text-white/60 mt-2 md:mt-4 font-light">
+          Architectural lighting solutions designed for commercial, residential and outdoor applications.
+        </p>
+      </div>
+      <div class="hidden md:flex flex-wrap items-center gap-3 sm:justify-end">
+        <button id="cat-prev"
+            class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
+                   flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all"
+            aria-label="Previous category">←</button>
+        <button id="cat-next"
+            class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
+                   flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all"
+            aria-label="Next category">→</button>
+            <a href="/products"
+   class="px-5 sm:px-6 py-4 hidden md:block sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
+          tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">All Categories</a>
         </div>
     </div>
+    
+    <div id="cat-carousel"
+    class="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto scroll-smooth cursor-grab pb-2" role="list">
+    
+    <a href="/low-voltage-magnet-light/"
+    class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+    h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+    <img src="{% static 'images/categories/magnet.jpg' %}" alt="Magnet Linear"
+    class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+        <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Low Voltage Magneto</h3>
+    </div>
+</a>
+
+<a href="/linear/"
+class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+<img src="{% static 'images/categories/linear.jpg' %}" alt="Linear"
+class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Linear</h3>
+</div>
+</a>
+
+<a href="/industrial/"
+class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+<img src="{% static 'images/categories/industrail.jpg' %}" alt="Industrial"
+class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Industrial</h3>
+</div>
+</a>
+
+<a href="/panel-downlight/"
+class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+<img src="{% static 'images/categories/panel.jpg' %}" alt="Panel & Downlights"
+class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Panel & Downlights</h3>
+</div>
+</a>
+
+<a href="/decorative"
+class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
+<div class="absolute inset-0 flex items-center justify-center">
+    <img src="{% static 'images/categories/deco.jpg' %}" alt="Decorative"
+    class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Decorative</h3>
+</div>
+</a>
+
+<a href="/outdoor/"
+class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+<img src="{% static 'images/categories/i.jpg' %}" alt="Outdoor"
+class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Outdoor</h3>
+</div>
+</a>
+
+</div>
+<div class="w-full mt-2 flex items-center justify-center">
+    <a href="/products"
+       class="px-5 sm:px-6 py-4 sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
+              tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">All Categories</a>
+    </div>
+</div>
 </section>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 4. SOLUTIONS BY APPLICATION                         -->
-<!-- ════════════════════════════════════════════════════ -->
-<section class="py-20 md:py-28 animate-section bg-gray-50" aria-labelledby="applications-heading">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
-            <div>
-                <h2 id="applications-heading" class="text-4xl md:text-5xl font-bold uppercase">
-                    Solutions by <span class="text-[#800000]">Application</span>
-                </h2>
-                <p class="text-gray-600 mt-2 text-base md:text-lg">Tailored lighting systems for every architectural context</p>
-            </div>
-            <div class="flex gap-3 self-end md:self-auto">
-                <button class="app-prev w-10 h-10 md:w-11 md:h-11 border border-gray-300 hover:bg-gray-100 rounded-full flex items-center justify-center transition text-black" aria-label="Previous application">←</button>
-                <button class="app-next w-10 h-10 md:w-11 md:h-11 border border-gray-300 hover:bg-gray-100 rounded-full flex items-center justify-center transition text-black" aria-label="Next application">→</button>
-            </div>
-        </div>
-
-        <div class="app-carousel flex overflow-x-auto gap-6 md:gap-8 scroll-smooth cursor-grab pb-4" role="list">
-
-            <div class="relative shrink-0 w-[90vw] md:w-[80%] lg:w-[65%] h-[380px] lg:h-[520px] rounded-2xl overflow-hidden border border-white/10" role="listitem">
-                <img src="{% static 'images/categories/retail1.png' %}" alt="Retail space" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                <div class="relative z-10 h-full flex items-center p-8 lg:p-16">
-                    <div class="max-w-lg">
-                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-4 text-white">Retail Spaces</h3>
-                        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 md:mb-8">Precision lighting designed to highlight products and create immersive retail environments.</p>
-                        <a href="/applications/retail" class="inline-flex items-center px-5 py-3 bg-white text-black text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">Explore Solutions</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative shrink-0 w-[90vw] md:w-[80%] lg:w-[65%] h-[380px] lg:h-[520px] rounded-2xl overflow-hidden border border-white/10" role="listitem">
-                <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="Hospitality" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                <div class="relative z-10 h-full flex items-center p-8 lg:p-16">
-                    <div class="max-w-lg">
-                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-4 text-white">Hospitality</h3>
-                        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 md:mb-8">Elegant lighting systems that enhance ambience for hotels, restaurants and lounges.</p>
-                        <a href="/applications/hospitality" class="inline-flex items-center px-5 py-3 bg-white text-black text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">Explore Solutions</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative shrink-0 w-[90vw] md:w-[80%] lg:w-[65%] h-[380px] lg:h-[520px] rounded-2xl overflow-hidden border border-white/10" role="listitem">
-                <img src="{% static 'images/categories/office1.webp' %}" alt="Office" class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                <div class="relative z-10 h-full flex items-center p-8 lg:p-16">
-                    <div class="max-w-lg">
-                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-4 text-white">Office &amp; Workplace</h3>
-                        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 md:mb-8">Human‑centric lighting solutions designed to improve productivity and visual comfort.</p>
-                        <a href="/applications/office" class="inline-flex items-center px-5 py-3 bg-white text-black text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">Explore Solutions</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+<!-- ════════════════════════════════════════════════════
+4. SOLUTIONS BY APPLICATION
+════════════════════════════════════════════════════ -->
+<section class="section-applications py-20 md:py-28 animate-section bg-gray-50"
+aria-labelledby="applications-heading">
+<div class="max-w-7xl md:mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-8 md:mb-12">
+        <div>
+            <h2 id="applications-heading"
+            class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase">
+          Solutions by <span class="text-[#800000]">Application</span>
+        </h2>
+        <p class="section-desc text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
+          Tailored lighting systems for every architectural context
+        </p>
+      </div>
+      <div class="hidden md:flex gap-3 self-start sm:self-auto">
+        <button class="app-prev w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
+                       rounded-full flex items-center justify-center transition text-black"
+                aria-label="Previous application">←</button>
+        <button class="app-next w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
+                       rounded-full flex items-center justify-center transition text-black"
+                aria-label="Next application">→</button>
+      </div>
     </div>
+
+    <div class="app-carousel flex overflow-x-auto gap-4 sm:gap-6 md:gap-8 scroll-smooth cursor-grab pb-4" role="list">
+
+      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
+        <img src="{% static 'images/categories/retail1.png' %}" alt="Retail"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
+          <div class="max-w-lg">
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Retail Spaces</h3>
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
+              Precision lighting designed to highlight products and create immersive retail environments.
+            </p>
+            <a href="/applications/retail"
+               class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
+                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
+              Explore Solutions
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
+        <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="Hospitality"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
+          <div class="max-w-lg">
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Hospitality</h3>
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
+              Elegant lighting systems that enhance ambience for hotels, restaurants and lounges.
+            </p>
+            <a href="/applications/hospitality"
+               class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
+                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
+              Explore Solutions
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
+        <img src="{% static 'images/categories/office1.webp' %}" alt="Office"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
+          <div class="max-w-lg">
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Office &amp; Workplace</h3>
+            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
+              Human‑centric lighting solutions designed to improve productivity and visual comfort.
+            </p>
+            <a href="/applications/office"
+               class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
+                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
+              Explore Solutions
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 5. BRAND PHILOSOPHY                                 -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════
+     5. BRAND PHILOSOPHY
+════════════════════════════════════════════════════ -->
 <section id="about" class="philosophy-grid bg-[#0a0a0a]" aria-labelledby="about-heading">
 
-    <div class="relative overflow-hidden" style="min-height:480px;">
-        <img src="{% static 'images/iii.jpg' %}" alt="Architectural lighting detail"
-            class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-110 transition-transform duration-[900ms] hover:scale-105">
-        <div class="absolute inset-0" style="background:linear-gradient(to right, transparent 55%, #0a0a0a 100%);"></div>
-    </div>
+  <div class="relative overflow-hidden" style="min-height:320px;">
+    <img src="{% static 'images/iii.jpg' %}" alt="Architectural lighting detail"
+         class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-110
+                transition-transform duration-[900ms] hover:scale-105">
+    <div class="absolute inset-0"
+         style="background:linear-gradient(to right, transparent 55%, #0a0a0a 100%);"></div>
+  </div>
 
-    <div class="flex flex-col justify-center px-8 md:px-16 py-16 md:py-20">
-        <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-6 animate-fade">Our Philosophy</p>
-        <h2 id="about-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight uppercase text-white mb-6 animate-fade">
-            We believe light shapes<br><span class="text-[#800000]">experience</span>
-        </h2>
-        <p class="text-white/50 text-base md:text-lg font-light leading-relaxed max-w-md mb-10 animate-fade">
-            Every beam, every shadow, every reflection is an opportunity to transform space into emotion.
-            For over three decades, we've partnered with architects and designers to realize their most ambitious visions through precision-engineered lighting solutions.
-        </p>
-        <a href="/about" class="self-start px-8 py-4 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 animate-fade">
-            Our Story →
-        </a>
-    </div>
+  <div class="philosophy-text flex flex-col justify-center px-6 sm:px-8 md:px-16 py-12 md:py-20">
+    <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-6 animate-fade">
+      Our Philosophy
+    </p>
+    <h2 id="about-heading"
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight uppercase text-white mb-4 sm:mb-6 animate-fade">
+      We believe light shapes<br><span class="text-[#800000]">experience</span>
+    </h2>
+    <p class="text-white/50 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-md mb-8 sm:mb-10 animate-fade">
+      Every beam, every shadow, every reflection is an opportunity to transform space into emotion.
+      For over three decades, we've partnered with architects and designers to realize their most ambitious visions
+      through precision-engineered lighting solutions.
+    </p>
+    <a href="/about"
+       class="self-start px-6 sm:px-8 py-3 sm:py-4 bg-[#800000] text-white text-[10px] sm:text-[11px]
+              tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 animate-fade">
+      Our Story →
+    </a>
+  </div>
 
 </section>
 
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- 6. CTA                                              -->
-<!-- ════════════════════════════════════════════════════ -->
-<section class="animate-section py-20 md:py-28 relative overflow-hidden bg-gray-50" aria-labelledby="cta-heading">
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <span class="text-[120px] md:text-[200px] font-black uppercase tracking-tighter text-black/[0.03] leading-none whitespace-nowrap">VERONA</span>
+<!-- ════════════════════════════════════════════════════
+     6. CTA
+════════════════════════════════════════════════════ -->
+<section class="section-cta animate-section py-16 sm:py-20 md:py-28 relative overflow-hidden bg-gray-50"
+         aria-labelledby="cta-heading">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+       aria-hidden="true">
+    <span class="text-[80px] sm:text-[120px] md:text-[200px] font-black uppercase tracking-tighter
+                 text-black/[0.03] leading-none whitespace-nowrap">VERONA</span>
+  </div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+    <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-5">Start a Project</p>
+    <h2 id="cta-heading"
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-5 leading-tight uppercase">
+      Ready to Illuminate Your <span class="text-[#800000]">Next Project?</span>
+    </h2>
+    <p class="text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto font-light">
+      Get expert consultation and custom lighting solutions tailored to your architectural vision.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      <a href="/contact"
+         class="px-8 md:px-10 py-4 md:py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
+                uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 w-full sm:w-auto">
+        Contact Us →
+      </a>
+      <a href="/catalog"
+         class="px-8 md:px-10 py-4 md:py-5 border-2 border-gray-300 text-black text-[11px]
+                tracking-[3px] uppercase font-semibold hover:border-gray-500 hover:bg-black/5
+                transition-all duration-300 w-full sm:w-auto">
+        Download Catalog ↓
+      </a>
     </div>
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-5">Start a Project</p>
-        <h2 id="cta-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-5 leading-tight uppercase">
-            Ready to Illuminate Your <span class="text-[#800000]">Next Project?</span>
-        </h2>
-        <p class="text-gray-600 text-base md:text-lg mb-10 max-w-2xl mx-auto font-light">
-            Get expert consultation and custom lighting solutions tailored to your architectural vision.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="/contact" class="px-8 md:px-10 py-4 md:py-5 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 w-full sm:w-auto">Contact Us →</a>
-            <a href="/catalog" class="px-8 md:px-10 py-4 md:py-5 border-2 border-gray-300 text-black text-[11px] tracking-[3px] uppercase font-semibold hover:border-gray-500 hover:bg-black/5 transition-all duration-300 w-full sm:w-auto">Download Catalog ↓</a>
-        </div>
-    </div>
+  </div>
 </section>
 
 
 <script>
-    // ════════════════════════════════════════════════════
-    // HERO SLIDESHOW
-    //   Video slide  → plays up to 5 s, ring tracks progress
-    //   Image slides → 2.5 s each, ring fills linearly
-    //   Prev/Next buttons + dot clicks all work
-    // ════════════════════════════════════════════════════
-    const VIDEO_MAX      = 5000;  // ms cap for video slide
-    const IMAGE_DURATION = 4000;  // ms per image slide
+  // ══════════════════════════════════════════════════════
+  // HERO SLIDESHOW
+  // ══════════════════════════════════════════════════════
+  const IMAGE_DURATION = 4000;
+  const CIRCUMF = 2 * Math.PI * 12;
 
-    const slides   = Array.from(document.querySelectorAll('.hero-slide'));
-    const dotWraps = Array.from(document.querySelectorAll('.dot-wrap'));
-    const CIRCUMF  = 2 * Math.PI * 12; // ≈75.4
+  const slides   = Array.from(document.querySelectorAll('.hero-slide'));
+  const dotWraps = Array.from(document.querySelectorAll('.dot-wrap'));
 
-    let current    = 0;
-    let rafId      = null;
-    let startTs    = 0;   // for image timer
+  let current = 0, rafId = null, startTs = 0;
 
-    function resetFills() {
-        dotWraps.forEach(w => w.querySelector('.dot-fill').style.strokeDashoffset = CIRCUMF);
-    }
+  function resetFills() {
+    dotWraps.forEach(w => w.querySelector('.dot-fill').style.strokeDashoffset = CIRCUMF);
+  }
+  function setActive(i) {
+    dotWraps.forEach((w, j) => {
+      w.classList.toggle('active', j === i);
+      w.setAttribute('aria-selected', String(j === i));
+    });
+  }
+  function goTo(index) {
+    cancelAnimationFrame(rafId);
+    resetFills();
+    slides.forEach(s => s.style.opacity = '0');
+    slides[index].style.opacity = '1';
+    setActive(index);
+    current = index;
+    startTs = performance.now();
+    const fill = dotWraps[current].querySelector('.dot-fill');
+    (function tick(now) {
+      const p = Math.min((now - startTs) / IMAGE_DURATION, 1);
+      fill.style.strokeDashoffset = CIRCUMF * (1 - p);
+      if (p >= 1) { goTo((current + 1) % slides.length); return; }
+      rafId = requestAnimationFrame(tick);
+    })(startTs);
+  }
+  function next() { goTo((current + 1) % slides.length); }
+  function prev() { goTo((current - 1 + slides.length) % slides.length); }
 
-    function setActive(index) {
-        dotWraps.forEach((w, i) => {
-            w.classList.toggle('active', i === index);
-            w.setAttribute('aria-selected', String(i === index));
-        });
-    }
+  dotWraps.forEach((w, i) => w.addEventListener('click', () => goTo(i)));
+  document.getElementById('hero-prev').addEventListener('click', prev);
+  document.getElementById('hero-next').addEventListener('click', next);
 
-    function stopAll() {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-        slides.forEach(s => {
-            const v = s.querySelector('.hero-slide-video');
-            if (v) { v.pause(); v.currentTime = 0; }
-        });
-    }
+  // Swipe
+  let tx = 0;
+  const heroEl = document.querySelector('.hero-section');
+  heroEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  heroEl.addEventListener('touchend',   e => {
+    const d = tx - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 50) d > 0 ? next() : prev();
+  }, { passive: true });
 
-    function goTo(index) {
-        stopAll();
-        resetFills();
-        slides.forEach(s => s.style.opacity = '0');
-        slides[index].style.opacity = '1';
-        setActive(index);
-        current = index;
+  goTo(0);
 
-        if (slides[index].dataset.type === 'video') {
-            runVideo(slides[index]);
-        } else {
-            runImage();
+
+  // ══════════════════════════════════════════════════════
+  // SCROLL REVEAL
+  // ══════════════════════════════════════════════════════
+  document.querySelectorAll('.animate-section').forEach(s => {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.animate-fade').forEach((el, i) =>
+            setTimeout(() => el.classList.add('visible'), i * 110));
         }
-    }
-
-    function next() { goTo((current + 1) % slides.length); }
-    function prev() { goTo((current - 1 + slides.length) % slides.length); }
-
-    // Video: track actual playback but cap at VIDEO_MAX
-    function runVideo(slideEl) {
-        const video = slideEl.querySelector('.hero-slide-video');
-        const fill  = dotWraps[current].querySelector('.dot-fill');
-        video.currentTime = 0;
-        video.play().catch(() => {});
-        const capSec = VIDEO_MAX / 1000;
-
-        function tick() {
-            if (!video.duration) { rafId = requestAnimationFrame(tick); return; }
-            const elapsed  = Math.min(video.currentTime, capSec);
-            const progress = elapsed / capSec;
-            fill.style.strokeDashoffset = CIRCUMF * (1 - progress);
-            if (progress >= 0.999) { next(); return; }
-            rafId = requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.1 }).observe(s);
+  });
+  document.querySelectorAll('#about .animate-fade').forEach(el => {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
         }
-        rafId = requestAnimationFrame(tick);
-    }
-
-    // Image: linear fill over IMAGE_DURATION
-    function runImage() {
-        startTs = performance.now();
-        const fill = dotWraps[current].querySelector('.dot-fill');
-
-        function tick(now) {
-            const progress = Math.min((now - startTs) / IMAGE_DURATION, 1);
-            fill.style.strokeDashoffset = CIRCUMF * (1 - progress);
-            if (progress >= 1) { next(); return; }
-            rafId = requestAnimationFrame(tick);
-        }
-        rafId = requestAnimationFrame(tick);
-    }
-
-    // Dot clicks
-    dotWraps.forEach((w, i) => w.addEventListener('click', () => goTo(i)));
-
-    // Prev / Next buttons
-    document.getElementById('hero-prev').addEventListener('click', prev);
-    document.getElementById('hero-next').addEventListener('click', next);
-
-    // Start
-    goTo(0);
+      });
+    }, { threshold: 0.15 }).observe(el);
+  });
 
 
-    // ════════════════════════════════════════════════════
-    // SCROLL REVEAL
-    // ════════════════════════════════════════════════════
-    const revealObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.querySelectorAll('.animate-fade').forEach((el, i) => {
-                    setTimeout(() => el.classList.add('visible'), i * 110);
-                });
-                revealObs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-section').forEach(s => revealObs.observe(s));
+  // ══════════════════════════════════════════════════════
+  // CAROUSELS
+  // ══════════════════════════════════════════════════════
+  function makeCarousel(carousel, prevBtn, nextBtn) {
+    if (!carousel || !prevBtn || !nextBtn) return;
+    const amt = () => {
+      const card = carousel.querySelector('[role="listitem"]');
+      return card ? card.offsetWidth + parseInt(getComputedStyle(carousel).gap || 16) : 220;
+    };
+    prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -amt(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => carousel.scrollBy({ left:  amt(), behavior: 'smooth' }));
 
-    const fadeObs = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 110);
-                fadeObs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('#about .animate-fade').forEach(el => fadeObs.observe(el));
+    let drag = false, sx, sl;
+    carousel.addEventListener('mousedown', e => { drag = true; sx = e.pageX - carousel.offsetLeft; sl = carousel.scrollLeft; });
+    carousel.addEventListener('mouseleave', () => drag = false);
+    carousel.addEventListener('mouseup',    () => drag = false);
+    carousel.addEventListener('mousemove',  e => {
+      if (!drag) return; e.preventDefault();
+      carousel.scrollLeft = sl - (e.pageX - carousel.offsetLeft - sx) * 1.4;
+    });
+    let tX = 0, tSL = 0;
+    carousel.addEventListener('touchstart', e => { tX = e.touches[0].pageX; tSL = carousel.scrollLeft; }, { passive: true });
+    carousel.addEventListener('touchmove',  e => { carousel.scrollLeft = tSL + (tX - e.touches[0].pageX); }, { passive: true });
+  }
 
-
-    // ════════════════════════════════════════════════════
-    // CAROUSELS
-    // ════════════════════════════════════════════════════
-    function makeCarousel(carousel, prevBtn, nextBtn) {
-        if (!carousel || !prevBtn || !nextBtn) return;
-        const scrollAmt = () => {
-            const card = carousel.querySelector('[role="listitem"]');
-            return card ? card.offsetWidth + parseInt(getComputedStyle(carousel).gap || 16) : 316;
-        };
-        prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }));
-        nextBtn.addEventListener('click', () => carousel.scrollBy({ left:  scrollAmt(), behavior: 'smooth' }));
-
-        let drag = false, startX, scrollLeft;
-        carousel.addEventListener('mousedown', e => { drag = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
-        carousel.addEventListener('mouseleave', () => drag = false);
-        carousel.addEventListener('mouseup',    () => drag = false);
-        carousel.addEventListener('mousemove', e => {
-            if (!drag) return; e.preventDefault();
-            carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.4;
-        });
-        let tX = 0, tSL = 0;
-        carousel.addEventListener('touchstart', e => { tX = e.touches[0].pageX; tSL = carousel.scrollLeft; }, { passive: true });
-        carousel.addEventListener('touchmove',  e => { carousel.scrollLeft = tSL + (tX - e.touches[0].pageX); }, { passive: true });
-    }
-
-    makeCarousel(document.getElementById('cat-carousel'), document.getElementById('cat-prev'), document.getElementById('cat-next'));
-    makeCarousel(document.querySelector('.app-carousel'), document.querySelector('.app-prev'), document.querySelector('.app-next'));
+  makeCarousel(document.getElementById('cat-carousel'), document.getElementById('cat-prev'), document.getElementById('cat-next'));
+  makeCarousel(document.querySelector('.app-carousel'), document.querySelector('.app-prev'), document.querySelector('.app-next'));
 </script>
 
 {% endblock %}
