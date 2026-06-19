@@ -227,7 +227,7 @@ def product_list(request):
 def category_detail(request, cat_slug):
                 
     category = get_object_or_404(Category, slug=cat_slug, is_active=True, parent__isnull=True)
-    children = Category.objects.filter(parent=category, is_active=True)
+    children = Category.objects.filter(parent=category, is_active=True).order_by("order")
 
     if children.exists():
         families = Family.objects.filter(
@@ -521,5 +521,31 @@ def product_detail_no_child(request, cat_slug, family_slug, slug):
 
 
 
+def search(request):
+    query = request.GET.get('q', '').strip()
+    
+    if not query:
+        context = {
+            "query": "",
+            "products": [],
+            "page_obj": None,
+            "meta_title": "Search Products",
+        }
+        return render(request, "products/search.html", context)
+    
+    products = Product.objects.filter(
+        Q(name__icontains=query) |
+        Q(description__icontains=query) |
+        Q(family__name__icontains=query) |
+        Q(category__name__icontains=query),
+        is_active=True
+    ).select_related('category', 'family').prefetch_related('finishes')
+    page_obj = _paginate(request, products)
 
-# def applications_detail_no_child()
+    context = {
+        "query": query,
+        "products": page_obj.object_list,
+        "page_obj": page_obj,
+        "meta_title": f"Search results for '{query}'",
+    }
+    return render(request, "products/search.html", context)

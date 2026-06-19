@@ -9,6 +9,7 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
     number = models.IntegerField(unique=True, blank=True, null=True)
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name='ترتیب نمایش')
     parent = models.ForeignKey(
         'self',
         null=True, blank=True,

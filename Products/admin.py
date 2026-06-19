@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('اطلاعات اصلی', {
-            'fields': ('name', 'slug', 'parent', 'icon','image', 'is_active', 'number')
+            'fields': ('name', 'slug', 'parent', 'icon','image', 'is_active', 'number', 'order')
         }),
         ('محتوا', {
             'fields': ('description',)

@@ -130,11 +130,12 @@
 <div class="hero-section relative min-h-screen bg-[#0a0a0a] overflow-hidden flex items-center">
 
     <!-- SLIDE BACKGROUNDS -->
-    <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="0" data-type="video">
-        <video class="hero-slide-video w-full h-full object-cover" muted playsinline preload="auto"
-            poster="{% static 'images/hero5.png' %}">
-            <source src="{% static 'images/hero5.png' %}" type="video/mp4">
-        </video>
+    <div class="hero-slide absolute inset-0 opacity-100">
+    <img
+        src="{% static 'images/hero55.png' %}"
+        alt="Verona Lighting"
+        class="w-full h-full object-cover"
+    >
     </div>
     <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-700" data-index="1" data-type="image">
         <img src="{% static 'images/hero2.webp' %}" alt="Architectural lighting slide 2" class="w-full h-full object-cover">
@@ -276,7 +277,7 @@
                 </div>
             </a>
 
-            <a href="#" class="group block">
+            <!-- <a href="#" class="group block">
                 <div class="relative overflow-hidden rounded-xl">
                     <img src="{% static 'images/projects/project3.jpg' %}" alt="Corporate HQ — human-centric downlight, Istanbul"
                         class="w-full h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
@@ -334,7 +335,7 @@
                         <p class="text-sm text-white/60 font-light">Outdoor bollard &amp; ground lights</p>
                     </div>
                 </div>
-            </a>
+            </a> -->
 
         </div>
     </div>
@@ -375,49 +376,53 @@
         <div id="cat-carousel" class="flex gap-4 md:gap-5 overflow-x-auto scroll-smooth cursor-grab pb-2" role="list">
 
             <a href="/low-voltage-magnet-light/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/magnet.webp' %}" alt="Magnet Linear track lights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <img src="{% static 'images/categories/magnet.jpg' %}" alt="Magnet Linear track lights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Magnet Linear</h3>
-                    <div class="cat-arrow">→</div>
+                <div class="absolute bottom-0 left-0 right-0 p-2 md:p-6 flex items-end justify-between gap-3">
+                    <h3 class="text-white text-lg md:text-md font-semibold tracking-wide">Low Voltage Magneto</h3>
+                    <!-- <div class="cat-arrow">→</div> -->
+                </div>
+            </a>
+            <a href="/linear/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+                <img src="{% static 'images/categories/linear.jpg' %}" alt="Magnet Linear track lights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-2 md:p-6 flex items-end justify-between gap-3">
+                    <h3 class="text-white text-lg md:text-md font-semibold tracking-wide">Linear</h3>
+                    <!-- <div class="cat-arrow">→</div> -->
                 </div>
             </a>
 
-            <a href="/linear/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/Linear.webp' %}" alt="Linear LED luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+            <a href="/industrial/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
+                <img src="{% static 'images/categories/industrail.jpg' %}" alt="Linear LED luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Linear</h3>
-                    <div class="cat-arrow">→</div>
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Industrial</h3>
                 </div>
             </a>
 
             <a href="/panel-downlight/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/downlights.webp' %}" alt="Recessed downlights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <img src="{% static 'images/categories/panel.jpg' %}" alt="Recessed downlights" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Downlights</h3>
-                    <div class="cat-arrow">→</div>
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Panel & Downlights</h3>
                 </div>
             </a>
 
             <a href="/decorative" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <img src="{% static 'images/categories/decorative.png' %}" alt="Decorative lighting" class="w-[70%] h-[70%] object-contain transition duration-700 group-hover:scale-105">
+                    <img src="{% static 'images/categories/deco.jpg' %}" alt="Decorative lighting" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
                     <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Decorative</h3>
-                    <div class="cat-arrow">→</div>
                 </div>
             </a>
 
             <a href="/outdoor/" class="cat-card-link relative shrink-0 w-[260px] md:w-[300px] h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-                <img src="{% static 'images/categories/outdoor.webp' %}" alt="Outdoor luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <img src="{% static 'images/categories/i.jpg' %}" alt="Outdoor luminaires" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex items-end justify-between gap-3">
                     <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">Outdoor</h3>
-                    <div class="cat-arrow">→</div>
                 </div>
             </a>
 
@@ -494,7 +499,7 @@
 <section id="about" class="philosophy-grid bg-[#0a0a0a]" aria-labelledby="about-heading">
 
     <div class="relative overflow-hidden" style="min-height:480px;">
-        <img src="{% static 'images/hero.jpg' %}" alt="Architectural lighting detail"
+        <img src="{% static 'images/iii.jpg' %}" alt="Architectural lighting detail"
             class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-110 transition-transform duration-[900ms] hover:scale-105">
         <div class="absolute inset-0" style="background:linear-gradient(to right, transparent 55%, #0a0a0a 100%);"></div>
     </div>
@@ -511,20 +516,6 @@
         <a href="/about" class="self-start px-8 py-4 bg-[#800000] text-white text-[11px] tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 animate-fade">
             Our Story →
         </a>
-        <div class="grid grid-cols-3 border-t border-white/10 mt-10 animate-fade">
-            <div class="py-6 pr-6 border-r border-white/10">
-                <strong class="block text-3xl font-bold text-[#800000]">30+</strong>
-                <span class="text-[9px] font-semibold tracking-[2.5px] uppercase text-white/30 mt-1 block">Years Active</span>
-            </div>
-            <div class="py-6 px-6 border-r border-white/10">
-                <strong class="block text-3xl font-bold text-[#800000]">1200+</strong>
-                <span class="text-[9px] font-semibold tracking-[2.5px] uppercase text-white/30 mt-1 block">Projects</span>
-            </div>
-            <div class="py-6 pl-6">
-                <strong class="block text-3xl font-bold text-[#800000]">40+</strong>
-                <span class="text-[9px] font-semibold tracking-[2.5px] uppercase text-white/30 mt-1 block">Countries</span>
-            </div>
-        </div>
     </div>
 
 </section>
@@ -561,7 +552,7 @@
     //   Prev/Next buttons + dot clicks all work
     // ════════════════════════════════════════════════════
     const VIDEO_MAX      = 5000;  // ms cap for video slide
-    const IMAGE_DURATION = 2500;  // ms per image slide
+    const IMAGE_DURATION = 4000;  // ms per image slide
 
     const slides   = Array.from(document.querySelectorAll('.hero-slide'));
     const dotWraps = Array.from(document.querySelectorAll('.dot-wrap'));

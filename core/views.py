@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from Products.models import Product, Category
 from .models import SiteSettings, NewsCategory, NewsArticle
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     context = {"site_settings": SiteSettings.get()}
@@ -77,3 +78,7 @@ def news_detail(request, slug):
 
 def custom_404_view(request, exception):
     return render(request, "404.html", status=404)
+
+@login_required()
+def hesab_daryaft_pardakht(request):
+    return render(request, 'حساب دربافت و پرداخت.html')

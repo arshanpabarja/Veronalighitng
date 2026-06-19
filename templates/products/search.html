@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% block title %}Search Products{% endblock %}
+{% block content %}
+
+<style>
+  /* ── Breadcrumb ── */
+  .search-breadcrumb {
+    max-width: 1280px;
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+    color: #888;
+  }
+  .search-breadcrumb a { color: inherit; text-decoration: none; }
+  .search-breadcrumb a:hover { color: #800000; }
+  .search-breadcrumb span { margin: 0 6px; }
+
+  /* ── Page header ── */
+  .search-header {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+  }
+  .search-header h1 {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #2d3748;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .search-header p {
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: #6b7280;
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ── Search form ── */
+  .search-form-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2rem;
+  }
+  .search-form {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-form:focus-within {
+    border-color: #800000;
+    box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+  }
+  .search-form input[type="text"] {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #1a1a1a;
+    min-width: 0;
+  }
+  .search-form input[type="text"]::placeholder { color: #9ca3af; }
+  .search-form button {
+    padding: 0.65rem 1.25rem;
+    background: #800000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .search-form button:hover { background: #660000; }
+  .search-form button:focus-visible {
+    outline: 2px solid #800000;
+    outline-offset: 2px;
+  }
+
+  /* ── Empty state: no query ── */
+  .search-empty-state {
+    text-align: center;
+    padding: 5rem 2rem 6rem;
+  }
+  .search-empty-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.5rem;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-empty-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: #9ca3af;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .search-empty-state h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem;
+  }
+  .search-empty-state p {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  /* ── No results state ── */
+  .search-no-results {
+    text-align: center;
+    padding: 5rem 2rem 6rem;
+  }
+  .search-no-results h2 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.75rem;
+  }
+  .search-no-results p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+  }
+  .search-no-results a {
+    color: #800000;
+    text-decoration: none;
+  }
+  .search-no-results a:hover { text-decoration: underline; }
+</style>
+
+<!-- Breadcrumb -->
+<div class="search-breadcrumb">
+  <a href="{% url 'home' %}">Home</a>
+  <span>›</span>
+  <a href="/products/">Search</a>
+</div>
+
+<!-- Header -->
+<section>
+  <div class="search-header">
+    <h1>Explore Our Lighting Collection</h1>
+    <p>Discover lighting products that combine functionality, efficiency, and elegant design.</p>
+  </div>
+</section>
+
+<!-- Search form -->
+<section>
+  <div class="search-form-wrap">
+    <form method="get" action="{% url 'search' %}" class="search-form">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        placeholder="Search products..."
+        autocomplete="off"
+      >
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<!-- States -->
+{% if not query %}
+<section>
+  <div class="search-empty-state">
+    <div class="search-empty-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+      </svg>
+    </div>
+    <h2>What are you looking for?</h2>
+    <p>Type a product name, family, or category above to get started.</p>
+  </div>
+</section>
+
+{% elif products %}
+<!-- ─── PRODUCTS SECTION ─── -->
+<section class="py-8 flex-col sm:py-10 md:py-12 px-4 sm:px-8 md:px-[60px] bg-white">
+
+  <div class="flex items-center justify-between gap-3 mb-6 sm:mb-9">
+    <p class="text-[13px] sm:text-[14px] text-[#888]">
+      Showing <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> results for "<strong
+        class="text-[#1a1a1a]">{{ query }}</strong>"
+    </p>
+  </div>
+
+  <div id="product-grid"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 lg:gap-4">
+    {% for product in products %}
+    <a href="{% if product.category.parent %}{% url 'products:product_detail' product.category.parent.slug product.category.slug product.family.slug product.slug %}{% else %}{% url 'products:product_detail_no_child' product.category.slug product.family.slug product.slug %}{% endif %}"
+      class="group flex flex-col w-full text-left cursor-pointer transition-opacity duration-300 hover:opacity-90">
+      <div class="relative aspect-square w-full bg-[#f4f5f6] overflow-hidden mb-4 flex items-center justify-center">
+        <img src="{{ product.image1.url }}" alt="{{ product.image1.alt }}"
+          class="w-[85%] h-[85%] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+      </div>
+      <div class="flex flex-col flex-1 px-1">
+        <span class="text-[11px] sm:text-[12px] font-black uppercase tracking-widest text-[#001427] mb-1.5">
+          {{ product.family.name|default:"LUNA" }}
+        </span>
+        <h3 class="text-[17px] sm:text-[19px] font-bold text-[#001427] mb-2.5 leading-[1.25]">
+          {{ product.name }}
+        </h3>
+        <div class="text-[14px] text-[#4a4a4a] leading-[1.5]">
+          {{ product.subtitle|truncatechars:100 }}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if page_obj.has_next %}
+  <div class="text-center mt-8">
+    <button id="load-more-btn" data-next-page="{{ page_obj.next_page_number }}">
+      <div class="flex space-x-2 justify-center">
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_infinite]"></div>
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.2s_infinite]"></div>
+        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.4s_infinite]"></div>
+      </div>
+    </button>
+  </div>
+  {% endif %}
+
+</section>
+
+{% else %}
+<section>
+  <div class="search-no-results">
+    <h2>No products found for "{{ query }}"</h2>
+    <p>Try adjusting your search or explore our <a href="{% url 'products:product_list' %}">full product catalog</a>.</p>
+  </div>
+</section>
+{% endif %}
+
+<script>
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const productGrid = document.getElementById('product-grid');
+
+  if (loadMoreBtn) {
+    let loading = false;
+
+    async function loadMoreProducts() {
+      if (loading) return;
+      const nextPage = loadMoreBtn.dataset.nextPage;
+      if (!nextPage) return;
+      loading = true;
+      const url = new URL(window.location.href);
+      url.searchParams.set('page', nextPage);
+      const response = await fetch(url);
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      doc.querySelectorAll('#product-grid > *').forEach(card => productGrid.appendChild(card));
+      const newButton = doc.querySelector('#load-more-btn');
+      if (newButton) {
+        loadMoreBtn.dataset.nextPage = newButton.dataset.nextPage;
+      } else {
+        loadMoreBtn.remove();
+        loadMoreObserver.disconnect();
+      }
+      loading = false;
+    }
+
+    const loadMoreObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) loadMoreProducts();
+    }, { rootMargin: '200px' });
+
+    loadMoreObserver.observe(loadMoreBtn);
+  }
+</script>
+
+{% endblock %}

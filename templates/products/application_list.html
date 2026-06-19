@@ -99,8 +99,8 @@
             <a href="{% url 'products:application_detail' application.slug %}" class="group block">
                 <!-- Square Image Container -->
                 <div class="aspect-square bg-gray-100 overflow-hidden">
-                    {% if application.image %}
-                    <img src="{{ application.image.url }}"
+                    {% if application.icon %}
+                    <img src="{{ application.icon.url }}"
                          alt="{{ application.name }} lighting solutions"
                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                          loading="lazy">

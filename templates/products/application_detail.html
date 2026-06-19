@@ -84,12 +84,8 @@
   </h1>
 </div>
 
-<section class="relative w-full h-[260px] sm:h-[380px] md:h-[500px] overflow-hidden">
-  {% if application.icon %}
-    <img src="{{ application.icon.url }}" alt="{{ application.name }}" class="w-full h-full object-cover object-center">
-  {% else %}
-    <div class="w-full h-full bg-gray-200"></div>
-  {% endif %}
+<section style="height: 700px;" class="relative w-full overflow-hidden">
+    <img src="{{ application.cover_image.url }}" alt="{{ application.name }}" class="w-full object-cover">
   <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
 </section>
 

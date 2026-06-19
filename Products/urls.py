@@ -8,7 +8,6 @@ urlpatterns = [
     # -------------------------------------------------
     # MAIN
     # -------------------------------------------------
-
     path('products/', views.product_list, name='product_list'),
 
     path('projects/', views.project_list, name='project_list'),
@@ -76,4 +75,5 @@ urlpatterns = [
         views.product_detail_no_child,
         name='product_detail_no_child'
     ),
+
 ]

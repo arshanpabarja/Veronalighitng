@@ -34,17 +34,17 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                                     <a href="{% url 'products:product_list' %}" class="block text-xl font-medium hover:text-[#800000]">All Products</a>
                                     <p class="text-sm text-gray-500 max-w-xs">Explore our complete range of professional lighting solutions.</p>
                                 </div>
-                                <div class="col-span-2 space-y-1 text-[16px] py-14" style="padding-left: 160px;">
+                                <div class="col-span-2 space-y-3 text-[16px] py-14" style="padding-left: 160px;">
                                     {% for category in categories %}
                                     <div class="flex w-full justify-between">
                                         <button type="button" data-category="{{ category.slug }}"
-                                            class="category-item flex items-center gap-3 text-left hover:text-[#800000] transition-colors">
-                                            {% if category.image %}
-                                            <img src="{{ category.image.url }}" alt="" class="w-28 object-contain shrink-0">
-                                            {% endif %}
-                                            <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
-                                        </button>
-                                        <div class="arrow text-2xl opacity-0 transition-opacity">→</div>
+                                        class="category-item flex items-center gap-3 text-left hover:text-[#800000] transition-colors">
+                                        <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
+                                    </button>
+                                    {% if category.image %}
+                                    <img src="{{ category.image.url }}" alt="" class="w-24 object-contain shrink-0">
+                                    {% endif %}
+                                        <!-- <div class="arrow text-2xl opacity-0 transition-opacity">→</div> -->
                                     </div>
                                     {% endfor %}
                                 </div>
@@ -100,12 +100,12 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                 </div>
 
                 <div class="group relative">
-                    <a href="/services" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 transition-colors cursor-pointer">
+                    <a href="/services" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         Services
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-
+                
                 <div class="">
                     <a href="/projects" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         Projects
@@ -118,16 +118,30 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div> -->
-
+                <div class="group relative">
+                    <a id="search" href="/search" class="flex font-medium items-center h-24 border-b-2 border-transparent transition-colors cursor-pointer">
+                        <img loading="eager" class="w-8 h-8" src="{% static 'images/search2.svg' %}" alt="Search">
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+                
             </div>
+            <div class="flex items-center justify-center gap-4 lg:hidden">
 
-            <button id="hamburger-btn"
-                class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
+                <div class="group relative">
+                    <a id="search" href="/search" class="flex font-medium items-center h-24 border-b-2 border-transparent transition-colors cursor-pointer">
+                        <img loading="eager" class="w-6 h-6" src="{% static 'images/search2.svg' %}" alt="Search">
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+                <button id="hamburger-btn"
+                class=" flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
                 aria-label="Open menu">
                 <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
                 <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
                 <span class="hamburger-line block w-6 h-0.5 bg-black transition-all duration-300 {% if request.path == '/' %} bg-white {% endif %}"></span>
             </button>
+        </div>
 
         </div>
     </div>
@@ -199,10 +213,10 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                     class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     Projects
                 </a>
-                <a href="/news"
+                <!-- <a href="/news"
                     class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     News
-                </a>
+                </a> -->
             </div>
         </div>
 
@@ -233,10 +247,11 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
                 <button type="button" data-target="screen-category" data-category="{{ category.slug }}"
                     data-label="{{ category.name }}"
                     class="mobile-category-trigger w-full flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
-                    <span>{{ category.name }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <span>{{ category.name }}</span>
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}" class="h-6 mr-2" />
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+                    </svg> -->
                 </button>
                 {% endfor %}
             </div>
@@ -544,7 +559,15 @@ fixed top-0 left-0 right-0 bg-white border-b border-gray-200
     }
     {% endif %}
 
-
+    const searchIcon = document.getElementById('search');
+    if (searchIcon && navbar) {
+        navbar.addEventListener('mouseenter', () => {
+            searchIcon.querySelector('img').src = "{% static 'images/search.svg' %}";
+        });
+        navbar  .addEventListener('mouseleave', () => {
+            searchIcon.querySelector('img').src = "{% static 'images/search2.svg' %}";
+        });
+    }
     const navbar_logo = document.getElementById('navbar-logo-img');
     if (navbar_logo && navbar) {
         navbar.addEventListener('mouseenter', () => {
