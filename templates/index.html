@@ -35,6 +35,22 @@
   .animate-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .animate-fade.visible { opacity: 1; transform: none; }
 
+  /* Card variant: subtle scale-up alongside the fade, used for grid/carousel cards */
+  .animate-fade-scale { opacity: 0; transform: translateY(20px) scale(0.94); transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1); }
+  .animate-fade-scale.visible { opacity: 1; transform: none; }
+
+  /* Respect users who'd rather not see motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade, .animate-fade-scale, .hero-fade-in { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ── Hero load-in (runs once on page load, no scroll needed) ── */
+  @keyframes heroFadeInUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-fade-in { opacity: 0; animation: heroFadeInUp 0.9s cubic-bezier(.22,.61,.36,1) forwards; }
+
   /* ── Carousels: hide scrollbar ─────────────────────── */
   #cat-carousel, .app-carousel { -ms-overflow-style: none; scrollbar-width: none; }
   #cat-carousel::-webkit-scrollbar, .app-carousel::-webkit-scrollbar { display: none; }
@@ -141,7 +157,7 @@
     .hero-scroll-hint { display: none !important; }
 
     /* Smaller nav arrows */
-    .hero-nav-btn { width: 32px; height: 32px; }
+    .hero-nav-btn { display: none; }
     #hero-prev { left: 8px; }
     #hero-next { right: 8px; }
 
@@ -209,7 +225,52 @@
   <div class="absolute inset-0 z-[1]"
        style="background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.6) 100%);">
   </div>
+  <!-- Mobile Hero Content -->
+<div class="hero-mobile-only"
+     style="position:absolute; bottom:64px; left:20px; z-index:10;">
 
+    <div style="max-width:320px;">
+
+        <p class="hero-fade-in"
+           style="
+              animation-delay:0.1s;
+              font-size:9px;
+              letter-spacing:2px;
+              text-transform:uppercase;
+              color:rgba(255,255,255,0.6);
+              margin-bottom:4px;
+           ">
+            Architectural Lighting
+        </p>
+
+        <h1 class="hero-fade-in"
+            style="
+              animation-delay:0.25s;
+              font-size:20px;
+              font-weight:700;
+              line-height:1.15;
+              text-transform:uppercase;
+              color:#fff;
+              margin-bottom:8px;
+            ">
+            Precision Lighting
+            <span style="color:#800000;">for Modern</span>
+            Architecture
+        </h1>
+
+        <p class="hero-fade-in"
+           style="
+              animation-delay:0.4s;
+              font-size:12px;
+              line-height:1.6;
+              color:rgba(255,255,255,0.75);
+              max-width:220px; 
+           ">
+            Engineered luminaires for modern spaces.
+        </p>
+
+    </div>
+</div>
   <!-- Prev / Next -->
   <button id="hero-prev" class="hero-nav-btn" aria-label="Previous slide">
     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -222,16 +283,16 @@
   <div class="hero-desktop-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
               min-h-[100svh] flex items-center">
     <div class="max-w-3xl text-center md:text-left">
-      <h1 class="font-black uppercase leading-[0.95] tracking-tight text-white mb-6
-                 text-5xl md:text-6xl lg:text-7xl">
+      <h1 class="hero-fade-in font-black uppercase leading-[0.95] tracking-tight text-white mb-6
+                 text-5xl md:text-6xl lg:text-7xl" style="animation-delay:0.1s;">
         Precision Lighting<br>
         <span class="text-[#800000]">for Modern</span><br>
         Architecture
       </h1>
-      <p class="text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12">
+      <p class="hero-fade-in text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12" style="animation-delay:0.3s;">
         Engineered luminaires for facade, landscape and exterior spaces.
       </p>
-      <div class="flex flex-row flex-wrap gap-4">
+      <div class="hero-fade-in flex flex-row flex-wrap gap-4" style="animation-delay:0.5s;">
         <a href="/projects"
            class="group px-10 py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
                   uppercase font-semibold transition-all duration-300 hover:bg-[#b91c1c]
@@ -294,15 +355,15 @@
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 md:mb-16">
       <div class="max-w-2xl">
         <h2 id="projects-heading"
-            class="text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
+            class="animate-fade text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
           Featured <span class="text-[#800000]">Projects</span>
         </h2>
-        <p class="section-desc text-gray-500 text-sm md:text-lg font-light">
+        <p class="animate-fade section-desc text-gray-500 text-sm md:text-lg font-light">
           Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments.
         </p>
       </div>
       <a href="/projects"
-         class="all-btn hidden shrink-0 md:inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4
+         class="animate-fade all-btn hidden shrink-0 md:inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4
                 bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
                 font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
         All Projects <span>→</span>
@@ -311,7 +372,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
-      <a href="/projects/diamond-boutique/" class="group block">
+      <a href="/projects/diamond-boutique/" class="animate-fade-scale group block">
         <div class="relative overflow-hidden rounded-xl">
           <img src="{% static 'images/projects/project1.jpg' %}"
                alt="Diamond Boutique"
@@ -330,7 +391,7 @@
         </div>
       </a>
 
-      <a href="projects/private-villa/" class="group block">
+      <a href="projects/private-villa/" class="animate-fade-scale group block">
         <div class="relative overflow-hidden rounded-xl">
           <img src="{% static 'images/projects/project2.jpg' %}"
                alt="Private Villa"
@@ -352,7 +413,7 @@
     </div>
         <div class="w-full items-center justify-center flex">
             <a href="/projects"
-            class="all-btn mt-4 inline-flex md:hidden items-center gap-2 px-6 sm:px-8 py-4 sm:py-4
+            class="animate-fade all-btn mt-4 inline-flex md:hidden items-center gap-2 px-6 sm:px-8 py-4 sm:py-4
                     bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
                     font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
             All Projects <span>→</span>
@@ -372,14 +433,14 @@
     <div class="grid lg:grid-cols-2 gap-6 lg:gap-20 items-end mb-8 md:mb-16">
       <div>
         <h2 id="categories-heading"
-            class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase text-white">
+            class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase text-white">
           Product <span class="text-[#800000]">Categories</span>
         </h2>
-        <p class="section-desc text-sm md:text-lg text-white/60 mt-2 md:mt-4 font-light">
+        <p class="animate-fade section-desc text-sm md:text-lg text-white/60 mt-2 md:mt-4 font-light">
           Architectural lighting solutions designed for commercial, residential and outdoor applications.
         </p>
       </div>
-      <div class="hidden md:flex flex-wrap items-center gap-3 sm:justify-end">
+      <div class="animate-fade hidden md:flex flex-wrap items-center gap-3 sm:justify-end">
         <button id="cat-prev"
             class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
                    flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all"
@@ -398,7 +459,7 @@
     class="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto scroll-smooth cursor-grab pb-2" role="list">
     
     <a href="/low-voltage-magnet-light/"
-    class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+    class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
     h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
     <img src="{% static 'images/categories/magnet.jpg' %}" alt="Magnet Linear"
     class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -409,7 +470,7 @@
 </a>
 
 <a href="/linear/"
-class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
 <img src="{% static 'images/categories/linear.jpg' %}" alt="Linear"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -420,7 +481,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 </a>
 
 <a href="/industrial/"
-class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
 <img src="{% static 'images/categories/industrail.jpg' %}" alt="Industrial"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -431,7 +492,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 </a>
 
 <a href="/panel-downlight/"
-class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
 <img src="{% static 'images/categories/panel.jpg' %}" alt="Panel & Downlights"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -442,7 +503,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 </a>
 
 <a href="/decorative"
-class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
 <div class="absolute inset-0 flex items-center justify-center">
     <img src="{% static 'images/categories/deco.jpg' %}" alt="Decorative"
@@ -455,7 +516,7 @@ h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" 
 </a>
 
 <a href="/outdoor/"
-class="cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
+class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
 <img src="{% static 'images/categories/i.jpg' %}" alt="Outdoor"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -468,7 +529,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 </div>
 <div class="w-full mt-2 flex items-center justify-center">
     <a href="/products"
-       class="px-5 sm:px-6 py-4 sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
+       class="animate-fade px-5 sm:px-6 py-4 sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
               tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">All Categories</a>
     </div>
 </div>
@@ -485,14 +546,14 @@ aria-labelledby="applications-heading">
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-8 md:mb-12">
         <div>
             <h2 id="applications-heading"
-            class="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase">
+            class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase">
           Solutions by <span class="text-[#800000]">Application</span>
         </h2>
-        <p class="section-desc text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
+        <p class="animate-fade section-desc text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
           Tailored lighting systems for every architectural context
         </p>
       </div>
-      <div class="hidden md:flex gap-3 self-start sm:self-auto">
+      <div class="animate-fade hidden md:flex gap-3 self-start sm:self-auto">
         <button class="app-prev w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
                        rounded-full flex items-center justify-center transition text-black"
                 aria-label="Previous application">←</button>
@@ -504,7 +565,7 @@ aria-labelledby="applications-heading">
 
     <div class="app-carousel flex overflow-x-auto gap-4 sm:gap-6 md:gap-8 scroll-smooth cursor-grab pb-4" role="list">
 
-      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
         <img src="{% static 'images/categories/retail1.png' %}" alt="Retail"
              class="absolute inset-0 w-full h-full object-cover">
@@ -524,7 +585,7 @@ aria-labelledby="applications-heading">
         </div>
       </div>
 
-      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
         <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="Hospitality"
              class="absolute inset-0 w-full h-full object-cover">
@@ -544,7 +605,7 @@ aria-labelledby="applications-heading">
         </div>
       </div>
 
-      <div class="relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
+      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
         <img src="{% static 'images/categories/office1.webp' %}" alt="Office"
              class="absolute inset-0 w-full h-full object-cover">
@@ -616,15 +677,15 @@ aria-labelledby="applications-heading">
                  text-black/[0.03] leading-none whitespace-nowrap">VERONA</span>
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-    <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-5">Start a Project</p>
+    <p class="animate-fade text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-5">Start a Project</p>
     <h2 id="cta-heading"
-        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-5 leading-tight uppercase">
+        class="animate-fade text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-5 leading-tight uppercase">
       Ready to Illuminate Your <span class="text-[#800000]">Next Project?</span>
     </h2>
-    <p class="text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto font-light">
+    <p class="animate-fade text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto font-light">
       Get expert consultation and custom lighting solutions tailored to your architectural vision.
     </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+    <div class="animate-fade flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
       <a href="/contact"
          class="px-8 md:px-10 py-4 md:py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
                 uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 w-full sm:w-auto">
@@ -704,8 +765,8 @@ aria-labelledby="applications-heading">
     new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.querySelectorAll('.animate-fade').forEach((el, i) =>
-            setTimeout(() => el.classList.add('visible'), i * 110));
+          e.target.querySelectorAll('.animate-fade, .animate-fade-scale').forEach((el, i) =>
+            setTimeout(() => el.classList.add('visible'), i * 90));
         }
       });
     }, { threshold: 0.1 }).observe(s);

@@ -18,15 +18,37 @@
     {% block extra_head %}{% endblock %}
 </head>
 
+<style>
+/* Default (mobile) */
+.main-padding {
+    padding-top: 68px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .main-padding {
+        padding-top: 96px;
+    }
+}
+
+/* Homepage */
+.home-page {
+    padding-top: 0 !important;
+}
+</style>
 
 <body class="font-sans">
     <div class="">
         <header> {% include "includes/navbar.html" %} </header>
 
-        <main class="{% if request.path != '/' %}pt-24{% endif %}">
-            {% block content%}
-            {% endblock %}
-        </main>
+
+<main
+    class="main-padding"
+    style="{% if request.path == '/' %}padding-top:0;{% endif %}"
+>
+    {% block content %}
+    {% endblock %}
+</main>
 
 
         {% include "includes/footer.html" %}

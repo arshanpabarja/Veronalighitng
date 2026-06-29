@@ -130,8 +130,8 @@ class="z-50 top-0 left-0 right-0 bg-white
 
             <!-- Mobile: search + hamburger -->
             <div class="flex items-center gap-3 lg:hidden">
-                <a href="/search" class="flex items-center justify-center w-8 h-8">
-                    <img loading="eager" class="w-5 h-5" src="{% static 'images/search2.svg' %}" alt="Search"
+                <a href="/search" class="flex items-center justify-center w-6 h-6">
+                    <img loading="eager" class="w-6 h-6" src="{% static 'images/search.svg' %}" alt="Search"
                          id="mobile-search-icon">
                 </a>
                 <button id="hamburger-btn"
@@ -242,9 +242,9 @@ class="z-50 top-0 left-0 right-0 bg-white
                     data-label="{{ category.name }}"
                     class="mobile-category-trigger w-full flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>{{ category.name }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+                    {% if category.image %}
+                    <img src="{{ category.image.url }}" alt="" class="w-16 object-contain shrink-0">
+                    {% endif %}
                 </button>
                 {% endfor %}
             </div>
