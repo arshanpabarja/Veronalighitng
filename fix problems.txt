@@ -1,7 +1,3 @@
-1.Change icons in mega menu []
-2.fix image problem in applications []
-3.add panigantions in about us []
-4.fix image problem in hero sections []
-5.Change outdoor name in index to decorative []
-6.applicatons image in index []
-7.delete bg of the subchildern in magnet category []
+1.applicatons image in index []
+2.track spot under water []
+3.

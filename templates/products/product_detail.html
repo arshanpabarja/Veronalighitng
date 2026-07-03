@@ -221,7 +221,12 @@
     <div class="main-image-wrap" id="mainImgWrap">
       {% if product.image1 %}
       <img id="mainImg" src="{{ product.image1.url }}" loading="eager"
-     alt="{{ product.get_image1_alt }}" onclick="openLightbox()" />
+     alt="{{ product.get_image1_alt }}" <!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
+</div> />
 
       {% endif %}
     </div>

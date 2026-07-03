@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+<style>
+  .image-container {
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Desktop */
+.image-container:hover img {
+    transform: scale(2);
+}
+
+/* Mobile touch */
+.image-container:active img {
+    transform: scale(1.1);
+}
+
+</style>
 <section class="bg-white text-gray-800">
   <!-- HERO -->
   <div class="relative overflow-hidden">
@@ -26,44 +49,13 @@
             <a href="#our-story" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition shadow-md">
               Our Story
             </a>
-            <a href="#why-us" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-red-700 hover:bg-red-50 font-semibold transition">
-              Why Choose Us
-            </a>
           </div>
-          <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">12+</p>
-              <p class="text-sm text-gray-600 mt-1">Years Experience</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">2,500+</p>
-              <p class="text-sm text-gray-600 mt-1">Projects Delivered</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">180+</p>
-              <p class="text-sm text-gray-600 mt-1">Products</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">99%</p>
-              <p class="text-sm text-gray-600 mt-1">Client Satisfaction</p>
-            </div>
-          </div> -->
         </div>
 
         <div class="relative">
           <div class="absolute -inset-6 bg-gradient-to-tr from-red-200 to-red-50 rounded-3xl blur-2xl opacity-70"></div>
-          <div class="relative bg-white border border-red-100 rounded-3xl shadow-xl p-5">
-            <img src="{% static 'images/asdf.jpg' %}" alt="Lighting placeholder" class="w-full h-[440px] object-cover rounded-2xl">
-            <div class="mt-6 grid grid-cols-2 gap-4">
-              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
-                <p class="text-sm text-gray-500">Core Focus</p>
-                <p class="mt-1 font-semibold text-gray-800">Innovation + Reliability</p>
-              </div>
-              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
-                <p class="text-sm text-gray-500">Coverage</p>
-                <p class="mt-1 font-semibold text-gray-800">Residential & Commercial</p>
-              </div>
-            </div>
+          <div class="relative image-container bg-white border border-red-100 rounded-3xl shadow-xl p-5">
+            <img id="mainImg" onclick="openLightbox()" src="{% static 'images/showroom.webp' %}" alt="Lighting placeholder" class="w-full h-[640px] object-cover rounded-2xl">
           </div>
         </div>
       </div>
@@ -251,5 +243,145 @@
       </div>
     </div>
   </div> -->
+
+  <!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
+</div>
 </section>
+
+<script>
+  let currentScale = 1;
+  let isDragging = false;
+  let startX, startY, translateX = 0, translateY = 0;
+  let lastTranslateX = 0, lastTranslateY = 0;
+  let initialPinchDistance = 0;
+  let initialPinchScale = 1;
+
+  function openLightbox() {
+    const src = document.getElementById('mainImg').src;
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    resetZoom();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
+
+  function resetZoom() {
+    currentScale = 1;
+    translateX = 0;
+    translateY = 0;
+    lastTranslateX = 0;
+    lastTranslateY = 0;
+    applyTransform();
+  }
+
+  function applyTransform() {
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+  }
+
+  function getPinchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+
+    lightbox.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.15 : 0.15;
+      currentScale = Math.min(Math.max(1, currentScale + delta), 4);
+      applyTransform();
+    }, { passive: false });
+
+    lbImg.addEventListener('mousedown', (e) => {
+      if (currentScale <= 1) return;
+      isDragging = true;
+      startX = e.clientX - lastTranslateX;
+      startY = e.clientY - lastTranslateY;
+      lbImg.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      lastTranslateX = translateX;
+      lastTranslateY = translateY;
+      lbImg.style.cursor = 'grab';
+    });
+
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        initialPinchDistance = getPinchDistance(e.touches);
+        initialPinchScale = currentScale;
+        e.preventDefault();
+      } else if (e.touches.length === 1 && currentScale > 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - lastTranslateX;
+        startY = e.touches[0].clientY - lastTranslateY;
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        const distance = getPinchDistance(e.touches);
+        currentScale = Math.min(Math.max(1, initialPinchScale * (distance / initialPinchDistance)), 4);
+        applyTransform();
+        e.preventDefault();
+      } else if (e.touches.length === 1 && isDragging) {
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        applyTransform();
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.touches.length < 2) {
+        isDragging = false;
+        lastTranslateX = translateX;
+        lastTranslateY = translateY;
+      }
+      if (currentScale < 1) { currentScale = 1; applyTransform(); }
+    });
+
+    lbImg.addEventListener('dblclick', () => {
+      if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+    });
+
+    let lastTap = 0;
+    lbImg.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTap < 300) {
+        if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+      }
+      lastTap = now;
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
 {% endblock %}
