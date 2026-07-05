@@ -199,13 +199,12 @@ class="z-50 top-0 left-0 right-0 bg-white
                     </svg>
                 </button>
 
-                <button type="button" data-target="screen-services"
-                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                <a href="/services" class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>Services</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
-                </button>
+                </a>
 
                 <a href="/projects"
                     class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
@@ -334,30 +333,9 @@ class="z-50 top-0 left-0 right-0 bg-white
 
 
         <!-- ── SERVICES SCREEN ── -->
-        <div id="screen-services"
-            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
-            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    All
-                </button>
-                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex-1 overflow-y-auto px-6 py-4">
-                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Services</p>
-                <a href="#" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">All Services</a>
-                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Office</a>
-                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Retail</a>
-                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Urban</a>
-                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">Sports</a>
-            </div>
-        </div>
+        <a href="/services" class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+        Services
+        </a>
 
     </div>
 </div>

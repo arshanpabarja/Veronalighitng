@@ -101,7 +101,7 @@
   <!-- Sibling Categories -->
   {% if children %}
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
-    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-8 text-center">
+    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-8 text-center ">
       {% for child in children %}
       <a href="{% url 'products:child_detail' category.slug child.slug %}"
          class="group flex flex-col items-center">
@@ -200,7 +200,7 @@
   {# Mobile #}
   <a href="{% if family.category.parent %}{% url 'products:family_detail' family.category.parent.slug family.category.slug family.slug %}{% else %}{% url 'products:family_detail_no_child' family.category.slug family.slug %}{% endif %}"
      class="product-card sm:hidden relative block aspect-[342/472] overflow-hidden bg-[#eef0f3]">
-    <div class="absolute inset-x-0 top-0 h-[65%] overflow-hidden flex items-center justify-center p-4">
+    <div class="absolute inset-x-0 top-0 overflow-hidden flex items-center justify-center " style="height: 80%; padding: 12px;">
       {% if family.icon %}
       <img src="{{ family.icon.url }}" alt="{{ family.name }}" class="w-full h-full object-contain">
       {% else %}
