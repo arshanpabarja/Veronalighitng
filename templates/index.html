@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}{{ site_settings.index_meta_title|default:"Verona Lighting - Architectural Lighting Solutions" }}{% endblock %}
 
 {% block meta_tags %}
@@ -202,29 +202,32 @@
 <!-- ════════════════════════════════════════════════════
      1. HERO
 ════════════════════════════════════════════════════ -->
-<div class="hero-section">
+<div style="direction: {% if LANGUAGE_CODE == 'fa' %} rtl {% else %} ltr {% endif %};">
+
+<div  class="hero-section">
 
   <!-- Slides -->
   <div class="hero-slide" style="opacity:1;">
-    <img src="{% static 'images/hero55.png' %}" alt="Verona Lighting">
+    <img src="{% static 'images/hero55.png' %}" alt="{% trans 'Verona Lighting' %}">
   </div>
   <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="1" data-type="image">
-    <img src="{% static 'images/hero2.webp' %}" alt="Architectural lighting slide 2">
+    <img src="{% static 'images/hero2.webp' %}" alt="{% trans 'Architectural lighting slide 2' %}">
   </div>
   <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="2" data-type="image">
-    <img src="{% static 'images/hero3.png' %}" alt="Architectural lighting slide 3">
+    <img src="{% static 'images/hero3.png' %}" alt="{% trans 'Architectural lighting slide 3' %}">
   </div>
   <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="3" data-type="image">
-    <img src="{% static 'images/hero4.jpg' %}" alt="Architectural lighting slide 4">
+    <img src="{% static 'images/hero4.jpg' %}" alt="{% trans 'Architectural lighting slide 4' %}">
   </div>
   <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="4" data-type="image">
-    <img src="{% static 'images/hero6.png' %}" alt="Architectural lighting slide 5">
+    <img src="{% static 'images/hero6.png' %}" alt="{% trans 'Architectural lighting slide 5' %}">
   </div>
 
   <!-- Overlay -->
   <div class="absolute inset-0 z-[1]"
        style="background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.6) 100%);">
   </div>
+
   <!-- Mobile Hero Content -->
 <div class="hero-mobile-only"
      style="position:absolute; bottom:64px; left:20px; z-index:10;">
@@ -240,7 +243,7 @@
               color:rgba(255,255,255,0.6);
               margin-bottom:4px;
            ">
-            Architectural Lighting
+            {% trans "Architectural Lighting" %}
         </p>
 
         <h1 class="hero-fade-in"
@@ -253,9 +256,9 @@
               color:#fff;
               margin-bottom:8px;
             ">
-            Precision Lighting
-            <span style="color:#800000;">for Modern</span>
-            Architecture
+            {% trans "Precision Lighting" %}
+            <span style="color:#800000;">{% trans "for Modern" %}</span>
+            {% trans "Architecture" %}
         </h1>
 
         <p class="hero-fade-in"
@@ -266,44 +269,44 @@
               color:rgba(255,255,255,0.75);
               max-width:220px; 
            ">
-            Engineered luminaires for modern spaces.
+            {% trans "Engineered luminaires for modern spaces." %}
         </p>
 
     </div>
 </div>
   <!-- Prev / Next -->
-  <button id="hero-prev" class="hero-nav-btn" aria-label="Previous slide">
+  <button id="hero-prev" class="hero-nav-btn" aria-label="{% trans 'Previous slide' %}">
     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
-  <button id="hero-next" class="hero-nav-btn" aria-label="Next slide">
+  <button id="hero-next" class="hero-nav-btn" aria-label="{% trans 'Next slide' %}">
     <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
   </button>
 
   <!-- Desktop content -->
   <div class="hero-desktop-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
               min-h-[100svh] flex items-center">
-    <div class="max-w-3xl text-center md:text-left">
+    <div class="max-w-3xl">
       <h1 class="hero-fade-in font-black uppercase leading-[0.95] tracking-tight text-white mb-6
                  text-5xl md:text-6xl lg:text-7xl" style="animation-delay:0.1s;">
-        Precision Lighting<br>
-        <span class="text-[#800000]">for Modern</span><br>
-        Architecture
+        {% trans "Precision Lighting" %}<br>
+        <span class="text-[#800000]">{% trans "for Modern" %}</span><br>
+        {% trans "Architecture" %}
       </h1>
       <p class="hero-fade-in text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12" style="animation-delay:0.3s;">
-        Engineered luminaires for facade, landscape and exterior spaces.
+        {% trans "Engineered luminaires for facade, landscape and exterior spaces." %}
       </p>
       <div class="hero-fade-in flex flex-row flex-wrap gap-4" style="animation-delay:0.5s;">
         <a href="/projects"
            class="group px-10 py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
                   uppercase font-semibold transition-all duration-300 hover:bg-[#b91c1c]
                   hover:shadow-[0_0_40px_rgba(204,26,26,0.4)]">
-          View Projects <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+          {% trans "View Projects" %} <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
         </a>
         <a href="/products"
            class="group px-10 py-5 border-2 border-white/20 text-white text-[11px]
                   tracking-[3px] uppercase font-semibold transition-all duration-300
                   hover:border-white/40 hover:bg-white/5">
-          Explore Products <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+          {% trans "Explore Products" %} <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
         </a>
       </div>
     </div>
@@ -319,24 +322,24 @@
 
   <!-- Dots -->
   <div class="hero-dots-wrap absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-    <div id="hero-dots" class="flex items-center gap-2" role="tablist" aria-label="Hero slides">
-      <button class="dot-wrap active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1">
+    <div id="hero-dots" class="flex items-center gap-2" role="tablist" aria-label="{% trans 'Hero slides' %}">
+      <button class="dot-wrap active" data-index="0" role="tab" aria-selected="true" aria-label="{% trans 'Slide 1' %}">
         <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
         <div class="dot-center"><span></span></div>
       </button>
-      <button class="dot-wrap" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2">
+      <button class="dot-wrap" data-index="1" role="tab" aria-selected="false" aria-label="{% trans 'Slide 2' %}">
         <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
         <div class="dot-center"><span></span></div>
       </button>
-      <button class="dot-wrap" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3">
+      <button class="dot-wrap" data-index="2" role="tab" aria-selected="false" aria-label="{% trans 'Slide 3' %}">
         <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
         <div class="dot-center"><span></span></div>
       </button>
-      <button class="dot-wrap" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4">
+      <button class="dot-wrap" data-index="3" role="tab" aria-selected="false" aria-label="{% trans 'Slide 4' %}">
         <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
         <div class="dot-center"><span></span></div>
       </button>
-      <button class="dot-wrap" data-index="4" role="tab" aria-selected="false" aria-label="Slide 5">
+      <button class="dot-wrap" data-index="4" role="tab" aria-selected="false" aria-label="{% trans 'Slide 5' %}">
         <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
         <div class="dot-center"><span></span></div>
       </button>
@@ -356,17 +359,17 @@
       <div class="max-w-2xl">
         <h2 id="projects-heading"
             class="animate-fade text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
-          Featured <span class="text-[#800000]">Projects</span>
+          {% trans "Featured" %} <span class="text-[#800000]">{% trans "Projects" %}</span>
         </h2>
         <p class="animate-fade section-desc text-gray-500 text-sm md:text-lg font-light">
-          Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments.
+          {% trans "Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments." %}
         </p>
       </div>
       <a href="/projects"
          class="animate-fade all-btn hidden shrink-0 md:inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4
                 bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
                 font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
-        All Projects <span>→</span>
+        {% trans "All Projects" %} <span>→</span>
       </a>
     </div>
 
@@ -375,7 +378,7 @@
       <a href="/projects/diamond-boutique/" class="animate-fade-scale group block">
         <div class="relative overflow-hidden rounded-xl">
           <img src="{% static 'images/projects/project1.jpg' %}"
-               alt="Diamond Boutique"
+               alt="{% trans 'Diamond Boutique' %}"
                class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
           <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
@@ -383,10 +386,10 @@
           <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
             <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
                          bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
-              Retail · Tehran, Iran
+              {% trans "Retail" %} · {% trans "Tehran, Iran" %}
             </span>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">Diamond Boutique</h3>
-            <p class="text-xs sm:text-sm text-white/60 font-light">Track lighting system · 3000K warm white</p>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">{% trans "Diamond Boutique" %}</h3>
+            <p class="text-xs sm:text-sm text-white/60 font-light">{% trans "Track lighting system · 3000K warm white" %}</p>
           </div>
         </div>
       </a>
@@ -394,7 +397,7 @@
       <a href="projects/private-villa/" class="animate-fade-scale group block">
         <div class="relative overflow-hidden rounded-xl">
           <img src="{% static 'images/projects/project2.jpg' %}"
-               alt="Private Villa"
+               alt="{% trans 'Private Villa' %}"
                class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
           <div class="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/10 transition-all duration-500"></div>
@@ -402,10 +405,10 @@
           <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
             <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
                          bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
-              Residential · Tehran, Iran
+              {% trans "Residential" %} · {% trans "Tehran, Iran" %}
             </span>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">Private Villa</h3>
-            <p class="text-xs sm:text-sm text-white/60 font-light">Custom linear LED · DALI control</p>
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">{% trans "Private Villa" %}</h3>
+            <p class="text-xs sm:text-sm text-white/60 font-light">{% trans "Custom linear LED · DALI control" %}</p>
           </div>
         </div>
       </a>
@@ -416,7 +419,7 @@
             class="animate-fade all-btn mt-4 inline-flex md:hidden items-center gap-2 px-6 sm:px-8 py-4 sm:py-4
                     bg-[#800000] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
                     font-semibold hover:bg-[#b91c1c] transition-all duration-300 self-start sm:self-auto">
-            All Projects <span>→</span>
+            {% trans "All Projects" %} <span>→</span>
             </a>
         </div>
     </div>
@@ -434,24 +437,24 @@
       <div>
         <h2 id="categories-heading"
             class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase text-white">
-          Product <span class="text-[#800000]">Categories</span>
+          {% trans "Product" %} <span class="text-[#800000]">{% trans "Categories" %}</span>
         </h2>
         <p class="animate-fade section-desc text-sm md:text-lg text-white/60 mt-2 md:mt-4 font-light">
-          Architectural lighting solutions designed for commercial, residential and outdoor applications.
+          {% trans "Architectural lighting solutions designed for commercial, residential and outdoor applications." %}
         </p>
       </div>
       <div class="animate-fade hidden md:flex flex-wrap items-center gap-3 sm:justify-end">
         <button id="cat-prev"
             class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
                    flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all"
-            aria-label="Previous category">←</button>
+            aria-label="{% trans 'Previous category' %}">←</button>
         <button id="cat-next"
             class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
                    flex items-center justify-center hover:bg-[#800000] hover:border-[#800000] transition-all"
-            aria-label="Next category">→</button>
+            aria-label="{% trans 'Next category' %}">→</button>
             <a href="/products"
    class="px-5 sm:px-6 py-4 hidden md:block sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
-          tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">All Categories</a>
+          tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">{% trans "All Categories" %}</a>
         </div>
     </div>
     
@@ -461,44 +464,44 @@
     <a href="/low-voltage-magnet-light/"
     class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
     h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-    <img src="{% static 'images/categories/magnet.jpg' %}" alt="Magnet Linear"
+    <img src="{% static 'images/categories/magnet.jpg' %}" alt="{% trans 'Magnet Linear' %}"
     class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-        <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Low Voltage Magneto</h3>
+        <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Low Voltage Magneto" %}</h3>
     </div>
 </a>
 
 <a href="/linear/"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/linear.jpg' %}" alt="Linear"
+<img src="{% static 'images/categories/linear.jpg' %}" alt="{% trans 'Linear' %}"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Linear</h3>
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Linear" %}</h3>
 </div>
 </a>
 
 <a href="/industrial/"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/industrail.jpg' %}" alt="Industrial"
+<img src="{% static 'images/categories/industrail.jpg' %}" alt="{% trans 'Industrial' %}"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Industrial</h3>
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Industrial" %}</h3>
 </div>
 </a>
 
 <a href="/panel-downlight/"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/panel.jpg' %}" alt="Panel & Downlights"
+<img src="{% static 'images/categories/panel.jpg' %}" alt="{% trans 'Panel & Downlights' %}"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Panel & Downlights</h3>
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Panel & Downlights" %}</h3>
 </div>
 </a>
 
@@ -506,23 +509,23 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
 <div class="absolute inset-0 flex items-center justify-center">
-    <img src="{% static 'images/categories/deco.jpg' %}" alt="Decorative"
+    <img src="{% static 'images/categories/deco.jpg' %}" alt="{% trans 'Decorative' %}"
     class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 </div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Decorative</h3>
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Decorative" %}</h3>
 </div>
 </a>
 
 <a href="/outdoor/"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/i.jpg' %}" alt="Outdoor"
+<img src="{% static 'images/categories/i.jpg' %}" alt="{% trans 'Outdoor' %}"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Outdoor</h3>
+    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Outdoor" %}</h3>
 </div>
 </a>
 
@@ -530,7 +533,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 <div class="w-full mt-2 flex items-center justify-center">
     <a href="/products"
        class="animate-fade px-5 sm:px-6 py-4 sm:py-3 bg-[#800000] text-white text-[10px] sm:text-[11px]
-              tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">All Categories</a>
+              tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all">{% trans "All Categories" %}</a>
     </div>
 </div>
 </section>
@@ -547,19 +550,19 @@ aria-labelledby="applications-heading">
         <div>
             <h2 id="applications-heading"
             class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase">
-          Solutions by <span class="text-[#800000]">Application</span>
+          {% trans "Solutions by" %} <span class="text-[#800000]">{% trans "Application" %}</span>
         </h2>
         <p class="animate-fade section-desc text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
-          Tailored lighting systems for every architectural context
+          {% trans "Tailored lighting systems for every architectural context" %}
         </p>
       </div>
       <div class="animate-fade hidden md:flex gap-3 self-start sm:self-auto">
         <button class="app-prev w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
                        rounded-full flex items-center justify-center transition text-black"
-                aria-label="Previous application">←</button>
+                aria-label="{% trans 'Previous application' %}">←</button>
         <button class="app-next w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
                        rounded-full flex items-center justify-center transition text-black"
-                aria-label="Next application">→</button>
+                aria-label="{% trans 'Next application' %}">→</button>
       </div>
     </div>
 
@@ -567,19 +570,19 @@ aria-labelledby="applications-heading">
 
       <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/retail1.png' %}" alt="Retail"
+        <img src="{% static 'images/categories/retail1.png' %}" alt="{% trans 'Retail' %}"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
           <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Retail Spaces</h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Retail Spaces" %}</h3>
             <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              Precision lighting designed to highlight products and create immersive retail environments.
+              {% trans "Precision lighting designed to highlight products and create immersive retail environments." %}
             </p>
             <a href="/applications/retail"
                class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
                       text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              Explore Solutions
+              {% trans "Explore Solutions" %}
             </a>
           </div>
         </div>
@@ -587,19 +590,19 @@ aria-labelledby="applications-heading">
 
       <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="Hospitality"
+        <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="{% trans 'Hospitality' %}"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
           <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Hospitality</h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Hospitality" %}</h3>
             <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              Elegant lighting systems that enhance ambience for hotels, restaurants and lounges.
+              {% trans "Elegant lighting systems that enhance ambience for hotels, restaurants and lounges." %}
             </p>
             <a href="/applications/hospitality"
                class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
                       text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              Explore Solutions
+              {% trans "Explore Solutions" %}
             </a>
           </div>
         </div>
@@ -607,19 +610,19 @@ aria-labelledby="applications-heading">
 
       <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
                   h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/office1.webp' %}" alt="Office"
+        <img src="{% static 'images/categories/office1.webp' %}" alt="{% trans 'Office' %}"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
           <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">Office &amp; Workplace</h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Office &amp; Workplace" %}</h3>
             <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              Human‑centric lighting solutions designed to improve productivity and visual comfort.
+              {% trans "Human‑centric lighting solutions designed to improve productivity and visual comfort." %}
             </p>
             <a href="/applications/office"
                class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
                       text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              Explore Solutions
+              {% trans "Explore Solutions" %}
             </a>
           </div>
         </div>
@@ -636,7 +639,7 @@ aria-labelledby="applications-heading">
 <section id="about" class="philosophy-grid bg-[#0a0a0a]" aria-labelledby="about-heading">
 
   <div class="relative overflow-hidden" style="min-height:320px;">
-    <img src="{% static 'images/iii.jpg' %}" alt="Architectural lighting detail"
+    <img src="{% static 'images/iii.jpg' %}" alt="{% trans 'Architectural lighting detail' %}"
          class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-110
                 transition-transform duration-[900ms] hover:scale-105">
     <div class="absolute inset-0"
@@ -645,21 +648,22 @@ aria-labelledby="applications-heading">
 
   <div class="philosophy-text flex flex-col justify-center px-6 sm:px-8 md:px-16 py-12 md:py-20">
     <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-6 animate-fade">
-      Our Philosophy
+      {% trans "Our Philosophy" %}
     </p>
     <h2 id="about-heading"
         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight uppercase text-white mb-4 sm:mb-6 animate-fade">
-      We believe light shapes<br><span class="text-[#800000]">experience</span>
+      {% trans "We believe light shapes" %}<br><span class="text-[#800000]">{% trans "experience" %}</span>
     </h2>
     <p class="text-white/50 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-md mb-8 sm:mb-10 animate-fade">
-      Every beam, every shadow, every reflection is an opportunity to transform space into emotion.
-      For over three decades, we've partnered with architects and designers to realize their most ambitious visions
-      through precision-engineered lighting solutions.
+      {% if LANGUAGE_CODE == 'fa' %}هر پرتو نور، هر سایه، هر بازتاب فرصتی است برای تبدیل فضا به احساس.
+      بیش از سه دهه است که با معماران و طراحان همکاری کرده‌ایم تا جاه‌طلبانه‌ترین چشم‌اندازهای آن‌ها را
+      از طریق راهکارهای روشنایی مهندسی‌شده با دقت بالا محقق کنیم.
+{% else %}Every beam, every shadow, every reflection is an opportunity to transform space into emotion. For over three decades, we've partnered with architects and designers to realize their most ambitious visions through precision-engineered lighting solutions.{% endif %}
     </p>
     <a href="/about"
        class="self-start px-6 sm:px-8 py-3 sm:py-4 bg-[#800000] text-white text-[10px] sm:text-[11px]
               tracking-[3px] uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 animate-fade">
-      Our Story →
+      {% trans "Our Story" %} →
     </a>
   </div>
 
@@ -677,29 +681,30 @@ aria-labelledby="applications-heading">
                  text-black/[0.03] leading-none whitespace-nowrap">VERONA</span>
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-    <p class="animate-fade text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-5">Start a Project</p>
+    <p class="animate-fade text-[10px] font-semibold tracking-[4px] uppercase text-[#800000] mb-4 sm:mb-5">{% trans "Start a Project" %}</p>
     <h2 id="cta-heading"
         class="animate-fade text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-5 leading-tight uppercase">
-      Ready to Illuminate Your <span class="text-[#800000]">Next Project?</span>
+      {% trans "Ready to Illuminate Your" %} <span class="text-[#800000]">{% trans "Next Project?" %}</span>
     </h2>
     <p class="animate-fade text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto font-light">
-      Get expert consultation and custom lighting solutions tailored to your architectural vision.
+      {% trans "Get expert consultation and custom lighting solutions tailored to your architectural vision." %}
     </p>
     <div class="animate-fade flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
       <a href="/contact"
          class="px-8 md:px-10 py-4 md:py-5 bg-[#800000] text-white text-[11px] tracking-[3px]
                 uppercase font-semibold hover:bg-[#b91c1c] transition-all duration-300 w-full sm:w-auto">
-        Contact Us →
+        {% trans "Contact Us" %} →
       </a>
       <a href="/catalog"
          class="px-8 md:px-10 py-4 md:py-5 border-2 border-gray-300 text-black text-[11px]
                 tracking-[3px] uppercase font-semibold hover:border-gray-500 hover:bg-black/5
                 transition-all duration-300 w-full sm:w-auto">
-        Download Catalog ↓
+        {% trans "Download Catalog" %} ↓
       </a>
     </div>
   </div>
 </section>
+</div>
 
 
 <script>

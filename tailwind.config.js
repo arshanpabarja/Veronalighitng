@@ -6,6 +6,7 @@ module.exports = {
         montserrat: ['Montserrat', 'sans-serif'],
         sans: ['Inter','sans-serif'],
         orbitron: ['Orbitron', 'sans-serif'],
+        vazir: ['Vazirmatn', 'sans-serif'],
       },
     },
   },

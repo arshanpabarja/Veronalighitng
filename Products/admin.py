@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html, mark_safe
 from .models import Project, ProjectGalleryImage, ProjectDownload
+from modeltranslation.admin import TranslationAdmin
 
 from .models import (
     Application, Category, Finish, Family,
@@ -10,7 +11,7 @@ from .models import (
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display        = ['name', 'parent', 'is_active', 'thumbnail_preview', 'created_at']
     list_filter         = ['parent', 'is_active']
     search_fields       = ['name', 'description']
@@ -38,7 +39,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Family)
-class FamilyAdmin(admin.ModelAdmin):
+class FamilyAdmin(TranslationAdmin):
     list_display        = ['id', 'number','name', 'category', 'logo_preview', 'get_applications', 'is_active']
     list_filter         = ['is_active', 'category']
     search_fields       = ['name']
@@ -137,7 +138,7 @@ class ProductVariantAdmin(admin.ModelAdmin):
 
 
 @admin.register(Application)
-class ApplicationAdmin(admin.ModelAdmin):
+class ApplicationAdmin(TranslationAdmin):
     list_display        = ['name', 'is_active', 'sort_order']
     list_editable       = ['is_active', 'sort_order']
     prepopulated_fields = {'slug': ('name',)}
@@ -161,8 +162,8 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display        = ['order',
+class ProductAdmin(TranslationAdmin):
+    list_display        = ['id','order',
         'name', 'category', 'family',
         'wattage', 'dimmable',
         'thumbnail_preview', 'is_active', 'updated_at'
@@ -311,7 +312,7 @@ class ProjectDownloadInline(admin.TabularInline):
 
 
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(TranslationAdmin):
     list_display  = ("name", "location", "project_type", 'application', "completion_year", "is_published", "order")
     list_editable = ("is_published", "order")
     list_filter   = ("is_published", "project_type")

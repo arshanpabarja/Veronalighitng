@@ -7,12 +7,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l$m0t@wvb)-(u8(!&m=4gy=noy91ay8-6undiu5u4+@1#di7+-'
 
-DEBUG = False
+DEBUG = True
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
     ALLOWED_HOSTS = ["veronalighting.co", "www.veronalighting.co", "185.205.203.15"]
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -44,6 +46,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Products.context_processors.navbar_categories',
@@ -81,13 +84,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
 
 STATIC_URL = '/static/'
 
@@ -101,3 +98,22 @@ MEDIA_URL = '/media/'
 
 
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGE_CODE = "fa"
+
+LANGUAGES = [
+    ("fa", _("فارسی")),
+    ("en", _("English")),
+]
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'fa'
+MODELTRANSLATION_LANGUAGES = ('en', 'fa')
+
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
+
+
+
+from dotenv import load_dotenv
+load_dotenv()

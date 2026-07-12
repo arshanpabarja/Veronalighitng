@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-05 21:32+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\Veronalighting\settings.py:106
+msgid "English"
+msgstr "انگلیسی"
+
+#: .\Veronalighting\settings.py:107
+msgid "فارسی"
+msgstr "فارسی"
+
+#: .\templates\includes\navbar.html:23 .\templates\includes\navbar.html:30
+#: .\templates\includes\navbar.html:187
+msgid "logo"
+msgstr "لوگو"
+
+#: .\templates\includes\navbar.html:46 .\templates\includes\navbar.html:202
+#: .\templates\includes\navbar.html:256 .\templates\includes\navbar.html:283
+msgid "Products"
+msgstr "محصولات"
+
+#: .\templates\includes\navbar.html:53 .\templates\includes\navbar.html:259
+#: .\templates\includes\navbar.html:368
+msgid "All Products"
+msgstr "همه محصولات"
+
+#: .\templates\includes\navbar.html:54
+msgid "Explore our complete range of professional lighting solutions."
+msgstr "مجموعه کامل راهکارهای روشنایی حرفه‌ای ما را کشف کنید."
+
+#: .\templates\includes\navbar.html:74
+#, python-format
+msgid "%(cat_name)s – All Products"
+msgstr "%(cat_name)s – همه محصولات"
+
+#: .\templates\includes\navbar.html:92 .\templates\includes\navbar.html:210
+#: .\templates\includes\navbar.html:315
+msgid "Applications"
+msgstr "کاربردها"
+
+#: .\templates\includes\navbar.html:99 .\templates\includes\navbar.html:218
+#: .\templates\includes\navbar.html:349
+msgid "Company"
+msgstr "شرکت"
+
+#: .\templates\includes\navbar.html:106
+msgid "About Company"
+msgstr "درباره شرکت"
+
+#: .\templates\includes\navbar.html:107
+msgid ""
+"Learn about our lighting philosophy, craftsmanship, innovation, and brand "
+"story."
+msgstr "درباره فلسفه روشنایی، مهارت، نوآوری و داستان برند ما بیشتر بدانید."
+
+#: .\templates\includes\navbar.html:110 .\templates\includes\navbar.html:350
+msgid "About Verona"
+msgstr "درباره ورونا"
+
+#: .\templates\includes\navbar.html:111 .\templates\includes\navbar.html:351
+#: .\templates\index.html:501
+msgid "Our Story"
+msgstr "داستان ما"
+
+#: .\templates\includes\navbar.html:112 .\templates\includes\navbar.html:352
+#: .\templates\index.html:531
+msgid "Contact Us"
+msgstr "تماس با ما"
+
+#: .\templates\includes\navbar.html:122 .\templates\includes\navbar.html:225
+#: .\templates\includes\navbar.html:359
+msgid "Services"
+msgstr "خدمات"
+
+#: .\templates\includes\navbar.html:129 .\templates\includes\navbar.html:233
+#: .\templates\index.html:198
+msgid "Projects"
+msgstr "منتخب"
+
+#: .\templates\includes\navbar.html:156
+msgid "Search"
+msgstr "جستجو"
+
+#: .\templates\includes\navbar.html:161
+msgid "Open menu"
+msgstr "باز کردن منو"
+
+#: .\templates\includes\navbar.html:198
+msgid "Menu"
+msgstr "منو"
+
+#: .\templates\includes\navbar.html:247 .\templates\includes\navbar.html:306
+#: .\templates\includes\navbar.html:340
+msgid "All"
+msgstr "همه"
+
+#: .\templates\includes\navbar.html:318
+msgid "All Applications"
+msgstr "همه کاربردها"
+
+#: .\templates\index.html:46
+msgid "Verona Lighting"
+msgstr "روشنایی ورونا"
+
+#: .\templates\index.html:49
+msgid "Architectural lighting slide 2"
+msgstr "اسلاید ۲ روشنایی معماری"
+
+#: .\templates\index.html:52
+msgid "Architectural lighting slide 3"
+msgstr "اسلاید ۳ روشنایی معماری"
+
+#: .\templates\index.html:55
+msgid "Architectural lighting slide 4"
+msgstr "اسلاید ۴ روشنایی معماری"
+
+#: .\templates\index.html:58
+msgid "Architectural lighting slide 5"
+msgstr "اسلاید ۵ روشنایی معماری"
+
+#: .\templates\index.html:81
+msgid "Architectural Lighting"
+msgstr "روشنایی معماری"
+
+#: .\templates\index.html:94 .\templates\index.html:127
+msgid "Precision Lighting"
+msgstr "روشنایی دقیق"
+
+#: .\templates\index.html:95 .\templates\index.html:128
+msgid "for Modern"
+msgstr "برای معماری"
+
+#: .\templates\index.html:96 .\templates\index.html:129
+msgid "Architecture"
+msgstr "مدرن"
+
+#: .\templates\index.html:107
+msgid "Engineered luminaires for modern spaces."
+msgstr "چراغ‌های مهندسی‌شده برای فضاهای مدرن."
+
+#: .\templates\index.html:114
+msgid "Previous slide"
+msgstr "اسلاید قبلی"
+
+#: .\templates\index.html:117
+msgid "Next slide"
+msgstr "اسلاید بعدی"
+
+#: .\templates\index.html:132
+msgid "Engineered luminaires for facade, landscape and exterior spaces."
+msgstr "چراغ‌های مهندسی‌شده برای نما، محوطه‌سازی و فضاهای بیرونی."
+
+#: .\templates\index.html:139
+msgid "View Projects"
+msgstr "مشاهده پروژه‌ها"
+
+#: .\templates\index.html:145
+msgid "Explore Products"
+msgstr "مشاهده محصولات"
+
+#: .\templates\index.html:161
+msgid "Hero slides"
+msgstr "اسلایدهای اصلی"
+
+#: .\templates\index.html:162
+msgid "Slide 1"
+msgstr "اسلاید ۱"
+
+#: .\templates\index.html:166
+msgid "Slide 2"
+msgstr "اسلاید ۲"
+
+#: .\templates\index.html:170
+msgid "Slide 3"
+msgstr "اسلاید ۳"
+
+#: .\templates\index.html:174
+msgid "Slide 4"
+msgstr "اسلاید ۴"
+
+#: .\templates\index.html:178
+msgid "Slide 5"
+msgstr "اسلاید ۵"
+
+#: .\templates\index.html:198
+msgid "Featured"
+msgstr "پروژه های"
+
+#: .\templates\index.html:201
+msgid ""
+"Lighting solutions that transform architectural spaces across retail, "
+"hospitality, and commercial environments."
+msgstr "راهکارهای روشنایی که فضاهای معماری را در محیط‌های فضا های تجاری و مهمان نوازی متحول می‌کنند."
+
+#: .\templates\index.html:208 .\templates\index.html:258
+msgid "All Projects"
+msgstr "همه پروژه‌ها"
+
+#: .\templates\index.html:217 .\templates\index.html:227
+msgid "Diamond Boutique"
+msgstr "بوتیک الماس"
+
+#: .\templates\index.html:225 .\templates\index.html:409
+msgid "Retail"
+msgstr "فضا های تجاری"
+
+#: .\templates\index.html:225 .\templates\index.html:244
+msgid "Tehran, Iran"
+msgstr "تهران، ایران"
+
+#: .\templates\index.html:228
+msgid "Track lighting system · 3000K warm white"
+msgstr "سیستم ریلی نورپردازی · نور سفید گرم ۳۰۰۰ کلوین"
+
+#: .\templates\index.html:236 .\templates\index.html:246
+msgid "Private Villa"
+msgstr "ویلای خصوصی"
+
+#: .\templates\index.html:244
+msgid "Residential"
+msgstr "مسکونی"
+
+#: .\templates\index.html:247
+msgid "Custom linear LED · DALI control"
+msgstr "چراغ خطی سفارشی LED · کنترل DALI"
+
+#: .\templates\index.html:276
+msgid "Product"
+msgstr "دسته‌بندی"
+
+#: .\templates\index.html:276
+msgid "Categories"
+msgstr "محصولات"
+
+#: .\templates\index.html:279
+msgid ""
+"Architectural lighting solutions designed for commercial, residential and "
+"outdoor applications."
+msgstr "راهکارهای روشنایی معماری طراحی‌شده برای کاربردهای تجاری، مسکونی و بیرونی."
+
+#: .\templates\index.html:286
+msgid "Previous category"
+msgstr "دسته قبلی"
+
+#: .\templates\index.html:290
+msgid "Next category"
+msgstr "دسته بعدی"
+
+#: .\templates\index.html:293 .\templates\index.html:372
+msgid "All Categories"
+msgstr "همه دسته‌بندی‌ها"
+
+#: .\templates\index.html:303
+msgid "Magnet Linear"
+msgstr "خطی مگنتی"
+
+#: .\templates\index.html:307
+msgid "Low Voltage Magneto"
+msgstr "مگنتو ولتاژ پایین"
+
+#: .\templates\index.html:314 .\templates\index.html:318
+msgid "Linear"
+msgstr "خطی"
+
+#: .\templates\index.html:325 .\templates\index.html:329
+msgid "Industrial"
+msgstr "صنعتی"
+
+#: .\templates\index.html:336 .\templates\index.html:340
+msgid "Panel & Downlights"
+msgstr "پنل و داونلایت"
+
+#: .\templates\index.html:348 .\templates\index.html:353
+msgid "Decorative"
+msgstr "تزئینی"
+
+#: .\templates\index.html:360 .\templates\index.html:364
+msgid "Outdoor"
+msgstr "محوطه بیرونی"
+
+#: .\templates\index.html:389
+msgid "Solutions by"
+msgstr "راهکارها بر اساس"
+
+#: .\templates\index.html:389
+msgid "Application"
+msgstr "کاربرد"
+
+#: .\templates\index.html:392
+msgid "Tailored lighting systems for every architectural context"
+msgstr "سیستم‌های روشنایی متناسب با هر بستر معماری"
+
+#: .\templates\index.html:398
+msgid "Previous application"
+msgstr "کاربرد قبلی"
+
+#: .\templates\index.html:401
+msgid "Next application"
+msgstr "کاربرد بعدی"
+
+#: .\templates\index.html:414
+msgid "Retail Spaces"
+msgstr "فضاهای تجاری"
+
+#: .\templates\index.html:416
+msgid ""
+"Precision lighting designed to highlight products and create immersive "
+"retail environments."
+msgstr "روشنایی دقیق طراحی‌شده برای برجسته‌سازی محصولات و ایجاد محیط‌های تجاری غوطه‌ور."
+
+#: .\templates\index.html:421 .\templates\index.html:441
+#: .\templates\index.html:461
+msgid "Explore Solutions"
+msgstr "مشاهده راهکارها"
+
+#: .\templates\index.html:429 .\templates\index.html:434
+msgid "Hospitality"
+msgstr "مهمان‌نوازی"
+
+#: .\templates\index.html:436
+msgid ""
+"Elegant lighting systems that enhance ambience for hotels, restaurants and "
+"lounges."
+msgstr "سیستم‌های روشنایی شیک که فضای هتل‌ها، رستوران‌ها و سالن‌های نشیمن را بهبود می‌بخشند."
+
+#: .\templates\index.html:449
+msgid "Office"
+msgstr "اداری"
+
+#: .\templates\index.html:454
+msgid "Office &amp; Workplace"
+msgstr "اداری و محیط کار"
+
+#: .\templates\index.html:456
+msgid ""
+"Human‑centric lighting solutions designed to improve productivity and visual "
+"comfort."
+msgstr "راهکارهای روشنایی انسان‌محور طراحی‌شده برای افزایش بهره‌وری و آسایش بصری."
+
+#: .\templates\index.html:478
+msgid "Architectural lighting detail"
+msgstr "جزئیات روشنایی معماری"
+
+#: .\templates\index.html:487
+msgid "Our Philosophy"
+msgstr "فلسفه ما"
+
+#: .\templates\index.html:491
+msgid "We believe light shapes"
+msgstr "ما معتقدیم نور شکل‌دهنده"
+
+#: .\templates\index.html:491
+msgid "experience"
+msgstr "تجربه است"
+
+#: .\templates\index.html:494
+msgid ""
+"Every beam, every shadow, every reflection is an opportunity to transform "
+"space into emotion.\n"
+"      For over three decades, we've partnered with architects and designers "
+"to realize their most ambitious visions\n"
+"      through precision-engineered lighting solutions."
+msgstr ""
+"هر پرتو نور، هر سایه، هر بازتاب فرصتی است برای تبدیل فضا به احساس.\n"
+"      بیش از سه دهه است که با معماران و طراحان همکاری کرده‌ایم تا جاه‌طلبانه‌ترین چشم‌اندازهای آن‌ها را\n"
+"      از طریق راهکارهای روشنایی مهندسی‌شده با دقت بالا محقق کنیم."
+
+#: .\templates\index.html:519
+msgid "Start a Project"
+msgstr "شروع یک پروژه"
+
+#: .\templates\index.html:522
+msgid "Ready to Illuminate Your"
+msgstr "آماده‌اید تا"
+
+#: .\templates\index.html:522
+msgid "Next Project?"
+msgstr "پروژه بعدی خود را روشن کنید؟"
+
+#: .\templates\index.html:525
+msgid ""
+"Get expert consultation and custom lighting solutions tailored to your "
+"architectural vision."
+msgstr "از مشاوره تخصصی و راهکارهای روشنایی سفارشی متناسب با چشم‌انداز معماری خود بهره‌مند شوید."
+
+#: .\templates\index.html:537
+msgid "Download Catalog"
+msgstr "دانلود کاتالوگ"

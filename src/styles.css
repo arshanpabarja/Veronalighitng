@@ -110,17 +110,26 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     font-weight: 400; /* This triggers the Regular file */
     font-size: 16px;
     background: #fff;
     color: var(--text);
     line-height: 1.6;
 }
+
 h1, h2, h3, h4, strong {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: -0.02em;
     color: #2d3748;
+}
+
+html[lang="fa"] h1,
+html[lang="fa"] h2,
+html[lang="fa"] h3,
+html[lang="fa"] h4,
+html[lang="fa"] strong {
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
 }
 
 /* ── HERO VIDEO ── */
