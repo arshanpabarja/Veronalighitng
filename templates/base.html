@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_CODE == 'fa' %}dir="rtl"{% endif %}>
 
 <head>
     <meta charset="UTF-8">
@@ -19,6 +19,7 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     {% block extra_head %}{% endblock %}
 </head>
+
 
 <style>
 /* Default (mobile) */
@@ -46,7 +47,7 @@
 
 <main
     class="main-padding"
-    style="{% if request.path == '/' %}padding-top:0;{% endif %}"
+    style="{% if request.path == '/' or request.path == '/en/' %}padding-top:0;{% endif %}"
 >
     {% block content %}
     {% endblock %}

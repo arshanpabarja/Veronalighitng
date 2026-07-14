@@ -201,7 +201,7 @@ class Family(models.Model):
         return self.meta_description or self.subtitle or ''
 
     def __str__(self):
-        return self.name
+        return self.name_en
 
 
 class Finish(models.Model):

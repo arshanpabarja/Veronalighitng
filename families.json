@@ -1,0 +1,954 @@
+[
+    {
+        "id": 108,
+        "name": "LIBER",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ تزئینی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 61,
+        "name": "Magnet Track",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 37,
+        "name": "MAGNETO  LINEAR",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 62,
+        "name": "MAGNETO DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 63,
+        "name": "MAGNETO ROTATE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 64,
+        "name": "MAGNETO ROTATE DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 65,
+        "name": "MAGNETO  ANGLE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 66,
+        "name": "MAGNETO ANGLE DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 69,
+        "name": "MAGNETO SPOT 65",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 70,
+        "name": "MAGNETO  SMALL SPOT 35",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 71,
+        "name": "MAGNETO PENDANT 65",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 72,
+        "name": "MAGNETO PENDANT 35",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 73,
+        "name": "MAGNETO TUBE PLAXI",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 75,
+        "name": "MAGNETO LARGE FLEXIBLE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 77,
+        "name": "MAGNETO LARGE SPOT  LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 79,
+        "name": "MAGNETO SIGN EMERGENCY",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 67,
+        "name": "MAGNETO SPOT DOT PANEL",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 68,
+        "name": "MAGNETO SPOT PANEL",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت لارج (4cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 113,
+        "name": "HELY",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ تزئینی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 112,
+        "name": "ARIN",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ تزئینی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 131,
+        "name": "Folcano",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 134,
+        "name": "Virgo Double",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 135,
+        "name": "Pollux Double",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 85,
+        "name": "SP LINEO",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "توکار",
+        "applications": []
+    },
+    {
+        "id": 48,
+        "name": "BD LINEO",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "توکار",
+        "applications": []
+    },
+    {
+        "id": 95,
+        "name": "MD LINEO",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "سطحی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 49,
+        "name": "MD LINEO",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 97,
+        "name": "TABAN",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 101,
+        "name": "HALOO",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 100,
+        "name": "PERANSA",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 123,
+        "name": "Virgo",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 124,
+        "name": "Virgo C",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 125,
+        "name": "Vega",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 126,
+        "name": "Fornax",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 127,
+        "name": "Pollux",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 149,
+        "name": "BAHAR",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 150,
+        "name": "Magneto Belt",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت بلت",
+        "applications": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 157,
+        "name": "Karen Highbay",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ صنعتی",
+        "applications": []
+    },
+    {
+        "id": 136,
+        "name": "Castor",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 158,
+        "name": "1PH Pendant & Surface",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "تک فاز",
+        "applications": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 161,
+        "name": "1PH L Corner Internal",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "تک فاز",
+        "applications": []
+    },
+    {
+        "id": 162,
+        "name": "3PH L Corner Internal",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "سه فاز",
+        "applications": []
+    },
+    {
+        "id": 163,
+        "name": "1PH Spot Light",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "تک فاز",
+        "applications": []
+    },
+    {
+        "id": 164,
+        "name": "3PH Spot Light",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "سه فاز",
+        "applications": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 156,
+        "name": "PD-Inground",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "دفنی",
+        "applications": []
+    },
+    {
+        "id": 159,
+        "name": "Recessed",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "سه فاز",
+        "applications": []
+    },
+    {
+        "id": 82,
+        "name": "MAGNETO SMALL ANGLE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 76,
+        "name": "MAGNET SURFACE & PENDANT SMALL RAIL",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 128,
+        "name": "Pictor",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 147,
+        "name": "TRIMLESS",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 148,
+        "name": "PAYAM",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "پنل",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 151,
+        "name": "Magneto Flexi",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت فلکسی",
+        "applications": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 152,
+        "name": "Magneto Curve",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت کرو",
+        "applications": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 153,
+        "name": "Strip Light",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "",
+        "applications": []
+    },
+    {
+        "id": 154,
+        "name": "Cove Profile",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "",
+        "applications": []
+    },
+    {
+        "id": 83,
+        "name": "MAGNETO SMALL ANGLE DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 86,
+        "name": "MAGNETO SAMLL SPOT LIA",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 87,
+        "name": "MAGNETO SMALL SPOT 55",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 88,
+        "name": "MAGNETO SMALL SPOT 35",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 89,
+        "name": "MAGNETO SMALL FLEXIBLE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 102,
+        "name": "TRITON",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ صنعتی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 110,
+        "name": "MOON",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "فضای باز",
+        "applications": []
+    },
+    {
+        "id": 111,
+        "name": "BAMBO",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "چراغ تزئینی",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 109,
+        "name": "ROSHANA",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "فضای باز",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 94,
+        "name": "MAGNETO SMALL PENDANT 65",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 74,
+        "name": "MAGNETO  RESSED TRACK TRIMLES",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 81,
+        "name": "MAGNETO SMALL ROTATE DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 116,
+        "name": "Spy",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 141,
+        "name": "Caror",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 137,
+        "name": "Virgo 3",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 130,
+        "name": "Blink",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 133,
+        "name": "Vela",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 160,
+        "name": "3PH Pendant & Surface",
+        "subtitle": null,
+        "meta_title": null,
+        "meta_description": "",
+        "category": "سه فاز",
+        "applications": []
+    },
+    {
+        "id": 139,
+        "name": "Cylindra COB",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 132,
+        "name": "Wave",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 129,
+        "name": "Pyxis",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": null,
+        "category": "آویز",
+        "applications": []
+    },
+    {
+        "id": 78,
+        "name": "MAGNETO SMALL DOT LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "id": 80,
+        "name": "MAGNETO SMALL ROTATE LINEAR",
+        "subtitle": "",
+        "meta_title": null,
+        "meta_description": "",
+        "category": "مگنت سمال (۲cm)",
+        "applications": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+]

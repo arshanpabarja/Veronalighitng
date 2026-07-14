@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}{{ category.meta_title|default:category.name }} {% endblock %}
 {% block meta %}
@@ -7,10 +8,8 @@
 <meta name="description" content="{{ category.meta_description|default:category.description|striptags|truncatechars:160 }}">
 <meta name="keywords" content="{{ category.name }}{% for child in children %}, {{ child.name }}{% endfor %}, lighting, روشنایی">
 
-<!-- Canonical -->
 <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' category.slug %}">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ category.meta_title|default:category.name }}">
 <meta property="og:description" content="{{ category.meta_description|default:category.description|striptags|truncatechars:160 }}">
@@ -19,12 +18,10 @@
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ category.icon.url }}">
 {% endif %}
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ category.meta_title|default:category.name }}">
 <meta name="twitter:description" content="{{ category.meta_description|default:category.description|striptags|truncatechars:160 }}">
 
-<!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,13 +30,13 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
+      "name": "{% trans 'Home' %}",
       "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Products",
+      "name": "{% trans 'Products' %}",
       "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}"
     },
     {
@@ -51,7 +48,6 @@
 }
 </script>
 
-<!-- JSON-LD: CollectionPage with subcategories -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,31 +70,27 @@
 
 
 {% block content %}
-<!-- Breadcrumb -->
-<div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
+<div class="max-w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
   <span class="text-[11px] sm:text-sm text-gray-500">
-    <a href="{% url 'home' %}" class="hover:text-[#800000]">Home</a>
+    <a href="{% url 'home' %}" class="hover:text-[#800000]">{% trans "Home" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
-    <a href="/products/" class="hover:text-[#800000]">Products</a>
+    <a href="/products/" class="hover:text-[#800000]">{% trans "Products" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
     <a href="{% url 'products:category_detail' category.slug %}" class="font-medium text-gray-800">{{ category.name }}</a>
   </span>
 </div>
 
-<!-- Thorn‑Style Hero -->
 <section class="bg-white">
 
-  <!-- Hero Content -->
   <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
     <h1 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold  text-[#2d3748] tracking-tight">
       {{ category.name|upper }}
     </h1>
-    <p class="mt-3 sm:mt-6 text-xs sm:text-base md:text-[15px] text-gray-600 leading-relaxed max-w-4xl text-justify mx-auto">
-      {{ category.description|default:"Browse our range of indoor lighting solutions designed for performance, efficiency, and visual comfort." }}
+    <p class="{% if LANGUAGE_CODE == 'fa' %}persian-justify{% endif %} text-justify mt-3 sm:mt-6 text-xs sm:text-base md:text-[15px] text-gray-600 max-w-4xl mx-auto">
+        {{ category.description }}
     </p>
   </div>
 
-  <!-- Sibling Categories -->
   {% if children %}
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
     <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-8 text-center ">
@@ -131,7 +123,6 @@
       {% endfor %}
     </div>
 
-    <!-- Arrow Buttons — hidden on mobile -->
     <div class="hidden sm:flex justify-end gap-3 mt-8">
       <button id="thorn-prev"
               class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
@@ -153,13 +144,12 @@
 
 {% include 'includes/filter_sections.html' %}
 
-<!-- ─── SUBCATEGORIES SECTION ─── -->
 <section id="subcategories" class="py-8 sm:py-10 md:py-12 bg-white">
 
   <div class="flex items-center justify-between gap-3 mb-6 px-4 sm:px-9 sm:mb-9">
     <p class="text-[13px] sm:text-[14px] text-[#888]">
       {% if page_obj %}
-      Showing <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> families in
+        {% blocktrans with count=page_obj.paginator.count %}Showing <strong class="text-[#1a1a1a]">{{ count }}</strong> families in{% endblocktrans %}
       {% endif %}
       <strong class="text-[#800000]">{{ category.name }}</strong>
     </p>
@@ -168,29 +158,28 @@
       <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round] [stroke-linejoin:round]">
         <path d="M4 6h16M7 12h10M10 18h4"/>
       </svg>
-      Filters
+      {% trans "Filters" %}
     </button>
   </div>
 
   {% if families|length == 0 %}
   <div class="text-center py-16">
-    <p class="text-lg text-gray-700">No family match your filters.</p>
-    <p class="text-sm text-gray-400 mt-2">Try adjusting the specs or reset to browse all.</p>
+    <p class="text-lg text-gray-700">{% trans "No family match your filters." %}</p>
+    <p class="text-sm text-gray-400 mt-2">{% trans "Try adjusting the specs or reset to browse all." %}</p>
   </div>
   {% else %}
 
-  <!-- Section Header -->
   <div class="text-center mb-10 px-4">
     <div class="flex items-center justify-center gap-2 mb-4">
       <span class="h-px w-12 bg-[#800000]"></span>
-      <span class="text-xs font-semibold tracking-[2px] uppercase text-[#800000]">families</span>
+      <span class="text-xs font-semibold tracking-[2px] uppercase text-[#800000]">{% trans "families" %}</span>
       <span class="h-px w-12 bg-[#800000]"></span>
     </div>
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold  text-gray-900 mb-3 sm:mb-4">
-      Explore <span class="text-[#800000]">{{ category.name }}</span> families
+      {% blocktrans with name=category.name %}Explore <span class="text-[#800000]">{{ name }}</span> families{% endblocktrans %}
     </h2>
     <p class="text-sm sm:text-base text-gray-600 font-semibold max-w-2xl mx-auto">
-      Choose a family to discover the complete product lineup within this collection.
+      {% trans "Choose a family to discover the complete product lineup within this collection." %}
     </p>
   </div>
 <div id="product-grid" class="max-w-[1800px] mx-auto px-4 sm:px-8 py-6 sm:py-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
@@ -234,7 +223,6 @@
         {% endif %}
       </div>
 
-      <!-- TITLE -->
       <div class="absolute inset-x-6 bottom-6 transition-all duration-300 ease-in-out
                   opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
         <h5 class="text-[20px] font-bold text-[#0d1f3c] uppercase tracking-wide leading-tight">
@@ -242,7 +230,6 @@
         </h5>
       </div>
 
-      <!-- BUTTONS -->
       <div class="absolute inset-x-6  bottom-6 flex flex-col gap-3
                   transition-all duration-300 ease-in-out
                   opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
@@ -251,7 +238,7 @@
             class="flex items-center justify-between w-full rounded-full px-4 py-2.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
-          <span>View Products</span>
+          <span>{% trans "View Products" %}</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>
@@ -261,7 +248,7 @@
             class="items-center hidden justify-between w-full rounded-full px-4 py-1.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
-          <span>Explore Product Sheet</span>
+          <span>{% trans "Explore Product Sheet" %}</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>

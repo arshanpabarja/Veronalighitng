@@ -739,6 +739,10 @@ video {
   top: 100%;
 }
 
+.top-16 {
+  top: 4rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -773,6 +777,10 @@ video {
 
 .z-\[1\] {
   z-index: 1;
+}
+
+.z-\[60\] {
+  z-index: 60;
 }
 
 .col-span-1 {
@@ -911,6 +919,22 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mb-0\.5 {
+  margin-bottom: 0.125rem;
 }
 
 .line-clamp-2 {
@@ -1111,6 +1135,10 @@ video {
   height: 1px;
 }
 
+.h-3\.5 {
+  height: 0.875rem;
+}
+
 .max-h-48 {
   max-height: 12rem;
 }
@@ -1179,6 +1207,10 @@ video {
   width: 0.75rem;
 }
 
+.w-36 {
+  width: 9rem;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -1193,6 +1225,10 @@ video {
 
 .w-64 {
   width: 16rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-8 {
@@ -1237,6 +1273,14 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-3\.5 {
+  width: 0.875rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .min-w-0 {
@@ -1299,15 +1343,6 @@ video {
   max-width: 20rem;
 }
 
-.max-w-6xl {
-  max-width: 72rem;
-}
-
-.max-w-max {
-  max-width: -moz-max-content;
-  max-width: max-content;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1326,6 +1361,10 @@ video {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.origin-top-right {
+  transform-origin: top right;
 }
 
 .-translate-x-1\/2 {
@@ -1375,6 +1414,18 @@ video {
 
 .rotate-45 {
   --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-95 {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1482,6 +1533,10 @@ video {
   flex-direction: row;
 }
 
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1500,6 +1555,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }
 
 .justify-end {
@@ -1658,8 +1717,16 @@ video {
   white-space: nowrap;
 }
 
+.hyphens-none {
+  hyphens: none;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.break-words {
+  overflow-wrap: break-word;
 }
 
 .rounded {
@@ -1692,6 +1759,14 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-\[10px\] {
+  border-radius: 10px;
+}
+
+.rounded-\[14px\] {
+  border-radius: 14px;
 }
 
 .rounded-b-lg {
@@ -1804,6 +1879,11 @@ video {
 
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
+}
+
+.border-gray-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 250 251 / var(--tw-border-opacity));
 }
 
 .bg-\[\#0a0a0a\] {
@@ -1951,6 +2031,10 @@ video {
 
 .bg-white\/90 {
   background-color: rgb(255 255 255 / 0.9);
+}
+
+.bg-red-50\/20 {
+  background-color: rgb(254 242 242 / 0.2);
 }
 
 .bg-gradient-to-r {
@@ -2300,16 +2384,16 @@ video {
   padding-top: 1rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .text-left {
   text-align: left;
 }
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
 }
 
 .text-justify {
@@ -2728,6 +2812,10 @@ video {
   opacity: 0.9;
 }
 
+.opacity-80 {
+  opacity: 0.8;
+}
+
 .mix-blend-multiply {
   mix-blend-mode: multiply;
 }
@@ -2777,6 +2865,12 @@ video {
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-\[0_12px_30px_rgba\(0\2c 0\2c 0\2c 0\.06\)\] {
+  --tw-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  --tw-shadow-colored: 0 12px 30px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -2873,10 +2967,6 @@ video {
   transition-duration: 150ms;
 }
 
-.duration-150 {
-  transition-duration: 150ms;
-}
-
 .duration-200 {
   transition-duration: 200ms;
 }
@@ -2897,12 +2987,20 @@ video {
   transition-duration: 900ms;
 }
 
+.duration-150 {
+  transition-duration: 150ms;
+}
+
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-\[cubic-bezier\(0\.16\2c 1\2c 0\.3\2c 1\)\] {
+  transition-timing-function: cubic-bezier(0.16,1,0.3,1);
 }
 
 .\[stroke-linecap\:round\] {
@@ -2986,6 +3084,237 @@ html {
   scroll-behavior: smooth;
 }
 
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] * {
+  direction: rtl;
+}
+
+html[dir="rtl"] .breadcrumb span {
+  margin: 0 8px;
+}
+
+html[dir="rtl"] .product-hero {
+  direction: rtl;
+}
+
+html[dir="rtl"] .gallery-wrap {
+  direction: rtl;
+}
+
+html[dir="rtl"] .thumb-row {
+  direction: rtl;
+}
+
+html[dir="rtl"] .product-info {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .key-specs {
+  direction: rtl;
+}
+
+html[dir="rtl"] .spec-item {
+  text-align: right;
+}
+
+html[dir="rtl"] .finish-swatches {
+  direction: rtl;
+}
+
+html[dir="rtl"] .action-btns {
+  direction: rtl;
+}
+
+html[dir="rtl"] .share-row {
+  direction: rtl;
+}
+
+html[dir="rtl"] .tab-nav {
+  direction: rtl;
+}
+
+html[dir="rtl"] .description-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .desc-text {
+  text-align: right;
+}
+
+html[dir="rtl"] .highlight-list li {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .spec-table {
+  direction: rtl;
+}
+
+html[dir="rtl"] .spec-table th,
+html[dir="rtl"] .spec-table td {
+  text-align: right;
+}
+
+html[dir="rtl"] .spec-table td:first-child {
+  text-align: right;
+}
+
+html[dir="rtl"] .materials-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .material-card {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .install-steps {
+  direction: rtl;
+}
+
+html[dir="rtl"] .install-step {
+  text-align: right;
+}
+
+html[dir="rtl"] .step-body {
+  text-align: right;
+}
+
+html[dir="rtl"] .download-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .download-card {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .models-table {
+  direction: rtl;
+}
+
+html[dir="rtl"] .models-table th,
+html[dir="rtl"] .models-table td {
+  text-align: right;
+}
+
+html[dir="rtl"] .products-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .product-card {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .section-header {
+  direction: rtl;
+}
+
+html[dir="rtl"] footer {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-bottom {
+  direction: rtl;
+}
+
+/* Fix flexbox for RTL */
+
+html[dir="rtl"] .breadcrumb {
+  direction: rtl;
+}
+
+html[dir="rtl"] .product-category {
+  direction: rtl;
+}
+
+html[dir="rtl"] .product-title {
+  direction: rtl;
+}
+
+html[dir="rtl"] .product-subtitle {
+  direction: rtl;
+}
+
+html[dir="rtl"] .finish-title {
+  direction: rtl;
+}
+
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-outline,
+html[dir="rtl"] .btn-ghost,
+html[dir="rtl"] .btn-catalog {
+  direction: rtl;
+}
+
+/* Override text-align for RTL content */
+
+html[dir="rtl"] .text-justify {
+  text-align: right;
+}
+
+html[dir="rtl"] .view-all-link {
+  direction: rtl;
+}
+
+html[dir="rtl"] .overlay-btn {
+  direction: rtl;
+}
+
+/* Ensure navbar ALWAYS stays LTR regardless of page language */
+
+html[dir="rtl"] #navbar,
+html[dir="rtl"] #navbar *,
+html[dir="rtl"] .mobile-drawer,
+html[dir="rtl"] .mobile-drawer * {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Language switcher in navbar - keep LTR */
+
+html[dir="rtl"] #navbar .hidden.lg\:flex.items-center.ml-8 {
+  direction: ltr !important;
+  margin-left: 2rem !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure proper input/textarea direction in RTL */
+
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Swatch label positioning for RTL */
+
+html[dir="rtl"] .swatch[data-label]::after {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+html[dir="rtl"] .desc-highlights {
+  direction: rtl;
+}
+
+html[dir="rtl"] .catalog-inner {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .catalog-text {
+  text-align: right;
+}
+
 @font-face {
   font-family: 'Montserrat';
 
@@ -3053,7 +3382,12 @@ html[lang="fa"] h1,
 html[lang="fa"] h2,
 html[lang="fa"] h3,
 html[lang="fa"] h4,
-html[lang="fa"] strong {
+html[lang="fa"] strong,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] strong {
   font-family: 'Vazirmatn', sans-serif;
   letter-spacing: normal;
   /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
@@ -3075,6 +3409,13 @@ html[lang="fa"] strong {
     /* Mobile devices may need to preload for smooth playback */
     backface-visibility: hidden;
   }
+}
+
+.persian-justify {
+  direction: rtl;
+  text-align: justify !important;
+  text-justify: inter-word;
+  line-height: 2;
 }
 
 /* ── BREADCRUMB ── */
@@ -4762,6 +5103,14 @@ footer {
   background-color: rgb(255 255 255 / 0.05);
 }
 
+.hover\:bg-gray-100\/80:hover {
+  background-color: rgb(243 244 246 / 0.8);
+}
+
+.hover\:bg-white\/10:hover {
+  background-color: rgb(255 255 255 / 0.1);
+}
+
 .hover\:text-\[\#800000\]:hover {
   --tw-text-opacity: 1;
   color: rgb(128 0 0 / var(--tw-text-opacity));
@@ -4831,6 +5180,11 @@ footer {
   border-color: transparent;
 }
 
+.focus\:bg-gray-50:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -4842,6 +5196,12 @@ footer {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus\:ring-1:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .focus\:ring-\[\#800000\]:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(128 0 0 / var(--tw-ring-opacity));
@@ -4850,6 +5210,10 @@ footer {
 .focus\:ring-red-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-\[\#800000\]\/30:focus {
+  --tw-ring-color: rgb(128 0 0 / 0.3);
 }
 
 .group[open] .group-open\:rotate-180 {
@@ -5432,10 +5796,6 @@ footer {
 
   .md\:pt-32 {
     padding-top: 8rem;
-  }
-
-  .md\:text-left {
-    text-align: left;
   }
 
   .md\:text-2xl {

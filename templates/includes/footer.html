@@ -1,3 +1,4 @@
+{% load static %}
 <body class="min-h-screen flex flex-col justify-end">
 
     <footer
@@ -7,7 +8,9 @@
             <!-- Logo Section -->
             <div style="justify-content: left; justify-items: left;" class="w-full flex text-left flex-col items-left mb-16">
                 <!-- Added explicit text-white here -->
-                <logo id="logo" class="font-orbitron text-2xl lg:text-3xl text-white transition-colors duration-150">VERONA</logo>
+                <div class="flex items-center justify-end w-full">
+                    <img class="w-36" src="{% static 'images/verona.png' %}" alt="verona lighting logo">
+                </div>
             </div>
 
             <!-- Main Links -->

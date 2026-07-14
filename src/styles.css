@@ -75,6 +75,230 @@ html {
     scroll-behavior: smooth;
 }
 
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] * {
+    direction: rtl;
+}
+
+html[dir="rtl"] .breadcrumb span {
+    margin: 0 8px;
+}
+
+html[dir="rtl"] .product-hero {
+    direction: rtl;
+}
+
+html[dir="rtl"] .gallery-wrap {
+    direction: rtl;
+}
+
+html[dir="rtl"] .thumb-row {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-info {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .key-specs {
+    direction: rtl;
+}
+
+html[dir="rtl"] .spec-item {
+    text-align: right;
+}
+
+html[dir="rtl"] .finish-swatches {
+    direction: rtl;
+}
+
+html[dir="rtl"] .action-btns {
+    direction: rtl;
+}
+
+html[dir="rtl"] .share-row {
+    direction: rtl;
+}
+
+html[dir="rtl"] .tab-nav {
+    direction: rtl;
+}
+
+html[dir="rtl"] .description-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .desc-text {
+    text-align: right;
+}
+
+html[dir="rtl"] .highlight-list li {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .spec-table {
+    direction: rtl;
+}
+
+html[dir="rtl"] .spec-table th,
+html[dir="rtl"] .spec-table td {
+    text-align: right;
+}
+
+html[dir="rtl"] .spec-table td:first-child {
+    text-align: right;
+}
+
+html[dir="rtl"] .materials-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .material-card {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .install-steps {
+    direction: rtl;
+}
+
+html[dir="rtl"] .install-step {
+    text-align: right;
+}
+
+html[dir="rtl"] .step-body {
+    text-align: right;
+}
+
+html[dir="rtl"] .download-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .download-card {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .models-table {
+    direction: rtl;
+}
+
+html[dir="rtl"] .models-table th,
+html[dir="rtl"] .models-table td {
+    text-align: right;
+}
+
+html[dir="rtl"] .products-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-card {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .section-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] footer {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-bottom {
+    direction: rtl;
+}
+
+/* Fix flexbox for RTL */
+html[dir="rtl"] .breadcrumb {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-category {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-title {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-subtitle {
+    direction: rtl;
+}
+
+html[dir="rtl"] .finish-title {
+    direction: rtl;
+}
+
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-outline,
+html[dir="rtl"] .btn-ghost,
+html[dir="rtl"] .btn-catalog {
+    direction: rtl;
+}
+
+/* Override text-align for RTL content */
+html[dir="rtl"] .text-justify {
+    text-align: right;
+}
+
+html[dir="rtl"] .view-all-link {
+    direction: rtl;
+}
+
+html[dir="rtl"] .overlay-btn {
+    direction: rtl;
+}
+/* Ensure navbar ALWAYS stays LTR regardless of page language */
+html[dir="rtl"] #navbar,
+html[dir="rtl"] #navbar *,
+html[dir="rtl"] .mobile-drawer,
+html[dir="rtl"] .mobile-drawer * {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Language switcher in navbar - keep LTR */
+html[dir="rtl"] #navbar .hidden.lg\:flex.items-center.ml-8 {
+    direction: ltr !important;
+    margin-left: 2rem !important;
+    margin-right: 0 !important;
+}
+
+/* Ensure proper input/textarea direction in RTL */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Swatch label positioning for RTL */
+html[dir="rtl"] .swatch[data-label]::after {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+html[dir="rtl"] .desc-highlights {
+    direction: rtl;
+}
+
+html[dir="rtl"] .catalog-inner {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .catalog-text {
+    text-align: right;
+}
+
 @font-face {
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-Bold.ttf') format('truetype');
@@ -127,7 +351,12 @@ html[lang="fa"] h1,
 html[lang="fa"] h2,
 html[lang="fa"] h3,
 html[lang="fa"] h4,
-html[lang="fa"] strong {
+html[lang="fa"] strong,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] strong {
     font-family: 'Vazirmatn', sans-serif;
     letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
 }
@@ -145,6 +374,13 @@ html[lang="fa"] strong {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
     }
+}
+
+.persian-justify {
+    direction: rtl;
+    text-align: justify !important;
+    text-justify: inter-word;
+    line-height: 2;
 }
 
 /* ── BREADCRUMB ── */

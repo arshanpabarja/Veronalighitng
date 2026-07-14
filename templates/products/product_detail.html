@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 {{ product.get_meta_title|default:product.name }}
@@ -72,7 +73,7 @@
     ,
     {
       "@type": "PropertyValue",
-      "name": "Color Temperature",
+      "name": "{% trans "Color Temperature" %}",
       "value": "{{ product.color_temperature }}K"
     }
     {% endif %}
@@ -80,7 +81,7 @@
     ,
     {
       "@type": "PropertyValue",
-      "name": "IP Rating",
+      "name": "{% trans "IP Rating" %}",
       "value": "{{ product.ip_rating }}"
     }
     {% endif %}
@@ -99,14 +100,14 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
+      "name": "{% trans "Home" %}",
       "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
     },
 
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Products",
+      "name": "{% trans "Products" %}",
       "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:product_list' %}"
     },
 
@@ -176,10 +177,10 @@
 </div>
 
 <div class="breadcrumb">
-  <a href="/">Home</a><span>/</span>
+  <a href="/">{% trans "Home" %}</a><span>/</span>
 
   <a href="{% url 'products:product_list' %}">
-    Products
+    {% trans "Products" %}
   </a><span>/</span>
 
   {% if product.category.parent %}
@@ -222,11 +223,11 @@
       {% if product.image1 %}
       <img id="mainImg" src="{{ product.image1.url }}" loading="eager"
      alt="{{ product.get_image1_alt }}">
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close" onclick="closeLightbox()">×</span>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
-</div>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+      <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
+    </div>
 
       {% endif %}
     </div>
@@ -234,22 +235,22 @@
     <div class="thumb-row">
       {% if product.image1 %}
       <div class="thumb active " onclick="changeImg(this, '{{ product.image1.url }}')">
-        <img src="{{ product.image1.url }}" loading="eager" alt="{{ product.name }} - image 1" />
+        <img src="{{ product.image1.url }}" loading="eager" alt="{{ product.name }} - {% trans "image 1" %}" />
       </div>
       {% endif %}
       {% if product.image2 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image2.url }}')">
-        <img src="{{ product.image2.url }}" loading="lazy" alt="{{ product.name }} - image 2" />
+        <img src="{{ product.image2.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 2" %}" />
       </div>
       {% endif %}
       {% if product.image3 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image3.url }}')">
-        <img src="{{ product.image3.url }}" loading="lazy" alt="{{ product.name }} - image 3" />
+        <img src="{{ product.image3.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 3" %}" />
       </div>
       {% endif %}
       {% if product.image4 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image4.url }}')">
-        <img src="{{ product.image4.url }}" loading="lazy" alt="{{ product.name }} - image 4" />
+        <img src="{{ product.image4.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 4" %}" />
       </div>
       {% endif %}
     </div>
@@ -264,37 +265,37 @@
     <div class="key-specs">
       {% if product.lumens %}
       <div class="spec-item">
-        <span class="spec-label">Lumens Output</span>
+        <span class="spec-label">{% trans "Lumens Output" %}</span>
         <span class="spec-value">{{ product.lumens }} lm</span>
       </div>
       {% endif %}
       {% if product.voltage %}
       <div class="spec-item">
-        <span class="spec-label">Power</span>
+        <span class="spec-label">{% trans "Power" %}</span>
         <span class="spec-value">{{ product.voltage }}</span>
       </div>
       {% endif %}
       {% if product.color_temperature %}
       <div class="spec-item">
-        <span class="spec-label">Color Temperature</span>
+        <span class="spec-label">{% trans "Color Temperature" %}</span>
         <span class="spec-value">{{ product.color_temperature }} K</span>
       </div>
       {% endif %}
       {% if product.ip_rating %}
       <div class="spec-item">
-        <span class="spec-label">IP Rating</span>
+        <span class="spec-label">{% trans "IP Rating" %}</span>
         <span class="spec-value">{{ product.ip_rating }}</span>
       </div>
       {% endif %}
       {% if product.beam_angle %}
       <div class="spec-item">
-        <span class="spec-label">Beam Angle</span>
+        <span class="spec-label">{% trans "Beam Angle" %}</span>
         <span class="spec-value">{{ product.beam_angle }}°</span>
       </div>
       {% endif %}
       {% if product.lifespan %}
       <div class="spec-item">
-        <span class="spec-label">Lifespan</span>
+        <span class="spec-label">{% trans "Lifespan" %}</span>
         <span class="spec-value">{{ product.lifespan }} hrs</span>
       </div>
       {% endif %}
@@ -307,7 +308,7 @@
     {% if finishes %}
     <div class="finish-section">
       <p class="finish-title">
-        Finish — <span id="finishName">{{ finishes.0.name }}</span>
+        {% trans "Finish" %} — <span id="finishName">{{ finishes.0.name }}</span>
       </p>
       <div class="finish-swatches">
         {% for finish in finishes %}
@@ -328,11 +329,11 @@
     <div class="action-btns">
       <button class="btn-primary">
         <i class="fa-solid fa-envelope"></i>
-        Request a Quote
+        {% trans "Request a Quote" %}
       </button>
       <a href="{{ product.catalog.url }}" download class="btn-outline">
         <i class="fa-solid fa-file-arrow-down"></i>
-        Download Product Sheet
+        {% trans "Download Product Sheet" %}
       </a>
     </div>
 
@@ -342,10 +343,10 @@
 <!-- INFO TABS -->
 <div class="info-section" style="margin-top:80px;">
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('desc', this)">Description</button>
-    <button class="tab-btn" onclick="switchTab('spec', this)">Specifications</button>
-    <button class="tab-btn" onclick="switchTab('materials', this)">Materials</button>
-    <button class="tab-btn" onclick="switchTab('install', this)">Installation</button>
+    <button class="tab-btn active" onclick="switchTab('desc', this)">{% trans "Description" %}</button>
+    <button class="tab-btn" onclick="switchTab('spec', this)">{% trans "Specifications" %}</button>
+    <button class="tab-btn" onclick="switchTab('materials', this)">{% trans "Materials" %}</button>
+    <button class="tab-btn" onclick="switchTab('install', this)">{% trans "Installation" %}</button>
   </div>
 
   <!-- DESCRIPTION TAB -->
@@ -355,25 +356,25 @@
         <p>{{ product.full_description }}</p>
       </div>
       <div class="desc-highlights">
-        <h4>Key Features</h4>
+        <h4>{% trans "Key Features" %}</h4>
         <ul class="highlight-list">
           {% if product.color_temperature %}
-          <li><i class="fa-solid fa-check"></i> Color Temperature: {{ product.color_temperature }} K</li>
+          <li><i class="fa-solid fa-check"></i> {% trans "Color Temperature" %}: {{ product.color_temperature }} K</li>
           {% endif %}
           {% if product.dimmable %}
-          <li><i class="fa-solid fa-check"></i> Dimmable</li>
+          <li><i class="fa-solid fa-check"></i> {% trans "Dimmable" %}</li>
           {% endif %}
           {% if product.cri %}
-          <li><i class="fa-solid fa-check"></i> CRI ≥ {{ product.cri }}</li>
+          <li><i class="fa-solid fa-check"></i> {% trans "CRI" %} ≥ {{ product.cri }}</li>
           {% endif %}
           {% if product.lifespan %}
-          <li><i class="fa-solid fa-check"></i> {{ product.lifespan }} hour LED lifespan</li>
+          <li><i class="fa-solid fa-check"></i> {{ product.lifespan }} {% trans "hour LED lifespan" %}</li>
           {% endif %}
           {% if product.ip_rating %}
-          <li><i class="fa-solid fa-check"></i> {{ product.ip_rating }} rated</li>
+          <li><i class="fa-solid fa-check"></i> {{ product.ip_rating }} {% trans "rated" %}</li>
           {% endif %}
           {% if product.lamp_base_type %}
-          <li><i class="fa-solid fa-check"></i> Base: {{ product.lamp_base_type }}</li>
+          <li><i class="fa-solid fa-check"></i> {% trans "Base" %}: {{ product.lamp_base_type }}</li>
           {% endif %}
         </ul>
       </div>
@@ -385,40 +386,40 @@
     <table class="spec-table">
       <thead>
         <tr>
-          <th>Parameter</th>
-          <th>Value</th>
+          <th>{% trans "Parameter" %}</th>
+          <th>{% trans "Value" %}</th>
         </tr>
       </thead>
       <tbody>
         {% if product.wattage %}
-        <tr><td>Power Consumption</td><td>{{ product.wattage }} W</td></tr>
+        <tr><td>{% trans "Power Consumption" %}</td><td>{{ product.wattage }} W</td></tr>
         {% endif %}
         {% if product.lumens %}
-        <tr><td>Luminous Flux</td><td>{{ product.lumens }} lm</td></tr>
+        <tr><td>{% trans "Luminous Flux" %}</td><td>{{ product.lumens }} lm</td></tr>
         {% endif %}
         {% if product.color_temperature %}
-        <tr><td>Color Temperature</td><td>{{ product.color_temperature }} K</td></tr>
+        <tr><td>{% trans "Color Temperature" %}</td><td>{{ product.color_temperature }} K</td></tr>
         {% endif %}
         {% if product.cri %}
-        <tr><td>Color Rendering Index</td><td>{{ product.cri }}</td></tr>
+        <tr><td>{% trans "Color Rendering Index" %}</td><td>{{ product.cri }}</td></tr>
         {% endif %}
         {% if product.beam_angle %}
-        <tr><td>Beam Angle</td><td>{{ product.beam_angle }}°</td></tr>
+        <tr><td>{% trans "Beam Angle" %}</td><td>{{ product.beam_angle }}°</td></tr>
         {% endif %}
         {% if product.voltage %}
-        <tr><td>Input Voltage</td><td>{{ product.voltage }}</td></tr>
+        <tr><td>{% trans "Input Voltage" %}</td><td>{{ product.voltage }}</td></tr>
         {% endif %}
         {% if product.lifespan %}
-        <tr><td>LED Lifespan</td><td>{{ product.lifespan }} hrs</td></tr>
+        <tr><td>{% trans "LED Lifespan" %}</td><td>{{ product.lifespan }} hrs</td></tr>
         {% endif %}
         {% if product.ip_rating %}
-        <tr><td>IP Rating</td><td>{{ product.ip_rating }}</td></tr>
+        <tr><td>{% trans "IP Rating" %}</td><td>{{ product.ip_rating }}</td></tr>
         {% endif %}
         {% if product.dimmable %}
-        <tr><td>Dimmable</td><td>Yes</td></tr>
+        <tr><td>{% trans "Dimmable" %}</td><td>{% trans "Yes" %}</td></tr>
         {% endif %}
         {% if product.lamp_base_type %}
-        <tr><td>Lamp Base</td><td>{{ product.lamp_base_type }}</td></tr>
+        <tr><td>{% trans "Lamp Base" %}</td><td>{{ product.lamp_base_type }}</td></tr>
         {% endif %}
       </tbody>
     </table>
@@ -451,19 +452,19 @@
   <div class="models-inner">
     <div class="section-header">
       <div>
-        <div class="section-label">Complete Range</div>
-        <h2 class="section-title">Models & Sizes</h2>
+        <div class="section-label">{% trans "Complete Range" %}</div>
+        <h2 class="section-title">{% trans "Models & Sizes" %}</h2>
       </div>
     </div>
     <div class="models-table-wrap">
       <table class="models-table">
         <thead>
           <tr>
-            <th>Model Code</th>
-            <th>Power</th>
-            <th>Dimensions</th>
-            <th>Weight</th>
-            <th>Notes</th>
+            <th>{% trans "Model Code" %}</th>
+            <th>{% trans "Power" %}</th>
+            <th>{% trans "Dimensions" %}</th>
+            <th>{% trans "Weight" %}</th>
+            <th>{% trans "Notes" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -482,7 +483,7 @@
             </td>
             <td>
               {% if variant.dimension and variant.dimension.weight %}
-                {{ variant.dimension.weight }} kg
+                {{ variant.dimension.weight }} {% trans "kg" %}
               {% else %}—{% endif %}
             </td>
             <td>{% if variant.note %}{{ variant.note }}{% else %}—{% endif %}</td>
@@ -490,7 +491,7 @@
           {% endif %}
           {% empty %}
           <tr>
-            <td colspan="6" style="text-align:center; color: var(--gray-text);">No variants available</td>
+            <td colspan="6" style="text-align:center; color: var(--gray-text);">{% trans "No variants available" %}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -503,10 +504,10 @@
 <div class="related-section">
   <div class="section-header" style="margin-bottom:48px;">
     <div>
-      <div class="section-label">You May Also Like</div>
-      <h2 class="section-title">Related Products</h2>
+      <div class="section-label">{% trans "You May Also Like" %}</div>
+      <h2 class="section-title">{% trans "Related Products" %}</h2>
     </div>
-    <a href="#" class="view-all-link">Browse Collection</a>
+    <a href="#" class="view-all-link">{% trans "Browse Collection" %}</a>
   </div>
   <div class="products-grid">
     {% for related in related_products %}
@@ -522,7 +523,7 @@
           <a href="{% url 'products:product_detail' related.category.parent.slug related.category.slug related.family.slug related.slug %}"
              class="overlay-btn">
       
-            View Details
+            {% trans "View Details" %}
       
           </a>
         
@@ -531,7 +532,7 @@
           <a href="{% url 'products:product_detail_no_child' related.category.slug related.family.slug related.slug %}"
              class="overlay-btn">
         
-            View Details
+            {% trans "View Details" %}
         
           </a>
         
@@ -543,14 +544,14 @@
       <div class="product-card-name">{{ related.name }}</div>
       <div class="product-card-sub">
         {% if related.wattage %}{{ related.wattage }}W · {% endif %}
-        {% if related.cri %}CRI ≥ {{ related.cri }} · {% endif %}
+        {% if related.cri %}{% trans "CRI" %} ≥ {{ related.cri }} · {% endif %}
         {% with finish_count=related.finishes.count %}
-        {% if finish_count > 0 %}{{ finish_count }} finishes{% endif %}
+        {% if finish_count > 0 %}{{ finish_count }} {% trans "finishes" %}{% endif %}
         {% endwith %}
       </div>
     </div>
     {% empty %}
-    <p style="color: var(--gray-text);">No related products found.</p>
+    <p style="color: var(--gray-text);">{% trans "No related products found." %}</p>
     {% endfor %}
   </div>
 </div>
@@ -560,14 +561,14 @@
   <div class="absolute inset-0 bg-gradient-to-r from-red-50 to-transparent pointer-events-none"></div>
   <div class="max-w-7xl mx-auto px-6 py-16 relative flex flex-col sm:flex-row items-center justify-between gap-8">
     <div>
-      <span class="text-red-600 text-xs font-semibold uppercase tracking-widest">Full Product Range</span>
-      <h2 class="text-2xl font-bold text-gray-900 mt-2">Explore the Complete Lumex Catalogue 2025</h2>
-      <p class="text-gray-500 mt-2 text-sm">Download our full 2025 product catalogue featuring over 400 luminaires.</p>
+      <span class="text-red-600 text-xs font-semibold uppercase tracking-widest">{% trans "Full Product Range" %}</span>
+      <h2 class="text-2xl font-bold text-gray-900 mt-2">{% trans "Explore the Complete Lumex Catalogue 2025" %}</h2>
+      <p class="text-gray-500 mt-2 text-sm">{% trans "Download our full 2025 product catalogue featuring over 400 luminaires." %}</p>
     </div>
     <a href="#"
        class="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-7 rounded-md transition-colors whitespace-nowrap">
       <i class="fa-solid fa-file-arrow-down"></i>
-      Download Catalogue
+      {% trans "Download Catalogue" %}
     </a>
   </div>
 </div>
@@ -576,7 +577,7 @@
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close" onclick="closeLightbox()">×</span>
   <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
+  <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
 </div>
 
 <script>

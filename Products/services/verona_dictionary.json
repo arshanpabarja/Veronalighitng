@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "brand": "Verona Lighting",
+    "language": "Persian",
+    "purpose": "AI product translation dictionary"
+  },
+
+  "translation_rules": {
+    "keep_product_names": true,
+    "keep_series_names": true,
+    "do_not_translate_model_codes": true,
+
+    "sentence_rules": [
+      "Place product type before product name",
+      "Example: چراغ خطی مگنتو لارج instead of مگنتو لارج چراغ خطی",
+      "Use professional lighting terminology",
+      "Do not create specifications that do not exist",
+      "Keep technical values unchanged"
+    ]
+  },
+
+
+  "protected_names": {
+
+    "MAGNETO": "مگنتو",
+    "MAGNETAR": "مگنتار",
+
+    "HALOO": "هالو",
+    "ROSHANA": "روشنا",
+    "PAYAM": "پیام",
+
+    "HELY": "هلی",
+    "LIBER": "لیبر",
+    "BAMBO": "بامبو",
+
+    "MOON": "مون",
+    "TRITON": "تریتون",
+    "PERANSA": "پرانسا",
+
+    "ARIN": "آرین",
+
+    "TABAN": "تابان",
+    "BAHAR": "بهار",
+
+    "KAREN": "کارن",
+
+    "VEGA": "وگا",
+    "VIRGO": "ویرگو",
+
+    "PYXIS": "پیکسیس",
+    "POLLUX": "پولکس",
+    "CASTOR": "کستور",
+
+    "CYLINDRA": "سیلیندرا",
+
+    "FORNAX": "فورنکس",
+    "VELA": "ولا",
+
+    "PICTOR": "پیکتور",
+    "BLINK": "بلینک",
+
+    "WAVE": "ویو",
+
+    "SPY": "اسپای",
+
+    "CAROR": "کارور"
+  },
+
+
+  "technical_terms": {
+
+    "LINEAR": "خطی",
+    "DOT": "دات",
+
+    "SPOT": "اسپات",
+    "PANEL": "پنل",
+
+    "DOWNLIGHT": "دان‌لایت",
+
+    "PENDANT": "آویز",
+
+    "SURFACE": "روکار",
+
+    "RECESSED": "توکار",
+
+    "TRACK": "ریل",
+
+    "TRACK LIGHT": "چراغ ریلی",
+
+    "FLEXI": "فلکسی",
+
+    "FLEXIBLE": "انعطاف‌پذیر",
+
+    "CURVE": "منحنی",
+
+    "ANGLE": "زاویه‌ای",
+
+    "ROTATE": "چرخشی",
+
+    "TUBE": "تیوب",
+
+    "BELT": "بلت",
+
+    "RING": "رینگ",
+
+    "PROFILE": "پروفیل",
+
+    "CONNECTOR": "کانکتور",
+
+    "DECORATIVE": "دکوراتیو",
+
+    "GYPSUM": "گچی",
+
+    "EMERGENCY": "اضطراری",
+
+    "SIGN": "علائم"
+  },
+
+
+  "variants": {
+
+    "LARGE": "لارج",
+
+    "SMALL": "اسمال",
+
+    "MINI": "مینی",
+
+    "MID": "مید",
+
+    "SHORT": "شورت",
+
+    "NARROW": "باریک",
+
+    "WIDE": "واید",
+
+    "SINGLE": "سینگل",
+
+    "DOUBLE": "دابل",
+
+    "DUAL": "دوال",
+
+    "TRIPLE": "تریپل"
+  },
+
+
+  "installation_terms": {
+
+    "TRIM" : "فریم",
+
+    "TRIMLESS" : "تریم لس",
+
+    "RECESSED TRACK": "ریل توکار",
+
+    "SURFACE TRACK": "ریل روکار",
+
+    "PENDANT TRACK": "ریل آویز",
+
+    "INGROUND": "دفنی",
+
+    "SURFACE LIGHT": "چراغ روکار"
+  },
+
+
+  "electrical_terms": {
+
+    "COB": "COB",
+
+    "SMD": "SMD",
+
+    "GU10": "GU10",
+
+    "IP65": "IP65",
+
+    "24V": "۲۴ ولت",
+
+    "220V": "۲۲۰ ولت",
+
+    "1PH": "تک‌ فاز",
+
+    "3PH": "سه‌فاز"
+  },
+
+
+  "corrections": {
+
+    "SMLL": "SMALL",
+
+    "SAMLL": "SMALL",
+
+    "RESSSED": "RECESSED",
+
+    "TRIMLES": "TRIMLESS",
+
+    "PLAXI": "FLEXI",
+
+    "Magnto": "MAGNETO",
+
+    "SMALLROTATE": "SMALL ROTATE"
+  },
+
+
+  "seo_vocabulary": {
+
+    "lighting": [
+      "چراغ",
+      "سیستم روشنایی",
+      "نورپردازی",
+      "روشنایی معماری"
+    ],
+
+    "product_types": [
+      "چراغ خطی",
+      "چراغ ریلی",
+      "چراغ توکار",
+      "چراغ روکار",
+      "دان‌لایت",
+      "چراغ آویز"
+    ],
+
+    "quality_words": [
+      "مدرن",
+      "مینیمال",
+      "معماری",
+      "حرفه‌ای",
+      "طراحی شده"
+    ]
+  }
+}

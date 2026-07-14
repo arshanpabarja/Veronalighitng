@@ -1,0 +1,842 @@
+[
+    {
+        "id": 70,
+        "name": "HALOO",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 5,
+        "name": "MAGNETO LARGE DOT LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 8,
+        "name": "MAGNETO LARGE ANGLE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 9,
+        "name": "MAGNETO LARGE ANGLE DOT LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 224,
+        "name": "Magneto Spot Curve",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 225,
+        "name": "Strip Light 24v",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 15,
+        "name": "MAGNETO LARGE PENDANT 35",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 20,
+        "name": "MAGNETO LARGE FLEXIBLE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 26,
+        "name": "MAGNETO SMALL ROTATE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 197,
+        "name": "Cylindra GU10 Surface Light",
+        "meta_title": "چراغ روکار Cylindra GU10",
+        "meta_description": "چراغ استوانه‌ای روکار با پایه GU10"
+    },
+    {
+        "id": 59,
+        "name": "TRIMLESS 8",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 209,
+        "name": "Magneto Spot Belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 44,
+        "name": "MAGNETO SMALL PENDANT 65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 61,
+        "name": "PAYAM LED",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 185,
+        "name": "Fornax Gypsum Downlight",
+        "meta_title": "دان‌لایت گچی Fornax",
+        "meta_description": "دان‌لایت گچی مربع معماری"
+    },
+    {
+        "id": 83,
+        "name": "ROSHANA",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 79,
+        "name": "LIBER LARGE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 14,
+        "name": "MAGNETO LARGE PENDANT 65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 25,
+        "name": "MAGNETO SMALL DOT LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 22,
+        "name": "MAGNETO SMALL LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 18,
+        "name": "MAGNETO SMLL RESSED TRACK TRIM",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 3,
+        "name": "MAGNETO LARGE SURFACE & PENDANT TRACK",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 228,
+        "name": "Neon Light IP65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 37,
+        "name": "MAGNETO SMALL PENDANT 35",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 46,
+        "name": "BD NARROW",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 71,
+        "name": "RING LINE INSIDE (60CM)",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 75,
+        "name": "HELY SMALL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 81,
+        "name": "BAMBO WALL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 82,
+        "name": "MOON",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 186,
+        "name": "Pollux Gypsum Downlight",
+        "meta_title": "دان‌لایت گچی Pollux",
+        "meta_description": "چراغ توکار مربعی جمع‌وجور"
+    },
+    {
+        "id": 190,
+        "name": "Folcano Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Folcano",
+        "meta_description": "چراغ سقفی توکار معماری"
+    },
+    {
+        "id": 213,
+        "name": "Magneto Moon Spot belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 214,
+        "name": "Magneto Hat Belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 194,
+        "name": "Pollux Double Downlight",
+        "meta_title": "دان‌لایت دوگانه Pollux",
+        "meta_description": "چراغ اسپات‌لایت توکار دوگانه"
+    },
+    {
+        "id": 220,
+        "name": "Magneto Moon Flexi",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 246,
+        "name": "3PH four-way connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 33,
+        "name": "MAGNETO SMALL SPOT 55",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 7,
+        "name": "MAGNETO ROTATE DOT LINEAR",
+        "meta_title": "چراغ خطی نقطه‌ای MAGNETO ROTATE — 45W/m",
+        "meta_description": "چراغ خطی نقطه‌ای MAGNETO ROTATE: نور پایه یکنواخت، خروجی 4500 lm/m، توان 45W/m، نصب مغناطیسی بدون ابزار روی ریل 48V."
+    },
+    {
+        "id": 27,
+        "name": "SP MINI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 211,
+        "name": "Magneto Linear Belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 77,
+        "name": "HELY ANGLE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 217,
+        "name": "Magneto Tube Flexi",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 13,
+        "name": "MAGNETO  LARGE SPOT 35",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 195,
+        "name": "Castor Downlight",
+        "meta_title": "دان‌لایت Castor",
+        "meta_description": "چراغ معماری توکار مستطیلی"
+    },
+    {
+        "id": 196,
+        "name": "Virgo 3 Downlight",
+        "meta_title": "دان‌لایت سه‌سری Castor",
+        "meta_description": "چراغ توکار سه‌سری"
+    },
+    {
+        "id": 188,
+        "name": "Pyxis Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Pyxis",
+        "meta_description": "چراغ معماری توکار مدرن"
+    },
+    {
+        "id": 247,
+        "name": "3PH spotlight and pendant light",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 2,
+        "name": "MAGNETO LARGE RESSED TRACK TRIMLESS",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 47,
+        "name": "MD OLD",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 222,
+        "name": "Magneto Linear Curve",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 226,
+        "name": "Strip Light 220v",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 241,
+        "name": "1PH Track Spot 65 P",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 235,
+        "name": "1ph L-Reck connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 32,
+        "name": "MAGNETO SAMLL SPOT LIA",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 42,
+        "name": "SP WID IP",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 236,
+        "name": "1ph track power connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 6,
+        "name": "MAGNETO ROTATE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 21,
+        "name": "MAGNETO SMLL SURFACE & PENDANT TRACK",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 239,
+        "name": "1PH Spot",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 215,
+        "name": "Magneto Flexi",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 210,
+        "name": "Magneto Belt Spot Panel",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 240,
+        "name": "1ph Track Pendant 65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 73,
+        "name": "TRITON",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 238,
+        "name": "1ph-Rail Tee Connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 243,
+        "name": "3PH connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 218,
+        "name": "Magnet dot linear flexi",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 242,
+        "name": "3PH power connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 30,
+        "name": "MAGNETO SMALL ANGLE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 36,
+        "name": "MAGNETO SMALL SPOT 35",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 67,
+        "name": "PERANSA",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 198,
+        "name": "Cylindra COB Surface Light",
+        "meta_title": "چراغ روکار Cylindra COB",
+        "meta_description": "چراغ روکار COB با عملکرد بالا"
+    },
+    {
+        "id": 23,
+        "name": "MAGNETO LARGE SPOT  LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 76,
+        "name": "HELY MID",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 193,
+        "name": "Virgo Double Downlight",
+        "meta_title": "دان‌لایت دوگانه Virgo",
+        "meta_description": "دان‌لایت گچی دوگانه"
+    },
+    {
+        "id": 31,
+        "name": "MAGNETO SMALL ANGLE DOT LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 227,
+        "name": "Strip Light 220v IP65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 232,
+        "name": "3PH Track Recessed",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 63,
+        "name": "PAYAM 8",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 219,
+        "name": "MAGNETO SPOT FLEXI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 221,
+        "name": "Magneto Curve Track",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 244,
+        "name": "3PH tee connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 245,
+        "name": "3PH direct connection",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 233,
+        "name": "1PH Track Surface & Pendant",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 80,
+        "name": "LIBER SMALL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 234,
+        "name": "3PH Track Surface",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 11,
+        "name": "MAGNETO LARGE SPOT PANEL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 229,
+        "name": "Corner Profile",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 192,
+        "name": "Vela Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Vela",
+        "meta_description": "چراغ سقفی دکوراتیو مدرن"
+    },
+    {
+        "id": 74,
+        "name": "HELY SHORT  DIAMOND",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 12,
+        "name": "MAGNETO LARGE SPOT 65",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 17,
+        "name": "MAGNETO SMALL RESSED TRACK TRIMLES",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 200,
+        "name": "Caror Decorative Ceiling Light",
+        "meta_title": "چراغ سقفی دکوراتیو Caror",
+        "meta_description": "چراغ سقفی دکوراتیو با کیفیت نور ممتاز"
+    },
+    {
+        "id": 16,
+        "name": "MAGNETO LARGE TUBE PLAXI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 4,
+        "name": "MAGNETO LARGE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 10,
+        "name": "MAGNETO LARGE SPOT DOT PANEL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 58,
+        "name": "TABAN DOUBLE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 207,
+        "name": "MD OLD",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 230,
+        "name": "PD-Inground",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 237,
+        "name": "1ph track connector",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 62,
+        "name": "PAYAM SQUARE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 66,
+        "name": "BAHAR DUAL",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 19,
+        "name": "MAGNETO SMALL SURFACE & PENDANT TRACK",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 69,
+        "name": "RING LINE DOWNLIGHT (60CM)",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 208,
+        "name": "Magnto belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 68,
+        "name": "BAHAR SINGLE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 41,
+        "name": "MAGNETAR SMALL SIGN EMERGENCY",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 231,
+        "name": "Karen Highbay",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 38,
+        "name": "MAGNETO SMALL FLEXIBLE LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 187,
+        "name": "Pictor Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Pictor",
+        "meta_description": "چراغ توکار شیک"
+    },
+    {
+        "id": 212,
+        "name": "Magneto Dot Linear Belt",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 24,
+        "name": "MAGNETO LARGE SIGN EMERGENCY",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 28,
+        "name": "MAGNETO SMALLROTATE DOT LINEAR",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 72,
+        "name": "RING LINE INSIDE (90CM)",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 64,
+        "name": "PAYAM 6",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 183,
+        "name": "Virgo C Gypsum Downlight",
+        "meta_title": "دان‌لایت گچی Virgo C",
+        "meta_description": "دان‌لایت توکار گرد گچی"
+    },
+    {
+        "id": 78,
+        "name": "ARIN",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 55,
+        "name": "TABAN SINGLE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 216,
+        "name": "Magneto Linear Flexi",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 65,
+        "name": "BAHAR TRIPLE",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 184,
+        "name": "Vega Gypsum Downlight",
+        "meta_title": "دان‌لایت گچی Vega",
+        "meta_description": "چراغ سقفی گچی جمع‌وجور"
+    },
+    {
+        "id": 189,
+        "name": "Blink Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Blink",
+        "meta_description": "چراغ سقفی توکار مینیمالیستی"
+    },
+    {
+        "id": 191,
+        "name": "Wave Decorative Downlight",
+        "meta_title": "دان‌لایت دکوراتیو Wave",
+        "meta_description": "چراغ توکار منحنی گچی"
+    },
+    {
+        "id": 45,
+        "name": "BD MINI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 182,
+        "name": "Virgo Gypsum Downlight",
+        "meta_title": "دان‌لایت گچی Virgo",
+        "meta_description": "دان‌لایت مربع توکار گچی"
+    },
+    {
+        "id": 223,
+        "name": "Magnet dot linear Curve",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 175,
+        "name": "Spy Recessed Downlight",
+        "meta_title": "دان‌لایت توکار Spy",
+        "meta_description": "اسپات‌لایت توکار جمع‌وجور برای فضاهای داخلی مدرن"
+    },
+    {
+        "id": 60,
+        "name": "TRIMLESS 4",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 49,
+        "name": "MD MINI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 48,
+        "name": "MD MINI",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 29,
+        "name": "SP NARROW",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 51,
+        "name": "MD NARROW",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 52,
+        "name": "MD NARROW",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 34,
+        "name": "SP DOT NARROW",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 206,
+        "name": "MD NARROW DOT",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 53,
+        "name": "MD NARROW DOT",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 57,
+        "name": "MD MID",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 56,
+        "name": "MD MID",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 39,
+        "name": "SP MID SLIM",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 40,
+        "name": "SP WID",
+        "meta_title": "",
+        "meta_description": ""
+    },
+    {
+        "id": 43,
+        "name": "SP PLUS",
+        "meta_title": "",
+        "meta_description": ""
+    }
+]

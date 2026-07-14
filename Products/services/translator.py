@@ -1,12 +1,11 @@
 import json
 import os
 
-from dotenv import load_dotenv
 from openai import OpenAI
 
-from .prompts import TRANSLATION_PROMPT
+from .prompts import PROMPT
+from .schemas import FamilyTranslation
 
-load_dotenv()
 
 client = OpenAI(
     base_url="https://api.gapgpt.app/v1",
@@ -16,12 +15,14 @@ client = OpenAI(
 
 def translate_product(data):
 
-    response = client.responses.create(
+    response = client.responses.parse(
         model="gpt-5-mini",
+        temperature=0.15,
+        text_format=FamilyTranslation,
         input=[
             {
                 "role": "system",
-                "content": TRANSLATION_PROMPT,
+                "content": PROMPT,
             },
             {
                 "role": "user",
@@ -30,4 +31,4 @@ def translate_product(data):
         ],
     )
 
-    return json.loads(response.output_text)
+    return response.output_parsed.model_dump()

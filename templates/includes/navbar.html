@@ -1,49 +1,44 @@
-{% load static %}
-{% load i18n %}
+{% load static i18n %}
 {% load language_tags %}
+
 <nav
-id="navbar"
-class="z-50 top-0 left-0 right-0 bg-white
-
-{% if  request.resolver_match.url_name == 'home' %}
-    fixed lg:absolute lg:bg-transparent lg:border-none
-{% else %}
-    fixed bg-white border-b border-gray-200
-{% endif %}
-
+    id="navbar"
+    class="z-50 top-0 left-0 right-0 transition-colors duration-300
+    {% if request.path == '/' or request.path == '/en/' %}
+        fixed lg:absolute lg:bg-transparent lg:border-none
+    {% else %}
+        fixed bg-white border-b border-gray-200
+    {% endif %}
 ">
-
     <div class="mx-auto max-w-[1440px] px-5 sm:px-0">
-        <!-- h-16 on mobile, h-24 on desktop -->
         <div class="flex h-16 lg:h-24 items-center justify-between">
 
-            <a href="/" class="flex items-center shrink-0">
-                <!-- Mobile -->
+            <a href="{% if LANGUAGE_CODE == 'en' %}/en/ {% else %}/{% endif %}" class="flex items-center shrink-0">
                 <img
                 src="{% static 'images/logo3.png' %}"
-                alt="{% trans 'logo' %}"
+                alt="{% trans 'Verona Lighting logo' %}"
                 class="h-8 sm:h-12 lg:hidden">
 
-                <!-- Desktop -->
                 <img
                 id="navbar-logo-img"
-                src="{% if  request.resolver_match.url_name == 'home' %}{% static 'images/logo4.png' %}{% else %}{% static 'images/logo3.png' %}{% endif %}"
-                alt="{% trans 'logo' %}"
+                src="{% if request.path == '/' or request.path == '/en/' %}{% static 'images/logo4.png' %}{% else %}{% static 'images/logo3.png' %}{% endif %}"
+                alt="{% trans 'Verona Lighting logo' %}"
                 class="hidden lg:block h-16">
 
                 <logo
                     id="logo"
-                    class="font-orbitron text-lg sm:text-2xl lg:text-3xl {% if  request.resolver_match.url_name == 'home' %}lg:text-white text-[#800000]{% else %}text-[#800000]{% endif %}">
-                    VERONA
+                    class="font-orbitron text-lg sm:text-2xl lg:text-3xl {% if request.path == '/' or request.path == '/en/' %}lg:text-white text-[#800000]{% else %}text-[#800000]{% endif %}">
                 </logo>
-
             </a>
 
-            <!-- Desktop nav -->
-            <div class="hidden lg:flex gap-10 h-full {% if  request.resolver_match.url_name == 'home' %}text-white{% endif %}">
-
+            <div class="hidden lg:flex flex-row-reverse gap-8 h-full {% if request.path == '/' or request.path == '/en/' %}text-white{% endif %}">
+                <div class="flex items-center mb-1">
+                        <a href="{% url 'search' %}">
+                            <img id="search" class="w-6" src="{% if request.path == '/' or request.path == '/en/' %}{% static 'images/search2.svg '%}{% else %}{% static 'images/search.svg' %}{% endif %}" alt="search">
+                        </a>
+                    </div>
                 <div class="group relative">
-                    <a href="/products" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                    <a href="{% url 'products:product_list' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         {% trans "Products" %}
                     </a>
                     <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
@@ -72,7 +67,7 @@ class="z-50 top-0 left-0 right-0 bg-white
                                     {% for category in categories %}
                                     <div data-panel="{{ category.slug }}" class="category-panel hidden space-y-2 text-sm">
                                         <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="font-medium mb-4 hover:text-[#800000] block">
-                                            {% blocktrans with cat_name=category %}{{ cat_name }} – All Products{% endblocktrans %}
+                                            {{ category }} – All Products
                                         </a>
                                         {% for children in category.children.all %}
                                         <a href="{% url 'products:child_detail' cat_slug=category.slug child_slug=children.slug %}" class="block hover:text-[#800000]">
@@ -87,16 +82,16 @@ class="z-50 top-0 left-0 right-0 bg-white
                     </div>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-
+                
                 <div class="group relative">
-                    <a href="/applications" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                    <a href="{% url 'products:application_list' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         {% trans "Applications" %}
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-
+                
                 <div class="group relative">
-                    <a href="/contact" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                    <a href="{% url 'about' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         {% trans "Company" %}
                     </a>
                     <div class="fixed inset-x-0 top-24 bottom-0 bg-black/40 backdrop-blur-sm pointer-events-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30"></div>
@@ -119,47 +114,90 @@ class="z-50 top-0 left-0 right-0 bg-white
                 </div>
 
                 <div class="group relative">
-                    <a href="/services" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 transition-colors cursor-pointer">
+                    <a href="{% url 'services'%}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         {% trans "Services" %}
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
 
-                <div class="">
-                    <a href="/projects" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
+                <div>
+                    <a href="{% url 'products:project_list' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-red-500 cursor-pointer">
                         {% trans "Projects" %}
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
-
-                {% load language_tags %}
-                <div class="hidden lg:flex items-center ml-8">
+                    <div class="relative flex items-center ml-4" id="lang-menu-container">
+                        <button 
+                        id="lang-menu-btn" 
+                        type="button"
+                        class="flex items-center gap-1.5 px-2 py-1.5 rounded-full text-sm font-medium tracking-wide transition-all duration-200 select-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#800000]/30
+                        {% if request.path == '/' or request.path == '/en/' %}
+                        hover:bg-white/10
+                        {% else %}
+                        text-gray-700 hover:bg-gray-100/80
+                        {% endif %}"
+                        aria-expanded="false" 
+                        aria-haspopup="true">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        
+                        <span class="uppercase">{% if LANGUAGE_CODE == 'en' %}en{% else %}fa{% endif %}</span>
+                        
+                        <svg id="lang-chevron" xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 opacity-60 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div 
+                    id="lang-dropdown" 
+                    class="absolute top-16 right-0 w-40 bg-white border border-gray-100 rounded-[14px] shadow-[0_12px_30px_rgba(0,0,0,0.06)] z-[60] py-1 px-1 origin-top-right transform scale-95 opacity-0 pointer-events-none transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] text-black"
+                    role="menu"
+                    aria-orientation="vertical">
+                    
+                    <a 
+                    href="{% switch_language_url 'en' %}" 
+                    class="flex items-center justify-between px-3 py-2 rounded-[10px] text-[13px] font-medium transition-colors duration-150 group/item hover:bg-gray-50 focus:outline-none focus:bg-gray-50
+                    {% if LANGUAGE_CODE == 'en' %}text-[#800000] bg-red-50/20{% else %}text-gray-700{% endif %}"
+                    role="menuitem"
+                    dir="ltr">
+                    <span>English</span>
                     {% if LANGUAGE_CODE == 'en' %}
-                        <a
-                            href="{% switch_language_url 'fa' %}"
-                            class="text-sm tracking-widest uppercase hover:text-[#800000] transition"
-                        >
-                            فارسی
-                        </a>
-                    {% else %}
-                        <a
-                            href="{% switch_language_url 'en' %}"
-                            class="text-sm tracking-widest uppercase hover:text-[#800000] transition"
-                        >
-                            EN
-                        </a>
+                    <svg class="w-4 h-4 text-[#800000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                     {% endif %}
-                </div>
-            </div>
-            <!-- Mobile: search + hamburger -->
+                </a>
+                
+                <a 
+                href="{% switch_language_url 'fa' %}" 
+                class="flex items-center justify-between px-3 py-2 rounded-[10px] text-[13px] font-medium transition-colors duration-150 group/item hover:bg-gray-50 focus:outline-none focus:bg-gray-50
+                {% if LANGUAGE_CODE == 'fa' %}text-[#800000] bg-red-50/20{% else %}text-gray-700{% endif %}"
+                role="menuitem"
+                dir="rtl">
+                <span class="font-iranyekan">فارسی</span>
+                {% if LANGUAGE_CODE == 'fa' %}
+                <svg class="w-4 h-4 text-[#800000] mr-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {% endif %}
+            </a>
+        </div>
+    </div>
+    
+</div>
+
             <div class="flex items-center gap-3 lg:hidden">
-                <a href="/search" class="flex items-center justify-center w-6 h-6">
-                    <img loading="eager" class="w-6 h-6" src="{% static 'images/search.svg' %}" alt="{% trans 'Search' %}"
+                <a href="{% url 'search' %}" class="flex items-center justify-center w-6 h-6">
+                    <img loading="eager" class="w-6 h-6" src="{% static 'images/search.svg' %}" alt="Search"
                          id="mobile-search-icon">
                 </a>
                 <button id="hamburger-btn"
                     class="flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
-                    aria-label="{% trans 'Open menu' %}">
+                    aria-label="Open menu">
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
@@ -171,9 +209,6 @@ class="z-50 top-0 left-0 right-0 bg-white
 </nav>
 
 
-<!-- ══════════════════════════════════════════════════════ -->
-<!-- MOBILE DRAWER                                         -->
-<!-- ══════════════════════════════════════════════════════ -->
 <div id="mobile-drawer" class="fixed inset-0 z-[100] pointer-events-none">
 
     <div id="drawer-backdrop" class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300"></div>
@@ -181,11 +216,10 @@ class="z-50 top-0 left-0 right-0 bg-white
     <div id="drawer-panel" class="absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl
                                    translate-x-full transition-transform duration-300 flex flex-col overflow-hidden">
 
-        <!-- ── MAIN SCREEN ── -->
         <div id="screen-main" class="drawer-screen flex flex-col h-full">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                 <a href="/" class="flex items-center">
-                    <img class="h-10" src="{% static 'images/logo3.png' %}" alt="{% trans 'logo' %}">
+                    <img class="h-10" src="{% static 'images/logo3.png' %}" alt="logo">
                     <logo class="font-orbitron text-xl text-[#800000]">VERONA</logo>
                 </a>
                 <button id="close-drawer-btn" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
@@ -222,22 +256,38 @@ class="z-50 top-0 left-0 right-0 bg-white
                     </svg>
                 </button>
 
-                <a href="/services" class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
+                <button type="button" data-target="screen-services"
+                    class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     <span>{% trans "Services" %}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
-                </a>
+                </button>
 
                 <a href="/projects"
                     class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">
                     {% trans "Projects" %}
                 </a>
+
+                <div class="mt-8 pt-8 border-t border-gray-100">
+                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">{% trans "Language" %}</p>
+                    <div class="flex gap-3">
+                        <a href="{% switch_language_url 'en' %}" 
+                           class="flex-1 flex items-center justify-center py-3 rounded-xl text-sm font-medium transition-colors border
+                           {% if LANGUAGE_CODE == 'en' %}bg-[#800000] text-white border-transparent{% else %}bg-white text-gray-700 border-gray-100 hover:bg-gray-50{% endif %}">
+                           English
+                        </a>
+                        <a href="{% switch_language_url 'fa' %}" 
+                           class="flex-1 flex items-center justify-center py-3 rounded-xl text-sm font-medium transition-colors border font-iranyekan"
+                           dir="rtl">
+                           فارسی
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
 
-        <!-- ── PRODUCTS SCREEN ── -->
         <div id="screen-products"
             class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
@@ -273,7 +323,6 @@ class="z-50 top-0 left-0 right-0 bg-white
         </div>
 
 
-        <!-- ── CATEGORY SCREEN ── -->
         <div id="screen-category"
             class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
@@ -296,7 +345,6 @@ class="z-50 top-0 left-0 right-0 bg-white
         </div>
 
 
-        <!-- ── APPLICATIONS SCREEN ── -->
         <div id="screen-applications"
             class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
@@ -330,7 +378,6 @@ class="z-50 top-0 left-0 right-0 bg-white
         </div>
 
 
-        <!-- ── COMPANY SCREEN ── -->
         <div id="screen-company"
             class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
@@ -355,19 +402,36 @@ class="z-50 top-0 left-0 right-0 bg-white
         </div>
 
 
-        <!-- ── SERVICES SCREEN ── -->
-        <a href="/services" class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
-        {% trans "Services" %}
-        </a>
+        <div id="screen-services"
+            class="drawer-screen flex flex-col h-full absolute inset-0 bg-white translate-x-full transition-transform duration-300">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <button type="button" class="back-btn flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    {% trans "All" %}
+                </button>
+                <button class="close-drawer-inner w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">{% trans "Services" %}</p>
+                <a href="#" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">{% trans "All Services" %}</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">{% trans "Office" %}</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">{% trans "Retail" %}</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">{% trans "Urban" %}</a>
+                <a href="#" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">{% trans "Sports" %}</a>
+            </div>
+        </div>
 
     </div>
 </div>
 
 
 <script>
-    // Translated strings used inside JS
-    const allProductsSuffix = "{% trans 'All Products' %}";
-
     // ── Desktop category hover ──
     const items = document.querySelectorAll('.category-item');
     const panels = document.querySelectorAll('.category-panel');
@@ -471,7 +535,7 @@ class="z-50 top-0 left-0 right-0 bg-white
             document.getElementById('mobile-category-title').textContent = data.label;
             const list = document.getElementById('mobile-product-list');
             list.innerHTML =
-                `<a href="${data.allUrl}" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">${data.label} – ${allProductsSuffix}</a>`
+                `<a href="${data.allUrl}" class="flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#800000] transition-colors">${data.label} – All Products</a>`
                 + data.children.map(c =>
                     `<a href="${c.url}" class="flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#800000] transition-colors">${c.name}</a>`
                 ).join('');
@@ -479,7 +543,75 @@ class="z-50 top-0 left-0 right-0 bg-white
         });
     });
 
-{% if  request.resolver_match.url_name == 'home' %}
+    // ── PREMIUM DESKTOP LANGUAGE SELECTOR CONTROLS ──
+    const langBtn = document.getElementById('lang-menu-btn');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const langChevron = document.getElementById('lang-chevron');
+    const langContainer = document.getElementById('lang-menu-container');
+    const menuItems = langDropdown.querySelectorAll('[role="menuitem"]');
+
+    function toggleLangMenu(forceState) {
+        const isCurrentlyExpanded = langBtn.getAttribute('aria-expanded') === 'true';
+        const show = (forceState !== undefined) ? forceState : !isCurrentlyExpanded;
+
+        langBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
+        
+        if (show) {
+            // Open Menu State
+            langDropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            langDropdown.classList.add('opacity-100', 'scale-100');
+            langChevron.classList.add('rotate-180');
+        } else {
+            // Closed Menu State
+            langDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            langDropdown.classList.remove('opacity-100', 'scale-100');
+            langChevron.classList.remove('rotate-180');
+        }
+    }
+
+    // Toggle menu click
+    langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleLangMenu();
+    });
+
+    // Close menu when clicking anywhere else
+    document.addEventListener('click', (e) => {
+        if (!langContainer.contains(e.target)) {
+            toggleLangMenu(false);
+        }
+    });
+
+    // Keyboard accessibility inside desktop menu
+    langContainer.addEventListener('keydown', (e) => {
+        const activeEl = document.activeElement;
+        const isMenuOpen = langBtn.getAttribute('aria-expanded') === 'true';
+
+        if (e.key === 'Escape') {
+            toggleLangMenu(false);
+            langBtn.focus();
+        } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (!isMenuOpen) {
+                toggleLangMenu(true);
+                menuItems[0].focus();
+                return;
+            }
+
+            const currentIdx = Array.from(menuItems).indexOf(activeEl);
+            let nextIdx = currentIdx;
+
+            if (e.key === 'ArrowDown') {
+                nextIdx = (currentIdx + 1) % menuItems.length;
+            } else if (e.key === 'ArrowUp') {
+                nextIdx = (currentIdx - 1 + menuItems.length) % menuItems.length;
+            }
+            
+            menuItems[nextIdx].focus();
+        }
+    });
+
+{% if request.path == '/' or request.path == '/en/' %}
 document.addEventListener('DOMContentLoaded', function () {
 
     if (window.innerWidth < 1024) return;
@@ -488,30 +620,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const logo = document.getElementById('logo');
     const logoImg = document.getElementById('navbar-logo-img');
     const desktopNav = document.querySelector('.hidden.lg\\:flex');
+    const search = document.getElementById('search');
+    const button = document.getElementById('lang-menu-btn');
 
     navbar.addEventListener('mouseenter', () => {
+
+        // Navbar background
         navbar.classList.remove('lg:bg-transparent');
         navbar.classList.add('bg-white');
+        
+        // --- FIX LANGUAGE BUTTON COLOR ON HOVER ---
+        button.classList.remove('text-white');
+        button.classList.add('text-gray-700'); // Changes to dark text on hover
+        
+        // Logo text
         logo.style.color = '#800000';
+
+        // Desktop menu text
         if (desktopNav) {
             desktopNav.classList.remove('text-white');
             desktopNav.classList.add('text-black');
         }
+
+        // Logo image
         logoImg.src = "{% static 'images/logo3.png' %}";
+        search.src = "{% static 'images/search.svg' %}";
     });
 
     navbar.addEventListener('mouseleave', () => {
+
+        // Navbar background
         navbar.classList.remove('bg-white');
         navbar.classList.add('lg:bg-transparent');
+        
+        // --- RESTORE LANGUAGE BUTTON COLOR ---
+        button.classList.remove('text-gray-700');
+        button.classList.add('text-white'); // Restores back to white when transparent
+
+
+        // Logo text
         logo.style.color = 'white';
+
+        // Desktop menu text
         if (desktopNav) {
             desktopNav.classList.remove('text-black');
             desktopNav.classList.add('text-white');
         }
+
+        // Logo image
         logoImg.src = "{% static 'images/logo4.png' %}";
+        search.src = "{% static 'images/search2.svg' %}";
     });
 
 });
 {% endif %}
-
 </script>

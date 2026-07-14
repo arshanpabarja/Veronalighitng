@@ -12,7 +12,7 @@ from .models import (
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display        = ['name', 'parent', 'is_active', 'thumbnail_preview', 'created_at']
+    list_display        = ['name_en', 'parent', 'is_active', 'thumbnail_preview', 'created_at']
     list_filter         = ['parent', 'is_active']
     search_fields       = ['name', 'description']
     ordering            = ['name']
