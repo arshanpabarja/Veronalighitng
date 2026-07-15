@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <body class="min-h-screen flex flex-col justify-end">
 
     <footer
@@ -7,113 +9,187 @@
         <div class="w-full max-w-[1400px] mx-auto flex flex-col">
             <!-- Logo Section -->
             <div style="justify-content: left; justify-items: left;" class="w-full flex text-left flex-col items-left mb-16">
-                <!-- Added explicit text-white here -->
                 <div class="flex items-center justify-end w-full">
-                    <img class="w-36" src="{% static 'images/verona.png' %}" alt="verona lighting logo">
+                    <img class="w-36" src="{% static 'images/verona.png' %}" alt="{% trans 'Verona Lighting Logo' %}">
                 </div>
             </div>
 
             <!-- Main Links -->
             <div class="w-full flex flex-wrap mx-auto lg:flex-nowrap justify-between gap-10 lg:gap-0 mb-20 text-sm">
 
-                <!-- Left Side Group (Col 1 & 2) -->
+                <!-- Left Side Group -->
                 <div class="flex flex-wrap sm:flex-nowrap gap-10 sm:gap-20 md:gap-48 w-full lg:w-auto">
+
                     <!-- Column 1 -->
                     <div class="w-full sm:w-auto flex-shrink-0">
-                        <!-- Added explicit text-white here -->
-                        <h3 class="font-bold text-base mb-5 text-white">Headquarters</h3>
+                        <h3 class="font-bold text-base mb-5 text-white">
+                            {% trans "Headquarters" %}
+                        </h3>
+
                         <div class="space-y-1 text-white">
-                            <p>Tehran - Verona Lighting</p>
-                            <p>Zamani alley, South Sohrevardi Street</p>
-                            <p class="mt-4 pt-2">Tel: 0912 726 2521</p>
+                            <p>{% trans "Tehran - Verona Lighting" %}</p>
+                            <p>{% trans "Zamani alley, South Sohrevardi Street" %}</p>
+                            <p class="mt-4 pt-2">
+                                {% trans "Tel:" %} {% if LANGUAGE_CODE == 'en' %}0912 726 2521{% else %}۲۵۲۱ ۷۲۶ ۰۹۱۲{% endif %}
+                            </p>
                         </div>
                     </div>
 
                     <!-- Column 2 -->
                     <div class="w-full sm:w-auto flex-shrink-0">
-                        <!-- Added explicit text-white here -->
-                        <h3 class="font-bold text-base mb-5 text-white">Company</h3>
+                        <h3 class="font-bold text-base mb-5 text-white">
+                            {% trans "Company" %}
+                        </h3>
+
                         <ul class="space-y-3 text-white">
-                            <li><a href="/about" class="hover:underline">About Us</a></li>
-                            <li><a href="/story" class="hover:underline">Our Story</a></li>
-                            <li><a href="/contact" class="hover:underline">Contact Us</a></li>
+                            <li>
+                                <a href="/about" class="hover:underline">
+                                    {% trans "About Us" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/story" class="hover:underline">
+                                    {% trans "Our Story" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact" class="hover:underline">
+                                    {% trans "Contact Us" %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
                 </div>
 
-                <!-- Right Side Group (Col 3 & 4) -->
+                <!-- Right Side Group -->
                 <div class="flex flex-wrap sm:flex-nowrap gap-10 sm:gap-20 md:gap-48 w-full lg:w-auto">
+
                     <!-- Column 3 -->
                     <div class="w-full sm:w-auto flex-shrink-0">
-                        <!-- Added explicit text-white here -->
-                        <h3 class="font-bold text-base mb-5 text-white">Legal Details</h3>
+                        <h3 class="font-bold text-base mb-5 text-white">
+                            {% trans "Legal Details" %}
+                        </h3>
+
                         <ul class="space-y-3 text-white">
-                            <li><a href="#" class="hover:underline">Imprint</a></li>
-                            <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
-                            <li><a href="#" class="hover:underline">Data Privacy Policy</a></li>
-                            <li><a href="#" class="hover:underline">Terms of Use</a></li>
-                            <li><a href="#" class="hover:underline">Guarantee Information</a></li>
-                            <li><a href="#" class="hover:underline">Accessibility Statement</a></li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Imprint" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Terms & Conditions" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Data Privacy Policy" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Terms of Use" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Guarantee Information" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Accessibility Statement" %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
                     <!-- Column 4 -->
                     <div class="w-full sm:w-auto flex-shrink-0">
-                        <!-- Added explicit text-white here -->
-                        <h3 class="font-bold text-base mb-5 text-white">Support & Services</h3>
+                        <h3 class="font-bold text-base mb-5 text-white">
+                            {% trans "Support & Services" %}
+                        </h3>
+
                         <ul class="space-y-3 text-white">
-                            <li><a href="/contact" class="hover:underline">Contact Us</a></li>
-                            <li><a href="/services" class="hover:underline">Our Services</a></li>
-                            <li><a href="#" class="hover:underline">Report a Product Vulnerability</a></li>
-                            <li><a href="#" class="hover:underline">Request a quote</a></li>
+                            <li>
+                                <a href="/contact" class="hover:underline">
+                                    {% trans "Contact Us" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services" class="hover:underline">
+                                    {% trans "Our Services" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Report a Product Vulnerability" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline">
+                                    {% trans "Request a Quote" %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Bottom Section (Language, Copyright, Socials) -->
+            <!-- Bottom Section -->
             <div class="w-full flex flex-col lg:flex-row items-center justify-between gap-6 relative">
 
                 <!-- Language Selector -->
                 <div class="w-full lg:w-1/3 flex justify-center lg:justify-start">
-
                 </div>
 
                 <!-- Copyright -->
                 <div
                     class="w-full lg:w-1/3 flex justify-center text-sm text-white lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-                    &copy; Verona Lighting | Developed by <a href="https://t.me/arshanpabarja/" class="underline">&nbsp;Arshan Pabarja</a>
+                    &copy; {% trans "Verona Lighting | Developed by" %}
+                    <a href="https://t.me/arshanpabarja/" class="underline">
+                        &nbsp; Arshan Pabarja
+                    </a>
                 </div>
 
                 <!-- Social Icons -->
                 <div class="w-full lg:w-1/3 flex justify-center lg:justify-end items-center gap-5 text-white">
 
                     <!-- Instagram -->
-                    <a href="https://www.instagram.com/veronalighting?igsh=cGprcXBob3I4cGIy" class="hover:opacity-80 transition">
+                    <a href="https://www.instagram.com/veronalighting?igsh=cGprcXBob3I4cGIy"
+                        class="hover:opacity-80 transition"
+                        aria-label="{% trans 'Instagram' %}">
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
 
                     <!-- Telegram -->
-                    <a href="https://www.t.me/Mohammadpabarja" class="hover:opacity-80 transition">
+                    <a href="https://www.t.me/Mohammadpabarja"
+                        class="hover:opacity-80 transition"
+                        aria-label="{% trans 'Telegram' %}">
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                            <path
-                                d="M9.04 15.87l-.39 5.52c.56 0 .8-.24 1.09-.53l2.63-2.52 5.45 3.99c1 .55 1.7.26 1.97-.92l3.58-16.73h.01c.32-1.49-.54-2.07-1.51-1.71L1.8 9.5c-1.47.57-1.45 1.39-.25 1.76l5.66 1.77L19.6 5.59c.57-.38 1.09-.17.66.21" />
+                            <path d="M9.04 15.87l-.39 5.52c.56 0 .8-.24 1.09-.53l2.63-2.52 5.45 3.99c1 .55 1.7.26 1.97-.92l3.58-16.73h.01c.32-1.49-.54-2.07-1.51-1.71L1.8 9.5c-1.47.57-1.45 1.39-.25 1.76l5.66 1.77L19.6 5.59c.57-.38 1.09-.17.66.21"/>
                         </svg>
                     </a>
 
                     <!-- WhatsApp -->
-                    <a href="#" class="hover:opacity-80 transition">
+                    <a href="#"
+                        class="hover:opacity-80 transition"
+                        aria-label="{% trans 'WhatsApp' %}">
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                            <path
-                                d="M20.52 3.48A11.91 11.91 0 0 0 12.06 0C5.53 0 .21 5.32.21 11.85c0 2.08.54 4.12 1.58 5.92L0 24l6.41-1.68a11.84 11.84 0 0 0 5.65 1.44h.01c6.53 0 11.85-5.32 11.85-11.85a11.76 11.76 0 0 0-3.4-8.43zM12.07 21.5a9.7 9.7 0 0 1-4.95-1.35l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.72 9.72 0 0 1-1.5-5.15c0-5.37 4.37-9.74 9.75-9.74a9.68 9.68 0 0 1 6.88 2.85 9.66 9.66 0 0 1 2.85 6.88c0 5.38-4.37 9.75-9.75 9.75zm5.36-7.32c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.95 1.14-.18.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.53.15-.18.2-.29.3-.48.1-.2.05-.38-.02-.53-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.81.38-.27.29-1.06 1.04-1.06 2.53 0 1.49 1.09 2.93 1.24 3.13.15.2 2.13 3.26 5.16 4.57.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.09 1.72-.7 1.96-1.37.24-.67.24-1.24.17-1.37-.07-.13-.27-.2-.56-.35z" />
+                            <path d="M20.52 3.48A11.91 11.91 0 0 0 12.06 0C5.53 0 .21 5.32.21 11.85c0 2.08.54 4.12 1.58 5.92L0 24l6.41-1.68a11.84 11.84 0 0 0 5.65 1.44h.01c6.53 0 11.85-5.32 11.85-11.85a11.76 11.76 0 0 0-3.4-8.43zM12.07 21.5a9.7 9.7 0 0 1-4.95-1.35l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.72 9.72 0 0 1-1.5-5.15c0-5.37 4.37-9.74 9.75-9.74a9.68 9.68 0 0 1 6.88 2.85 9.66 9.66 0 0 1 2.85 6.88c0 5.38-4.37 9.75-9.75 9.75zm5.36-7.32c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.95 1.14-.18.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.53.15-.18.2-.29.3-.48.1-.2.05-.38-.02-.53-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.81.38-.27.29-1.06 1.04-1.06 2.53 0 1.49 1.09 2.93 1.24 3.13.15.2 2.13 3.26 5.16 4.57.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.09 1.72-.7 1.96-1.37.24-.67.24-1.24.17-1.37-.07-.13-.27-.2-.56-.35z"/>
                         </svg>
                     </a>
 
                 </div>
+
             </div>
         </div>
 
     </footer>
+
+</body>

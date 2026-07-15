@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}{{ application.meta_title|default:application.name }} | {{ site_settings.site_name|default:"Verona Lighting" }}{% endblock %}
 
@@ -68,11 +69,11 @@
 
 {% block content %}
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
+<div class="max-w-full flex items-center justify-start mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
   <span class="text-[11px] sm:text-sm text-gray-500">
-    <a href="{% url 'home' %}" class="hover:text-[#800000]">Home</a>
+    <a href="{% url 'home' %}" class="hover:text-[#800000]">{% trans "Home" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
-    <a href="{% url 'products:application_list' %}" class="hover:text-[#800000]">Applications</a>
+    <a href="{% url 'products:application_list' %}" class="hover:text-[#800000]">{% trans "Applications" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
     <span class="font-medium text-gray-800">{{ application.name }}</span>
   </span>
@@ -100,9 +101,9 @@
 <nav class="border-b border-gray-200 bg-white sticky top-24 z-40">
   <div class="container mx-auto px-4">
     <div class="flex overflow-x-auto scrollbar-hide -mb-px">
-      <a href="#solutions" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-red-600 text-gray-900 font-medium text-sm sm:text-base whitespace-nowrap">Solutions</a>
-      <a href="#case-studies" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300 text-sm sm:text-base whitespace-nowrap">Case Studies</a>
-      <a href="#downloads" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300 text-sm sm:text-base whitespace-nowrap">Downloads</a>
+      <a href="#solutions" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-red-600 text-gray-900 font-medium text-sm sm:text-base whitespace-nowrap">{% trans "Solutions" %}</a>
+      <a href="#case-studies" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300 text-sm sm:text-base whitespace-nowrap">{% trans "Case Studies" %}</a>
+      <a href="#downloads" class="flex-shrink-0 py-3 sm:py-4 px-3 sm:px-4 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300 text-sm sm:text-base whitespace-nowrap">{% trans "Downloads" %}</a>
     </div>
   </div>
 </nav>
@@ -112,7 +113,7 @@
     <div class="text-center mb-8 sm:mb-10 px-4">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-          OUR SOLUTIONS
+          {% trans "OUR SOLUTIONS" %}
         </h2>
       </div>
     </div>
@@ -159,7 +160,6 @@
         {% endif %}
       </div>
 
-      <!-- TITLE -->
       <div class="absolute inset-x-6 bottom-6 transition-all duration-300 ease-in-out
                   opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
         <h5 class="text-[20px] font-bold text-[#0d1f3c] uppercase tracking-wide leading-tight">
@@ -167,7 +167,6 @@
         </h5>
       </div>
 
-      <!-- BUTTONS -->
       <div class="absolute inset-x-6  bottom-6 flex flex-col gap-3
                   transition-all duration-300 ease-in-out
                   opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
@@ -176,7 +175,7 @@
             class="flex items-center justify-between w-full rounded-full px-4 py-2.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
-          <span>View Products</span>
+          <span>{% trans "View Products" %}</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>
@@ -186,7 +185,7 @@
             class="items-center hidden justify-between w-full rounded-full px-4 py-1.5
                    font-semibold text-sm text-[#800000] border border-[#800000]
                    hover:text-white hover:bg-[#800000] transition-all duration-200">
-          <span>Explore Product Sheet</span>
+          <span>{% trans "Explore Product Sheet" %}</span>
           <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none">
             <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
           </svg>
@@ -199,7 +198,7 @@
   </div>
   {% else %}
     <div class="text-center py-16 px-4">
-      <p class="text-lg text-gray-700">No products match your filters.</p>
+      <p class="text-lg text-gray-700">{% trans "No products match your filters." %}</p>
     </div>
   {% endif %}
 </section>
@@ -208,7 +207,7 @@
   <div class="text-center mb-8 sm:mb-10 px-4">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-        CASE STUDIES
+        {% trans "CASE STUDIES" %}
       </h2>
     </div>
   </div>
@@ -240,7 +239,7 @@
           {{ project.intro_text|default:project.overview_text|striptags|truncatewords:20 }}
         </p>
         <div class="mt-4 flex items-center text-[#800000] text-sm font-semibold">
-          <span>Read More</span>
+          <span>{% trans "Read More" %}</span>
         </div>
       </div>
     </a>
@@ -248,7 +247,7 @@
   </div>
   {% else %}
   <div class="text-center py-16 px-4">
-    <p class="text-lg text-gray-700">No case studies available yet.</p>
+    <p class="text-lg text-gray-700">{% trans "No case studies available yet." %}</p>
   </div>
   {% endif %}
 </section>
@@ -257,7 +256,7 @@
   <div class="text-center mb-8 sm:mb-10 px-4">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-        DOWNLOADS
+        {% trans "DOWNLOADS" %}
       </h2>
     </div>
   </div>
@@ -286,7 +285,7 @@
 
         <a href="{{ download.file.url }}" download
            class="flex items-center justify-center gap-2 w-full sm:w-auto flex-shrink-0 px-5 py-2.5 bg-[#800000] text-white rounded-full font-semibold text-sm hover:bg-[#a01515] transition-colors">
-          <span>Download</span>
+          <span>{% trans "Download" %}</span>
         </a>
       </div>
       {% endfor %}
@@ -294,7 +293,7 @@
   </div>
   {% else %}
   <div class="text-center py-16 px-4">
-    <p class="text-lg text-gray-700">No downloads available yet.</p>
+    <p class="text-lg text-gray-700">{% trans "No downloads available yet." %}</p>
   </div>
   {% endif %}
 </section>

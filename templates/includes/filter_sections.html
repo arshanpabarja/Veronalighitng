@@ -1,14 +1,14 @@
-<!-- Desktop Filter Bar -->
+{% load i18n %}
+
 <div id="filtersBar" class="hidden xl:block sticky top-24 z-40 bg-white border-b border-t border-gray-200 shadow-sm">
     <div class="px-7 py-2">
         <div class="flex items-center justify-center gap-3 flex-wrap">
-            <!-- Application Filter -->
             <div class="relative">
                 <button type="button" onclick="toggleDropdown('applicationDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
                     </svg>
-                    <span class="text-sm font-medium text-gray-700">Application</span>
+                    <span class="text-sm font-medium text-gray-700">{% trans "Application" %}</span>
                     <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -29,13 +29,12 @@
                 </div>
             </div>
 
-            <!-- Product Family Filter -->
             <div class="relative">
                 <button type="button" onclick="toggleDropdown('productFamilyDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                     </svg>
-                    <span class="text-sm font-medium text-gray-700">Product Family</span>
+                    <span class="text-sm font-medium text-gray-700">{% trans "Product Family" %}</span>
                     <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -43,27 +42,25 @@
                 
                 <div id="productFamilyDropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
                     <div class="p-3 space-y-2">
-{% for family in available_product_families %}
-<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-  <input type="checkbox" name="product_family" value="{{ family.slug }}"
-         {% if family.slug in selected_product_families %}checked{% endif %}
-         onchange="updateFilterBadge(); applyFilters();"
-         class="w-4 h-4 text-blue-600 rounded">
-  <span class="text-sm text-gray-700">{{ family.name }}</span>
-</label>
-{% endfor %}
-
+                        {% for family in available_product_families %}
+                        <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                          <input type="checkbox" name="product_family" value="{{ family.slug }}"
+                                 {% if family.slug in selected_product_families %}checked{% endif %}
+                                 onchange="updateFilterBadge(); applyFilters();"
+                                 class="w-4 h-4 text-blue-600 rounded">
+                          <span class="text-sm text-gray-700">{{ family.name }}</span>
+                        </label>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
 
-            <!-- Mounting Type Filter -->
             <div class="relative">
                 <button type="button" onclick="toggleDropdown('mountingDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    <span class="text-sm font-medium text-gray-700">Mounting Type</span>
+                    <span class="text-sm font-medium text-gray-700">{% trans "Mounting Type" %}</span>
                     <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -84,13 +81,12 @@
                 </div>
             </div>
 
-            <!-- Color Temperature Filter -->
             <div class="relative">
                 <button type="button" onclick="toggleDropdown('colorTempDropdown')" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                     <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                     </svg>
-                    <span class="text-sm font-medium text-gray-700">Color Temperature</span>
+                    <span class="text-sm font-medium text-gray-700">{% trans "Color Temperature" %}</span>
                     <svg class="w-4 h-4 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -111,26 +107,23 @@
                 </div>
             </div>
 
-            <!-- More Filters Button -->
             <div class="relative">
                 <button type="button" onclick="toggleDropdown('moreFiltersDropdown')" class="flex items-center gap-2 px-4 py-2.5 text-black rounded-lg transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
                     </svg>
-                    <span class="text-sm font-medium">More Filters</span>
+                    <span class="text-sm font-medium">{% trans "More Filters" %}</span>
                     <span id="moreFiltersBadge" class="hidden ml-1 px-2 py-0.5 bg-white text-blue-600 text-xs font-bold rounded-full">0</span>
                     <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
 
-                <!-- More Filters Dropdown -->
                 <div id="moreFiltersDropdown" class="hidden absolute top-full right-0 mt-2 w-[600px] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
                     <div class="p-4 border-t border-gray-200">
                         <div class="grid grid-cols-3 gap-6">
-                            <!-- Lumens -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Lumens</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "Lumens" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
                                     {% for lumen in available_lumens %}
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
@@ -144,9 +137,8 @@
                                 </div>
                             </div>
 
-                            <!-- Voltage -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Voltage</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "Voltage" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
                                     {% for volt in available_voltages %}
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
@@ -160,9 +152,8 @@
                                 </div>
                             </div>
 
-                            <!-- Beam Angle -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Beam Angle</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "Beam Angle" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
                                     {% for angle in available_beam_angles %}
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
@@ -180,9 +171,8 @@
 
                     <div class="p-4 border-t border-gray-200">
                         <div class="grid grid-cols-3 gap-6">
-                            <!-- IP Rating -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">IP Rating</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "IP Rating" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
                                     {% for ip in available_ip_ratings %}
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
@@ -196,30 +186,28 @@
                                 </div>
                             </div>
 
-                            <!-- Dimmable -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Dimmable</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "Dimmable" %}</h4>
                                 <div class="space-y-2">
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
                                         <input type="radio" name="dimmable" value="yes" 
                                                {% if request.GET.dimmable == 'yes' %}checked{% endif %}
                                                onchange="updateMoreFiltersBadge()"
                                                class="w-4 h-4 text-blue-600">
-                                        <span class="text-sm text-gray-700">Yes</span>
+                                        <span class="text-sm text-gray-700">{% trans "Yes" %}</span>
                                     </label>
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
                                         <input type="radio" name="dimmable" value="no" 
                                                {% if request.GET.dimmable == 'no' %}checked{% endif %}
                                                onchange="updateMoreFiltersBadge()"
                                                class="w-4 h-4 text-blue-600">
-                                        <span class="text-sm text-gray-700">No</span>
+                                        <span class="text-sm text-gray-700">{% trans "No" %}</span>
                                     </label>
                                 </div>
                             </div>
 
-                            <!-- CRI/Ra -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">CRI/Ra</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "CRI/Ra" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
                                     {% for cri in available_cri %}
                                     <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
@@ -237,20 +225,18 @@
 
                     <div class="p-4 border-t border-gray-200">
                         <div class="grid grid-cols-3 gap-6">
-                            <!-- Certifications -->
                             <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Certifications</h4>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">{% trans "Certifications" %}</h4>
                                 <div class="space-y-2 max-h-48 overflow-y-auto">
-{% for cert in available_certifications %}
-<label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
-  <input type="checkbox" name="certifications" value="{{ cert.slug }}"
-         {% if cert.slug in selected_certifications %}checked{% endif %}
-         onchange="updateMoreFiltersBadge()"
-         class="w-4 h-4 text-blue-600 rounded">
-  <span class="text-sm text-gray-700">{{ cert.name }}</span>
-</label>
-{% endfor %}
-
+                                    {% for cert in available_certifications %}
+                                    <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+                                      <input type="checkbox" name="certifications" value="{{ cert.slug }}"
+                                             {% if cert.slug in selected_certifications %}checked{% endif %}
+                                             onchange="updateMoreFiltersBadge()"
+                                             class="w-4 h-4 text-blue-600 rounded">
+                                      <span class="text-sm text-gray-700">{{ cert.name }}</span>
+                                    </label>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -258,21 +244,19 @@
 
                     <div class="p-4 bg-gray-50 border-t border-gray-200 flex gap-3 rounded-b-lg">
                         <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-2 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors">
-                            Reset
+                            {% trans "Reset" %}
                         </button>
                         <button type="button" onclick="applyMoreFilters()" class="flex-1 px-4 py-2 bg-[#800000] text-white font-medium rounded-lg hover:bg-red-700 transition-colors">
-                            Apply Filters
+                            {% trans "Apply Filters" %}
                         </button>
                     </div>
                 </div>
             </div>
             
-            <!-- Reset Button -->
             <button type="button" onclick="resetFilters()" class="px-4 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-                Reset All
+                {% trans "Reset All" %}
             </button>
 
-            <!-- Active Filters Badge -->
             <span id="filterBadge" class="hidden px-3 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">
                 0 filters
             </span>
@@ -280,7 +264,6 @@
     </div>
 </div>
 
-<!-- Mobile Filter Overlay (keep as is, just fix the form submission) -->
 <div id="filterBackdrop"
     class="fixed inset-0 bg-black/50 z-[1000] hidden opacity-0 transition-opacity duration-300"
     onclick="closeFilterOverlay()"></div>
@@ -292,7 +275,7 @@
   <div class="flex-shrink-0 px-4 pt-3 pb-4 border-b border-[#f0f0f0]">
     <div class="w-10 h-1 bg-[#e0e0e0] rounded-full mx-auto mb-4"></div>
     <div class="flex items-center justify-between">
-      <span class="text-[14px] font-bold text-[#1a1a1a] uppercase tracking-[0.5px]">Filters</span>
+      <span class="text-[14px] font-bold text-[#1a1a1a] uppercase tracking-[0.5px]">{% translate "Filters" %}</span>
       <button onclick="closeFilterOverlay()" class="w-8 h-8 flex items-center justify-center rounded-full bg-[#f0f0f0] text-[#444]">
         <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round]">
           <path d="M18 6L6 18M6 6l12 12"/>
@@ -304,43 +287,38 @@
   <div class="flex-1 overflow-y-auto px-4 py-4">
     <div id="mobileFiltersForm" class="grid grid-cols-1 gap-3">
 
-      <!-- Application -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Application</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Application" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for app in available_applications %}
-<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-  <input type="checkbox" name="application" value="{{ app.slug }}"
-         {% if app.slug in selected_applications %}checked{% endif %}
-         onchange="updateFilterBadge(); applyFilters();"
-         class="w-4 h-4 text-blue-600 rounded">
-  <span class="text-sm text-gray-700">{{ app.name }}</span>
-</label>
-{% endfor %}
-
+          <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+            <input type="checkbox" name="application" value="{{ app.slug }}"
+                   {% if app.slug in selected_applications %}checked{% endif %}
+                   onchange="updateFilterBadge(); applyFilters();"
+                   class="w-4 h-4 text-blue-600 rounded">
+            <span class="text-sm text-gray-700">{{ app.name }}</span>
+          </label>
+          {% endfor %}
         </div>
       </div>
 
-      <!-- Product Family -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Product Family</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Product Family" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for family in available_product_families %}
-<label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
-  <input type="checkbox" name="product_family" value="{{ family.slug }}"
-         {% if family.slug in selected_product_families %}checked{% endif %}
-         onchange="updateFilterBadge(); applyFilters();"
-         class="w-4 h-4 text-blue-600 rounded">
-  <span class="text-sm text-gray-700">{{ family.name }}</span>
-</label>
-{% endfor %}
-
+          <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
+            <input type="checkbox" name="product_family" value="{{ family.slug }}"
+                   {% if family.slug in selected_product_families %}checked{% endif %}
+                   onchange="updateFilterBadge(); applyFilters();"
+                   class="w-4 h-4 text-blue-600 rounded">
+            <span class="text-sm text-gray-700">{{ family.name }}</span>
+          </label>
+          {% endfor %}
         </div>
       </div>
 
-      <!-- Mounting Type -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Mounting Type</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Mounting Type" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for mount in available_mounting_types %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -353,9 +331,8 @@
         </div>
       </div>
 
-      <!-- Color Temperature -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Color Temperature</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Color Temperature" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for temp in available_color_temps %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -368,23 +345,21 @@
         </div>
       </div>
 
-      <!-- Wattage -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Wattage (W)</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Wattage (W)" %}</label>
         <div class="flex items-center gap-2">
-          <input type="number" name="wattage_min" placeholder="Min" value="{{ request.GET.wattage_min }}"
+          <input type="number" name="wattage_min" placeholder="{% trans 'Min' %}" value="{{ request.GET.wattage_min }}"
               min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
               class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
-          <span class="text-[13px] text-[#888]">to</span>
-          <input type="number" name="wattage_max" placeholder="Max" value="{{ request.GET.wattage_max }}"
+          <span class="text-[13px] text-[#888]">{% trans "to" %}</span>
+          <input type="number" name="wattage_max" placeholder="{% trans 'Max' %}" value="{{ request.GET.wattage_max }}"
               min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
               class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
         </div>
       </div>
 
-      <!-- Lumens -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Lumens</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Lumens" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for lumen in available_lumens %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -397,9 +372,8 @@
         </div>
       </div>
 
-      <!-- Voltage -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Voltage</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Voltage" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for volt in available_voltages %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -412,9 +386,8 @@
         </div>
       </div>
 
-      <!-- Beam Angle -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Beam Angle</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Beam Angle" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for angle in available_beam_angles %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -427,9 +400,8 @@
         </div>
       </div>
 
-      <!-- IP Rating -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">IP Rating</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "IP Rating" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for ip in available_ip_ratings %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -442,28 +414,26 @@
         </div>
       </div>
 
-      <!-- Dimmable -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Dimmable</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Dimmable" %}</label>
         <div class="flex gap-4">
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="radio" name="dimmable" value="yes"
                 {% if request.GET.dimmable == 'yes' %}checked{% endif %}
                 class="w-4 h-4 accent-[#800000] cursor-pointer">
-            <span class="text-[13px] text-[#444]">Yes</span>
+            <span class="text-[13px] text-[#444]">{% trans "Yes" %}</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="radio" name="dimmable" value="no"
                 {% if request.GET.dimmable == 'no' %}checked{% endif %}
                 class="w-4 h-4 accent-[#800000] cursor-pointer">
-            <span class="text-[13px] text-[#444]">No</span>
+            <span class="text-[13px] text-[#444]">{% trans "No" %}</span>
           </label>
         </div>
       </div>
 
-      <!-- CRI/Ra -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">CRI/Ra</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "CRI/Ra" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for cri in available_cri %}
           <label class="flex items-center gap-1.5 cursor-pointer">
@@ -476,20 +446,18 @@
         </div>
       </div>
 
-      <!-- Certifications -->
       <div class="bg-[#fafafa] border border-[#ebebeb] rounded-md p-3.5">
-        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">Certifications</label>
+        <label class="block text-[11px] font-bold text-[#1a1a1a] mb-2.5 uppercase tracking-[0.5px]">{% trans "Certifications" %}</label>
         <div class="flex flex-wrap gap-2">
           {% for cert in available_certifications %}
-<label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
-  <input type="checkbox" name="certifications" value="{{ cert.slug }}"
-         {% if cert.slug in selected_certifications %}checked{% endif %}
-         onchange="updateMoreFiltersBadge()"
-         class="w-4 h-4 text-blue-600 rounded">
-  <span class="text-sm text-gray-700">{{ cert.name }}</span>
-</label>
-{% endfor %}
-
+          <label class="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded cursor-pointer">
+            <input type="checkbox" name="certifications" value="{{ cert.slug }}"
+                   {% if cert.slug in selected_certifications %}checked{% endif %}
+                   onchange="updateMoreFiltersBadge()"
+                   class="w-4 h-4 text-blue-600 rounded">
+            <span class="text-sm text-gray-700">{{ cert.name }}</span>
+          </label>
+          {% endfor %}
         </div>
       </div>
 
@@ -498,21 +466,20 @@
 
   <div class="flex-shrink-0 p-4 bg-white border-t border-[#f0f0f0] flex gap-3">
     <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-3 bg-white border border-[#e0e0e0] text-[#444] text-[13px] font-bold rounded-md hover:bg-[#f5f5f5] transition-colors uppercase tracking-[0.5px]">
-      Reset
+      {% trans "Reset" %}
     </button>
     <button type="button" onclick="applyMobileFilters()" class="flex-1 px-4 py-3 bg-[#800000] text-white text-[13px] font-bold rounded-md hover:bg-[#b01717] transition-colors uppercase tracking-[0.5px]">
-      Apply Filters
+      {% trans "Apply Filters" %}
     </button>
   </div>
 </div>
 
-<!-- Mobile Filter Button -->
 <button id="mobileFilterBtn" onclick="openFilterOverlay()"
     class="sm:hidden fixed bottom-6 right-6 z-50 bg-[#800000] text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-[#b01717] transition-all">
   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
   </svg>
-  <span class="text-sm font-semibold">Filters</span>
+  <span class="text-sm font-semibold">{% trans "Filters" %}</span>
   <span id="mobileFilterBadge" class="hidden ml-1 px-2 py-0.5 bg-white text-[#800000] text-xs font-bold rounded-full">0</span>
 </button>
 
@@ -574,6 +541,7 @@ function updateFilterBadge() {
     
     const badge = document.getElementById('filterBadge');
     if (count > 0) {
+        // localized "filters" string can be handled inside localized dynamic UI logic if required
         badge.textContent = `${count} filter${count !== 1 ? 's' : ''}`;
         badge.classList.remove('hidden');
     } else {

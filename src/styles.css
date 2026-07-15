@@ -361,6 +361,21 @@ html[dir="rtl"] strong {
     letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
 }
 
+html[dir="rtl"] p {
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
+}
+
+html[dir="rtl"] a {
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
+}
+
+html[dir="rtl"] span {
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: normal; /* letter-spacing منفی روی فارسی خیلی بده به نظر میاد */
+}
+
 /* ── HERO VIDEO ── */
 .hero-section video {
     object-fit: cover;

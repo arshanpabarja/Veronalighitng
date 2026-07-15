@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-14 08:29+0330\n"
-"PO-Revision-Date: 2026-07-14 08:45+0330\n"
+"POT-Creation-Date: 2026-07-15 03:45+0330\n"
+"PO-Revision-Date: 2026-07-15 02:15+0330\n"
 "Last-Translator: Gemini <ai-collaborator@example.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -25,102 +25,320 @@ msgstr "فارسی"
 msgid "English"
 msgstr "انگلیسی"
 
-#: .\templates\includes\navbar.html:19 .\templates\includes\navbar.html:26
+#: .\templates\includes\filter_sections.html:11
+#: .\templates\includes\filter_sections.html:291 .\templates\index.html:553
+msgid "Application"
+msgstr "کاربرد"
+
+#: .\templates\includes\filter_sections.html:37
+#: .\templates\includes\filter_sections.html:306
+msgid "Product Family"
+msgstr "خانواده محصول"
+
+#: .\templates\includes\filter_sections.html:63
+#: .\templates\includes\filter_sections.html:321
+msgid "Mounting Type"
+msgstr "نوع نصب"
+
+#: .\templates\includes\filter_sections.html:89
+#: .\templates\includes\filter_sections.html:335
+#: .\templates\products\product_detail.html:76
+#: .\templates\products\product_detail.html:280
+#: .\templates\products\product_detail.html:362
+#: .\templates\products\product_detail.html:401
+msgid "Color Temperature"
+msgstr "دمای رنگ"
+
+#: .\templates\includes\filter_sections.html:115
+msgid "More Filters"
+msgstr "فیلترهای بیشتر"
+
+#: .\templates\includes\filter_sections.html:126
+#: .\templates\includes\filter_sections.html:362
+msgid "Lumens"
+msgstr "لومن"
+
+#: .\templates\includes\filter_sections.html:141
+#: .\templates\includes\filter_sections.html:376
+msgid "Voltage"
+msgstr "ولتاژ"
+
+#: .\templates\includes\filter_sections.html:156
+#: .\templates\includes\filter_sections.html:390
+#: .\templates\products\product_detail.html:292
+#: .\templates\products\product_detail.html:407
+msgid "Beam Angle"
+msgstr "زاویه تابش"
+
+#: .\templates\includes\filter_sections.html:175
+#: .\templates\includes\filter_sections.html:404
+#: .\templates\products\product_detail.html:84
+#: .\templates\products\product_detail.html:286
+#: .\templates\products\product_detail.html:416
+msgid "IP Rating"
+msgstr "استاندارد IP"
+
+#: .\templates\includes\filter_sections.html:190
+#: .\templates\includes\filter_sections.html:418
+#: .\templates\products\product_detail.html:365
+#: .\templates\products\product_detail.html:419
+msgid "Dimmable"
+msgstr "قابلیت تنظیم نور"
+
+#: .\templates\includes\filter_sections.html:197
+#: .\templates\includes\filter_sections.html:424
+#: .\templates\products\product_detail.html:419
+msgid "Yes"
+msgstr "بله"
+
+#: .\templates\includes\filter_sections.html:204
+#: .\templates\includes\filter_sections.html:430
+msgid "No"
+msgstr "خیر"
+
+#: .\templates\includes\filter_sections.html:210
+#: .\templates\includes\filter_sections.html:436
+msgid "CRI/Ra"
+msgstr "شاخص نمود رنگ (CRI)"
+
+#: .\templates\includes\filter_sections.html:229
+#: .\templates\includes\filter_sections.html:450
+msgid "Certifications"
+msgstr "گواهی‌نامه‌ها"
+
+#: .\templates\includes\filter_sections.html:247
+#: .\templates\includes\filter_sections.html:469
+msgid "Reset"
+msgstr "بازنشانی"
+
+#: .\templates\includes\filter_sections.html:250
+#: .\templates\includes\filter_sections.html:472
+msgid "Apply Filters"
+msgstr "اعمال فیلترها"
+
+#: .\templates\includes\filter_sections.html:257
+msgid "Reset All"
+msgstr "پاک کردن همه"
+
+#: .\templates\includes\filter_sections.html:278
+#: .\templates\includes\filter_sections.html:482
+#: .\templates\products\category_detail.html:161
+#: .\templates\products\child_detail.html:164
+msgid "Filters"
+msgstr "فیلترها"
+
+#: .\templates\includes\filter_sections.html:349
+msgid "Wattage (W)"
+msgstr "توان (وات)"
+
+#: .\templates\includes\filter_sections.html:351
+msgid "Min"
+msgstr "حداقل"
+
+#: .\templates\includes\filter_sections.html:354
+msgid "to"
+msgstr "تا"
+
+#: .\templates\includes\filter_sections.html:355
+msgid "Max"
+msgstr "حداکثر"
+
+#: .\templates\includes\footer.html:13
+msgid "Verona Lighting Logo"
+msgstr "لوگوی روشنایی ورونا"
+
+#: .\templates\includes\footer.html:26
+msgid "Headquarters"
+msgstr "دفتر مرکزی"
+
+#: .\templates\includes\footer.html:30
+msgid "Tehran - Verona Lighting"
+msgstr "تهران - روشنایی ورونا"
+
+#: .\templates\includes\footer.html:31
+msgid "Zamani alley, South Sohrevardi Street"
+msgstr "خیابان سهروردی جنوبی، کوچه زمانی"
+
+#: .\templates\includes\footer.html:33
+msgid "Tel:"
+msgstr "تلفن تماس:"
+
+#: .\templates\includes\footer.html:41 .\templates\includes\navbar.html:95
+#: .\templates\includes\navbar.html:252 .\templates\includes\navbar.html:396
+msgid "Company"
+msgstr "شرکت"
+
+#: .\templates\includes\footer.html:47
+msgid "About Us"
+msgstr "درباره ما"
+
+#: .\templates\includes\footer.html:52 .\templates\includes\navbar.html:107
+#: .\templates\includes\navbar.html:398 .\templates\index.html:666
+msgid "Our Story"
+msgstr "داستان ما"
+
+#: .\templates\includes\footer.html:57 .\templates\includes\footer.html:117
+#: .\templates\includes\navbar.html:108 .\templates\includes\navbar.html:399
+#: .\templates\index.html:696
+msgid "Contact Us"
+msgstr "تماس با ما"
+
+#: .\templates\includes\footer.html:71
+msgid "Legal Details"
+msgstr "اطلاعات حقوقی"
+
+#: .\templates\includes\footer.html:77
+msgid "Imprint"
+msgstr "صاحب امتیاز"
+
+#: .\templates\includes\footer.html:82
+msgid "Terms & Conditions"
+msgstr "شرایط و قوانین"
+
+#: .\templates\includes\footer.html:87
+msgid "Data Privacy Policy"
+msgstr "سیاست حریم خصوصی"
+
+#: .\templates\includes\footer.html:92
+msgid "Terms of Use"
+msgstr "شرایط استفاده"
+
+#: .\templates\includes\footer.html:97
+msgid "Guarantee Information"
+msgstr "اطلاعات گارانتی"
+
+#: .\templates\includes\footer.html:102
+msgid "Accessibility Statement"
+msgstr "بیانیه دسترسی‌پذیری"
+
+#: .\templates\includes\footer.html:111
+msgid "Support & Services"
+msgstr "پشتیبانی و خدمات"
+
+#: .\templates\includes\footer.html:122
+msgid "Our Services"
+msgstr "خدمات ما"
+
+#: .\templates\includes\footer.html:127
+msgid "Report a Product Vulnerability"
+msgstr "گزارش آسیب‌پذیری محصول"
+
+#: .\templates\includes\footer.html:132
+#: .\templates\products\product_detail.html:332
+msgid "Request a Quote"
+msgstr "درخواست پیش‌فاکتور"
+
+#: .\templates\includes\footer.html:152
+msgid "Verona Lighting | Developed by"
+msgstr "روشنایی ورونا | طراحی و توسعه توسط"
+
+#: .\templates\includes\footer.html:164
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+#: .\templates\includes\footer.html:173
+msgid "Telegram"
+msgstr "تلگرام"
+
+#: .\templates\includes\footer.html:182
+msgid "WhatsApp"
+msgstr "واتس‌اپ"
+
+#: .\templates\includes\navbar.html:19 .\templates\includes\navbar.html:25
 msgid "Verona Lighting logo"
 msgstr "لوگوی روشنایی ورونا"
 
-#: .\templates\includes\navbar.html:40 .\templates\includes\navbar.html:202
-#: .\templates\includes\navbar.html:257 .\templates\includes\navbar.html:284
+#: .\templates\includes\navbar.html:42 .\templates\includes\navbar.html:236
+#: .\templates\includes\navbar.html:306 .\templates\includes\navbar.html:332
 #: .\templates\products\category_detail.html:39
 #: .\templates\products\category_detail.html:77
+#: .\templates\products\child_detail.html:36
+#: .\templates\products\child_detail.html:82
 #: .\templates\products\product_detail.html:110
 #: .\templates\products\product_detail.html:183
 msgid "Products"
 msgstr "محصولات"
 
-#: .\templates\includes\navbar.html:47 .\templates\includes\navbar.html:260
+#: .\templates\includes\navbar.html:49 .\templates\includes\navbar.html:309
 msgid "All Products"
 msgstr "همه محصولات"
 
-#: .\templates\includes\navbar.html:48
+#: .\templates\includes\navbar.html:50
 msgid "Explore our complete range of professional lighting solutions."
 msgstr "مجموعه کامل راهکارهای روشنایی حرفه‌ای ما را کشف کنید."
 
-#: .\templates\includes\navbar.html:86 .\templates\includes\navbar.html:210
-#: .\templates\includes\navbar.html:316
+#: .\templates\includes\navbar.html:88 .\templates\includes\navbar.html:244
+#: .\templates\includes\navbar.html:363
+#: .\templates\products\application_detail.html:76
+#: .\templates\products\application_list.html:8
+#: .\templates\products\application_list.html:17
+#: .\templates\products\application_list.html:26
+#: .\templates\products\application_list.html:47
+#: .\templates\products\application_list.html:58
+#: .\templates\products\application_list.html:81
+#: .\templates\products\application_list.html:85
 msgid "Applications"
 msgstr "کاربردها"
 
-#: .\templates\includes\navbar.html:93 .\templates\includes\navbar.html:218
-#: .\templates\includes\navbar.html:350
-msgid "Company"
-msgstr "شرکت"
-
-#: .\templates\includes\navbar.html:100
+#: .\templates\includes\navbar.html:102
 msgid "About Company"
 msgstr "درباره شرکت"
 
-#: .\templates\includes\navbar.html:101
+#: .\templates\includes\navbar.html:103
 msgid ""
 "Learn about our lighting philosophy, craftsmanship, innovation, and brand "
 "story."
 msgstr "درباره فلسفه روشنایی، مهارت، نوآوری و داستان برند ما بیشتر بدانید."
 
-#: .\templates\includes\navbar.html:104 .\templates\includes\navbar.html:351
+#: .\templates\includes\navbar.html:106 .\templates\includes\navbar.html:397
 msgid "About Verona"
 msgstr "درباره ورونا"
 
-#: .\templates\includes\navbar.html:105 .\templates\includes\navbar.html:352
-#: .\templates\index.html:666
-msgid "Our Story"
-msgstr "داستان ما"
-
-#: .\templates\includes\navbar.html:106 .\templates\includes\navbar.html:353
-#: .\templates\index.html:696
-msgid "Contact Us"
-msgstr "تماس با ما"
-
-#: .\templates\includes\navbar.html:116 .\templates\includes\navbar.html:226
-#: .\templates\includes\navbar.html:375
+#: .\templates\includes\navbar.html:118 .\templates\includes\navbar.html:260
+#: .\templates\includes\navbar.html:420
 msgid "Services"
 msgstr "خدمات"
 
-#: .\templates\includes\navbar.html:123 .\templates\includes\navbar.html:234
+#: .\templates\includes\navbar.html:125 .\templates\includes\navbar.html:268
 #: .\templates\index.html:362
 msgid "Projects"
 msgstr "منتخب"
 
-#: .\templates\includes\navbar.html:198
+#: .\templates\includes\navbar.html:232
 msgid "Menu"
 msgstr "منو"
 
-#: .\templates\includes\navbar.html:248 .\templates\includes\navbar.html:307
-#: .\templates\includes\navbar.html:341 .\templates\includes\navbar.html:366
+#: .\templates\includes\navbar.html:272
+msgid "Language"
+msgstr "زبان"
+
+#: .\templates\includes\navbar.html:297 .\templates\includes\navbar.html:354
+#: .\templates\includes\navbar.html:387 .\templates\includes\navbar.html:411
 msgid "All"
 msgstr "همه"
 
-#: .\templates\includes\navbar.html:319
+#: .\templates\includes\navbar.html:366
 msgid "All Applications"
 msgstr "همه کاربردها"
 
-#: .\templates\includes\navbar.html:376
+#: .\templates\includes\navbar.html:421
 msgid "All Services"
 msgstr "همه خدمات"
 
-#: .\templates\includes\navbar.html:377 .\templates\index.html:613
+#: .\templates\includes\navbar.html:422 .\templates\index.html:613
 msgid "Office"
 msgstr "اداری"
 
-#: .\templates\includes\navbar.html:378 .\templates\index.html:389
+#: .\templates\includes\navbar.html:423 .\templates\index.html:389
 #: .\templates\index.html:573
 msgid "Retail"
-msgstr "فضا های تجاری"
+msgstr "فضاهای تجاری"
 
-#: .\templates\includes\navbar.html:379
+#: .\templates\includes\navbar.html:424
 msgid "Urban"
 msgstr "شهری"
 
-#: .\templates\includes\navbar.html:380
+#: .\templates\includes\navbar.html:425
 msgid "Sports"
 msgstr "ورزشی"
 
@@ -210,14 +428,14 @@ msgstr "اسلاید ۵"
 
 #: .\templates\index.html:362
 msgid "Featured"
-msgstr "پروژه های"
+msgstr "پروژه‌های"
 
 #: .\templates\index.html:365
 msgid ""
 "Lighting solutions that transform architectural spaces across retail, "
 "hospitality, and commercial environments."
 msgstr ""
-"راهکارهای روشنایی که فضاهای معماری را در محیط‌های فضا های تجاری و مهمان نوازی "
+"راهکارهای روشنایی که فضاهای معماری را در محیط‌های فضاهای تجاری و مهمان نوازی "
 "متحول می‌کنند."
 
 #: .\templates\index.html:372 .\templates\index.html:422
@@ -306,10 +524,6 @@ msgstr "محوطه بیرونی"
 #: .\templates\index.html:553
 msgid "Solutions by"
 msgstr "راهکارها بر اساس"
-
-#: .\templates\index.html:553
-msgid "Application"
-msgstr "کاربرد"
 
 #: .\templates\index.html:556
 msgid "Tailored lighting systems for every architectural context"
@@ -401,27 +615,103 @@ msgstr ""
 msgid "Download Catalog"
 msgstr "دانلود کاتالوگ"
 
+#: .\templates\products\application_detail.html:74
+#: .\templates\products\application_list.html:41
+#: .\templates\products\application_list.html:79
 #: .\templates\products\category_detail.html:33
 #: .\templates\products\category_detail.html:75
+#: .\templates\products\child_detail.html:30
+#: .\templates\products\child_detail.html:80
 #: .\templates\products\product_detail.html:103
 #: .\templates\products\product_detail.html:180
+#: .\templates\products\product_list.html:57
 msgid "Home"
 msgstr "خانه"
+
+#: .\templates\products\application_detail.html:104
+msgid "Solutions"
+msgstr "راهکارها"
+
+#: .\templates\products\application_detail.html:105
+msgid "Case Studies"
+msgstr "نمونه‌های موردی"
+
+#: .\templates\products\application_detail.html:106
+msgid "Downloads"
+msgstr "دانلودها"
+
+#: .\templates\products\application_detail.html:116
+msgid "OUR SOLUTIONS"
+msgstr "راهکارهای ما"
+
+#: .\templates\products\application_detail.html:178
+#: .\templates\products\category_detail.html:241
+#: .\templates\products\child_detail.html:250
+msgid "View Products"
+msgstr "مشاهده محصولات"
+
+#: .\templates\products\application_detail.html:188
+#: .\templates\products\category_detail.html:251
+#: .\templates\products\child_detail.html:260
+msgid "Explore Product Sheet"
+msgstr "مشاهده برگه مشخصات محصول"
+
+#: .\templates\products\application_detail.html:201
+#: .\templates\products\child_detail.html:170
+msgid "No products match your filters."
+msgstr "هیچ محصولی با فیلترهای شما مطابقت ندارد."
+
+#: .\templates\products\application_detail.html:210
+msgid "CASE STUDIES"
+msgstr "نمونه‌های موردی"
+
+#: .\templates\products\application_detail.html:242
+msgid "Read More"
+msgstr "بیشتر بخوانید"
+
+#: .\templates\products\application_detail.html:250
+msgid "No case studies available yet."
+msgstr "هنوز هیچ نمونه موردی در دسترس نیست."
+
+#: .\templates\products\application_detail.html:259
+msgid "DOWNLOADS"
+msgstr "دانلودها"
+
+#: .\templates\products\application_detail.html:288
+msgid "Download"
+msgstr "دانلود"
+
+#: .\templates\products\application_detail.html:296
+msgid "No downloads available yet."
+msgstr "هنوز هیچ دانلودی در دسترس نیست."
+
+#: .\templates\products\application_list.html:5
+msgid "Lighting Applications"
+msgstr "کاربردهای روشنایی"
+
+#: .\templates\products\application_list.html:10
+msgid "B2B lighting, commercial lighting, industrial lighting applications"
+msgstr "روشنایی B2B، روشنایی تجاری، کاربردهای روشنایی صنعتی"
+
+#: .\templates\products\application_list.html:105
+msgid "lighting solutions"
+msgstr "راهکارهای روشنایی"
+
+#: .\templates\products\application_list.html:125
+msgid "No applications available yet"
+msgstr "هنوز هیچ کاربردی در دسترس نیست"
 
 #: .\templates\products\category_detail.html:152
 #, python-format
 msgid "Showing <strong class=\"text-[#1a1a1a]\">%(count)s</strong> families in"
 msgstr "نمایش <strong class=\"text-[#1a1a1a]\">%(count)s</strong> خانواده در"
 
-#: .\templates\products\category_detail.html:161
-msgid "Filters"
-msgstr "فیلترها"
-
 #: .\templates\products\category_detail.html:167
 msgid "No family match your filters."
-msgstr "هیچ خانواده‌ای با فیلترهای شما مطابقت ندارد."
+msgstr "هیچ خانواده‌ای با فیلترهای شما مطابایت ندارد."
 
 #: .\templates\products\category_detail.html:168
+#: .\templates\products\child_detail.html:171
 msgid "Try adjusting the specs or reset to browse all."
 msgstr "مشخصات را تغییر دهید یا برای مشاهده همه، فیلترها را بازنشانی کنید."
 
@@ -435,31 +725,42 @@ msgid "Explore <span class=\"text-[#800000]\">%(name)s</span> families"
 msgstr "بررسی خانواده‌های <span class=\"text-[#800000]\">%(name)s</span>"
 
 #: .\templates\products\category_detail.html:182
+#: .\templates\products\child_detail.html:186
 msgid ""
 "Choose a family to discover the complete product lineup within this "
 "collection."
 msgstr "برای مشاهده مجموعه کامل محصولات این مجموعه، یک خانواده را انتخاب کنید."
 
-#: .\templates\products\category_detail.html:241
-msgid "View Products"
-msgstr "مشاهده محصولات"
+#: .\templates\products\child_detail.html:59
+#: .\templates\products\child_detail.html:179
+msgid "Product Families"
+msgstr "خانواده‌های محصول"
 
-#: .\templates\products\category_detail.html:251
-msgid "Explore Product Sheet"
-msgstr "مشاهده برگه مشخصات محصول"
+#: .\templates\products\child_detail.html:97
+msgid ""
+"Browse our range of indoor lighting solutions designed for performance, "
+"efficiency, and visual comfort."
+msgstr ""
+"مجموعه راهکارهای روشنایی داخلی ما را که برای عملکرد، بازدهی بالا و آسایش "
+"بصری طراحی شده‌اند، بررسی کنید."
 
-#: .\templates\products\product_detail.html:76
-#: .\templates\products\product_detail.html:280
-#: .\templates\products\product_detail.html:362
-#: .\templates\products\product_detail.html:401
-msgid "Color Temperature"
-msgstr "دمای رنگ"
+#: .\templates\products\child_detail.html:155
+#, python-format
+msgid ""
+"\n"
+"      Showing <strong class=\"text-[#1a1a1a]\">%(count)s</strong> products "
+"in <strong class=\"text-[#800000]\">%(family_name)s</strong>\n"
+"      "
+msgstr ""
+"\n"
+"      نمایش <strong class=\"text-[#1a1a1a]\">%(count)s</strong> محصول در "
+"<strong class=\"text-[#800000]\">%(family_name)s</strong>\n"
+"      "
 
-#: .\templates\products\product_detail.html:84
-#: .\templates\products\product_detail.html:286
-#: .\templates\products\product_detail.html:416
-msgid "IP Rating"
-msgstr "استاندارد IP"
+#: .\templates\products\child_detail.html:183
+#, python-format
+msgid "Explore <span class=\"text-[#800000]\">%(child_name)s</span> Families"
+msgstr "بررسی خانواده‌های <span class=\"text-[#800000]\">%(child_name)s</span>"
 
 #: .\templates\products\product_detail.html:229
 #: .\templates\products\product_detail.html:580
@@ -493,11 +794,6 @@ msgstr "خروجی لومن"
 msgid "Power"
 msgstr "توان"
 
-#: .\templates\products\product_detail.html:292
-#: .\templates\products\product_detail.html:407
-msgid "Beam Angle"
-msgstr "زاویه تابش"
-
 #: .\templates\products\product_detail.html:298
 msgid "Lifespan"
 msgstr "طول عمر"
@@ -505,10 +801,6 @@ msgstr "طول عمر"
 #: .\templates\products\product_detail.html:311
 msgid "Finish"
 msgstr "رنگ و پرداخت نهایی"
-
-#: .\templates\products\product_detail.html:332
-msgid "Request a Quote"
-msgstr "درخواست پیش‌فاکتور"
 
 #: .\templates\products\product_detail.html:336
 msgid "Download Product Sheet"
@@ -533,11 +825,6 @@ msgstr "نصب"
 #: .\templates\products\product_detail.html:359
 msgid "Key Features"
 msgstr "ویژگی‌های کلیدی"
-
-#: .\templates\products\product_detail.html:365
-#: .\templates\products\product_detail.html:419
-msgid "Dimmable"
-msgstr "قابلیت تنظیم نور"
 
 #: .\templates\products\product_detail.html:368
 #: .\templates\products\product_detail.html:547
@@ -583,10 +870,6 @@ msgstr "ولتاژ ورودی"
 #: .\templates\products\product_detail.html:413
 msgid "LED Lifespan"
 msgstr "طول عمر LED"
-
-#: .\templates\products\product_detail.html:419
-msgid "Yes"
-msgstr "بله"
 
 #: .\templates\products\product_detail.html:422
 msgid "Lamp Base"
@@ -664,6 +947,18 @@ msgstr "کاتالوگ کامل محصولات ۲۰۲۵ ما شامل بیش ا�
 #: .\templates\products\product_detail.html:571
 msgid "Download Catalogue"
 msgstr "دانلود کاتالوگ"
+
+#: .\templates\products\product_list.html:59
+#: .\templates\products\product_list.html:63
+#| msgid "Categories"
+msgid "Product Categories"
+msgstr "دسته بندی محصولات"
+
+#~ msgid "verona lighting logo"
+#~ msgstr "لوگوی روشنایی ورونا"
+
+#~ msgid "Request a quote"
+#~ msgstr "درخواست پیش‌فاکتور"
 
 #~ msgid "logo"
 #~ msgstr "لوگو"
