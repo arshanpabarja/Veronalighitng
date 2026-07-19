@@ -6,9 +6,43 @@ from django.conf import settings
 from django.conf.urls.static import static
 from Products import views
 from core.views import *
+from django.contrib.sitemaps import views as v
+from core.sitemaps import (
+    StaticViewSitemap,
+    CategorySitemap,
+    FamilySitemap,
+    ProductSitemap,
+    ProjectSitemap,
+    ApplicationSitemap,
+    NewsSitemap,
+)
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "categories": CategorySitemap,
+    "families": FamilySitemap,
+    "products": ProductSitemap,
+    "projects": ProjectSitemap,
+    "applications": ApplicationSitemap,
+    "news": NewsSitemap,
+}
 
 urlpatterns = [
     path("i18n/setlang/", set_language, name="set_language"),
+
+    path(
+        "sitemap.xml",
+        v.index,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.index",
+    ),
+
+    path(
+        "sitemap-<section>.xml",
+        v.sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
 ]
 
 urlpatterns += i18n_patterns(
@@ -27,6 +61,8 @@ urlpatterns += i18n_patterns(
     path('search/', views.search, name='search'),
 
     path('', include('Products.urls', namespace='products')),
+
+    path("robots.txt", robots_txt, name="robots_txt"),
 
     prefix_default_language=False,
 )

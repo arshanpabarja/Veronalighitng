@@ -10,6 +10,7 @@ class Category(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     number = models.IntegerField(unique=True, blank=True, null=True)
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name='ترتیب نمایش')
+    persian_image = models.ImageField('persian image', blank=True, null=True, upload_to='category/')
     parent = models.ForeignKey(
         'self',
         null=True, blank=True,
@@ -22,7 +23,6 @@ class Category(models.Model):
     is_active = models.BooleanField(default=True)
 
     meta_title = models.CharField(
-        max_length=60,
         blank=True,
         verbose_name='عنوان SEO',
         help_text='حداکثر ۶۰ کاراکتر — در صورت خالی بودن، نام دسته‌بندی استفاده می‌شود'
@@ -62,12 +62,28 @@ class Category(models.Model):
 
     def get_meta_title(self):
         """Fallback chain: meta_title → name"""
-        return self.meta_title or self.name
+        return self.meta_title or f"{self.name} Project | Verona Lighting"
 
     def get_meta_description(self):
         """Fallback chain: meta_description → description (truncated)"""
         return self.meta_description or self.description[:160]
+    
+    def get_absolute_url(self):
+        if self.parent:
+            return reverse(
+                "products:child_detail",
+                kwargs={
+                    "cat_slug": self.parent.slug,
+                    "child_slug": self.slug,
+                },
+            )
 
+        return reverse(
+            "products:category_detail",
+            kwargs={
+                "cat_slug": self.slug,
+            },
+        )
 
     def __str__(self):
         return self.name
@@ -129,19 +145,23 @@ class Application(models.Model):
         return slug
 
     def get_meta_title(self):
-        return self.meta_title or self.name
+        return self.meta_title or f"{self.name} Application | Verona Lighting"
 
     def get_meta_description(self):
         return self.meta_description or self.short_description or self.description[:160]
-
+    
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("products:application_detail", kwargs={"slug": self.slug})
 
 
 class Family(models.Model):
     name = models.CharField(max_length=200, verbose_name='نام محصول', null=True, blank=True)
     slug = models.SlugField(unique=True, verbose_name='اسلاگ', null=True, blank=True)
     icon = models.ImageField(upload_to='Family', blank=True)
+    icon_alt = models.CharField(blank=True, null=True)
     number = models.IntegerField(blank=True, null=True)
     category = models.ForeignKey(
         Category,
@@ -159,10 +179,8 @@ class Family(models.Model):
     subtitle = models.CharField(max_length=1000, verbose_name='زیرعنوان', null=True, blank=True)
 
     meta_title = models.CharField(
-        max_length=60,
         verbose_name='عنوان SEO',
         null=True, blank=True,
-        help_text='حداکثر ۶۰ کاراکتر'
     )
     meta_description = models.TextField(
         verbose_name='توضیح SEO',
@@ -195,13 +213,32 @@ class Family(models.Model):
         return slug
 
     def get_meta_title(self):
-        return self.meta_title or self.name
+        return self.meta_title or f"{self.name} Family | Verona Lighting"
 
     def get_meta_description(self):
         return self.meta_description or self.subtitle or ''
 
     def __str__(self):
         return self.name_en
+    
+    def get_absolute_url(self):
+        if self.category.parent:
+            return reverse(
+                "products:family_detail",
+                kwargs={
+                    "cat_slug": self.category.parent.slug,
+                    "child_slug": self.category.slug,
+                    "family_slug": self.slug,
+                },
+            )
+
+        return reverse(
+            "products:family_detail_no_child",
+            kwargs={
+                "cat_slug": self.category.slug,
+                "family_slug": self.slug,
+            },
+        )
 
 
 class Finish(models.Model):
@@ -393,7 +430,7 @@ class Product(models.Model):
 
     # SEO
     meta_title = models.CharField(
-        max_length=60,
+        max_length=90,
         blank=True,
         verbose_name='عنوان SEO',
         help_text='حداکثر ۶۰ کاراکتر — در صورت خالی بودن، نام محصول استفاده می‌شود'
@@ -434,7 +471,7 @@ class Product(models.Model):
 
     def get_meta_title(self):
         """Fallback chain: meta_title → name"""
-        return self.meta_title or self.name
+        return self.meta_title or f"{self.name} Product | Verona Lighting"
 
     def get_meta_description(self):
         """Fallback chain: meta_description → description (truncated)"""
@@ -446,6 +483,27 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        if self.category.parent:
+            return reverse(
+                "products:product_detail",
+                kwargs={
+                    "cat_slug": self.category.parent.slug,
+                    "child_slug": self.category.slug,
+                    "family_slug": self.family.slug,
+                    "slug": self.slug,
+                },
+            )
+
+        return reverse(
+            "products:product_detail_no_child",
+            kwargs={
+                "cat_slug": self.category.slug,
+                "family_slug": self.family.slug,
+                "slug": self.slug,
+            },
+        )
 
 
 class Download(models.Model):

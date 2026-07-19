@@ -37,6 +37,7 @@ class FamilyTranslationOptions(TranslationOptions):
         "subtitle",
         "meta_title",
         "meta_description",
+        "icon_alt",
     )
 
 

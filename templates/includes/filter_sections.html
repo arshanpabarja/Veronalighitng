@@ -246,14 +246,14 @@
                         <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-2 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors">
                             {% trans "Reset" %}
                         </button>
-                        <button type="button" onclick="applyMoreFilters()" class="flex-1 px-4 py-2 bg-[#800000] text-white font-medium rounded-lg hover:bg-red-700 transition-colors">
+                        <button type="button" onclick="applyMoreFilters()" class="flex-1 px-4 py-2 bg-[#727272] text-white font-medium rounded-lg hover:bg-[#B99A58] transition-colors">
                             {% trans "Apply Filters" %}
                         </button>
                     </div>
                 </div>
             </div>
             
-            <button type="button" onclick="resetFilters()" class="px-4 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
+            <button type="button" onclick="resetFilters()" class="px-4 py-2.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:text-[#B99A58] transition-colors">
                 {% trans "Reset All" %}
             </button>
 
@@ -324,7 +324,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="mounting_type" value="{{ mount }}"
                 {% if mount in selected_mounting_types %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ mount }}</span>
           </label>
           {% endfor %}
@@ -338,7 +338,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="color_temp" value="{{ temp }}"
                 {% if temp in selected_color_temps %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ temp }}K</span>
           </label>
           {% endfor %}
@@ -350,11 +350,11 @@
         <div class="flex items-center gap-2">
           <input type="number" name="wattage_min" placeholder="{% trans 'Min' %}" value="{{ request.GET.wattage_min }}"
               min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
-              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
+              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#727272] focus:outline-none">
           <span class="text-[13px] text-[#888]">{% trans "to" %}</span>
           <input type="number" name="wattage_max" placeholder="{% trans 'Max' %}" value="{{ request.GET.wattage_max }}"
               min="{{ wattage_min_db }}" max="{{ wattage_max_db }}"
-              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#800000] focus:outline-none">
+              class="w-full bg-white border border-[#e0e0e0] rounded-md px-2 py-2 text-[13px] focus:border-[#727272] focus:outline-none">
         </div>
       </div>
 
@@ -365,7 +365,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="lumens" value="{{ lumen }}"
                 {% if lumen in selected_lumens %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ lumen }}lm</span>
           </label>
           {% endfor %}
@@ -379,7 +379,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="voltage" value="{{ volt }}"
                 {% if volt in selected_voltages %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ volt }}V</span>
           </label>
           {% endfor %}
@@ -393,7 +393,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="beam_angle" value="{{ angle }}"
                 {% if angle in selected_beam_angles %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ angle }}°</span>
           </label>
           {% endfor %}
@@ -407,7 +407,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="ip_rating" value="{{ ip }}"
                 {% if ip in selected_ip_ratings %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ ip }}</span>
           </label>
           {% endfor %}
@@ -420,13 +420,13 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="radio" name="dimmable" value="yes"
                 {% if request.GET.dimmable == 'yes' %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{% trans "Yes" %}</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="radio" name="dimmable" value="no"
                 {% if request.GET.dimmable == 'no' %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{% trans "No" %}</span>
           </label>
         </div>
@@ -439,7 +439,7 @@
           <label class="flex items-center gap-1.5 cursor-pointer">
             <input type="checkbox" name="cri" value="{{ cri }}"
                 {% if cri in selected_cri %}checked{% endif %}
-                class="w-4 h-4 accent-[#800000] cursor-pointer">
+                class="w-4 h-4 accent-[#727272] cursor-pointer">
             <span class="text-[13px] text-[#444]">{{ cri }}</span>
           </label>
           {% endfor %}
@@ -465,23 +465,15 @@
   </div>
 
   <div class="flex-shrink-0 p-4 bg-white border-t border-[#f0f0f0] flex gap-3">
-    <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-3 bg-white border border-[#e0e0e0] text-[#444] text-[13px] font-bold rounded-md hover:bg-[#f5f5f5] transition-colors uppercase tracking-[0.5px]">
+    <button type="button" onclick="resetFilters()" class="flex-1 px-4 py-3 bg-white border border-[#e0e0e0] text-[#444] text-[13px] font-bold rounded-md hover:bg-[#B99A58] transition-colors uppercase tracking-[0.5px]">
       {% trans "Reset" %}
     </button>
-    <button type="button" onclick="applyMobileFilters()" class="flex-1 px-4 py-3 bg-[#800000] text-white text-[13px] font-bold rounded-md hover:bg-[#b01717] transition-colors uppercase tracking-[0.5px]">
+    <button type="button" onclick="applyMobileFilters()" class="flex-1 px-4 py-3 bg-[#727272] text-white text-[13px] font-bold rounded-md hover:bg-[#B99A58] transition-colors uppercase tracking-[0.5px]">
       {% trans "Apply Filters" %}
     </button>
   </div>
 </div>
 
-<button id="mobileFilterBtn" onclick="openFilterOverlay()"
-    class="sm:hidden fixed bottom-6 right-6 z-50 bg-[#800000] text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 hover:bg-[#b01717] transition-all">
-  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
-  </svg>
-  <span class="text-sm font-semibold">{% trans "Filters" %}</span>
-  <span id="mobileFilterBadge" class="hidden ml-1 px-2 py-0.5 bg-white text-[#800000] text-xs font-bold rounded-full">0</span>
-</button>
 
 <script>
 // Desktop dropdown toggle

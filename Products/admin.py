@@ -12,7 +12,7 @@ from .models import (
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display        = ['name_en', 'parent', 'is_active', 'thumbnail_preview', 'created_at']
+    list_display        = ['name_en', 'parent', 'is_active', 'meta_title_en', 'meta_title_fa', 'thumbnail_preview', 'created_at']
     list_filter         = ['parent', 'is_active']
     search_fields       = ['name', 'description']
     ordering            = ['name']
@@ -20,7 +20,7 @@ class CategoryAdmin(TranslationAdmin):
 
     fieldsets = (
         ('اطلاعات اصلی', {
-            'fields': ('name', 'slug', 'parent', 'icon','image', 'is_active', 'number', 'order')
+            'fields': ('name', 'slug', 'parent', 'icon','image','persian_image', 'is_active', 'number', 'order')
         }),
         ('محتوا', {
             'fields': ('description',)
@@ -40,7 +40,7 @@ class CategoryAdmin(TranslationAdmin):
 
 @admin.register(Family)
 class FamilyAdmin(TranslationAdmin):
-    list_display        = ['id', 'number','name', 'category', 'logo_preview', 'get_applications', 'is_active']
+    list_display        = ['id', 'number','name', 'category', 'meta_title_en', 'meta_title_fa', 'logo_preview', 'get_applications', 'is_active']
     list_filter         = ['is_active', 'category']
     search_fields       = ['name']
     prepopulated_fields = {'slug': ('name',)}
@@ -165,7 +165,7 @@ class ApplicationAdmin(TranslationAdmin):
 class ProductAdmin(TranslationAdmin):
     list_display        = ['id','order',
         'name', 'category', 'family',
-        'wattage', 'dimmable',
+        'wattage', 'meta_title_en',
         'thumbnail_preview', 'is_active', 'updated_at'
     ]
     list_filter         = ['category', 'family', 'is_active', 'dimmable', 'lamp_base_type', 'finishes']

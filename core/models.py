@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
@@ -125,6 +126,7 @@ class NewsArticle(models.Model):
     def __str__(self):
         return self.title
 
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -132,3 +134,6 @@ class NewsArticle(models.Model):
         if self.is_featured:
             NewsArticle.objects.exclude(pk=self.pk).filter(is_featured=True).update(is_featured=False)
         super().save(*args, **kwargs)
+        
+    def get_absolute_url(self):
+        return reverse("news_detail", kwargs={"slug": self.slug})

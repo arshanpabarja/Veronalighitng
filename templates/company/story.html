@@ -1,223 +1,356 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
+{% block title %}
+  {% if site_settings.about_meta_title %}
+    {{ site_settings.about_meta_title }}
+  {% else %}
+    {% trans "Our Story - Verona Lighting" %}
+  {% endif %}
+{% endblock %}
+
+{% block seo %}
+{% with canonical_url=request.scheme|add:"://"|add:request.get_host|add:request.path %}
+
+<!-- Standard Meta Tags -->
+<meta name="description" content="{{ site_settings.about_meta_description|default:'Lighting a Path of Craftsmanship & Trust. What began as a small workshop grew into an architectural lighting brand trusted across residential, commercial, and hospitality spaces.' }}">
+<meta name="keywords" content="about verona lighting, architectural lighting studio, commercial fixtures, premium led lighting, sustainable lighting engineering">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{{ site_settings.about_og_title|default:site_settings.about_meta_title|default:'Our Story - Verona Lighting' }}">
+<meta property="og:description" content="{{ site_settings.about_og_description|default:site_settings.about_meta_description|default:'Lighting a Path of Craftsmanship & Trust.' }}">
+<meta property="og:url" content="{{ canonical_url }}">
+
+<!-- Dynamic Admin Image with Fallback -->
+{% if site_settings.about_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}">
+{% else %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}">
+{% endif %}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ site_settings.about_og_title|default:site_settings.about_meta_title|default:'Our Story' }}">
+<meta name="twitter:description" content="{{ site_settings.about_og_description|default:site_settings.about_meta_description }}">
+
+<!-- Structured Data: AboutPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "{% if site_settings.about_meta_title %}{{ site_settings.about_meta_title|escapejs }}{% else %}{% trans 'About Verona Lighting' %}{% endif %}",
+  "description": "{{ site_settings.about_meta_description|escapejs }}",
+  "url": "{{ canonical_url }}",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "{{ site_settings.site_name|default:'Verona Lighting' }}",
+    "image": "{% if site_settings.about_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}{% endif %}",
+    "description": "{% trans 'Premium architectural and decorative lighting solutions.' %}",
+    "priceRange": "$$$"
+  }
+}
+</script>
+
+{% endwith %}
+{% endblock %}
+
 {% block content %}
-<section class="bg-white text-gray-800">
-  <!-- HERO -->
-  <div class="relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute -top-36 -right-36 w-[34rem] h-[34rem] bg-red-100 rounded-full blur-3xl opacity-60"></div>
-      <div class="absolute -bottom-36 -left-36 w-[30rem] h-[30rem] bg-red-50 rounded-full blur-3xl opacity-60"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-        <div class="space-y-8">
-          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-700 ring-1 ring-red-200">
-            Our Story
-          </span>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
-            Lighting a Path of
-            <span class="text-red-600">Craftsmanship & Trust</span>
-          </h1>
-          <p class="text-lg text-gray-600 leading-relaxed max-w-xl">
-            What began as a small workshop grew into a lighting brand trusted by homes, offices, and commercial projects.
-            We believe great lighting is a blend of beauty, performance, and long-term reliability.
+<style>
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
+
+  <!-- ── HERO SECTION WITH SIDE CANVAS GRID ── -->
+  <section class="border-b border-zinc-100 bg-zinc-50" aria-label="{% trans 'About heading' %}">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Content Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <p class="text-[11px] font-medium uppercase tracking-widest text-zinc-400">
+            / {% trans "Our Story" %}
           </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="#timeline" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition shadow-md">
-              Our Journey
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-zinc-900 uppercase leading-tight">
+            {% trans "Lighting a path of" %} <br><span class="font-normal text-zinc-500">{% trans "craftsmanship & trust" %}</span>
+          </h1>
+          <p class="text-base text-zinc-600 leading-relaxed font-light text-justify max-w-xl">
+            {% trans "What began as a small workshop grew into a lighting brand trusted by homes, offices, and commercial projects. We believe great lighting is a clean, intentional blend of spatial beauty, raw component performance, and long-term technical reliability." %}
+          </p>
+          <div class="pt-4 flex flex-wrap items-center gap-6">
+            <a href="#how-it-started" class="text-xs font-medium uppercase tracking-widest bg-zinc-900 text-white px-4 py-2 shrink-0 hover:bg-zinc-800 transition-colors">
+              {% trans "Our Journey ↓" %}
             </a>
-            <a href="#values" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-red-700 hover:bg-red-50 font-semibold transition">
-              Our Values
+            <a href="#values" class="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-900 font-medium transition-colors">
+              {% trans "Core Values" %}
             </a>
           </div>
-          <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">12+</p>
-              <p class="text-sm text-gray-600 mt-1">Years</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">2,500+</p>
-              <p class="text-sm text-gray-600 mt-1">Projects</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">180+</p>
-              <p class="text-sm text-gray-600 mt-1">Products</p>
-            </div>
-            <div class="bg-white border border-red-100 rounded-2xl p-4 text-center shadow-sm">
-              <p class="text-2xl font-bold text-red-600">99%</p>
-              <p class="text-sm text-gray-600 mt-1">Satisfaction</p>
-            </div>
-          </div> -->
         </div>
 
-        <div class="relative">
-          <div class="absolute -inset-6 bg-gradient-to-tr from-red-200 to-red-50 rounded-3xl blur-2xl opacity-70"></div>
-          <div class="relative bg-white border border-red-100 rounded-3xl shadow-xl p-5">
-            <img src="https://via.placeholder.com/900x700" alt="Our story placeholder" class="w-full h-[440px] object-cover rounded-2xl">
-            <div class="mt-6 grid grid-cols-2 gap-4">
-              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
-                <p class="text-sm text-gray-500">Founded</p>
-                <p class="mt-1 font-semibold text-gray-800">2025</p>
-              </div>
-              <div class="rounded-xl bg-red-50 p-4 border border-red-100">
-                <p class="text-sm text-gray-500">Focus</p>
-                <p class="mt-1 font-semibold text-gray-800">Design + Reliability</p>
-              </div>
-            </div>
+        <!-- Right Side Image Column -->
+        <div class="lg:col-span-6 w-full">
+          <div class="overflow-hidden bg-zinc-100 cursor-zoom-in group border border-zinc-200 shadow-sm max-w-md mx-auto lg:max-w-none">
+            <img id="mainImg" 
+                 onclick="openLightbox()" 
+                 src="{% static 'images/showroom.webp' %}" 
+                 alt="{% trans 'Verona Lighting showroom overview layout' %}" 
+                 class="w-full h-auto object-cover block grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-[1.01]">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HISTORY & MANIFESTO GRID ── -->
+  <section id="how-it-started" class="py-20 lg:py-28 bg-white border-b border-zinc-100 scroll-mt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        
+        <!-- Narrative Block -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="mb-8">
+            <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">01 / {% trans "How It Started" %}</h2>
+            <div class="w-12 h-px bg-zinc-900"></div>
+          </div>
+          <p class="text-base text-zinc-600 leading-relaxed font-light text-justify">
+            {% trans "We started with a clear idea: lighting should be reliable, energy-efficient, and beautiful. In the early days, we focused on learning every technical layout detail—optics, pristine materials, heat management, and the specific engineering that makes structural fixtures last." %}
+          </p>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light text-justify">
+            {% trans "As our reputation grew, architects, contractors, and homeowners trusted us with larger projects. We expanded our catalog carefully while maintaining a strict, uncompromised standard for industrial quality control." %}
+          </p>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light text-justify border-t border-zinc-100 pt-6">
+            {% trans "Today, our team works continuously on projects across high-end residential, architectural workspaces, and hospitality envelopes, delivering technical solutions that perfectly balance runtime performance with pure design framework." %}
+          </p>
+        </div>
+
+        <!-- Strategic Stack Block -->
+        <div id="values" class="lg:col-span-5 space-y-6 lg:pt-16">
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Our Mission" %}</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Deliver lighting solutions that elevate everyday environments with lasting value and precise execution." %}</p>
+          </div>
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Our Vision" %}</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Be the most trusted architectural lighting partner known for immaculate craftsmanship and technical site service." %}</p>
+          </div>
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Our Values" %}</h3>
+            <ul class="text-xs text-zinc-500 font-light space-y-2">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Quality without compromise" %}</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Transparent metrics & guidance" %}</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Thoughtful spatial design" %}</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Long-term industry partnerships" %}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE TEAM PATTERN ── -->
+  <section class="py-20 lg:py-28 bg-zinc-50 border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">02 / {% trans "Behind The Light" %}</h2>
+        <p class="text-2xl font-light text-zinc-900 uppercase tracking-tight">{% trans "People Behind the Light" %}</p>
+        <p class="text-xs text-zinc-500 font-light mt-2">{% trans "A dedicated team of lighting designers, structural engineers, and support specialists." %}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 bg-white border border-zinc-200 text-center space-y-4">
+          <div class="w-20 h-20 mx-auto rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-400 text-xs font-mono">{% trans "PL" %}</div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Project Lead" %}</h3>
+            <p class="text-xs text-zinc-400 font-light mt-0.5">{% trans "Lighting Design & Concepts" %}</p>
+          </div>
+        </div>
+        <div class="p-8 bg-white border border-zinc-200 text-center space-y-4">
+          <div class="w-20 h-20 mx-auto rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-400 text-xs font-mono">{% trans "EH" %}</div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Engineering Head" %}</h3>
+            <p class="text-xs text-zinc-400 font-light mt-0.5">{% trans "Product Layout & Development" %}</p>
+          </div>
+        </div>
+        <div class="p-8 bg-white border border-zinc-200 text-center space-y-4">
+          <div class="w-20 h-20 mx-auto rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-400 text-xs font-mono">{% trans "CS" %}</div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Client Success" %}</h3>
+            <p class="text-xs text-zinc-400 font-light mt-0.5">{% trans "Support & Technical Solutions" %}</p>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
+  </section>
+
+  <!-- ── TRUSTED LOGOS SECTION ── -->
+  <section class="py-16 lg:py-20 bg-white border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-10">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-1">03 / {% trans "Collaborations" %}</h2>
+        <p class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Trusted by Professional Clients" %}</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 01" %}</div>
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 02" %}</div>
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 03" %}</div>
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 04" %}</div>
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 05" %}</div>
+        <div class="h-16 border border-zinc-200 bg-zinc-50 flex items-center justify-center text-[10px] uppercase tracking-widest text-zinc-400 font-mono">{% trans "Partner Studio 06" %}</div>
+      </div>
+    </div>
+  </section>
+  <!-- ── CINEMATIC INTERACTIVE GALLERY LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+    <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
   </div>
 
-  <!-- STORY -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <div class="space-y-6">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">How It Started</h2>
-        <p class="text-gray-600 leading-relaxed">
-          We started with a clear idea: lighting should be reliable, energy-efficient, and beautiful. In the early days,
-          we focused on learning every detail—optics, materials, heat management, and the craft that makes fixtures last.
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          As our reputation grew, architects, contractors, and homeowners trusted us with larger projects. We expanded
-          our catalog while keeping a strict standard for quality control.
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          Today, our team works on projects across residential, commercial, and hospitality spaces, providing solutions that
-          balance performance with design.
-        </p>
-      </div>
+</main>
 
-      <div class="space-y-6">
-        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Our Mission</h3>
-          <p class="mt-3 text-gray-600">Deliver lighting solutions that elevate everyday environments with lasting value.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Our Vision</h3>
-          <p class="mt-3 text-gray-600">Be the most trusted lighting partner known for craftsmanship and service.</p>
-        </div>
-        <div id="values" class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Our Values</h3>
-          <ul class="mt-3 space-y-2 text-gray-600 list-disc list-inside">
-            <li>Quality without compromise</li>
-            <li>Transparent guidance</li>
-            <li>Thoughtful design</li>
-            <li>Long-term partnerships</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<script>
+  let currentScale = 1;
+  let isDragging = false;
+  let startX, startY, translateX = 0, translateY = 0;
+  let lastTranslateX = 0, lastTranslateY = 0;
+  let initialPinchDistance = 0;
+  let initialPinchScale = 1;
 
-  <!-- TIMELINE -->
-  <!-- <div id="timeline" class="bg-red-50/60 border-y border-red-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Our Journey</h2>
-      <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-        Milestones that shaped our growth and commitment to lighting excellence.
-      </p>
+  function openLightbox() {
+    const src = document.getElementById('mainImg').src;
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    resetZoom();
+  }
 
-      <div class="mt-12 grid lg:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <p class="text-sm text-red-600 font-semibold">2013</p>
-          <h3 class="mt-2 text-lg font-semibold text-gray-900">The Beginning</h3>
-          <p class="mt-2 text-gray-600">Opened our first workshop and launched our initial product lineup.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <p class="text-sm text-red-600 font-semibold">2016</p>
-          <h3 class="mt-2 text-lg font-semibold text-gray-900">First Commercial Projects</h3>
-          <p class="mt-2 text-gray-600">Partnered with local businesses to deliver large-scale lighting solutions.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <p class="text-sm text-red-600 font-semibold">2019</p>
-          <h3 class="mt-2 text-lg font-semibold text-gray-900">Expanded Product Range</h3>
-          <p class="mt-2 text-gray-600">Introduced smart controls and architectural-grade fixtures.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <p class="text-sm text-red-600 font-semibold">2022</p>
-          <h3 class="mt-2 text-lg font-semibold text-gray-900">Regional Growth</h3>
-          <p class="mt-2 text-gray-600">Built a broader distribution network with reliable logistics.</p>
-        </div>
-      </div>
-    </div>
-  </div> -->
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    resetZoom();
+  }
 
-  <!-- TEAM SNAPSHOT -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">People Behind the Light</h2>
-    <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-      A dedicated team of designers, engineers, and support specialists.
-    </p>
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
-        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
-        <p class="mt-4 font-semibold text-gray-900">Project Lead</p>
-        <p class="text-sm text-gray-600">Lighting Design</p>
-      </div>
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
-        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
-        <p class="mt-4 font-semibold text-gray-900">Engineering Head</p>
-        <p class="text-sm text-gray-600">Product Development</p>
-      </div>
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm text-center">
-        <img src="https://via.placeholder.com/240" alt="Team member" class="w-28 h-28 mx-auto rounded-full object-cover">
-        <p class="mt-4 font-semibold text-gray-900">Client Success</p>
-        <p class="text-sm text-gray-600">Support & Solutions</p>
-      </div>
-    </div>
-  </div>
+  function resetZoom() {
+    currentScale = 1;
+    translateX = 0;
+    translateY = 0;
+    lastTranslateX = 0;
+    lastTranslateY = 0;
+    applyTransform();
+  }
 
-  <!-- CLIENT LOGOS -->
-  <div class="bg-white border-y border-red-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center">Trusted by Clients</h2>
-      <p class="mt-3 text-center text-gray-600">Proud to collaborate with brands and organizations across industries.</p>
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 1</div>
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 2</div>
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 3</div>
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 4</div>
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 5</div>
-        <div class="h-20 rounded-xl border border-red-100 bg-red-50 flex items-center justify-center text-gray-500 font-semibold">Logo 6</div>
-      </div>
-    </div>
-  </div>
+  function applyTransform() {
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+  }
 
-  <!-- GALLERY -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Project Gallery</h2>
-    <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-      A quick look at selected lighting installations and design outcomes.
-    </p>
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 1" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 2" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 3" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 4" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 5" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-      <img src="https://via.placeholder.com/700x500" alt="Gallery 6" class="w-full h-64 object-cover rounded-2xl border border-red-100 shadow-sm">
-    </div>
-  </div>
+  function getPinchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
 
-  <!-- CTA -->
-  <div class="bg-red-600">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white">Let’s Build Something Bright Together</h2>
-      <p class="mt-4 text-red-100 max-w-2xl mx-auto">
-        Whether you’re planning a home upgrade or a large commercial project, our team is ready to help.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-        <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-red-600 font-semibold hover:bg-red-50 transition">
-          View Products
-        </a>
-        <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-red-200 text-white font-semibold hover:bg-red-700 transition">
-          Talk to Our Team
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+
+    lightbox.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.15 : 0.15;
+      currentScale = Math.min(Math.max(1, currentScale + delta), 4);
+      applyTransform();
+    }, { passive: false });
+
+    lbImg.addEventListener('mousedown', (e) => {
+      if (currentScale <= 1) return;
+      isDragging = true;
+      startX = e.clientX - lastTranslateX;
+      startY = e.clientY - lastTranslateY;
+      lbImg.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      lastTranslateX = translateX;
+      lastTranslateY = translateY;
+      lbImg.style.cursor = 'grab';
+    });
+
+    lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        initialPinchDistance = getPinchDistance(e.touches);
+        initialPinchScale = currentScale;
+        e.preventDefault();
+      } else if (e.touches.length === 1 && currentScale > 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - lastTranslateX;
+        startY = e.touches[0].clientY - lastTranslateY;
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        const distance = getPinchDistance(e.touches);
+        currentScale = Math.min(Math.max(1, initialPinchScale * (distance / initialPinchDistance)), 4);
+        applyTransform();
+        e.preventDefault();
+      } else if (e.touches.length === 1 && isDragging) {
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        applyTransform();
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchend', (e) => {
+      if (e.touches.length < 2) {
+        isDragging = false;
+        lastTranslateX = translateX;
+        lastTranslateY = translateY;
+      }
+      if (currentScale < 1) { currentScale = 1; applyTransform(); }
+    });
+
+    lbImg.addEventListener('dblclick', () => {
+      if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+    });
+
+    let lastTap = 0;
+    lbImg.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTap < 300) {
+        if (currentScale > 1) { resetZoom(); } else { currentScale = 2; applyTransform(); }
+      }
+      lastTap = now;
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
 {% endblock %}

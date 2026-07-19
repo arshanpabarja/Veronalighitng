@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 
 from .prompts import PROMPT
-from .schemas import FamilyTranslation
+from .schemas import FamilySEO
 
 
 client = OpenAI(
@@ -18,7 +18,7 @@ def translate_product(data):
     response = client.responses.parse(
         model="gpt-5-mini",
         temperature=0.15,
-        text_format=FamilyTranslation,
+        text_format=FamilySEO,
         input=[
             {
                 "role": "system",

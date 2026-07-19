@@ -4,7 +4,7 @@
 
 {% block title %}{{ site_settings.site_name|default:"Applications" }} - {% trans "Lighting Applications" %}{% endblock %}
 
-{% block meta %}
+{% block seo %}
 <title>{% trans "Applications" %} | {{ site_settings.site_name|default:"Verona Lighting" }}</title>
 <meta name="description" content="{{ site_settings.applications_meta_description|default:"Explore professional lighting solutions for various B2B applications — commercial, industrial, and beyond." }}">
 <meta name="keywords" content="{% trans "B2B lighting, commercial lighting, industrial lighting applications" %}{% for application in applications %}, {{ application.name }}{% endfor %}">
@@ -76,7 +76,7 @@
 <section class="flex gap-11 flex-col items-center justify-center bg-white px-6">
     <div class="w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
         <span class="text-[11px] sm:text-sm text-gray-500">
-            <a href="{% url 'home' %}" class="hover:text-[#800000]">{% trans "Home" %}</a>
+            <a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans "Home" %}</a>
             <span class="mx-1 sm:mx-2">›</span>
             <span class="text-gray-700">{% trans "Applications" %}</span>
         </span>

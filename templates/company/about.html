@@ -1,256 +1,291 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
+{% block title %}
+  {% if site_settings.about_meta_title %}
+    {{ site_settings.about_meta_title }}
+  {% else %}
+    {% trans "About Our Studio - Verona Lighting" %}
+  {% endif %}
+{% endblock %}
+
+{% block seo %}
+{% with canonical_url=request.scheme|add:"://"|add:request.get_host|add:request.path %}
+
+<!-- Standard Meta Tags -->
+<meta name="description" content="{% if site_settings.about_meta_description %}{{ site_settings.about_meta_description }}{% else %}{% trans 'Verona Lighting engineers high-efficiency architectural illumination curated with a timeless design perspective.' %}{% endif %}">
+<meta name="keywords" content="{% trans 'about verona lighting, architectural lighting studio, commercial fixtures, premium led lighting, sustainable lighting engineering' %}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{% if site_settings.about_og_title %}{{ site_settings.about_og_title }}{% elif site_settings.about_meta_title %}{{ site_settings.about_meta_title }}{% else %}{% trans 'About Our Studio - Verona Lighting' %}{% endif %}">
+<meta property="og:description" content="{% if site_settings.about_og_description %}{{ site_settings.about_og_description }}{% elif site_settings.about_meta_description %}{{ site_settings.about_meta_description }}{% else %}{% trans 'Verona Lighting engineers high-efficiency architectural illumination.' %}{% endif %}">
+<meta property="og:url" content="{{ canonical_url }}">
+
+<!-- Dynamic Admin Image with Fallback -->
+{% if site_settings.about_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}">
+{% else %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}">
+{% endif %}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if site_settings.about_og_title %}{{ site_settings.about_og_title }}{% elif site_settings.about_meta_title %}{{ site_settings.about_meta_title }}{% else %}{% trans 'About Our Studio' %}{% endif %}">
+<meta name="twitter:description" content="{% if site_settings.about_og_description %}{{ site_settings.about_og_description }}{% else %}{{ site_settings.about_meta_description }}{% endif %}">
+
+<!-- Structured Data: AboutPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "{% if site_settings.about_meta_title %}{{ site_settings.about_meta_title|escapejs }}{% else %}{% trans 'About Verona Lighting' %}{% endif %}",
+  "description": "{{ site_settings.about_meta_description|escapejs }}",
+  "url": "{{ canonical_url }}",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "{{ site_settings.site_name|default:'Verona Lighting' }}",
+    "image": "{% if site_settings.about_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}{% endif %}",
+    "description": "{% trans 'Premium architectural and decorative lighting solutions.' %}",
+    "priceRange": "$$$"
+  }
+}
+</script>
+
+{% endwith %}
+{% endblock %}
+
 {% block content %}
-
 <style>
-  .image-container {
-    overflow: hidden;
-}
-
-.image-container img {
-    width: 100%;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-/* Desktop */
-.image-container:hover img {
-    transform: scale(2);
-}
-
-/* Mobile touch */
-.image-container:active img {
-    transform: scale(1.1);
-}
-
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 </style>
-<section class="bg-white text-gray-800">
-  <!-- HERO -->
-  <div class="relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute -top-32 -right-32 w-[32rem] h-[32rem] bg-red-100 rounded-full blur-3xl opacity-60"></div>
-      <div class="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] bg-red-50 rounded-full blur-3xl opacity-60"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-        <div class="space-y-8">
-          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-700 ring-1 ring-red-200">
-            About Our Lighting Brand
-          </span>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
-            We Design Light That
-            <span class="text-red-600">Transforms Spaces</span>
-          </h1>
-          <p class="text-lg text-gray-600 leading-relaxed max-w-xl">
-            From elegant home fixtures to large-scale commercial solutions, we create dependable, energy-efficient lighting
-            with timeless design. Our focus is simple: quality products, expert guidance, and long-term customer trust.
+
+<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
+
+  <!-- ── HERO SECTION WITH SIDE CANVAS GRID ── -->
+  <section class="border-b border-zinc-100 bg-zinc-50" aria-label="{% trans 'About heading' %}">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Content Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <p class="text-[11px] font-medium uppercase tracking-widest text-zinc-400">
+            / {% trans "Our Studio Philosophy" %}
           </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="#our-story" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition shadow-md">
-              Our Story
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-zinc-900 uppercase leading-tight">
+            {% trans "We design light" %} <br>{% trans "that transforms spaces" %}
+          </h1>
+          <p class="text-base text-zinc-600 leading-relaxed font-light text-justify max-w-xl">
+            {% trans "From elegant structural fixtures to comprehensive architectural systems, we develop high-efficiency illumination curated with a timeless design perspective. Our principles focus directly on technical product performance, expert compliance, and long-term professional trust." %}
+          </p>
+          <div class="pt-4 flex flex-wrap items-center gap-6">
+            <span class="text-xs font-medium uppercase tracking-widest bg-zinc-900 text-white px-3 py-1.5 shrink-0">
+              {% trans "Est. Verona Lighting" %}
+            </span>
+            <a href="#our-story" class="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-900 font-medium transition-colors">
+              {% trans "Read Our Journey ↓" %}
             </a>
           </div>
         </div>
 
-        <div class="relative">
-          <div class="absolute -inset-6 bg-gradient-to-tr from-red-200 to-red-50 rounded-3xl blur-2xl opacity-70"></div>
-          <div class="relative image-container bg-white border border-red-100 rounded-3xl shadow-xl p-5">
-            <img id="mainImg" onclick="openLightbox()" src="{% static 'images/showroom.webp' %}" alt="Lighting placeholder" class="w-full h-[640px] object-cover rounded-2xl">
+        <!-- Right Side Image Column -->
+        <div class="lg:col-span-6 w-full">
+          <div class="overflow-hidden bg-zinc-100 cursor-zoom-in group border border-zinc-200 shadow-sm max-w-md mx-auto lg:max-w-none">
+            <img id="mainImg" 
+                 onclick="openLightbox()" 
+                 src="{% static 'images/showroom.webp' %}" 
+                 alt="{% trans 'Verona Lighting showroom overview floor layout' %}" 
+                 class="w-full h-auto object-cover block grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-[1.01]">
           </div>
         </div>
+
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- STORY -->
-  <div id="our-story" class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <div class="space-y-6">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Our Story</h2>
-        <p class="text-gray-600 leading-relaxed">
-          We began as a small lighting workshop with one mission: make premium lighting accessible, practical, and beautiful.
-          Over the years, we’ve grown into a trusted partner for homes, offices, retail spaces, hospitality projects, and public venues.
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          Every product in our catalog is selected or engineered for performance, durability, and visual impact. We combine technical excellence
-          with design sensitivity, so your space feels brighter, smarter, and more welcoming.
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          Today, our team continues to innovate in LED efficiency, fixture aesthetics, and smart lighting controls—while maintaining the service quality
-          that built our reputation from day one.
-        </p>
+  <!-- ── OUR JOURNEY & MANIFESTO ── -->
+  <section id="our-story" class="py-20 lg:py-28 bg-white border-b border-zinc-100 scroll-mt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        
+        <!-- Deep Narrative -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="mb-8">
+            <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">01 / {% trans "Our Story" %}</h2>
+            <div class="w-12 h-px bg-zinc-900"></div>
+          </div>
+          <p class="text-base text-zinc-600 leading-relaxed font-light text-justify">
+            {% trans "We began as an architectural engineering cell built around a single foundational ideal: making premium lighting accessible, practical, and visually inspiring. Over the last decade, we have transitioned into a trusted specification ally for high-end residential, modern workspace environments, hospitality concepts, and premium commercial envelopes." %}
+          </p>
+          <p class="text-sm text-zinc-500 leading-relaxed font-light text-justify border-t border-zinc-100 pt-6">
+            {% trans "Every technical layout within our portfolio is curated or engineered for accurate chromatic metrics, product lifecycle durability, and visual spatial integrity. We synthesize deep technological insight with spatial sensitivity, making architecture feel lighter, more cohesive, and beautifully aligned." %}
+          </p>
+        </div>
+
+        <!-- Corporate Manifesto Stack -->
+        <div class="lg:col-span-5 space-y-6 lg:pt-16">
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Mission" %}</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Deliver precise, lower-energy structural solutions engineered to elevate how creative spaces operate." %}</p>
+          </div>
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Vision" %}</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Evolve as the premier lighting destination celebrated for architectural integrity, product craft, and professional partnership." %}</p>
+          </div>
+          <div class="p-6 bg-zinc-50 border border-zinc-100">
+            <h3 class="text-xs uppercase tracking-widest font-medium text-zinc-900 mb-2">{% trans "Core Values" %}</h3>
+            <ul class="text-xs text-zinc-500 font-light space-y-2">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Architectural quality above trade speed" %}</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Transparent metric reporting & verification" %}</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-zinc-400 rounded-full"></span> {% trans "Durable integration planning with site teams" %}</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
-      <div class="space-y-6">
-        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Mission</h3>
-          <p class="mt-3 text-gray-600">Deliver reliable, energy-efficient lighting solutions that elevate the way people live and work.</p>
+    </div>
+  </section>
+
+  <!-- ── PERFORMANCE METRICS (WHY CHOOSE US) ── -->
+  <section id="why-us" class="py-20 lg:py-28 bg-zinc-50 border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      
+      <div class="mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">02 / {% trans "System Capabilities" %}</h2>
+        <div class="w-12 h-px bg-zinc-900"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">01 // {% trans "Premium Specification" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Architectural Grade Standards" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "Rigorously evaluated components backed by robust commercial compliance metrics and predictable spectral output." %}</p>
         </div>
-        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Vision</h3>
-          <p class="mt-3 text-gray-600">Become the leading regional lighting brand known for craftsmanship, innovation, and client-first support.</p>
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">02 // {% trans "Optical Consultation" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Photometric Optimization" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "Expert calibration assistance targeting precise Kelvin temperatures, complex beam spreads, and glare management indicators." %}</p>
         </div>
-        <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900">Values</h3>
-          <ul class="mt-3 space-y-2 text-gray-600 list-disc list-inside">
-            <li>Quality without compromise</li>
-            <li>Transparent communication</li>
-            <li>Long-term partnerships</li>
-            <li>Sustainable solutions</li>
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">03 // {% trans "Project Coordination" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "End-To-End Development" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "From initial concept plans to site testing, we sync fluidly with interior architects, electrical partners, and general layout operators." %}</p>
+        </div>
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">04 // {% trans "High Efficiency" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Luminous Efficacy Focus" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "Next-generation diode systems built to reduce overall structural wattage overhead while retaining clean color fidelity." %}</p>
+        </div>
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">05 // {% trans "Technical Supply" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Logistical Schedule Control" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "Strategic parts forecasting and structured supply management to ensure project pipeline constraints are satisfied flawlessly." %}</p>
+        </div>
+        <div class="space-y-3">
+          <p class="text-xs font-mono text-zinc-400">06 // {% trans "Support Matrix" %}</p>
+          <h3 class="text-sm font-medium uppercase tracking-wider text-zinc-900">{% trans "Post-Handover Continuity" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify">{% trans "Immediate access channels addressing component adaptations, schematic adjustments, or system dimensional additions." %}</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ARCHITECTURAL CATEGORIES MATRIX ── -->
+  <section class="py-20 lg:py-28 bg-white border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      
+      <div class="mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">03 / {% trans "Solution Sectors" %}</h2>
+        <div class="w-12 h-px bg-zinc-900"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border border-zinc-200 p-6 bg-zinc-50">
+          <h3 class="text-sm font-medium uppercase tracking-wide text-zinc-900 mb-2">{% trans "Internal Systems" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Integrated architectural downlights, hidden profiles, specialized point sources, and decorative ambient components." %}</p>
+        </div>
+        <div class="border border-zinc-200 p-6 bg-zinc-50">
+          <h3 class="text-sm font-medium uppercase tracking-wide text-zinc-900 mb-2">{% trans "External Scopes" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "High-protection facade projectors, structural wash arrays, technical pathway marker spikes, and landscape systems." %}</p>
+        </div>
+        <div class="border border-zinc-200 p-6 bg-zinc-50">
+          <h3 class="text-sm font-medium uppercase tracking-wide text-zinc-900 mb-2">{% trans "Commercial Layouts" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Optimized administrative working grids, tailored retail illumination layouts, and broad high-ceiling industrial optics." %}</p>
+        </div>
+        <div class="border border-zinc-200 p-6 bg-zinc-50">
+          <h3 class="text-sm font-medium uppercase tracking-wide text-zinc-900 mb-2">{% trans "Digital Automation" %}</h3>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed">{% trans "Advanced modulation hardware, sensor control mechanics, preset digital dimming panels, and protocol integration links." %}</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SUSTAINABILITY & QUALITY STATEMENT ── -->
+  <section class="py-20 lg:py-28 bg-zinc-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        <!-- Sustainability Block -->
+        <div class="border border-zinc-200 p-8 bg-white">
+          <h2 class="text-xl font-light uppercase tracking-wide text-zinc-900 mb-4">{% trans "Ecological Parameters" %}</h2>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify mb-6">
+            {% trans "We decrease systematic material impact through standard specification of highly circular aluminum chassis housings, minimized non-recyclable packing materials, and strictly audited supplier pathways." %}
+          </p>
+          <ul class="text-xs text-zinc-500 font-light space-y-3">
+            <li class="flex items-start gap-2"><span class="mt-1.5 w-1 h-1 bg-zinc-400 rounded-full shrink-0"></span> {% trans "Modules with calculated operational lifecycles beyond 50,000 hrs." %}</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 w-1 h-1 bg-zinc-400 rounded-full shrink-0"></span> {% trans "Total elimination of plastic buffers in standard product delivery kits." %}</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 w-1 h-1 bg-zinc-400 rounded-full shrink-0"></span> {% trans "Procurement prioritizing regional processing nodes to mitigate transit load." %}</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- WHY US -->
-  <div id="why-us" class="bg-red-50/60 border-y border-red-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Why Clients Choose Us</h2>
-      <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-        We go beyond selling fixtures—we provide end-to-end lighting confidence.
-      </p>
-      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">01</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">Premium Product Standards</h3>
-          <p class="mt-2 text-gray-600">Carefully tested products with strong warranties and consistent performance.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">02</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">Expert Consultation</h3>
-          <p class="mt-2 text-gray-600">We help select color temperature, beam angle, and fixture type for each space.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">03</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">Custom Project Support</h3>
-          <p class="mt-2 text-gray-600">From concept to installation, we coordinate with architects and contractors.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">04</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">Energy Efficiency</h3>
-          <p class="mt-2 text-gray-600">LED-forward solutions that reduce operating costs and improve lighting quality.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">05</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">Fast & Reliable Delivery</h3>
-          <p class="mt-2 text-gray-600">Strong inventory planning and logistics to keep your timeline on track.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl border border-red-100 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 font-bold text-xl">06</div>
-          <h3 class="mt-4 text-lg font-semibold text-gray-900">After-Sales Care</h3>
-          <p class="mt-2 text-gray-600">Responsive support for maintenance, replacements, and expansions.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CATEGORIES -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">Our Product Categories</h2>
-    <p class="mt-4 text-center text-gray-600 max-w-3xl mx-auto">
-      A complete range of architectural and decorative lighting solutions for every environment.
-    </p>
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="rounded-2xl border border-red-100 p-6 bg-white shadow-sm">
-        <h3 class="font-semibold text-gray-900">Indoor Lighting</h3>
-        <p class="mt-2 text-sm text-gray-600">Downlights, chandeliers, spotlights, linear profiles.</p>
-      </div>
-      <div class="rounded-2xl border border-red-100 p-6 bg-white shadow-sm">
-        <h3 class="font-semibold text-gray-900">Outdoor Lighting</h3>
-        <p class="mt-2 text-sm text-gray-600">Garden lights, façade fixtures, wall washers, pathways.</p>
-      </div>
-      <div class="rounded-2xl border border-red-100 p-6 bg-white shadow-sm">
-        <h3 class="font-semibold text-gray-900">Commercial Lighting</h3>
-        <p class="mt-2 text-sm text-gray-600">Office grids, retail accent, warehouse high-bays.</p>
-      </div>
-      <div class="rounded-2xl border border-red-100 p-6 bg-white shadow-sm">
-        <h3 class="font-semibold text-gray-900">Smart Controls</h3>
-        <p class="mt-2 text-sm text-gray-600">Dimmers, motion sensors, scenes, automation setups.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- QUALITY & SUSTAINABILITY -->
-  <div class="bg-white border-y border-red-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-      <div class="grid lg:grid-cols-2 gap-16">
-        <div class="rounded-3xl border border-red-100 p-8 bg-red-50/50">
-          <h2 class="text-3xl font-bold text-gray-900">Sustainability Commitment</h2>
-          <p class="mt-5 text-gray-600 leading-relaxed">
-            We reduce environmental impact through high-efficiency LED technology, recyclable materials, and responsible sourcing.
-            Our solutions help customers lower carbon output while maintaining superior illumination quality.
+        <!-- Quality Control Block -->
+        <div class="border border-zinc-200 p-8 bg-white">
+          <h2 class="text-xl font-light uppercase tracking-wide text-zinc-900 mb-4">{% trans "Laboratory Verification" %}</h2>
+          <p class="text-xs text-zinc-500 font-light leading-relaxed text-justify mb-6">
+            {% trans "Each electrical lot undergoes structural quality benchmarking across thermal dispersion metrics, power factor behavior, driver stabilization, and absolute chromatic macro consistency over extended uptime tests." %}
           </p>
-          <ul class="mt-6 space-y-3 text-gray-700">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-2.5 h-2.5 rounded-full bg-red-500"></span>
-              Energy-saving products with long lifespan
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-2.5 h-2.5 rounded-full bg-red-500"></span>
-              Packaging optimization and reduction
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-2.5 h-2.5 rounded-full bg-red-500"></span>
-              Eco-conscious logistics and procurement
-            </li>
-          </ul>
-        </div>
-
-        <div class="rounded-3xl border border-red-100 p-8 bg-white shadow-sm">
-          <h2 class="text-3xl font-bold text-gray-900">Quality Assurance</h2>
-          <p class="mt-5 text-gray-600 leading-relaxed">
-            Each fixture goes through strict quality checks for safety, electrical stability, heat management, and visual consistency.
-            We collaborate with certified production partners and maintain clear documentation standards.
-          </p>
-          <div class="mt-6 grid grid-cols-2 gap-4">
-            <div class="p-4 rounded-xl bg-red-50 border border-red-100">
-              <p class="text-sm text-gray-500">Testing Focus</p>
-              <p class="font-semibold text-gray-800 mt-1">Durability & Safety</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-zinc-50 border border-zinc-100">
+              <p class="text-[10px] uppercase text-zinc-400">{% trans "Stress Evaluation" %}</p>
+              <p class="text-xs font-medium text-zinc-800 mt-1">{% trans "Thermal Deflection" %}</p>
             </div>
-            <div class="p-4 rounded-xl bg-red-50 border border-red-100">
-              <p class="text-sm text-gray-500">Compliance</p>
-              <p class="font-semibold text-gray-800 mt-1">Industry Standards</p>
+            <div class="p-4 bg-zinc-50 border border-zinc-100">
+              <p class="text-[10px] uppercase text-zinc-400">{% trans "Compliance Grid" %}</p>
+              <p class="text-xs font-medium text-zinc-800 mt-1">{% trans "Photometric Norms" %}</p>
             </div>
-            <div class="p-4 rounded-xl bg-red-50 border border-red-100">
-              <p class="text-sm text-gray-500">Warranty</p>
-              <p class="font-semibold text-gray-800 mt-1">Reliable Coverage</p>
+            <div class="p-4 bg-zinc-50 border border-zinc-100">
+              <p class="text-[10px] uppercase text-zinc-400">{% trans "Coverage Terms" %}</p>
+              <p class="text-xs font-medium text-zinc-800 mt-1">{% trans "Project Warranty" %}</p>
             </div>
-            <div class="p-4 rounded-xl bg-red-50 border border-red-100">
-              <p class="text-sm text-gray-500">Support</p>
-              <p class="font-semibold text-gray-800 mt-1">Dedicated Team</p>
+            <div class="p-4 bg-zinc-50 border border-zinc-100">
+              <p class="text-[10px] uppercase text-zinc-400">{% trans "Field Resources" %}</p>
+              <p class="text-xs font-medium text-zinc-800 mt-1">{% trans "Engineering Liaison" %}</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
+  </section>
+
+  <!-- ── CINEMATIC INTERACTIVE GALLERY LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+    <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
   </div>
 
-  <!-- TESTIMONIALS -->
-  <!-- <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-28">
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">What Our Clients Say</h2>
-    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-        <p class="text-gray-600">“Excellent service and high-quality fixtures. Our showroom lighting looks outstanding.”</p>
-        <p class="mt-4 font-semibold text-gray-900">— Retail Project Manager</p>
-      </div>
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-        <p class="text-gray-600">“They redesigned our office lighting and improved both comfort and energy efficiency.”</p>
-        <p class="mt-4 font-semibold text-gray-900">— Operations Director</p>
-      </div>
-      <div class="p-6 rounded-2xl border border-red-100 bg-white shadow-sm">
-        <p class="text-gray-600">“Fast response, professional advice, and beautiful final results for our hospitality project.”</p>
-        <p class="mt-4 font-semibold text-gray-900">— Hotel Consultant</p>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close" onclick="closeLightbox()">×</span>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-  <div class="lightbox-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
-</div>
-</section>
+</main>
 
 <script>
   let currentScale = 1;

@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-l$m0t@wvb)-(u8(!&m=4gy=noy91ay8-6undiu5u4+@1#di7+-'
 
-DEBUG = True
+DEBUG = False
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.sitemaps",
     'Products',
     'core',
     'ckeditor',
@@ -50,6 +51,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Products.context_processors.navbar_categories',
+                "Products.context_processors.seo_context",
             ],
         },
     },

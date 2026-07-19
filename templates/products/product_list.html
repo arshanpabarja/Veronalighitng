@@ -3,7 +3,7 @@
 {% load i18n %}
 {% block title %}{{ site_settings.products_page_meta_title|default:"Product Categories - Verona Lighting" }}{% endblock %}
 
-{% block meta_tags %}
+{% block seo %}
 <meta name="description" content="{{ site_settings.products_page_meta_description|default:"Explore Verona Lighting product categories. Professional LED luminaires for facade, landscape, commercial, and architectural applications." }}">
 <meta name="keywords" content="lighting categories, LED luminaires, facade lighting, landscape lighting, commercial lighting">
 <link rel="canonical" href="{{ site_settings.products_page_canonical_url|default:request.build_absolute_uri }}">
@@ -54,7 +54,7 @@
 <section class="flex gap-11 flex-col items-center justify-center bg-white px-6">
     <nav aria-label="Breadcrumb" class="w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
         <ol class="text-[11px] sm:text-sm text-gray-500 flex flex-wrap items-center">
-            <li><a href="{% url 'home' %}" class="hover:text-[#800000]">{% trans 'Home'%}</a></li>
+            <li><a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans 'Home'%}</a></li>
             <li class="mx-1 sm:mx-2" aria-hidden="true">›</li>
             <li><span class="font-medium text-gray-800" aria-current="page">{% trans 'Product Categories' %}</span></li>
         </ol>
@@ -71,9 +71,15 @@
             {% for category in categories %}
             <a href="{% url 'products:category_detail' category.slug %}" class="group block">
                 <!-- Square Image Container -->
-                <div class="aspect-square bg-gray-100 overflow-hidden">
+                <div class=" overflow-hidden">
                     {% if category.icon %}
-                    <img src="{{ category.icon.url }}"
+                    <img src="
+                    {% if LANGUAGE_CODE == 'en' %}
+                    {{ category.icon.url }}
+                    {% else %}
+                    {{ category.persian_image.url}}
+                    {% endif %}
+                    "
                          alt="{{ category.icon_alt|default:category.name }}"
                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     {% else %}

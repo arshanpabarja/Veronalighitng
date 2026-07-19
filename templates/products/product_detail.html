@@ -6,7 +6,7 @@
 {{ product.get_meta_title|default:product.name }}
 {% endblock %}
 
-{% block meta %}
+{% block seo %}
 
 <meta name="description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
 
@@ -44,23 +44,14 @@
   ],
   {% endif %}
 
-  "sku": "{{ product.slug }}",
-
   "category": "{{ product.category.name|escapejs }}",
 
   "brand": {
     "@type": "Brand",
-    "name": "Lumex"
+    "name": "Verona Lighting"
   },
 
   "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
-
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "USD",
-    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
-  }
 
   {% if product.cri %}
   ,"additionalProperty": [
@@ -170,7 +161,6 @@
 
 
 {% block content %}
-
 <!-- PAGE LOADER -->
 <div id="page-loader">
   <div class="loader-spinner"></div>
@@ -259,7 +249,7 @@
   <!-- Info -->
   <div class="product-info">
     <div class="product-category">{{ product.category }}</div>
-    <h1 class="product-title">{{ product.name }}</h1>
+    <h1 class="product-title text-black">{{ product.name }}</h1>
     <p class="product-subtitle">{{ product.subtitle }}</p>
 
     <div class="key-specs">
@@ -561,12 +551,12 @@
   <div class="absolute inset-0 bg-gradient-to-r from-red-50 to-transparent pointer-events-none"></div>
   <div class="max-w-7xl mx-auto px-6 py-16 relative flex flex-col sm:flex-row items-center justify-between gap-8">
     <div>
-      <span class="text-red-600 text-xs font-semibold uppercase tracking-widest">{% trans "Full Product Range" %}</span>
-      <h2 class="text-2xl font-bold text-gray-900 mt-2">{% trans "Explore the Complete Lumex Catalogue 2025" %}</h2>
+      <span class="text-[#727272] text-xs font-semibold uppercase tracking-widest">{% trans "Full Product Range" %}</span>
+      <h2 class="text-2xl font-bold text-gray-900 mt-2">{% trans "Explore the Complete Verona Catalogue 2025" %}</h2>
       <p class="text-gray-500 mt-2 text-sm">{% trans "Download our full 2025 product catalogue featuring over 400 luminaires." %}</p>
     </div>
     <a href="#"
-       class="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-7 rounded-md transition-colors whitespace-nowrap">
+       class="flex-shrink-0 flex items-center gap-2 bg-[#727272] hover:bg-[#B99A58] text-white font-semibold py-3 px-7 rounded-md transition-colors whitespace-nowrap">
       <i class="fa-solid fa-file-arrow-down"></i>
       {% trans "Download Catalogue" %}
     </a>

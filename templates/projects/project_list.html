@@ -1,213 +1,193 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<section class="bg-slate-50 min-h-screen text-slate-800">
+{% load static i18n %}
 
-  <!-- Top Header -->
-  <div class="relative overflow-hidden border-b border-slate-200 bg-white">
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-        <div class="max-w-2xl">
-          <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900">
-            All Projects
+{% block content %}
+<section class="bg-white min-h-screen text-zinc-800 antialiased">
+
+  <!-- ── HERO / HEADER SECTION ── -->
+  <div class="bg-zinc-50 border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+        <div class="max-w-2xl space-y-4">
+          <span class="text-xs font-bold tracking-widest text-[#800000] uppercase">{% trans "Portfolio" %}</span>
+          <h1 class="text-4xl sm:text-5xl font-light tracking-tight text">
+            {% trans "All Projects" %}
           </h1>
-          <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-            Explore our completed lighting projects across residential, retail, office, and hospitality spaces.
+          <p class="text-base sm:text-lg text-zinc-500 leading-relaxed max-w-xl">
+            {% trans "Explore our completed lighting architectural projects across residential, retail, office, and hospitality spaces." %}
           </p>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
-          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
-            <p class="text-2xl font-extrabold text-red-600">250+</p>
-            <p class="text-xs text-slate-500 mt-1">Completed</p>
-          </div>
-          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
-            <p class="text-2xl font-extrabold text-red-600">12+</p>
-            <p class="text-xs text-slate-500 mt-1">Years</p>
-          </div>
-          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
-            <p class="text-2xl font-extrabold text-red-600">40+</p>
-            <p class="text-xs text-slate-500 mt-1">Cities</p>
-          </div>
-          <div class="bg-white border border-slate-200 rounded-xl px-4 py-3 text-center shadow-sm">
-            <p class="text-2xl font-extrabold text-red-600">4.9</p>
-            <p class="text-xs text-slate-500 mt-1">Avg Rating</p>
-          </div>
-        </div>
+        <!-- Sleek, High-End Stats Strip -->
+        
       </div>
     </div>
   </div>
 
-  <!-- Filters / Search -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
-    <form method="get" action="" class="bg-white border border-slate-200 rounded-2xl p-4 lg:p-5 shadow-sm">
-      <div class="grid md:grid-cols-12 gap-4">
+  <!-- ── FILTERS & CONTROLS ── -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+    <form method="get" action="" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
 
-        <!-- Search -->
-        <div class="md:col-span-5">
-          <label class="sr-only" for="search">Search projects</label>
-          <div class="relative">
-            <input id="search" type="text" name="q" value="{{ q }}"
-                   placeholder="Search by project name, city, or type..."
-                   class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
-            <svg class="w-5 h-5 text-slate-400 absolute right-3 top-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/>
-            </svg>
-          </div>
+        <!-- Search Bar -->
+        <div class="md:col-span-5 relative">
+          <label class="sr-only" for="search">{% trans "Search projects" %}</label>
+          <input id="search" type="text" name="q" value="{{ q|default:'' }}"
+                 placeholder="{% trans 'Search by project name, city...' %}"
+                 class="w-full rounded-none border-b border-zinc-300 bg-transparent py-3 pr-10 text-sm focus:outline-none focus:border-[#800000] transition-colors placeholder-zinc-400">
+          <svg class="w-4 h-4 text-zinc-400 absolute right-2 top-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/>
+          </svg>
         </div>
 
-        <!-- Type filter -->
+        <!-- Type Dropdown -->
         <div class="md:col-span-3">
-          <select name="type" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
-            <option value="">All Categories</option>
+          <select name="type" class="w-full rounded-none border-b border-zinc-300 bg-white py-3 text-sm focus:outline-none focus:border-[#800000] transition-colors text-zinc-600">
+            <option value="">{% trans "All Categories" %}</option>
             {% for t in all_types %}
               <option value="{{ t }}" {% if selected_type == t %}selected{% endif %}>{{ t }}</option>
             {% endfor %}
           </select>
         </div>
 
-        <!-- City filter -->
+        <!-- City Dropdown -->
         <div class="md:col-span-2">
-          <select name="city" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
-            <option value="">All Cities</option>
+          <select name="city" class="w-full rounded-none border-b border-zinc-300 bg-white py-3 text-sm focus:outline-none focus:border-[#800000] transition-colors text-zinc-600">
+            <option value="">{% trans "All Cities" %}</option>
             {% for c in all_cities %}
               <option value="{{ c }}" {% if selected_city == c %}selected{% endif %}>{{ c }}</option>
             {% endfor %}
           </select>
         </div>
 
-        <!-- Actions -->
-        <div class="md:col-span-2 flex gap-2">
+        <!-- Control Action Handles -->
+        <div class="md:col-span-2 flex gap-3 pt-2 md:pt-0">
           <button type="submit"
-                  class="w-full rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-3 transition">
-            Apply
+                  class="flex-1 bg-zinc-900 hover:bg-[#800000] text-white text-xs font-medium tracking-wider uppercase py-3 transition-colors duration-300">
+            {% trans "Apply" %}
           </button>
           <a href="{% url 'products:project_list' %}"
-             class="w-full rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 text-sm font-semibold px-4 py-3 transition text-center">
-            Reset
+             class="flex-1 border border-zinc-200 text-center text-zinc-600 hover:text-zinc-900 hover:border-zinc-400 text-xs font-medium tracking-wider uppercase py-3 transition-colors duration-300">
+            {% trans "Reset" %}
           </a>
         </div>
       </div>
     </form>
   </div>
 
-  <!-- Project Grid -->
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
-    <div class="flex items-center justify-between mb-6">
-      <p class="text-sm text-slate-600">
-        Showing <span class="font-semibold text-slate-800">{{ total_count }}</span> project{{ total_count|pluralize }}
+  <!-- ── ACTIVE META INFO & SORTING ── -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-6">
+    <div class="flex items-center justify-between border-b border-zinc-100 pb-4">
+      <p class="text-xs text-zinc-400 uppercase tracking-wider">
+        {% trans "Showing" %} <span class="font-medium text-zinc-800">{{ total_count }}</span> {% trans "Result" %}{{ total_count|pluralize }}
       </p>
-      <form method="get" id="sort-form">
-        {# preserve other filters when sorting #}
+      
+      <form method="get" id="sort-form" class="flex items-center gap-2">
         {% if q %}<input type="hidden" name="q" value="{{ q }}">{% endif %}
         {% if selected_type %}<input type="hidden" name="type" value="{{ selected_type }}">{% endif %}
         {% if selected_city %}<input type="hidden" name="city" value="{{ selected_city }}">{% endif %}
-        <select name="sort" onchange="document.getElementById('sort-form').submit()"
-                class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
-          <option value="newest" {% if sort == 'newest' %}selected{% endif %}>Newest First</option>
-          <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Oldest First</option>
+        <label for="sort-select" class="text-xs text-zinc-400 uppercase tracking-wider hidden sm:inline">{% trans "Sort By:" %}</label>
+        <select id="sort-select" name="sort" onchange="document.getElementById('sort-form').submit()"
+                class="bg-transparent text-xs text-zinc-700 font-medium tracking-wide focus:outline-none cursor-pointer border-none py-1">
+          <option value="newest" {% if sort == 'newest' %}selected{% endif %}>{% trans "Newest First" %}</option>
+          <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>{% trans "Oldest First" %}</option>
         </select>
       </form>
     </div>
+  </div>
 
+  <!-- ── PROJECT GALLERY GRID ── -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
     {% if projects %}
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         {% for project in projects %}
-          <article class="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-            <a href="{% url 'products:project_detail' project.slug %}">
-              <div class="relative">
-                <!-- Image container: fixed aspect ratio, never breaks layout -->
-<div class="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
-  {% if project.hero_image %}
-    <img src="{{ project.hero_image.url }}" alt="{{ project.name }}"
-         class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
-  {% else %}
-    <!-- Placeholder -->
-    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
-      <svg class="w-12 h-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5
-                 l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3 3h18"/>
-      </svg>
-      <span class="text-xs text-slate-400">No image</span>
-    </div>
-  {% endif %}
-
-  {% if project.project_type %}
-    <span class="absolute top-3 left-3 text-xs font-semibold bg-white/90 backdrop-blur
-                 px-3 py-1 rounded-full text-red-700 border border-red-200 z-10">
-      {{ project.project_type }}
-    </span>
-  {% endif %}
-</div>
+          <article class="group relative flex flex-col justify-between">
+            <a href="{% url 'products:project_detail' project.slug %}" class="block overflow-hidden space-y-4">
+              
+              <!-- Clean Image Canvas Frame -->
+              <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
+                {% if project.hero_image %}
+                  <img src="{{ project.hero_image.url }}" alt="{{ project.name }}"
+                       class="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 scale-100 group-hover:scale-102 transition-all duration-700 ease-out">
+                {% else %}
+                  <div class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-50 border border-zinc-100">
+                    <svg class="w-8 h-8 text-zinc-300 stroke-[1.25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3 3h18"/>
+                    </svg>
+                    <span class="text-[11px] text-zinc-400 mt-2 uppercase tracking-widest">{% trans "No Image Available" %}</span>
+                  </div>
+                {% endif %}
 
                 {% if project.project_type %}
-                  <span class="absolute top-3 left-3 text-xs font-semibold bg-white/90 backdrop-blur px-3 py-1 rounded-full text-red-700 border border-red-200">
+                  <span class="absolute bottom-4 left-4 text-[10px] font-medium uppercase tracking-widest bg-zinc-900/90 text-white backdrop-blur px-3 py-1.5 mix-blend-normal">
                     {{ project.project_type }}
                   </span>
                 {% endif %}
               </div>
-              <div class="p-5">
-                <h3 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition">
-                  {{ project.name }}
-                </h3>
-                {% if project.intro_text %}
-                  <p class="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">
-                    {{ project.intro_text }}
-                  </p>
-                {% endif %}
-                <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+
+              <!-- Metadata Core Descriptor Details -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-[11px] text-zinc-400 uppercase tracking-widest">
                   <span>{{ project.location|default:"—" }}</span>
                   <span>{{ project.completion_year|default:"" }}</span>
                 </div>
+                
+                <h3 class="text-lg font-medium text-zinc-900 group-hover:text-[#800000] transition-colors duration-300">
+                  {{ project.name }}
+                </h3>
+                
+                {% if project.intro_text %}
+                  <p class="text-sm text-zinc-500 leading-relaxed line-clamp-2 font-light">
+                    {{ project.intro_text }}
+                  </p>
+                {% endif %}
               </div>
             </a>
           </article>
         {% endfor %}
       </div>
 
-      <!-- Pagination -->
+      <!-- ── MINIMALIST PAGINATION ── -->
       {% if page_obj.paginator.num_pages > 1 %}
-        <div class="mt-12 flex items-center justify-center gap-2">
+        <div class="mt-20 flex items-center justify-center gap-1 border-t border-zinc-100 pt-8">
 
           {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
-               class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-100 text-sm">Prev</a>
-          {% else %}
-            <span class="px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 text-sm cursor-not-allowed">Prev</span>
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ q|default:'' }}&type={{ selected_type|default:'' }}&city={{ selected_city|default:'' }}&sort={{ sort }}"
+               class="p-2 text-zinc-400 hover:text-zinc-900 transition-colors">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+            </a>
           {% endif %}
 
           {% for num in page_obj.paginator.page_range %}
             {% if num == page_obj.number %}
-              <span class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm font-semibold">{{ num }}</span>
+              <span class="w-10 h-10 flex items-center justify-center text-xs font-semibold bg-zinc-900 text-white">{{ num }}</span>
             {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
-              <a href="?page={{ num }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
-                 class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 text-sm">{{ num }}</a>
+              <a href="?page={{ num }}&q={{ q|default:'' }}&type={{ selected_type|default:'' }}&city={{ selected_city|default:'' }}&sort={{ sort }}"
+                 class="w-10 h-10 flex items-center justify-center text-xs text-zinc-600 hover:bg-zinc-50 transition-colors border border-transparent hover:border-zinc-200">{{ num }}</a>
             {% endif %}
           {% endfor %}
 
           {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}&q={{ q }}&type={{ selected_type }}&city={{ selected_city }}&sort={{ sort }}"
-               class="px-4 py-2 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-100 text-sm">Next</a>
-          {% else %}
-            <span class="px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 text-sm cursor-not-allowed">Next</span>
+            <a href="?page={{ page_obj.next_page_number }}&q={{ q|default:'' }}&type={{ selected_type|default:'' }}&city={{ selected_city|default:'' }}&sort={{ sort }}"
+               class="p-2 text-zinc-400 hover:text-zinc-900 transition-colors">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            </a>
           {% endif %}
 
         </div>
       {% endif %}
 
     {% else %}
-      <!-- Empty state -->
-      <div class="text-center py-24">
-        <svg class="mx-auto w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
+      <!-- ── EMPTY GALLERY FALLBACK STATE ── -->
+      <div class="text-center py-24 max-w-md mx-auto">
+        <svg class="mx-auto w-12 h-12 text-zinc-300 stroke-[1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"/>
         </svg>
-        <p class="text-slate-500 text-lg font-medium">No projects found</p>
-        <p class="text-slate-400 text-sm mt-1">Try adjusting your filters or search term.</p>
+        <h4 class="text-zinc-900 text-base font-medium mt-4">{% trans "No matching projects" %}</h4>
+        <p class="text-zinc-400 text-sm mt-1">{% trans "Try modifying your filter categories or checking your spelling selection." %}</p>
         <a href="{% url 'products:project_list' %}"
-           class="mt-6 inline-block rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-3 transition">
-          Clear filters
+           class="mt-6 inline-block bg-zinc-900 hover:bg-[#800000] text-white text-xs font-medium tracking-wider uppercase px-6 py-3 transition-colors duration-300">
+          {% trans "Clear filters" %}
         </a>
       </div>
     {% endif %}

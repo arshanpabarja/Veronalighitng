@@ -4,8 +4,8 @@
 
 {% block title %}{{ family.meta_title|default:family.name }}{% endblock %}
 
-{% block meta %}
-<meta name="description" content="{{ family.meta_description|default:family.description|striptags|truncatechars:160 }}">
+{% block seo %}
+<meta name="description" content="{{ family.meta_description|default:family.subtitle|striptags|truncatechars:160 }}">
 <meta name="keywords" content="{{ family.name }}{% if child %}, {{ child.name }}{% endif %}{% if child.parent %}, {{ child.parent.name }}{% endif %}{% for app in family.applications.all %}, {{ app.name }}{% endfor %}">
 
 <!-- Canonical -->
@@ -22,7 +22,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ family.meta_title|default:family.name }}">
-<meta property="og:description" content="{{ family.meta_description|default:family.description|striptags|truncatechars:160 }}">
+<meta property="og:description" content="{{ family.meta_description|default:family.subtitle|striptags|truncatechars:160 }}">
 
 {% if child %}
 <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail' child.parent.slug child.slug family.slug %}">
@@ -119,13 +119,13 @@
 <!-- Breadcrumb -->
 <div class="max-w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
   <span class="text-[11px] sm:text-sm text-gray-500">
-    <a href="{% url 'home' %}" class="hover:text-[#800000]">Home</a>
+    <a href="{% url 'home' %}" class="hover:text-[#B99A58]">Home</a>
     <span class="mx-1 sm:mx-2">›</span>
 
-    <a href="/products/" class="hover:text-[#800000]">Products</a>
+    <a href="/products/" class="hover:text-[#B99A58]">Products</a>
     <span class="mx-1 sm:mx-2">›</span>
 
-    <a href="{% url 'products:category_detail' family.category.slug %}" class="hover:text-[#800000]">
+    <a href="{% url 'products:category_detail' family.category.slug %}" class="hover:text-[#B99A58]">
       {{ family.category.name }}
     </a>
 
@@ -133,7 +133,7 @@
     <span class="mx-1 sm:mx-2">›</span>
 
     <a href="{% url 'products:child_detail' child.parent.slug child.slug %}"
-       class="font-medium hover:text-[#800000] text-gray-500">
+       class="font-medium hover:text-[#B99A58] text-gray-500">
        {{ child.name }}
     </a>
     {% endif %}
@@ -169,12 +169,12 @@
   <div class="flex items-center justify-between gap-3 mb-6 sm:mb-9">
     <p class="text-[13px] sm:text-[14px] text-[#888]">
       Showing <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> products in
-      <strong class="text-[#800000]">{{ family.name }}</strong>
+      <strong class="text-[#727272]">{{ family.name }}</strong>
     </p>
 
     <button type="button"
             onclick="openFilterOverlay()"
-            class="sm:hidden flex items-center gap-2 px-4 py-2 border-[1.5px] border-[#1a1a1a] rounded-[7px] text-[12px] font-semibold text-[#1a1a1a] hover:border-[#800000] hover:text-[#800000] transition-colors">
+            class="sm:hidden flex items-center gap-2 px-4 py-2 border-[1.5px] border-[#1a1a1a] rounded-[7px] text-[12px] font-semibold text-[#1a1a1a] hover:border-[#B99A58] hover:text-[#B99A58] transition-colors">
 
       <svg viewBox="0 0 24 24"
            class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round] [stroke-linejoin:round]">

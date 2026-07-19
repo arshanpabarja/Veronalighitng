@@ -3,6 +3,8 @@ from django.core.paginator import Paginator
 from Products.models import Product, Category
 from .models import SiteSettings, NewsCategory, NewsArticle
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
 
 def index(request):
     context = {"site_settings": SiteSettings.get()}
@@ -82,3 +84,15 @@ def custom_404_view(request, exception):
 @login_required()
 def hesab_daryaft_pardakht(request):
     return render(request, 'حساب دربافت و پرداخت.html')
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "",
+        "Disallow: /setting/",
+        "Disallow: /i18n/",
+        "Disallow: /search/",
+        "",
+        "Sitemap: https://veronalighting.co/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")

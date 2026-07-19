@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ project.meta_title|default:project.name }} - {{ site_settings.site_name|default:"Verona Lighting" }}{% endblock %}
 
@@ -68,132 +68,153 @@
 {% endblock %}
 
 {% block content %}
-<main class="bg-white text-slate-800">
+<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Breadcrumb" class="max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
-    <ol class="text-[11px] sm:text-sm text-gray-500 flex flex-wrap items-center">
-      <li><a href="{% url 'home' %}" class="hover:text-[#800000]">Home</a></li>
-      <li class="mx-1 sm:mx-2" aria-hidden="true">›</li>
-      <li><a href="{% url 'products:project_list' %}" class="hover:text-[#800000]">Projects</a></li>
-      <li class="mx-1 sm:mx-2" aria-hidden="true">›</li>
-      <li><span class="font-medium text-gray-800" aria-current="page">{{ project.name }}</span></li>
+  <!-- ── BREADCRUMB ── -->
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 lg:px-10 py-5 text-left border-b border-zinc-100">
+    <ol class="text-[11px] text-zinc-400 uppercase tracking-widest flex flex-wrap items-center gap-2">
+      <li><a href="{% url 'home' %}" class="hover:text-zinc-900 transition-colors">{% trans "Home" %}</a></li>
+      <li class="text-zinc-300" aria-hidden="true">/</li>
+      <li><a href="{% url 'products:project_list' %}" class="hover:text-zinc-900 transition-colors">{% trans "Projects" %}</a></li>
+      <li class="text-zinc-300" aria-hidden="true">/</li>
+      <li><span class="text-zinc-900 font-light" aria-current="page">{{ project.name }}</span></li>
     </ol>
   </nav>
 
-  <!-- Title -->
-  <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-    <h1 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-      {{ project.name|upper }}
-    </h1>
-  </div>
-
-  <!-- Hero -->
-  <section class="relative w-full h-[420px] sm:h-[500px] bg-cover bg-center"
-           aria-label="Project hero image"
-           {% if project.hero_image %}style="background-image: url('{{ project.hero_image.url }}')"{% endif %}>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/55 to-transparent"></div>
-  </section>
-
-  <!-- Intro -->
-  {% if project.intro_heading or project.intro_text %}
-  <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
-    {% if project.intro_heading %}
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-      {{ project.intro_heading }}
-    </h2>
-    {% endif %}
-    {% if project.intro_text %}
-    <p class="text-base text-gray-700 leading-relaxed text-justify">
-      {{ project.intro_text }}
-    </p>
-    {% endif %}
-  </div>
-  {% endif %}
-
-  <!-- Sticky Nav -->
-  <nav class="border-b border-gray-200 bg-white sticky top-24 z-40" aria-label="Project sections">
-    <div class="container mx-auto px-4">
-      <div class="flex space-x-8 overflow-x-auto whitespace-nowrap">
-        <a href="#overview" class="py-4 px-2 border-b-2 border-red-600 text-gray-900 font-medium">Overview</a>
-        {% if project.gallery_images.exists %}
-        <a href="#gallery" class="py-4 px-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300">Gallery</a>
-        {% endif %}
-        {% if project.products.exists %}
-        <a href="#products" class="py-4 px-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300">Products Used</a>
-        {% endif %}
-        {% if project.downloads.exists %}
-        <a href="#downloads" class="py-4 px-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300">Downloads</a>
-        {% endif %}
-        {% if project.about_content %}
-        <a href="#about" class="py-4 px-2 border-b-2 border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300">About Project</a>
+  <!-- ── EDITORIAL TITLE HEADER ── -->
+  <div class="bg-zinc-50 border-b border-zinc-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start">
+        <div class="lg:col-span-8">
+          <h1 class="text-4xl sm:text-6xl font-light tracking-tight text-zinc-900 uppercase">
+            {{ project.name }}
+          </h1>
+        </div>
+        {% if project.project_type %}
+        <div class="lg:col-span-4 lg:text-right pt-2 lg:pt-4">
+          <span class="text-xs font-medium uppercase tracking-widest bg-zinc-900 text-white px-3 py-1.5">
+            {{ project.project_type }}
+          </span>
+        </div>
         {% endif %}
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- Overview -->
-  <section id="overview" class="py-12 sm:py-14 lg:py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {% if project.location %}
-        <div class="p-6 border border-gray-200 bg-gray-50">
-          <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Location</p>
-          <p class="text-lg font-bold text-[#0d1f3c]">{{ project.location }}</p>
+<!-- ── HERO CANVAS FRAME (OPTION 2: FRAMELESS GRID ALIGNED) ── -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-4 bg-white" aria-label="Project hero image">
+    <div class="overflow-hidden">
+      {% if project.hero_image %}
+        <img src="{{ project.hero_image.url }}" alt="{{ project.name }}" 
+             class="w-full h-auto max-h-[75vh] object-cover block">
+      {% else %}
+        <div class="w-full h-64 flex items-center justify-center bg-zinc-50 border border-zinc-100">
+          <span class="text-xs text-zinc-400 uppercase tracking-widest font-light">{% trans "No Frame Captured" %}</span>
         </div>
-        {% endif %}
-        {% if project.project_type %}
-        <div class="p-6 border border-gray-200 bg-gray-50">
-          <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Project Type</p>
-          <p class="text-lg font-bold text-[#0d1f3c]">{{ project.project_type }}</p>
-        </div>
-        {% endif %}
-        {% if project.completion_year %}
-        <div class="p-6 border border-gray-200 bg-gray-50">
-          <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Completion</p>
-          <p class="text-lg font-bold text-[#0d1f3c]">{{ project.completion_year }}</p>
-        </div>
-        {% endif %}
-      </div>
-
-      {% if project.overview_text %}
-      <div class="mt-10 max-w-4xl">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#2d3748]">Project Overview</h2>
-        <p class="mt-4 text-gray-700 leading-8">{{ project.overview_text }}</p>
-      </div>
       {% endif %}
     </div>
   </section>
 
-  <!-- Gallery -->
-  {% if project.gallery_images.exists %}
-  <section id="gallery" class="py-8 scroll-mt-24 sm:py-10 md:py-12 bg-gray-50 border-y border-gray-200">
-    <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
-      <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-        GALLERY
-      </h2>
+  <!-- ── STICKY LOOKBOOK NAVIGATION ── -->
+  <nav class="border-b border-zinc-200 bg-white/90 backdrop-blur sticky top-16 z-40" aria-label="Project sections">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex space-x-8 overflow-x-auto whitespace-nowrap scrollbar-none">
+        <a href="#overview" class="py-4 text-xs uppercase tracking-widest font-medium border-b border-zinc-900 text-zinc-900">{% trans "Overview" %}</a>
+        {% if project.gallery_images.exists %}
+        <a href="#gallery" class="py-4 text-xs uppercase tracking-widest font-light border-b border-transparent text-zinc-400 hover:text-zinc-900 transition-colors">{% trans "Gallery" %}</a>
+        {% endif %}
+        {% if project.products.exists %}
+        <a href="#products" class="py-4 text-xs uppercase tracking-widest font-light border-b border-transparent text-zinc-400 hover:text-zinc-900 transition-colors">{% trans "Products Used" %}</a>
+        {% endif %}
+        {% if project.downloads.exists %}
+        <a href="#downloads" class="py-4 text-xs uppercase tracking-widest font-light border-b border-transparent text-zinc-400 hover:text-zinc-900 transition-colors">{% trans "Downloads" %}</a>
+        {% endif %}
+        {% if project.about_content %}
+        <a href="#about" class="py-4 text-xs uppercase tracking-widest font-light border-b border-transparent text-zinc-400 hover:text-zinc-900 transition-colors">{% trans "About Project" %}</a>
+        {% endif %}
+      </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+  </nav>
+
+  <!-- ── OVERVIEW & METADATA ── -->
+  <section id="overview" class="py-16 lg:py-24 bg-white border-b border-zinc-100 scroll-mt-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      
+      <!-- Linear Lookbook Parameter Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 border-t border-b border-zinc-200 divide-y md:divide-y-0 md:divide-x divide-zinc-200 py-6 mb-16">
+        <div class="py-4 md:py-2 md:pr-6">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-400 mb-1 font-light">{% trans "Location" %}</p>
+          <p class="text-base font-light text-zinc-900">{{ project.location|default:"—" }}</p>
+        </div>
+        <div class="py-4 md:py-2 md:px-6">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-400 mb-1 font-light">{% trans "Project Type" %}</p>
+          <p class="text-base font-light text-zinc-900">{{ project.project_type|default:"—" }}</p>
+        </div>
+        <div class="py-4 md:py-2 md:pl-6">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-400 mb-1 font-light">{% trans "Completion" %}</p>
+          <p class="text-base font-light text-zinc-900">{{ project.completion_year|default:"—" }}</p>
+        </div>
+      </div>
+
+      <!-- Intro Block Content -->
+      {% if project.intro_heading or project.intro_text or project.overview_text %}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="text-2xl sm:text-3xl font-light tracking-tight text-zinc-900 uppercase">
+            {{ project.intro_heading|default:"The Brief" }}
+          </h2>
+        </div>
+        <div class="lg:col-span-8 space-y-6">
+          {% if project.intro_text %}
+          <p class="text-base text-zinc-600 leading-relaxed font-light text-justify">
+            {{ project.intro_text }}
+          </p>
+          {% endif %}
+          {% if project.overview_text %}
+          <p class="text-sm text-zinc-500 leading-relaxed font-light text-justify border-t border-zinc-100 pt-6">
+            {{ project.overview_text }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  <!-- ── LOOKBOOK ARCHITECTURAL GALLERY ── -->
+  {% if project.gallery_images.exists %}
+  <section id="gallery" class="py-20 bg-zinc-50 border-b border-zinc-100 scroll-mt-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="mb-12">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">01 / {% trans "Visual Gallery" %}</h2>
+        <div class="w-12 h-px bg-zinc-900"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for img in project.gallery_images.all %}
-        <img src="{{ img.image.url }}"
-             alt="{{ img.alt_text|default:project.name }}"
-             loading="lazy"
-             class="w-full aspect-[4/3] object-cover">
+        <div class="bg-zinc-200 overflow-hidden relative group aspect-[16/11]">
+          <img src="{{ img.image.url }}"
+               alt="{{ img.alt_text|default:project.name }}"
+               loading="lazy"
+               class="w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-[1.02]">
+        </div>
         {% endfor %}
       </div>
     </div>
   </section>
   {% endif %}
 
-  <!-- Products Used -->
+  <!-- ── PRODUCTS USED (UNCHANGED STYLING) ── -->
   {% if project.products.exists %}
-  <section id="products" class="py-8 sm:py-10 scroll-mt-24 md:py-12 bg-white">
-    <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
-      <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-        PRODUCTS USED
-      </h2>
+  <section id="products" class="py-20 bg-white border-b border-zinc-100 scroll-mt-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="mb-12">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">02 / {% trans "Products Specification" %}</h2>
+        <div class="w-12 h-px bg-zinc-900"></div>
+      </div>
     </div>
+
     <div id="product-grid"
          class="max-w-[1800px] mx-auto px-4 sm:px-8 py-6 sm:py-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
       {% for product in project.products.all %}
@@ -245,8 +266,8 @@
           {% if product.category %}
           <a href="{% url 'products:product_list' %}?category={{ product.category.slug }}"
              class="flex items-center justify-between w-full rounded-full px-4 py-3
-                    font-semibold text-sm text-[#800000] border border-[#800000]
-                    hover:text-white hover:bg-[#800000] transition-all duration-200">
+                    font-semibold text-sm text-[#727272] border border-[#727272]
+                    hover:text-white hover:bg-[#727272] transition-all duration-200">
             <span>View Products</span>
             <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none" aria-hidden="true">
               <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
@@ -255,8 +276,8 @@
           {% endif %}
           <a href="{{ product.get_absolute_url }}"
              class="flex items-center justify-between w-full rounded-full px-4 py-3
-                    font-semibold text-sm text-[#800000] border border-[#800000]
-                    hover:text-white hover:bg-[#800000] transition-all duration-200">
+                    font-semibold text-sm text-[#727272] border border-[#727272]
+                    hover:text-white hover:bg-[#727272] transition-all duration-200">
             <span>Explore {{ product.name }}</span>
             <svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 18 19" fill="none" aria-hidden="true">
               <path d="M14.6988 13.2513C14.5688 13.4153 14.3942 13.4494 14.268 13.4494C14.1486 13.4494 13.9903 13.42 13.8617 13.2965C13.6074 13.071 13.606 12.6952 13.8281 12.4664L16.0593 9.9873H0.5945C0.274802 9.9873 0 9.73594 0 9.41247C0 9.2568 0.0655174 9.10906 0.1612 9.00089C0.258462 8.89094 0.408859 8.7983 0.5945 8.7983H16.0565L13.8285 6.33921C13.606 6.11049 13.6073 5.73449 13.8616 5.50888C14.0918 5.28711 14.4692 5.29046 14.6937 5.5484L17.8349 9.00372C18.055 9.22935 18.055 9.57592 17.8349 9.80156L14.6988 13.2513Z" fill="currentColor"/>
@@ -270,34 +291,33 @@
   </section>
   {% endif %}
 
-  <!-- Downloads -->
+  <!-- ── TECHNICAL DOWNLOADS ── -->
   {% if project.downloads.exists %}
-  <section id="downloads" class="py-8 scroll-mt-24 sm:py-10 md:py-12 bg-white">
-    <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10">
-      <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#2d3748] tracking-tight">
-        DOWNLOADS
-      </h2>
-    </div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-8">
-      <div class="space-y-4">
+  <section id="downloads" class="py-20 bg-white border-b border-zinc-100 scroll-mt-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="mb-12">
+        <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-light mb-2">03 / {% trans "Documentation" %}</h2>
+        <div class="w-12 h-px bg-zinc-900"></div>
+      </div>
+
+      <div class="max-w-4xl space-y-4">
         {% for dl in project.downloads.all %}
-        <div class="group flex items-center justify-between p-6 bg-gray-50 border border-gray-200 hover:border-[#800000] hover:shadow-lg transition-all duration-300">
-          <div class="flex items-center gap-4 flex-1">
-            <div class="flex-shrink-0 w-12 h-12 bg-[#800000] rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        <div class="group flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-zinc-50 border border-zinc-100 hover:border-zinc-400 transition-all duration-300 gap-4">
+          <div class="flex items-start gap-4 flex-1">
+            <div class="flex-shrink-0 w-10 h-10 bg-zinc-900 flex items-center justify-center">
+              <svg class="w-5 h-5 text-white stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
               </svg>
             </div>
             <div>
-              <h3 class="text-base font-bold text-[#0d1f3c] group-hover:text-[#800000] transition-colors">
+              <h3 class="text-sm font-medium text-zinc-900 group-hover:text-[#800000] transition-colors">
                 {{ dl.title }}
               </h3>
               {% if dl.description %}
-              <p class="text-sm text-gray-600 mt-1">{{ dl.description }}</p>
+              <p class="text-xs text-zinc-500 mt-1 font-light">{{ dl.description }}</p>
               {% endif %}
               {% if dl.file_size or dl.file_type %}
-              <p class="text-xs text-gray-500 mt-1">
+              <p class="text-[10px] text-zinc-400 uppercase tracking-wider mt-1 font-light">
                 {% if dl.file_size %}{{ dl.file_size }}{% endif %}
                 {% if dl.file_size and dl.file_type %} • {% endif %}
                 {% if dl.file_type %}{{ dl.file_type }}{% endif %}
@@ -306,13 +326,12 @@
             </div>
           </div>
           <a href="{{ dl.file.url }}" download
-             class="flex-shrink-0 flex items-center gap-2 px-6 py-3 bg-[#800000] text-white rounded-full font-semibold text-sm hover:bg-[#a01515] transition-colors"
-             aria-label="Download {{ dl.title }}{% if dl.file_type %} {{ dl.file_type }}{% endif %}">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+             class="flex-shrink-0 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-900 hover:bg-[#800000] text-white text-xs font-medium tracking-wider uppercase transition-colors duration-300"
+             aria-label="Download {{ dl.title }}">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
             </svg>
-            <span>Download</span>
+            <span>{% trans "Download" %}</span>
           </a>
         </div>
         {% endfor %}
@@ -321,32 +340,36 @@
   </section>
   {% endif %}
 
-  <!-- About Project -->
+  <!-- ── EXTENDED ABOUT LABELS ── -->
   {% if project.about_content %}
-  <section id="about" class="py-12 scroll-mt-24 sm:py-14 lg:py-16 bg-gray-50 border-t border-gray-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#2d3748]">About This Project</h2>
-      <div class="mt-5 space-y-5 text-gray-700 leading-8">
+  <section id="about" class="py-20 bg-zinc-50 scroll-mt-36">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10">
+      <h2 class="text-2xl font-light tracking-tight text-zinc-900 uppercase mb-6">
+        {% trans "About This Project" %}
+      </h2>
+      <div class="prose prose-zinc max-w-none text-zinc-600 font-light leading-relaxed text-justify space-y-4">
         {{ project.about_content|safe }}
       </div>
     </div>
   </section>
   {% endif %}
 
-  <!-- Back to Top -->
+  <!-- ── BACK TO TOP FLOATING ACTION ── -->
   <button id="backToTop"
           aria-label="Back to top"
-          class="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-40 bg-[#800000] hover:bg-[#a01515] text-white w-11 h-11 rounded-full shadow-lg hidden items-center justify-center transition">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+          class="fixed bottom-6 right-6 z-40 bg-zinc-900/80 hover:bg-[#800000] text-white w-10 h-10 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 shadow-md">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
     </svg>
   </button>
 
 </main>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav[aria-label='Project sections'] a");
+  const backToTopBtn = document.getElementById("backToTop");
 
   const linkMap = {};
   navLinks.forEach(link => {
@@ -358,13 +381,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setActive = (id) => {
     navLinks.forEach(l => {
-      l.classList.remove("border-red-600", "text-gray-900");
-      l.classList.add("border-transparent", "text-gray-600");
+      l.classList.remove("border-zinc-900", "text-zinc-900", "font-medium");
+      l.classList.add("border-transparent", "text-zinc-400", "font-light");
     });
 
     if (linkMap[id]) {
-      linkMap[id].classList.add("border-red-600", "text-gray-900");
-      linkMap[id].classList.remove("border-transparent", "text-gray-600");
+      linkMap[id].classList.add("border-zinc-900", "text-zinc-900", "font-medium");
+      linkMap[id].classList.remove("border-transparent", "text-zinc-400", "font-light");
     }
   };
 
@@ -376,11 +399,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, {
     root: null,
-    threshold: 0.35,
-    rootMargin: "-120px 0px -60% 0px"
+    threshold: 0.2,
+    rootMargin: "-100px 0px -70% 0px"
   });
 
   sections.forEach(section => observer.observe(section));
+
+  // Back to Top functionality
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+      backToTopBtn.classList.add("opacity-100");
+    } else {
+      backToTopBtn.classList.remove("opacity-100");
+      backToTopBtn.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
 </script>
 {% endblock %}

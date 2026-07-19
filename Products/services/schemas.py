@@ -1,22 +1,11 @@
-from typing import List
-
 from pydantic import BaseModel, Field
 
+class FamilySEO(BaseModel):
+    meta_title_en: str
+    meta_description_en: str
 
-class FamilyTranslation(BaseModel):
+    meta_title_fa: str
+    meta_description_fa: str
 
-    name: str = Field(
-        description="Persian family or series name"
-    )
-
-    subtitle: str = Field(
-        description="Short Persian family subtitle"
-    )
-
-    meta_title: str = Field(
-        description="SEO title in Persian"
-    )
-
-    meta_description: str = Field(
-        description="SEO meta description in Persian"
-    )
+    icon_alt_en: str
+    icon_alt_fa: str

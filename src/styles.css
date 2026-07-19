@@ -13,12 +13,12 @@
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-    background: #800000;
+    background: #727272;
     border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-    background: #a01515;
+    background: #B99A58;
 }
 
 /* Hide scrollbar for categories bar */
@@ -60,9 +60,9 @@
 }
 
 :root {
-    --primary: #1a1a2e;
-    --accent: #ed2626;
-    --accent-light: #e96969;
+    --primary: #727272;
+    --accent: #B99A58;
+    --accent-light: #6f6868;
     --gray-light: #f7f7f7;
     --gray-mid: #e8e8e8;
     --gray-text: #888;
@@ -570,7 +570,6 @@ html[dir="rtl"] span {
 .product-title {
     font-size: clamp(1.6rem, 4vw, 2.6rem);
     font-weight: 600;
-    color: var(--primary);
     line-height: 1.2;
     margin-bottom: 10px;
 }
@@ -802,9 +801,7 @@ html[dir="rtl"] span {
     display: flex;
     border-bottom: 2px solid var(--gray-mid);
     gap: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+
 }
 
 .tab-nav::-webkit-scrollbar {
