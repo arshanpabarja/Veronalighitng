@@ -1,0 +1,20 @@
+[0;1;32m●[0m veronalighting.service - Verona Lighting Gunicorn
+     Loaded: loaded (/etc/systemd/system/veronalighting.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Mon 2026-07-20 01:41:00 UTC; 4s ago
+   Main PID: 12561 (gunicorn)
+      Tasks: 4 (limit: 2216)
+     Memory: 101.8M
+        CPU: 518ms
+     CGroup: /system.slice/veronalighting.service
+             ├─12561 /root/Veronalighitng/venv/bin/python3 /root/Veronalighitng/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 Veronalighting.wsgi:application
+             ├─12563 /root/Veronalighitng/venv/bin/python3 /root/Veronalighitng/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 Veronalighting.wsgi:application
+             ├─12564 /root/Veronalighitng/venv/bin/python3 /root/Veronalighitng/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 Veronalighting.wsgi:application
+             └─12565 /root/Veronalighitng/venv/bin/python3 /root/Veronalighitng/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 Veronalighting.wsgi:application
+
+Jul 20 01:41:00 vm-205949 systemd[1]: Started Verona Lighting Gunicorn.
+Jul 20 01:41:01 vm-205949 gunicorn[12561]: [2026-07-20 01:41:01 +0000] [12561] [INFO] Starting gunicorn 23.0.0
+Jul 20 01:41:01 vm-205949 gunicorn[12561]: [2026-07-20 01:41:01 +0000] [12561] [INFO] Listening at: http://127.0.0.1:8000 (12561)
+Jul 20 01:41:01 vm-205949 gunicorn[12561]: [2026-07-20 01:41:01 +0000] [12561] [INFO] Using worker: sync
+Jul 20 01:41:01 vm-205949 gunicorn[12563]: [2026-07-20 01:41:01 +0000] [12563] [INFO] Booting worker with pid: 12563
+Jul 20 01:41:01 vm-205949 gunicorn[12565]: [2026-07-20 01:41:01 +0000] [12565] [INFO] Booting worker with pid: 12565
+Jul 20 01:41:01 vm-205949 gunicorn[12564]: [2026-07-20 01:41:01 +0000] [12564] [INFO] Booting worker with pid: 12564

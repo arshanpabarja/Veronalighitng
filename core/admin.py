@@ -1,10 +1,10 @@
 from django.contrib import admin
-
+from modeltranslation.admin import TranslationAdmin
 from .models import NewsArticle, NewsCategory, SiteSettings
 
 
 @admin.register(SiteSettings)
-class SiteSettingsAdmin(admin.ModelAdmin):
+class SiteSettingsAdmin(TranslationAdmin):
     fieldsets = (
         ("Home Page", {
             "fields": (

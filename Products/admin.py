@@ -165,7 +165,7 @@ class ApplicationAdmin(TranslationAdmin):
 class ProductAdmin(TranslationAdmin):
     list_display        = ['id','order',
         'name', 'category', 'family',
-        'wattage', 'meta_title_en',
+        'meta_title_fa', 'meta_title_en',
         'thumbnail_preview', 'is_active', 'updated_at'
     ]
     list_filter         = ['category', 'family', 'is_active', 'dimmable', 'lamp_base_type', 'finishes']

@@ -1,0 +1,13 @@
+[0;1;31m×[0m veronalighting.service - Verona Lighting Gunicorn
+     Loaded: loaded (/etc/systemd/system/veronalighting.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Mon 2026-07-20 00:39:35 UTC; 53min ago
+   Main PID: 929 (code=exited, status=203/EXEC)
+        CPU: 459us
+
+Jul 20 00:39:35 vm-205949 systemd[1]: [0;1;39m[0;1;31m[0;1;39mveronalighting.service: Main process exited, code=exited, status=203/EXEC[0m
+Jul 20 00:39:35 vm-205949 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mveronalighting.service: Failed with result 'exit-code'.[0m
+Jul 20 00:39:35 vm-205949 systemd[1]: veronalighting.service: Scheduled restart job, restart counter is at 5.
+Jul 20 00:39:35 vm-205949 systemd[1]: Stopped Verona Lighting Gunicorn.
+Jul 20 00:39:35 vm-205949 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mveronalighting.service: Start request repeated too quickly.[0m
+Jul 20 00:39:35 vm-205949 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mveronalighting.service: Failed with result 'exit-code'.[0m
+Jul 20 00:39:35 vm-205949 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Verona Lighting Gunicorn.[0m

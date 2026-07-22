@@ -50,26 +50,30 @@
     "@type": "Brand",
     "name": "Verona Lighting"
   },
+  "offers": {
+    "@type": "Offer",
+    "url": "...",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
 
-  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
-
-  {% if product.cri %}
-  ,"additionalProperty": [
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
+  {% if product.cri %},
+  "additionalProperty": [
     {
       "@type": "PropertyValue",
       "name": "CRI",
       "value": "{{ product.cri }}"
     }
-    {% if product.color_temperature %}
-    ,
+    {% if product.color_temperature %},
     {
       "@type": "PropertyValue",
       "name": "{% trans "Color Temperature" %}",
       "value": "{{ product.color_temperature }}K"
     }
     {% endif %}
-    {% if product.ip_rating %}
-    ,
+    {% if product.ip_rating %},
     {
       "@type": "PropertyValue",
       "name": "{% trans "IP Rating" %}",
