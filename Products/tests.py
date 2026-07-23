@@ -10,9 +10,25 @@ from .services.fa_seo import (
     build_product_fa_seo,
     classify_keyword,
 )
+from .services.category_content import (
+    CATEGORY_CONTENT,
+    validate_category_content,
+)
 
 
 class PersianSEOServiceTests(TestCase):
+    def test_reviewed_category_content_is_complete_and_unique(self):
+        validate_category_content()
+        self.assertEqual(len(CATEGORY_CONTENT), 23)
+        self.assertEqual(
+            len({item.description_fa for item in CATEGORY_CONTENT.values()}),
+            23,
+        )
+        self.assertEqual(
+            len({item.description_en for item in CATEGORY_CONTENT.values()}),
+            23,
+        )
+
     def test_magnetic_track_uses_recessed_keyword(self):
         cluster, keyword, priority = classify_keyword(
             {

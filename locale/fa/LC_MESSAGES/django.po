@@ -1698,6 +1698,10 @@ msgstr "دانلود برگه محصول"
 msgid "Description"
 msgstr "توضیحات"
 
+#: .\templates\products\product_detail.html:366
+msgid "Description and Applications"
+msgstr "توضیحات و کاربردها"
+
 #: .\templates\products\product_detail.html:337
 msgid "Specifications"
 msgstr "مشخصات فنی"

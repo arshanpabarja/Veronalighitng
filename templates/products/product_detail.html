@@ -361,7 +361,11 @@
   <div class="tab-content active" id="tab-desc">
     <div class="description-grid">
       <div class="desc-text text-justify">
-        <h2 class="section-title">{{ product.name }} — {% trans "Description and Applications" %}</h2>
+        {% get_current_language as CURRENT_LANGUAGE %}
+        <h2 class="section-title">
+          {{ product.name }} —
+          {% if CURRENT_LANGUAGE == "fa" %}توضیحات و کاربردها{% else %}Description and Applications{% endif %}
+        </h2>
         {% if product.full_description %}
         <p>{{ product.full_description|linebreaksbr }}</p>
         {% elif product.description %}
