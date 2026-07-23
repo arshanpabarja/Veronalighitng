@@ -34,8 +34,8 @@
 
             <div class="hidden lg:flex flex-row-reverse gap-8 h-full {% if request.path == '/' or request.path == '/en/' %}text-white{% endif %}">
                 <div class="flex items-center mb-1">
-                        <a href="{% url 'search' %}">
-                            <img id="search" class="w-6" src="{% if request.path == '/' or request.path == '/en/' %}{% static 'images/search2.svg '%}{% else %}{% static 'images/search.svg' %}{% endif %}" alt="search">
+                        <a href="{% url 'search' %}" aria-label="{% trans 'Search' %}">
+                            <img id="search" class="w-6" src="{% if request.path == '/' or request.path == '/en/' %}{% static 'images/search2.svg' %}{% else %}{% static 'images/search.svg' %}{% endif %}" alt="">
                         </a>
                     </div>
                 <div class="group relative">
@@ -53,13 +53,13 @@
                                 <div class="col-span-2 space-y-0 text-[16px] py-14" style="padding-left: 120px;">
                                     {% for category in categories %}
                                     <div class="flex w-full justify-between">
-                                        <button type="button" data-category="{{ category.slug }}"
+                                        <a href="{% url 'products:category_detail' cat_slug=category.slug %}" data-category="{{ category.slug }}"
                                             class="category-item flex items-center gap-3 text-left hover:text-[#B99A58] transition-colors">
                                             {% if category.image %}
-                                            <img src="{{ category.image.url }}" alt="" class="w-20 object-contain shrink-0">
+                                            <img src="{{ category.image.url }}" alt="{{ category.name }}" class="w-20 object-contain shrink-0">
                                             {% endif %}
-                                            <a href="{% url 'products:category_detail' cat_slug=category.slug %}" class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</a>
-                                        </button>
+                                            <span class="hover:underline underline-offset-4 decoration-[1.5px]">{{ category.number }}. {{ category.name }}</span>
+                                        </a>
                                         <div class="arrow text-2xl opacity-0 transition-opacity">→</div>
                                     </div>
                                     {% endfor %}
@@ -192,13 +192,13 @@
 </div>
 
             <div class="flex items-center gap-3 lg:hidden">
-                <a href="{% url 'search' %}" class="flex items-center justify-center w-6 h-6">
-                    <img loading="eager" class="w-6 h-6" src="{% static 'images/search.svg' %}" alt="Search"
+                <a href="{% url 'search' %}" class="flex items-center justify-center w-6 h-6" aria-label="{% trans 'Search' %}">
+                    <img loading="eager" class="w-6 h-6" src="{% static 'images/search.svg' %}" alt=""
                          id="mobile-search-icon">
                 </a>
                 <button id="hamburger-btn"
                     class="flex flex-col justify-center items-center w-10 h-10 gap-1.5 z-[110]"
-                    aria-label="Open menu">
+                    aria-label="{% trans 'Open menu' %}" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
                     <span class="hamburger-line block w-6 h-0.5 transition-all duration-300 bg-black"></span>
@@ -220,9 +220,9 @@
         <div id="screen-main" class="drawer-screen flex flex-col h-full">
             <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                 <a href="/" class="flex items-center">
-                    <img class="h-10" src="{% static 'images/logo3.png' %}" alt="logo">
+                    <img class="h-10" src="{% static 'images/logo3.png' %}" alt="{% trans 'Verona Lighting logo' %}">
                 </a>
-                <button id="close-drawer-btn" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800">
+                <button id="close-drawer-btn" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-800" aria-label="{% trans 'Close menu' %}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -315,7 +315,7 @@
                     class="mobile-category-trigger w-full flex items-center justify-between py-4 text-base border-b border-gray-100 hover:text-[#B99A58] transition-colors">
                     <span>{{ category.name }}</span>
                     {% if category.image %}
-                    <img src="{{ category.image.url }}" alt="" class="w-16 object-contain shrink-0">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}" class="w-16 object-contain shrink-0">
                     {% endif %}
                 </button>
                 {% endfor %}
@@ -468,6 +468,7 @@
         drawer.classList.remove('pointer-events-none');
         backdrop.classList.remove('opacity-0');
         drawerPanel.classList.remove('translate-x-full');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
         hamburgerLines[0].classList.add('rotate-45', 'translate-y-2');
         hamburgerLines[1].classList.add('opacity-0');
@@ -478,6 +479,7 @@
         drawer.classList.add('pointer-events-none');
         backdrop.classList.add('opacity-0');
         drawerPanel.classList.add('translate-x-full');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
         hamburgerLines[0].classList.remove('rotate-45', 'translate-y-2');
         hamburgerLines[1].classList.remove('opacity-0');

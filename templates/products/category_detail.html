@@ -70,8 +70,8 @@
 
 
 {% block content %}
-<div class="max-w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
-  <span class="text-[11px] sm:text-sm text-gray-500">
+<div class="max-w-full overflow-x-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
+  <span class="inline-flex items-center whitespace-nowrap text-[11px] sm:text-sm text-gray-500">
     <a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans "Home" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
     <a href="/products/" class="hover:text-[#B99A58]">{% trans "Products" %}</a>
@@ -91,54 +91,60 @@
     </p>
   </div>
 
-  {% if children %}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16">
-    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-8 text-center ">
-      {% for child in children %}
-      <a href="{% url 'products:child_detail' category.slug child.slug %}"
-         class="group flex flex-col items-center">
+{% if children %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16">
 
-        <div class="w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
-          {% if child.icon %}
-          <img src="{{ child.icon.url }}" alt="{{ child.name }}"
-               class="max-h-full max-w-full object-contain opacity-90 group-hover:opacity-100 transition">
-          {% else %}
-          <div class="w-full h-full bg-gray-100 rounded flex items-center justify-center">
-            <svg class="w-5 h-5 sm:w-8 sm:h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-            </svg>
-          </div>
-          {% endif %}
+  <!-- Single-row horizontal slider (No wrapping, optimized spacing) -->
+  <div id="icon-carousel"
+       class="flex flex-nowrap items-start md:justify-center gap-8 sm:gap-16 overflow-x-auto scroll-smooth scrollbar-hide py-3 -mx-4 sm:mx-0 px-4 sm:px-0">
+    {% for child in children %}
+    <a href="{% url 'products:child_detail' category.slug child.slug %}"
+       class="group flex flex-col items-center flex-shrink-0 w-20 sm:w-28 text-center">
+
+      <!-- Icon Box (Slightly smaller on mobile, normal on desktop) -->
+      <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center p-1.5 rounded-xl transition-transform duration-200 group-hover:scale-105">
+        {% if child.icon %}
+        <img src="{{ child.icon.url }}" alt="{{ child.name }}"
+             class="max-h-full max-w-full object-contain opacity-90 group-hover:opacity-100 transition">
+        {% else %}
+        <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+          </svg>
         </div>
+        {% endif %}
+      </div>
 
-        <div class="mt-1.5 sm:mt-3 text-[9px] sm:text-xs md:text-sm
-          {% if child.slug == category.slug %}text-[#727272]{% else %}text-gray-800{% endif %}
-          group-hover:text-[#B99A58] transition">
-          <h3 class="font-bold">
-            {{ child.name }}
-          </h3>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-
-    <div class="hidden sm:flex justify-end gap-3 mt-8">
-      <button id="thorn-prev"
-              class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-      <button id="thorn-next"
-              class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
+      <!-- Label -->
+      <div class="mt-2 text-[10px] sm:text-xs md:text-sm
+        {% if child.slug == category.slug %}text-[#727272]{% else %}text-gray-800{% endif %}
+        group-hover:text-[#B99A58] transition w-full">
+        <h3 class="font-bold leading-tight line-clamp-2">
+          {{ child.name }}
+        </h3>
+      </div>
+    </a>
+    {% endfor %}
   </div>
-  {% endif %}
+
+  <!-- Desktop Only Navigation Buttons -->
+  <div class="hidden sm:flex justify-end gap-3 mt-6">
+    <button id="thorn-prev" type="button"
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
+      <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <button id="thorn-next" type="button"
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-500 transition-colors">
+      <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+</div>
+{% endif %}
 
 </section>
 
@@ -331,6 +337,21 @@ const scrollObserver = new IntersectionObserver((entries) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.scroll-animate').forEach(el => scrollObserver.observe(el));
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('icon-carousel');
+  const prevBtn = document.getElementById('thorn-prev');
+  const nextBtn = document.getElementById('thorn-next');
+
+  if (container && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  }
 });
 </script>
 

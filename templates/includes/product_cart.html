@@ -1,5 +1,5 @@
-<a class="text-right" href="{% if child %}{% url 'products:product_detail' child.parent.slug child.slug family.slug product.slug %}{% else %}{% url 'products:product_detail_no_child' category.slug family.slug product.slug %}{% endif %}" 
-   class="group flex flex-col w-full text-left cursor-pointer transition-opacity duration-300 hover:opacity-90">
+<a href="{% if child %}{% url 'products:product_detail' child.parent.slug child.slug family.slug product.slug %}{% else %}{% url 'products:product_detail_no_child' category.slug family.slug product.slug %}{% endif %}"
+   class="group flex flex-col w-full {% if LANGUAGE_CODE == 'fa' %}text-right{% else %}text-left{% endif %} cursor-pointer transition-opacity duration-300 hover:opacity-90">
 
   <!-- Image Container -->
   <div class="relative aspect-square w-full bg-[#f4f5f6] overflow-hidden mb-4 flex items-center justify-center">

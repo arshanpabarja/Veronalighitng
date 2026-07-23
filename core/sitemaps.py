@@ -11,7 +11,15 @@ from Products.models import (
 from .models import NewsArticle
 
 
-class StaticViewSitemap(Sitemap):
+class LocalizedSitemap(Sitemap):
+    """Expose both Persian and English URLs with hreflang alternates."""
+
+    i18n = True
+    alternates = True
+    x_default = True
+
+
+class StaticViewSitemap(LocalizedSitemap):
     protocol = "https"
     priority = 1.0
     changefreq = "weekly"
@@ -33,7 +41,7 @@ class StaticViewSitemap(Sitemap):
         return reverse(item)
 
 
-class CategorySitemap(Sitemap):
+class CategorySitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.9
     changefreq = "weekly"
@@ -45,7 +53,7 @@ class CategorySitemap(Sitemap):
         return obj.updated_at
 
 
-class FamilySitemap(Sitemap):
+class FamilySitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.8
     changefreq = "weekly"
@@ -54,7 +62,7 @@ class FamilySitemap(Sitemap):
         return Family.objects.filter(is_active=True)
 
 
-class ProductSitemap(Sitemap):
+class ProductSitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.7
     changefreq = "weekly"
@@ -66,7 +74,7 @@ class ProductSitemap(Sitemap):
         return obj.updated_at
 
 
-class ProjectSitemap(Sitemap):
+class ProjectSitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.7
     changefreq = "monthly"
@@ -75,7 +83,7 @@ class ProjectSitemap(Sitemap):
         return Project.objects.filter(is_published=True)
 
 
-class ApplicationSitemap(Sitemap):
+class ApplicationSitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.7
     changefreq = "monthly"
@@ -85,7 +93,7 @@ class ApplicationSitemap(Sitemap):
 
 
 
-class NewsSitemap(Sitemap):
+class NewsSitemap(LocalizedSitemap):
     protocol = "https"
     priority = 0.6
     changefreq = "daily"

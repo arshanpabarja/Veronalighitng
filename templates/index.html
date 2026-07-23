@@ -135,6 +135,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .hero-fade-in { opacity: 0; animation: heroFadeInUp 0.9s cubic-bezier(.22,.61,.36,1) forwards; }
+  .hero-copy { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85); }
 
   /* ── Carousels: hide scrollbar ─────────────────────── */
   #cat-carousel, .app-carousel { -ms-overflow-style: none; scrollbar-width: none; }
@@ -235,8 +236,28 @@
       margin-top: 64px;  /* push below fixed navbar */
     }
 
-    /* Hide desktop text content on mobile */
-    .hero-desktop-content { display: none !important; }
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,.58) 0%, rgba(0,0,0,.24) 42%, rgba(0,0,0,.7) 100%) !important;
+    }
+
+    .hero-desktop-content {
+      min-height: 100% !important;
+      padding-inline: 40px !important;
+    }
+    .hero-desktop-content h1 {
+      font-size: 20px !important;
+      line-height: 1.15 !important;
+      margin-bottom: 8px !important;
+    }
+    .hero-description {
+      max-width: 220px !important;
+      margin-bottom: 0 !important;
+      font-size: 12px !important;
+      line-height: 1.6 !important;
+      color: #fff !important;
+    }
+    .hero-actions { display: none !important; }
+    .hero-eyebrow { display: block !important; }
 
     /* Hide scroll hint */
     .hero-scroll-hint { display: none !important; }
@@ -277,10 +298,7 @@
     .section-cta p { font-size: 0.85rem !important; }
   }
 
-  /* Desktop: never show mobile-only helpers */
-  @media (min-width: 640px) {
-    .hero-mobile-only { display: none !important; }
-  }
+  .hero-eyebrow { display: none; }
 </style>
 
 
@@ -309,55 +327,10 @@
   </div>
 
   <!-- Overlay -->
-  <div class="absolute inset-0 z-1"
+  <div class="hero-overlay absolute inset-0 z-1"
       style="background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.6) 100%);">
   </div>
 
-  <!-- Mobile Hero Content -->
-<div class="hero-mobile-only mx-10">
-
-    <div style="max-width:320px;">
-
-        <p class="hero-fade-in"
-          style="
-              animation-delay:0.1s;
-              font-size:9px;
-              letter-spacing:2px;
-              text-transform:uppercase;
-              color: white;
-              margin-bottom:4px;
-          ">
-            {% trans "Architectural Lighting" %}
-        </p>
-
-        <h1 class="hero-fade-in"
-            style="
-              animation-delay:0.25s;
-              font-size:20px;
-              font-weight:700;
-              line-height:1.15;
-              text-transform:uppercase;
-              color: white;
-              margin-bottom:8px;
-            ">
-            {% trans "Precision Lighting" %}
-            <span style="color:#727272;">{% trans "for Modern" %}</span>
-            {% trans "Architecture" %}
-        </h1>
-
-        <p class="hero-fade-in"
-          style="
-              animation-delay:0.4s;
-              font-size:12px;
-              line-height:1.6;
-              color: white;
-              max-width:220px; 
-          ">
-            {% trans "Engineered luminaires for modern spaces." %}
-        </p>
-
-    </div>
-</div>
   <!-- Prev / Next -->
   <button id="hero-prev" class="hero-nav-btn" aria-label="{% trans 'Previous slide' %}">
     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -367,19 +340,22 @@
   </button>
 
   <!-- Desktop content -->
-  <div class="hero-desktop-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
+  <div class="hero-desktop-content hero-copy relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
               min-h-[100svh] flex items-center">
     <div class="max-w-3xl">
+      <p class="hero-eyebrow hero-fade-in text-[9px] tracking-[2px] uppercase text-white mb-1" style="animation-delay:0.05s;">
+        {% trans "Architectural Lighting" %}
+      </p>
       <h1 class="hero-fade-in font-black uppercase leading-[0.95] tracking-tight text-white mb-6
                 text-5xl md:text-6xl lg:text-7xl" style="animation-delay:0.1s;">
         {% trans "Precision Lighting" %}<br>
         <span class="text-[#727272]">{% trans "for Modern" %}</span><br>
         {% trans "Architecture" %}
       </h1>
-      <p class="hero-fade-in text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12" style="animation-delay:0.3s;">
+      <p class="hero-description hero-fade-in text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12" style="animation-delay:0.3s;">
         {% trans "Engineered luminaires for facade, landscape and exterior spaces." %}
       </p>
-      <div class="hero-fade-in flex flex-row flex-wrap gap-4" style="animation-delay:0.5s;">
+      <div class="hero-actions hero-fade-in flex flex-row flex-wrap gap-4" style="animation-delay:0.5s;">
         <a href="/projects"
           class="group px-10 py-5 bg-[#727272] text-white text-[11px] tracking-[3px]
                   uppercase font-semibold transition-all duration-300 hover:bg-[#B99A58]">
@@ -442,7 +418,7 @@
       <div class="max-w-2xl">
         <h2 id="projects-heading"
             class="animate-fade text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
-          {% trans "Featured" %} <span class="text-[#727272]">{% trans "Projects" %}</span>
+          {% if LANGUAGE_CODE == 'fa' %}پروژه‌های <span class="text-[#727272]">برگزیده</span>{% else %}Featured <span class="text-[#727272]">Projects</span>{% endif %}
         </h2>
         <p class="animate-fade section-desc text-gray-500 text-sm md:text-lg font-light">
           {% trans "Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments." %}
@@ -592,7 +568,7 @@ class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
 <div class="absolute inset-0 flex items-center justify-center">
-    <img src="{% static 'images/categories/deco.jpg' %}" alt="{% trans 'Decorative' %}"
+    <img src="{% static 'images/categories/decorative.jpg' %}" alt="{% trans 'Decorative' %}"
     class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 </div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
@@ -604,7 +580,7 @@ h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" 
 <a href="/outdoor/"
 class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
 h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/i.jpg' %}" alt="{% trans 'Outdoor' %}"
+<img src="{% static 'images/categories/outdoor.jpg' %}" alt="{% trans 'Outdoor' %}"
 class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
 <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">

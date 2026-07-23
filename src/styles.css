@@ -405,6 +405,13 @@ html[dir="rtl"] span {
     color: var(--gray-text);
     letter-spacing: 0.5px;
     border-bottom: 1px solid var(--gray-mid);
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.breadcrumb::-webkit-scrollbar {
+    display: none;
 }
 
 .breadcrumb span {
@@ -1707,8 +1714,7 @@ footer {
         padding: 10px 16px;
         font-size: 0.68rem;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow-x: auto;
     }
 
     .product-hero {

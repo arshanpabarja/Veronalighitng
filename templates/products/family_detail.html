@@ -1,6 +1,6 @@
 
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ family.meta_title|default:family.name }}{% endblock %}
 
@@ -117,12 +117,12 @@
 {% block content %}
 
 <!-- Breadcrumb -->
-<div class="max-w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
-  <span class="text-[11px] sm:text-sm text-gray-500">
-    <a href="{% url 'home' %}" class="hover:text-[#B99A58]">Home</a>
+<div class="max-w-full overflow-x-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
+  <span class="inline-flex items-center whitespace-nowrap text-[11px] sm:text-sm text-gray-500">
+    <a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans "Home" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
 
-    <a href="/products/" class="hover:text-[#B99A58]">Products</a>
+    <a href="{% url 'products:product_list' %}" class="hover:text-[#B99A58]">{% trans "Products" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
 
     <a href="{% url 'products:category_detail' family.category.slug %}" class="hover:text-[#B99A58]">
@@ -168,7 +168,7 @@
 
   <div class="flex items-center justify-between gap-3 mb-6 sm:mb-9">
     <p class="text-[13px] sm:text-[14px] text-[#888]">
-      Showing <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> products in
+      {% trans "Showing" %} <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> {% trans "products in" %}
       <strong class="text-[#727272]">{{ family.name }}</strong>
     </p>
 
@@ -181,15 +181,15 @@
         <path d="M4 6h16M7 12h10M10 18h4"/>
       </svg>
 
-      Filters
+      {% trans "Filters" %}
     </button>
   </div>
 
   {% if page_obj.paginator.count == 0 %}
 
   <div class="text-center py-16">
-    <p class="text-lg text-gray-700">No products match your filters.</p>
-    <p class="text-sm text-gray-400 mt-2">Try adjusting the specs or reset to browse all.</p>
+    <p class="text-lg text-gray-700">{% trans "No products match your filters." %}</p>
+    <p class="text-sm text-gray-400 mt-2">{% trans "Try adjusting the specs or reset to browse all." %}</p>
   </div>
 
   {% else %}

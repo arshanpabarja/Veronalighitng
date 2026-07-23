@@ -535,11 +535,18 @@ def search(request):
     
     products = Product.objects.filter(
         Q(name__icontains=query) |
+        Q(subtitle__icontains=query) |
         Q(description__icontains=query) |
+        Q(full_description__icontains=query) |
         Q(family__name__icontains=query) |
-        Q(category__name__icontains=query),
+        Q(category__name__icontains=query) |
+        Q(mounting_type__icontains=query) |
+        Q(voltage__icontains=query) |
+        Q(ip_rating__icontains=query) |
+        Q(variants__model_name__icontains=query) |
+        Q(variants__sku__icontains=query),
         is_active=True
-    ).select_related('category', 'family').prefetch_related('finishes')
+    ).select_related('category', 'family').prefetch_related('finishes').distinct()
     page_obj = _paginate(request, products)
 
     context = {

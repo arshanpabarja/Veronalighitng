@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title description">
+  <title id="title">Verona Lighting product placeholder</title>
+  <desc id="description">Neutral placeholder shown when a product photograph is unavailable.</desc>
+  <rect width="800" height="800" fill="#f4f4f3"/>
+  <g fill="none" stroke="#8a8a86" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M230 355h340l-45 150H275z"/>
+    <path d="M330 355v-58c0-38 31-69 70-69s70 31 70 69v58"/>
+    <path d="M330 555h140"/>
+  </g>
+  <text x="400" y="640" fill="#5f5f5b" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" letter-spacing="5">VERONA LIGHTING</text>
+</svg>

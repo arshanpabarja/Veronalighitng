@@ -3,6 +3,12 @@
 
 {% block title %}{% trans "Search Products" %}{% endblock %}
 
+{% block seo %}
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="{% trans 'Search Verona Lighting products by name, family, model code, or technical specification.' %}">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'search' %}">
+{% endblock %}
+
 {% block content %}
 
 <!-- Breadcrumb -->
@@ -80,7 +86,7 @@
     <a href="{% if product.category.parent %}{% url 'products:product_detail' product.category.parent.slug product.category.slug product.family.slug product.slug %}{% else %}{% url 'products:product_detail_no_child' product.category.slug product.family.slug product.slug %}{% endif %}"
       class="group flex flex-col w-full text-left cursor-pointer transition-opacity duration-300 hover:opacity-90">
       <div class="relative aspect-[4/5] w-full bg-[#f4f5f6] overflow-hidden mb-3.5 flex items-center justify-center">
-        <img src="{{ product.image1.url }}" alt="{{ product.image1.alt }}"
+        <img src="{{ product.image1.url }}" alt="{{ product.get_image1_alt }}"
           class="w-[85%] h-[85%] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
       </div>
       <div class="flex flex-col flex-1 px-0.5">

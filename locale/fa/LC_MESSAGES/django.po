@@ -2070,3 +2070,19 @@ msgstr "پاک کردن فیلترها"
 #~ "      بیش از سه دهه است که با معماران و طراحان همکاری کرده‌ایم تا "
 #~ "جاه‌طلبانه‌ترین چشم‌اندازهای آن‌ها را\n"
 #~ "      از طریق راهکارهای روشنایی مهندسی‌شده با دقت بالا محقق کنیم."
+
+# Accessibility labels and product-list copy
+msgid "Open menu"
+msgstr "باز کردن منو"
+
+msgid "Close menu"
+msgstr "بستن منو"
+
+msgid "Expanded product image"
+msgstr "تصویر بزرگ‌شده محصول"
+
+msgid "Expanded showroom image"
+msgstr "تصویر بزرگ‌شده نمایشگاه"
+
+msgid "products in"
+msgstr "محصول در"

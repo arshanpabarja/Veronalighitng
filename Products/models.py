@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.html import strip_tags
 from django.core.validators import FileExtensionValidator
 from django.urls import reverse
 import os
@@ -470,12 +471,28 @@ class Product(models.Model):
         return slug
 
     def get_meta_title(self):
-        """Fallback chain: meta_title → name"""
-        return self.meta_title or f"{self.name} Product | Verona Lighting"
+        """Return a concise, language-aware title without generic boilerplate."""
+        if self.meta_title:
+            return self.meta_title
+        title_parts = [self.name]
+        if self.family and self.family.name and self.family.name != self.name:
+            title_parts.append(self.family.name)
+        title_parts.append("Verona Lighting")
+        return " | ".join(title_parts)
 
     def get_meta_description(self):
-        """Fallback chain: meta_description → description (truncated)"""
-        return self.meta_description or self.description[:160]
+        """Use the strongest available translated copy as the search snippet."""
+        source = (
+            self.meta_description
+            or self.description
+            or self.full_description
+            or self.subtitle
+            or (self.family.subtitle if self.family else "")
+        )
+        clean_text = " ".join(strip_tags(source or "").split())
+        if len(clean_text) <= 160:
+            return clean_text
+        return f"{clean_text[:157].rstrip()}..."
 
     def get_image1_alt(self):
         """Fallback to product name if alt is empty"""

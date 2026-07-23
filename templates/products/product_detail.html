@@ -40,32 +40,46 @@
 
   {% if product.image1 %}
   "image": [
-    "{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}"
+    "{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}"{% if product.image2 %},
+    "{{ request.scheme }}://{{ request.get_host }}{{ product.image2.url }}"{% endif %}{% if product.image3 %},
+    "{{ request.scheme }}://{{ request.get_host }}{{ product.image3.url }}"{% endif %}{% if product.image4 %},
+    "{{ request.scheme }}://{{ request.get_host }}{{ product.image4.url }}"{% endif %}
   ],
   {% endif %}
 
   "category": "{{ product.category.name|escapejs }}",
+  {% with first_variant=product.variants.all.0 %}
+  {% if first_variant.sku %}"sku": "{{ first_variant.sku|escapejs }}",{% endif %}
+  {% if first_variant.model_name %}"model": "{{ first_variant.model_name|escapejs }}",{% endif %}
+  {% endwith %}
 
   "brand": {
     "@type": "Brand",
     "name": "Verona Lighting"
   },
-  "offers": {
-    "@type": "Offer",
-    "url": "...",
-    "availability": "https://schema.org/InStock",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
 
-  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
-  {% if product.cri %},
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
   "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "{% trans "Product Family" %}",
+      "value": "{{ product.family.name|escapejs }}"
+    }{% if product.wattage %},
+    {
+      "@type": "PropertyValue",
+      "name": "{% trans "Power Consumption" %}",
+      "value": "{{ product.wattage }} W"
+    }{% endif %}{% if product.lumens %},
+    {
+      "@type": "PropertyValue",
+      "name": "{% trans "Luminous Flux" %}",
+      "value": "{{ product.lumens }} lm"
+    }{% endif %}{% if product.cri %},
     {
       "@type": "PropertyValue",
       "name": "CRI",
       "value": "{{ product.cri }}"
-    }
+    }{% endif %}
     {% if product.color_temperature %},
     {
       "@type": "PropertyValue",
@@ -79,9 +93,13 @@
       "name": "{% trans "IP Rating" %}",
       "value": "{{ product.ip_rating }}"
     }
-    {% endif %}
+    {% endif %}{% if product.beam_angle %},
+    {
+      "@type": "PropertyValue",
+      "name": "{% trans "Beam Angle" %}",
+      "value": "{{ product.beam_angle }}°"
+    }{% endif %}
   ]
-  {% endif %}
 }
 </script>
 
@@ -217,12 +235,6 @@
       {% if product.image1 %}
       <img id="mainImg" src="{{ product.image1.url }}" loading="eager"
      alt="{{ product.get_image1_alt }}">
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-      <span class="lightbox-close" onclick="closeLightbox()">×</span>
-      <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
-      <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
-    </div>
-
       {% endif %}
     </div>
 
@@ -234,17 +246,17 @@
       {% endif %}
       {% if product.image2 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image2.url }}')">
-        <img src="{{ product.image2.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 2" %}" />
+        <img src="{{ product.image2.url }}" loading="lazy" alt="{{ product.image2_alt|default:product.name }}" />
       </div>
       {% endif %}
       {% if product.image3 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image3.url }}')">
-        <img src="{{ product.image3.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 3" %}" />
+        <img src="{{ product.image3.url }}" loading="lazy" alt="{{ product.image3_alt|default:product.name }}" />
       </div>
       {% endif %}
       {% if product.image4 %}
       <div class="thumb" onclick="changeImg(this, '{{ product.image4.url }}')">
-        <img src="{{ product.image4.url }}" loading="lazy" alt="{{ product.name }} - {% trans "image 4" %}" />
+        <img src="{{ product.image4.url }}" loading="lazy" alt="{{ product.image4_alt|default:product.name }}" />
       </div>
       {% endif %}
     </div>
@@ -325,10 +337,12 @@
         <i class="fa-solid fa-envelope"></i>
         {% trans "Request a Quote" %}
       </button>
-      <a href="{{ product.catalog.url }}" download class="btn-outline">
+      {% if product.catelog %}
+      <a href="{{ product.catelog.url }}" download class="btn-outline">
         <i class="fa-solid fa-file-arrow-down"></i>
         {% trans "Download Product Sheet" %}
       </a>
+      {% endif %}
     </div>
 
   </div>
@@ -347,7 +361,14 @@
   <div class="tab-content active" id="tab-desc">
     <div class="description-grid">
       <div class="desc-text text-justify">
-        <p>{{ product.full_description }}</p>
+        <h2 class="section-title">{{ product.name }} — {% trans "Description and Applications" %}</h2>
+        {% if product.full_description %}
+        <p>{{ product.full_description|linebreaksbr }}</p>
+        {% elif product.description %}
+        <p>{{ product.description|linebreaksbr }}</p>
+        {% else %}
+        <p>{{ product.subtitle }}</p>
+        {% endif %}
       </div>
       <div class="desc-highlights">
         <h4>{% trans "Key Features" %}</h4>
@@ -570,7 +591,7 @@
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close" onclick="closeLightbox()">×</span>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  <img class="lightbox-img" id="lightboxImg" alt="{% trans 'Expanded product image' %}" onclick="event.stopPropagation()" />
   <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
 </div>
 
