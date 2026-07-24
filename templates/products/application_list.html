@@ -2,31 +2,30 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{{ site_settings.site_name|default:"Applications" }} - {% trans "Lighting Applications" %}{% endblock %}
+{% block title %}{% if site_settings.applications_meta_title %}{{ site_settings.applications_meta_title }}{% elif LANGUAGE_CODE == "fa" %}کاربردهای روشنایی معماری | ورونا لایتینگ{% else %}Architectural Lighting Applications | Verona Lighting{% endif %}{% endblock %}
 
 {% block seo %}
-<title>{% trans "Applications" %} | {{ site_settings.site_name|default:"Verona Lighting" }}</title>
-<meta name="description" content="{{ site_settings.applications_meta_description|default:"Explore professional lighting solutions for various B2B applications — commercial, industrial, and beyond." }}">
+<meta name="description" content="{% if site_settings.applications_meta_description %}{{ site_settings.applications_meta_description }}{% elif LANGUAGE_CODE == "fa" %}راهکارهای روشنایی ورونا را برای خانه، دفتر، فروشگاه، گالری، هتل، نما و محوطه بررسی و خانواده‌های مرتبط را پیدا کنید.{% else %}Explore Verona lighting for homes, offices, retail, galleries, hospitality, façades and landscapes, with related product families.{% endif %}">
 <meta name="keywords" content="{% trans "B2B lighting, commercial lighting, industrial lighting applications" %}{% for application in applications %}, {{ application.name }}{% endfor %}">
 
 <!-- Canonical -->
-<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="{% trans "Applications" %} | {{ site_settings.site_name|default:"Verona Lighting" }}">
-<meta property="og:description" content="{{ site_settings.applications_meta_description|default:"Professional lighting solutions for business applications." }}">
-<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}">
-{% if site_settings.og_image %}
-<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.og_image.url }}">
+<meta property="og:title" content="{% if site_settings.applications_og_title %}{{ site_settings.applications_og_title }}{% elif site_settings.applications_meta_title %}{{ site_settings.applications_meta_title }}{% elif LANGUAGE_CODE == "fa" %}راهکارهای روشنایی برای فضاهای مختلف{% else %}Lighting Solutions by Application{% endif %}">
+<meta property="og:description" content="{% if site_settings.applications_og_description %}{{ site_settings.applications_og_description }}{% elif site_settings.applications_meta_description %}{{ site_settings.applications_meta_description }}{% elif LANGUAGE_CODE == "fa" %}محصولات روشنایی مرتبط ورونا را برای خانه، دفتر، فروشگاه، گالری، هتل، نما و محوطه پیدا کنید.{% else %}Find Verona lighting families for residential, office, retail, gallery, hospitality, façade and landscape projects.{% endif %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% if site_settings.applications_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.applications_og_image.url }}">
 {% endif %}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% trans "Applications" %} | {{ site_settings.site_name|default:"Verona Lighting" }}">
-<meta name="twitter:description" content="{{ site_settings.applications_meta_description|default:"Professional lighting solutions for business applications." }}">
-{% if site_settings.og_image %}
-<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.og_image.url }}">
+<meta name="twitter:title" content="{% if site_settings.applications_og_title %}{{ site_settings.applications_og_title }}{% elif site_settings.applications_meta_title %}{{ site_settings.applications_meta_title }}{% elif LANGUAGE_CODE == "fa" %}راهکارهای روشنایی برای فضاهای مختلف{% else %}Lighting Solutions by Application{% endif %}">
+<meta name="twitter:description" content="{% if site_settings.applications_og_description %}{{ site_settings.applications_og_description }}{% elif site_settings.applications_meta_description %}{{ site_settings.applications_meta_description }}{% elif LANGUAGE_CODE == "fa" %}محصولات روشنایی مرتبط ورونا را برای خانه، دفتر، فروشگاه، گالری، هتل، نما و محوطه پیدا کنید.{% else %}Find Verona lighting families for residential, office, retail, gallery, hospitality, façade and landscape projects.{% endif %}">
+{% if site_settings.applications_og_image %}
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.applications_og_image.url }}">
 {% endif %}
 
 <!-- JSON-LD: BreadcrumbList -->
@@ -55,9 +54,9 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "{% trans "Applications" %} | {{ site_settings.site_name|default:"Verona Lighting"|escapejs }}",
-  "description": "{{ site_settings.applications_meta_description|default:"Professional lighting solutions for business applications."|escapejs }}",
-  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}"{% if applications %},
+  "name": "{% if site_settings.applications_meta_title %}{{ site_settings.applications_meta_title|escapejs }}{% elif LANGUAGE_CODE == "fa" %}کاربردهای روشنایی معماری | ورونا لایتینگ{% else %}Architectural Lighting Applications | Verona Lighting{% endif %}",
+  "description": "{% if site_settings.applications_meta_description %}{{ site_settings.applications_meta_description|escapejs }}{% elif LANGUAGE_CODE == "fa" %}راهکارهای روشنایی ورونا را برای خانه، دفتر، فروشگاه، گالری، هتل، نما و محوطه بررسی و خانواده‌های مرتبط را پیدا کنید.{% else %}Explore Verona lighting for homes, offices, retail, galleries, hospitality, façades and landscapes, with related product families.{% endif %}",
+  "url": "{{ request.build_absolute_uri }}"{% if applications %},
   "hasPart": [
     {% for application in applications %}
     {
@@ -82,9 +81,15 @@
         </span>
     </div>
     <div class="text-center max-w-3xl pb-28">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-10">{% trans "Applications" %}</h1>
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-10">
+            {% if LANGUAGE_CODE == "fa" %}راهکارهای روشنایی بر اساس کاربرد{% else %}Architectural Lighting Applications{% endif %}
+        </h1>
         <p class="text-lg {% if LANGUAGE_CODE == 'fa' %}persian-justify{% endif %} text-gray-600 font-light text-justify leading-relaxed">
-            {{ site_settings.applications_intro|default:"Verona Lighting provides comprehensive lighting solutions tailored for diverse business environments. From commercial spaces to industrial facilities, our innovative products deliver exceptional performance, energy efficiency, and design excellence. Explore our range of applications to find the perfect lighting solution that meets your specific business requirements and enhances your workspace." }}
+            {% if LANGUAGE_CODE == "fa" %}
+            راهکارهای روشنایی ورونا را براساس نوع فضا بررسی کنید؛ از خانه، دفتر و فروشگاه تا گالری هنری، هتل، نمای ساختمان و محوطه. هر صفحه، نکات مهم طراحی و خانواده‌های محصول مرتبط را کنار هم قرار می‌دهد تا انتخاب چراغ با عملکرد، معماری و شرایط اجرای پروژه هماهنگ باشد.
+            {% else %}
+            Explore Verona lighting solutions by space, from homes, offices and retail to art galleries, hospitality, building façades and landscapes. Each application page combines practical design guidance with related product families, helping you coordinate luminaire selection with the function, architecture and installation conditions of the project.
+            {% endif %}
         </p>
     </div>
 </section>
@@ -117,7 +122,12 @@
 
                 <!-- Title -->
                 <div class="py-6 text-center">
-                    <h3 class="text-2xl font-extrabold text-gray-900">{{ application.name }}</h3>
+                    <h2 class="text-2xl font-extrabold text-gray-900">{{ application.name }}</h2>
+                    {% if application.short_description %}
+                    <p class="mt-3 text-sm leading-6 text-gray-600 font-light">
+                        {{ application.short_description }}
+                    </p>
+                    {% endif %}
                 </div>
             </a>
             {% empty %}

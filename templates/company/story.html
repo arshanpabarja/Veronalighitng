@@ -3,8 +3,8 @@
 {% load i18n %}
 
 {% block title %}
-  {% if site_settings.about_meta_title %}
-    {{ site_settings.about_meta_title }}
+  {% if site_settings.story_meta_title %}
+    {{ site_settings.story_meta_title }}
   {% else %}
     {% trans "Our Story - Verona Lighting" %}
   {% endif %}
@@ -14,40 +14,40 @@
 {% with canonical_url=request.scheme|add:"://"|add:request.get_host|add:request.path %}
 
 <!-- Standard Meta Tags -->
-<meta name="description" content="{{ site_settings.about_meta_description|default:'Lighting a Path of Craftsmanship & Trust. What began as a small workshop grew into an architectural lighting brand trusted across residential, commercial, and hospitality spaces.' }}">
+<meta name="description" content="{{ site_settings.story_meta_description|default:'Lighting a Path of Craftsmanship & Trust. What began as a small workshop grew into an architectural lighting brand trusted across residential, commercial, and hospitality spaces.' }}">
 <meta name="keywords" content="about verona lighting, architectural lighting studio, commercial fixtures, premium led lighting, sustainable lighting engineering">
 <link rel="canonical" href="{{ canonical_url }}">
 
 <!-- Open Graph / Facebook / LinkedIn -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="{{ site_settings.about_og_title|default:site_settings.about_meta_title|default:'Our Story - Verona Lighting' }}">
-<meta property="og:description" content="{{ site_settings.about_og_description|default:site_settings.about_meta_description|default:'Lighting a Path of Craftsmanship & Trust.' }}">
+<meta property="og:title" content="{{ site_settings.story_og_title|default:site_settings.story_meta_title|default:'Our Story - Verona Lighting' }}">
+<meta property="og:description" content="{{ site_settings.story_og_description|default:site_settings.story_meta_description|default:'Lighting a Path of Craftsmanship & Trust.' }}">
 <meta property="og:url" content="{{ canonical_url }}">
 
 <!-- Dynamic Admin Image with Fallback -->
-{% if site_settings.about_og_image %}
-<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}">
+{% if site_settings.story_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.story_og_image.url }}">
 {% else %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}">
 {% endif %}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ site_settings.about_og_title|default:site_settings.about_meta_title|default:'Our Story' }}">
-<meta name="twitter:description" content="{{ site_settings.about_og_description|default:site_settings.about_meta_description }}">
+<meta name="twitter:title" content="{{ site_settings.story_og_title|default:site_settings.story_meta_title|default:'Our Story' }}">
+<meta name="twitter:description" content="{{ site_settings.story_og_description|default:site_settings.story_meta_description }}">
 
 <!-- Structured Data: AboutPage Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "{% if site_settings.about_meta_title %}{{ site_settings.about_meta_title|escapejs }}{% else %}{% trans 'About Verona Lighting' %}{% endif %}",
-  "description": "{{ site_settings.about_meta_description|escapejs }}",
+  "name": "{% if site_settings.story_meta_title %}{{ site_settings.story_meta_title|escapejs }}{% else %}{% trans 'Our Story - Verona Lighting' %}{% endif %}",
+  "description": "{{ site_settings.story_meta_description|escapejs }}",
   "url": "{{ canonical_url }}",
   "mainEntity": {
     "@type": "LocalBusiness",
     "name": "{{ site_settings.site_name|default:'Verona Lighting' }}",
-    "image": "{% if site_settings.about_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.about_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}{% endif %}",
+    "image": "{% if site_settings.story_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.story_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}{% endif %}",
     "description": "{% trans 'Premium architectural and decorative lighting solutions.' %}",
     "priceRange": "$$$"
   }

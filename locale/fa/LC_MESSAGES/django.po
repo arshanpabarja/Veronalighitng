@@ -500,8 +500,8 @@ msgid "Tehran - Verona Lighting"
 msgstr "تهران - روشنایی ورونا"
 
 #: .\templates\company\contact.html:99 .\templates\includes\footer.html:31
-msgid "Zamani alley, South Sohrevardi Street"
-msgstr "خیابان سهروردی جنوبی، کوچه زمانی"
+msgid "Zamani alley, North Sohrevardi Street"
+msgstr "خیابان سهروردی شمالی، کوچه زمانی"
 
 #: .\templates\company\contact.html:101
 msgid "Hours"

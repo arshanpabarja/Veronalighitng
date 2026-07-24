@@ -146,10 +146,14 @@ class Application(models.Model):
         return slug
 
     def get_meta_title(self):
-        return self.meta_title or f"{self.name} Application | Verona Lighting"
+        return self.meta_title or f"{self.name} | Verona Lighting"
 
     def get_meta_description(self):
-        return self.meta_description or self.short_description or self.description[:160]
+        source = self.meta_description or self.short_description or self.description
+        clean_text = " ".join(strip_tags(source or "").split())
+        if len(clean_text) <= 160:
+            return clean_text
+        return f"{clean_text[:157].rstrip()}..."
     
     def __str__(self):
         return self.name

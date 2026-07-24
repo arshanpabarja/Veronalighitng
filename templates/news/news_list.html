@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ site_settings.news_meta_title|default:"Lighting Journal - Verona Lighting" }}{% endblock %}
+
+{% block seo %}
+<meta name="description" content="{{ site_settings.news_meta_description|default:'Lighting articles, product guidance and architectural project insights from Verona Lighting.' }}">
+<link rel="canonical" href="{{ site_settings.news_canonical_url|default:request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site_settings.news_og_title|default:site_settings.news_meta_title|default:'Verona Lighting Journal' }}">
+<meta property="og:description" content="{{ site_settings.news_og_description|default:site_settings.news_meta_description }}">
+<meta property="og:url" content="{{ site_settings.news_canonical_url|default:request.build_absolute_uri }}">
+{% if site_settings.news_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.news_og_image.url }}">
+{% else %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero55.png' %}">
+{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ site_settings.news_og_title|default:site_settings.news_meta_title }}">
+<meta name="twitter:description" content="{{ site_settings.news_og_description|default:site_settings.news_meta_description }}">
+{% endblock %}
+
+{% block content %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<main class="min-h-screen bg-white text-zinc-900">
+  <header class="border-b border-zinc-200 bg-zinc-50">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+      <p class="text-[11px] uppercase tracking-[0.3em] text-zinc-400 mb-4">Verona Lighting</p>
+      <h1 class="text-4xl sm:text-6xl font-light tracking-tight">
+        {% if CURRENT_LANGUAGE == "fa" %}مجله روشنایی و معماری{% else %}Lighting & Architecture Journal{% endif %}
+      </h1>
+      <p class="mt-5 max-w-2xl text-sm sm:text-base leading-8 text-zinc-500">
+        {% if CURRENT_LANGUAGE == "fa" %}
+        مقاله‌ها، راهنماهای انتخاب محصول و نگاه‌های کاربردی به طراحی روشنایی معماری.
+        {% else %}
+        Articles, product-selection guides and practical perspectives on architectural lighting.
+        {% endif %}
+      </p>
+    </div>
+  </header>
+
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 py-6 border-b border-zinc-100" aria-label="News categories">
+    <div class="flex flex-wrap gap-2">
+      <a href="{% url 'news_list' %}"
+         class="px-4 py-2 text-xs border {% if not active_category %}bg-zinc-900 text-white border-zinc-900{% else %}border-zinc-200 text-zinc-600{% endif %}">
+        {% if CURRENT_LANGUAGE == "fa" %}همه مطالب{% else %}All articles{% endif %}
+      </a>
+      {% for item in category %}
+      <a href="?category={{ item.slug }}"
+         class="px-4 py-2 text-xs border {% if active_category == item.slug %}bg-zinc-900 text-white border-zinc-900{% else %}border-zinc-200 text-zinc-600{% endif %}">
+        {{ item.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </nav>
+
+  {% if featured %}
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
+    <a href="{{ featured.get_absolute_url }}" class="grid lg:grid-cols-2 bg-zinc-950 text-white group">
+      <div class="aspect-[16/10] lg:aspect-auto overflow-hidden">
+        <img src="{{ featured.cover_image.url }}" alt="{{ featured.title }}"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]">
+      </div>
+      <div class="p-8 sm:p-12 flex flex-col justify-center">
+        <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-400 mb-5">
+          {% if CURRENT_LANGUAGE == "fa" %}مطلب ویژه{% else %}Featured article{% endif %}
+        </p>
+        <h2 class="text-2xl sm:text-4xl font-light leading-tight">{{ featured.title }}</h2>
+        <p class="mt-5 text-sm leading-7 text-zinc-400">{{ featured.excerpt }}</p>
+        <span class="mt-8 text-xs uppercase tracking-widest">
+          {% if CURRENT_LANGUAGE == "fa" %}مطالعه مطلب{% else %}Read article{% endif %} →
+        </span>
+      </div>
+    </a>
+  </section>
+  {% endif %}
+
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12">
+      {% for article in page_obj %}
+      <article>
+        <a href="{{ article.get_absolute_url }}" class="group block">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-100">
+            <img src="{{ article.cover_image.url }}" alt="{{ article.title }}"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+          </div>
+          <div class="pt-5">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-400">
+              {% if article.category %}{{ article.category.name }} · {% endif %}{{ article.read_time }}
+              {% if CURRENT_LANGUAGE == "fa" %}دقیقه{% else %}min{% endif %}
+            </p>
+            <h2 class="mt-3 text-xl font-medium leading-snug">{{ article.title }}</h2>
+            <p class="mt-3 text-sm leading-7 text-zinc-500 line-clamp-3">{{ article.excerpt }}</p>
+          </div>
+        </a>
+      </article>
+      {% empty %}
+      <p class="text-zinc-500">
+        {% if CURRENT_LANGUAGE == "fa" %}هنوز مطلبی منتشر نشده است.{% else %}No articles have been published yet.{% endif %}
+      </p>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="mt-14 flex justify-center items-center gap-3" aria-label="Pagination">
+      {% if page_obj.has_previous %}
+      <a class="px-4 py-2 border border-zinc-200 text-sm" href="?page={{ page_obj.previous_page_number }}{% if active_category %}&category={{ active_category }}{% endif %}">←</a>
+      {% endif %}
+      <span class="text-sm text-zinc-500">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+      <a class="px-4 py-2 border border-zinc-200 text-sm" href="?page={{ page_obj.next_page_number }}{% if active_category %}&category={{ active_category }}{% endif %}">→</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

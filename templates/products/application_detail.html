@@ -2,11 +2,10 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{{ application.meta_title|default:application.name }} - {{ site_settings.site_name|default:"Verona Lighting" }}{% endblock %}
+{% block title %}{{ application.get_meta_title }}{% endblock %}
 
 {% block seo %}
-{% with desc=application.meta_description|default:application.description|striptags|truncatechars:160 %}
-{% with canonical_url=request.scheme|add:"://"|add:request.get_host|add:application.get_absolute_url %}
+{% with desc=application.get_meta_description %}
 
 <meta name="description" content="{{ desc }}">
 <meta name="keywords" content="{{ application.name }}, lighting, B2B lighting, commercial lighting{% for family in families %}, {{ family.name }}{% endfor %}">
@@ -14,22 +13,26 @@
 <link rel="canonical" href="{{ canonical_url }}">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ application.meta_title|default:application.name }}">
+<meta property="og:title" content="{{ application.get_meta_title }}">
 <meta property="og:description" content="{{ desc }}">
 <meta property="og:url" content="{{ canonical_url }}">
-{% if application.icon %}
+{% if application.cover_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ application.cover_image.url }}">
+{% elif application.icon %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ application.icon.url }}">
-{% elif site_settings.og_image %}
-<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.og_image.url }}">
+{% elif site_settings.applications_og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.applications_og_image.url }}">
 {% endif %}
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ application.meta_title|default:application.name }}">
+<meta name="twitter:title" content="{{ application.get_meta_title }}">
 <meta name="twitter:description" content="{{ desc }}">
-{% if application.icon %}
+{% if application.cover_image %}
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ application.cover_image.url }}">
+{% elif application.icon %}
 <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ application.icon.url }}">
-{% elif site_settings.og_image %}
-<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.og_image.url }}">
+{% elif site_settings.applications_og_image %}
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.applications_og_image.url }}">
 {% endif %}
 
 <script type="application/ld+json">
@@ -37,8 +40,8 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}" },
-    { "@type": "ListItem", "position": 2, "name": "Applications", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}" },
+    { "@type": "ListItem", "position": 1, "name": "{% trans "Home" %}", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}" },
+    { "@type": "ListItem", "position": 2, "name": "{% trans "Applications" %}", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}" },
     { "@type": "ListItem", "position": 3, "name": "{{ application.name|escapejs }}" }
   ]
 }
@@ -63,7 +66,6 @@
 }
 </script>
 
-{% endwith %}
 {% endwith %}
 {% endblock %}
 
@@ -94,7 +96,7 @@
   <section class="max-w-7xl mx-auto px-6 lg:px-10 py-6 bg-white" aria-label="Application cover image">
     <div class="overflow-hidden">
       {% if application.cover_image %}
-        <img src="{{ application.cover_image.url }}" alt="{{ application.name }}" 
+        <img src="{{ application.cover_image.url }}" alt="{{ application.cover_image_alt|default:application.name }}"
              class="w-full h-auto max-h-[75vh] object-cover block">
       {% else %}
         <div class="w-full h-64 flex items-center justify-center bg-zinc-50 border border-zinc-100">
@@ -107,10 +109,8 @@
   <!-- ── OVERVIEW / DESCRIPTION ── -->
   {% if application.description %}
   <section class="py-12 lg:py-16 bg-white border-b border-zinc-100">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <p class="text-base text-zinc-600 leading-relaxed font-light text-justify">
-        {{ application.description|safe }}
-      </p>
+    <div class="max-w-3xl mx-auto px-6 text-base text-zinc-600 leading-relaxed font-light text-justify [&_p+p]:mt-5">
+      {{ application.description|linebreaks }}
     </div>
   </section>
   {% endif %}

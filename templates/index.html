@@ -9,13 +9,13 @@
 <link rel="canonical" href="{{ site_settings.index_canonical_url|default:request.build_absolute_uri }}">
 <meta property="og:title" content="{{ site_settings.index_og_title|default:site_settings.index_meta_title|default:'Verona Lighting' }}">
 <meta property="og:description" content="{{ site_settings.index_og_description|default:site_settings.index_meta_description|default:'Precision lighting for modern architecture' }}">
-<meta property="og:image" content="{% if site_settings.index_og_image %}{{ site_settings.index_og_image }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
+<meta property="og:image" content="{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
 <meta property="og:url" content="{{ site_settings.index_canonical_url|default:request.build_absolute_uri }}">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ site_settings.index_og_title|default:site_settings.index_meta_title|default:'Verona Lighting' }}">
 <meta name="twitter:description" content="{{ og_description|default:site_settings.index_meta_description|default:'Precision lighting for modern architecture' }}">
-<meta name="twitter:image" content="{% if site_settings.index_og_image %}{{ site_settings.index_og_image }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
+<meta name="twitter:image" content="{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -106,7 +106,7 @@
 
   "primaryImageOfPage": {
     "@type": "ImageObject",
-    "url": "{% if site_settings.index_og_image %}{{ site_settings.index_og_image }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}"
+    "url": "{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}"
   },
 
   "inLanguage": "{{ LANGUAGE_CODE }}"

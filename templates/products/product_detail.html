@@ -30,76 +30,25 @@
 <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
 {% endif %}
 
-<!-- Product Schema -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "ItemPage",
   "name": "{{ product.name|escapejs }}",
   "description": "{{ product.get_meta_description|default:product.subtitle|striptags|escapejs }}",
-
-  {% if product.image1 %}
-  "image": [
-    "{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}"{% if product.image2 %},
-    "{{ request.scheme }}://{{ request.get_host }}{{ product.image2.url }}"{% endif %}{% if product.image3 %},
-    "{{ request.scheme }}://{{ request.get_host }}{{ product.image3.url }}"{% endif %}{% if product.image4 %},
-    "{{ request.scheme }}://{{ request.get_host }}{{ product.image4.url }}"{% endif %}
-  ],
-  {% endif %}
-
-  "category": "{{ product.category.name|escapejs }}",
-  {% with first_variant=product.variants.all.0 %}
-  {% if first_variant.sku %}"sku": "{{ first_variant.sku|escapejs }}",{% endif %}
-  {% if first_variant.model_name %}"model": "{{ first_variant.model_name|escapejs }}",{% endif %}
-  {% endwith %}
-
-  "brand": {
-    "@type": "Brand",
-    "name": "Verona Lighting"
-  },
-
   "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "Product Family" %}",
-      "value": "{{ product.family.name|escapejs }}"
-    }{% if product.wattage %},
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "Power Consumption" %}",
-      "value": "{{ product.wattage }} W"
-    }{% endif %}{% if product.lumens %},
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "Luminous Flux" %}",
-      "value": "{{ product.lumens }} lm"
-    }{% endif %}{% if product.cri %},
-    {
-      "@type": "PropertyValue",
-      "name": "CRI",
-      "value": "{{ product.cri }}"
-    }{% endif %}
-    {% if product.color_temperature %},
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "Color Temperature" %}",
-      "value": "{{ product.color_temperature }}K"
-    }
-    {% endif %}
-    {% if product.ip_rating %},
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "IP Rating" %}",
-      "value": "{{ product.ip_rating }}"
-    }
-    {% endif %}{% if product.beam_angle %},
-    {
-      "@type": "PropertyValue",
-      "name": "{% trans "Beam Angle" %}",
-      "value": "{{ product.beam_angle }}°"
-    }{% endif %}
-  ]
+  {% if product.image1 %}
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ product.image1.url }}"
+  },
+  {% endif %}
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Verona Lighting",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+  }
 }
 </script>
 

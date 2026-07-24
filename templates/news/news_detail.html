@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ article.meta_title|default:article.title }}{% endblock %}
+
+{% block seo %}
+<meta name="description" content="{{ article.meta_description|default:article.excerpt|striptags|truncatechars:160 }}">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ article.get_absolute_url }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ article.meta_title|default:article.title }}">
+<meta property="og:description" content="{{ article.meta_description|default:article.excerpt|striptags|truncatechars:160 }}">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ article.get_absolute_url }}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% if article.og_image %}{{ article.og_image.url }}{% else %}{{ article.cover_image.url }}{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ article.meta_title|default:article.title }}">
+<meta name="twitter:description" content="{{ article.meta_description|default:article.excerpt|striptags|truncatechars:160 }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.title|escapejs }}",
+  "description": "{{ article.meta_description|default:article.excerpt|striptags|truncatechars:160|escapejs }}",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% if article.og_image %}{{ article.og_image.url }}{% else %}{{ article.cover_image.url }}{% endif %}",
+  "datePublished": "{{ article.published_at|date:'c' }}",
+  "dateModified": "{{ article.updated_at|date:'c' }}",
+  "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{ article.get_absolute_url }}",
+  "publisher": {"@type": "Organization", "name": "Verona Lighting"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<main class="bg-white text-zinc-900 min-h-screen">
+  <article>
+    <header class="max-w-5xl mx-auto px-5 sm:px-8 pt-14 sm:pt-24 text-center">
+      <a href="{% url 'news_list' %}" class="text-[10px] uppercase tracking-[0.25em] text-zinc-400 hover:text-zinc-900">
+        {% if CURRENT_LANGUAGE == "fa" %}بازگشت به مجله{% else %}Back to journal{% endif %}
+      </a>
+      <h1 class="mt-7 text-3xl sm:text-5xl lg:text-6xl font-light leading-tight">{{ article.title }}</h1>
+      <div class="mt-6 text-xs text-zinc-400">
+        {% if article.category %}{{ article.category.name }} · {% endif %}
+        {% if article.published_at %}{{ article.published_at }} · {% endif %}
+        {{ article.read_time }} {% if CURRENT_LANGUAGE == "fa" %}دقیقه مطالعه{% else %}min read{% endif %}
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-10 sm:mt-16">
+      <div class="aspect-[16/8] overflow-hidden bg-zinc-100">
+        <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+      <p class="text-lg leading-9 text-zinc-600 border-b border-zinc-200 pb-8 mb-9">{{ article.excerpt }}</p>
+      <div class="prose prose-zinc max-w-none leading-8">{{ article.body|safe }}</div>
+    </div>
+  </article>
+
+  {% if related %}
+  <aside class="border-t border-zinc-200 bg-zinc-50">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+      <h2 class="text-2xl font-light mb-8">
+        {% if CURRENT_LANGUAGE == "fa" %}مطالب مرتبط{% else %}Related articles{% endif %}
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        {% for item in related %}
+        <a href="{{ item.get_absolute_url }}" class="group block">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-200">
+            <img src="{{ item.cover_image.url }}" alt="{{ item.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+          </div>
+          <h3 class="mt-4 text-lg font-medium leading-snug">{{ item.title }}</h3>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+  {% endif %}
+</main>
+{% endblock %}

@@ -315,6 +315,10 @@ def application_detail(request, slug):
         "families": page_obj.object_list,
         "page_obj": page_obj,
         "meta_title": app.meta_title or app.name,
+        "canonical_url": app.canonical_url or request.build_absolute_uri(
+            app.get_absolute_url()
+        ),
+        "site_settings": SiteSettings.get(),
         "categories": Category.objects.filter(is_active=True, parent__isnull=True),
         **_product_filter_context(product_base_qs),  # ✅ base_qs
         **selected_family,
