@@ -7,10 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Verona Lighting{% endblock %}</title>
-    {% block seo %}
     <meta name="theme-color" content="#727272">
     <meta name="color-scheme" content="light">
-    <!-- default meta for pages that don't override -->
     <meta property="og:site_name" content="Verona Lighting">
     {% if LANGUAGE_CODE == "fa" %}
     <meta property="og:locale" content="fa_IR">
@@ -21,9 +19,17 @@
     {% endif %}
     <link rel="alternate" hreflang="fa" href="{{ alternate_fa }}">
     <link rel="alternate" hreflang="en" href="{{ alternate_en }}">
-    <link rel="alternate" hreflang="x-default" href="{{ site_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ alternate_x_default }}">
+    {% block robots %}
+    {% if seo_noindex_query %}
+    <meta name="robots" content="noindex, follow">
+    {% else %}
     <meta name="robots" content="index, follow">
+    {% endif %}
+    {% endblock %}
+    {% block seo %}
     <meta name="description" content="Verona Lighting - Premium architectural lighting solutions">
+    <link rel="canonical" href="{{ seo_canonical_url }}">
     {% endblock %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,14 +41,43 @@
     {% block extra_head %}{% endblock %}
     <script type="application/ld+json">
     {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Verona Lighting",
-    "url":"https://veronalighting.co",
-    "logo":"https://veronalighting.co/static/images/logo.png",
-    "sameAs":[
-        "https://www.instagram.com/veronalighting"
-    ]
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "{{ site_url }}#organization",
+      "name": "{{ business_identity.name }}",
+      "alternateName": "{{ business_identity.alternate_name_fa }}",
+      "url": "{{ site_url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo3.png' %}"
+      },
+      "email": "{{ business_identity.email }}",
+      "telephone": "{{ business_identity.telephone_e164 }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.street_address_fa }}{% else %}{{ business_identity.street_address_en }}{% endif %}",
+        "addressLocality": "{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.address_locality_fa }}{% else %}{{ business_identity.address_locality_en }}{% endif %}",
+        "addressCountry": "{{ business_identity.address_country }}"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales and project support",
+        "telephone": "{{ business_identity.telephone_e164 }}",
+        "email": "{{ business_identity.email }}",
+        "availableLanguage": ["fa", "en"],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Iran"
+        }
+      },
+      "knowsAbout": [
+        "Architectural lighting",
+        "Recessed linear lighting",
+        "Magnetic track lighting"
+      ],
+      "sameAs": [
+        "{{ business_identity.instagram }}"
+      ]
     }
     </script>
 </head>

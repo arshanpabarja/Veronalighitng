@@ -3,7 +3,7 @@
 
 {% block title %}{{ project.meta_title|default:project.name }} - {{ site_settings.site_name|default:"Verona Lighting" }}{% endblock %}
 
-{% block meta_tags %}
+{% block seo %}
 {% with canonical_path=project.get_absolute_url %}
 <meta name="description" content="{{ project.meta_description|default:project.intro_text|striptags|truncatechars:160 }}">
 <meta name="keywords" content="{{ project.name }}, {{ project.project_type }}, {{ project.location }}, lighting project, {{ site_settings.default_keywords }}">
@@ -27,8 +27,7 @@
   "description": "{{ project.meta_description|default:project.intro_text|striptags|truncatechars:160|escapejs }}",
   "url": "{{ request.scheme }}://{{ request.get_host }}{{ canonical_path }}",
   "creator": {
-    "@type": "Organization",
-    "name": "{{ site_settings.site_name|default:"Verona Lighting"|escapejs }}"
+    "@id": "{{ site_url }}#organization"
   }{% if project.location %},
   "locationCreated": {
     "@type": "Place",
@@ -59,7 +58,8 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ project.name|escapejs }}"
+      "name": "{{ project.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ canonical_path }}"
     }
   ]
 }
@@ -292,6 +292,8 @@
   {% endif %}
 
   <!-- ── TECHNICAL DOWNLOADS ── -->
+  {% include "includes/seo_cluster_links.html" %}
+
   {% if project.downloads.exists %}
   <section id="downloads" class="py-20 bg-white border-b border-zinc-100 scroll-mt-36">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">

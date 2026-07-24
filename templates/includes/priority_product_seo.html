@@ -1,0 +1,82 @@
+{% if priority_product_seo %}
+  {% with content=priority_product_seo.content %}
+    <section class="border-y border-black/10 bg-[#f7f7f5] py-16 md:py-24" aria-labelledby="priority-product-guide">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="max-w-4xl">
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">
+            {{ content.keyword }}
+          </p>
+          <h2 id="priority-product-guide" class="text-3xl font-semibold leading-tight text-black md:text-4xl">
+            {{ content.guide_heading }}
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-black/70">{{ content.guide_intro }}</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          {% for item in content.guide_items %}
+            <article class="border border-black/10 bg-white p-6">
+              <span class="text-sm font-semibold text-black/45">0{{ forloop.counter }}</span>
+              <h3 class="mt-4 text-xl font-semibold text-black">{{ item.title }}</h3>
+              <p class="mt-3 leading-7 text-black/65">{{ item.body }}</p>
+            </article>
+          {% endfor %}
+        </div>
+
+        <div class="mt-14">
+          <h2 class="text-2xl font-semibold leading-tight text-black md:text-3xl">
+            {{ content.related_heading }}
+          </h2>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            {% for link in priority_product_seo.related_links %}
+              <a href="{{ link.url }}" class="group border border-black/10 bg-white p-6 transition-colors hover:border-black/35">
+                <div class="flex items-start justify-between gap-5">
+                  <div>
+                    <h3 class="text-lg font-semibold text-black">{{ link.label }}</h3>
+                    <p class="mt-2 leading-7 text-black/65">{{ link.description }}</p>
+                  </div>
+                  <span aria-hidden="true" class="text-xl transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="mt-14">
+          <h2 class="text-2xl font-semibold leading-tight text-black md:text-3xl">
+            {{ content.faq_heading }}
+          </h2>
+          <div class="mt-6 divide-y divide-black/10 border-y border-black/10">
+            {% for faq in content.faqs %}
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold text-black">
+                  <span>{{ faq.question }}</span>
+                  <span aria-hidden="true" class="text-2xl font-light transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="max-w-4xl pt-4 leading-8 text-black/65">{{ faq.answer }}</p>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {% for faq in content.faqs %}
+            {
+              "@type": "Question",
+              "name": "{{ faq.question|escapejs }}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ faq.answer|escapejs }}"
+              }
+            }{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+    </script>
+  {% endwith %}
+{% endif %}

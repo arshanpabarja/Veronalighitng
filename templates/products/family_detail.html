@@ -71,7 +71,8 @@
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "{{ family.name }}"
+      "name": "{{ family.name }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ family.get_absolute_url }}"
     }
     {% else %}
     {
@@ -83,7 +84,8 @@
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "{{ family.name }}"
+      "name": "{{ family.name }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ family.get_absolute_url }}"
     }
     {% endif %}
   ]
@@ -160,6 +162,8 @@
     </p>
   </div>
 </section>
+
+{% include "includes/seo_cluster_links.html" %}
 
 {% include 'includes/filter_sections.html' %}
 

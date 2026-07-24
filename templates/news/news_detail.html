@@ -4,6 +4,7 @@
 {% block title %}{{ article.meta_title|default:article.title }}{% endblock %}
 
 {% block seo %}
+{% get_current_language as CURRENT_LANGUAGE %}
 <meta name="description" content="{{ article.meta_description|default:article.excerpt|striptags|truncatechars:160 }}">
 <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ article.get_absolute_url }}">
 <meta property="og:type" content="article">
@@ -23,8 +24,10 @@
   "image": "{{ request.scheme }}://{{ request.get_host }}{% if article.og_image %}{{ article.og_image.url }}{% else %}{{ article.cover_image.url }}{% endif %}",
   "datePublished": "{{ article.published_at|date:'c' }}",
   "dateModified": "{{ article.updated_at|date:'c' }}",
+  "inLanguage": "{{ CURRENT_LANGUAGE }}",
   "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{ article.get_absolute_url }}",
-  "publisher": {"@type": "Organization", "name": "Verona Lighting"}
+  "author": {"@id": "{{ site_url }}#organization"},
+  "publisher": {"@id": "{{ site_url }}#organization"}
 }
 </script>
 {% endblock %}

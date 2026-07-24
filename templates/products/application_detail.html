@@ -42,7 +42,7 @@
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "{% trans "Home" %}", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}" },
     { "@type": "ListItem", "position": 2, "name": "{% trans "Applications" %}", "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:application_list' %}" },
-    { "@type": "ListItem", "position": 3, "name": "{{ application.name|escapejs }}" }
+    { "@type": "ListItem", "position": 3, "name": "{{ application.name|escapejs }}", "item": "{{ canonical_url }}" }
   ]
 }
 </script>
@@ -116,6 +116,8 @@
   {% endif %}
 
   <!-- ── STICKY LOOKBOOK NAVIGATION ── -->
+  {% include "includes/seo_cluster_links.html" %}
+
   <nav class="border-b border-zinc-200 bg-white/90 backdrop-blur sticky top-24 z-40" aria-label="Application sections">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="flex space-x-8 overflow-x-auto whitespace-nowrap scrollbar-none">

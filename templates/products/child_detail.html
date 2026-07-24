@@ -5,7 +5,6 @@
 {% block title %}{{ child.meta_title|default:child.name }}{% endblock %}
 
 {% block seo %}
-<title>{{ child.meta_title|default:child.name }}</title>
 <meta name="description" content="{{ child.meta_description|default:child.description|striptags|truncatechars:160 }}">
 <meta name="keywords" content="{{ child.name }}{% if child.parent %}, {{ child.parent.name }}{% endif %}{% for family in families %}, {{ family.name }}{% endfor %}, lighting">
 
@@ -45,7 +44,8 @@
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "{{ child.name|escapejs }}"
+      "name": "{{ child.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:child_detail' child.parent.slug child.slug %}"
     }
   ]
 }
@@ -290,6 +290,7 @@
 
 </section>
 
+{% include "includes/seo_landing_content.html" %}
 
 <script>
 

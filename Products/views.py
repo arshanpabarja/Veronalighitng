@@ -1,7 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator
 from django.db.models import Min, Max, Q
 from core.models import SiteSettings
+from core.editorial_content import build_editorial_links
+from .services.landing_page_content import build_landing_page_context
+from .services.priority_product_content import build_priority_product_context
+from .services.seo_internal_links import build_seo_cluster_links
 from .models import (
     Category, Application, Family, Product, Project
 )
@@ -178,6 +182,10 @@ def product_detail(request, cat_slug, child_slug, family_slug, slug):
         is_active=True,
     )
 
+    canonical_path = product.get_absolute_url()
+    if request.path != canonical_path:
+        return redirect(canonical_path, permanent=True)
+
     related_products = Product.objects.filter(
         family=product.family,
         is_active=True,
@@ -189,10 +197,20 @@ def product_detail(request, cat_slug, child_slug, family_slug, slug):
             is_active=True,
         ).exclude(pk=product.pk).prefetch_related('finishes')[:4]
 
+    priority_product_seo = build_priority_product_context(
+        product.slug,
+        request.LANGUAGE_CODE,
+    )
     context = {
         "product": product,
         "related_products": related_products,
         "meta_title": product.meta_title or product.name,
+        "priority_product_seo": priority_product_seo,
+        "seo_cluster_links": (
+            None
+            if priority_product_seo
+            else build_seo_cluster_links([product.category], request.LANGUAGE_CODE)
+        ),
     }
 
     return render(request, "products/product_detail.html", context)
@@ -249,6 +267,14 @@ def category_detail(request, cat_slug):
         families = families.filter(products__in=product_qs).distinct()
 
     page_obj = _paginate(request, families)
+    seo_landing = None
+    seo_editorial_links = None
+    if category.slug == "low-voltage-magneto":
+        seo_landing = build_landing_page_context("magnetic-track", request.LANGUAGE_CODE)
+        seo_editorial_links = build_editorial_links(
+            "magnetic-track",
+            request.LANGUAGE_CODE,
+        )
 
     context = {
     "category": category,
@@ -259,6 +285,8 @@ def category_detail(request, cat_slug):
     "categories": Category.objects.filter(
         is_active=True, parent__isnull=True, slug__isnull=False
     ).exclude(slug='').order_by("number"),
+    "seo_landing": seo_landing,
+    "seo_editorial_links": seo_editorial_links,
     **_product_filter_context(product_base_qs),
     **selected_family,
     **selected_prod,
@@ -281,6 +309,14 @@ def child_detail(request, cat_slug, child_slug):
         families = families.filter(products__in=product_qs).distinct()
 
     page_obj = _paginate(request, families)
+    seo_landing = None
+    seo_editorial_links = None
+    if parent.slug == "linear" and child.slug == "recessed":
+        seo_landing = build_landing_page_context("recessed-linear", request.LANGUAGE_CODE)
+        seo_editorial_links = build_editorial_links(
+            "recessed-linear",
+            request.LANGUAGE_CODE,
+        )
 
     context = {
         "parent": parent,
@@ -289,6 +325,8 @@ def child_detail(request, cat_slug, child_slug):
         "page_obj": page_obj,
         "meta_title": child.meta_title or child.name,
         "categories": Category.objects.filter(is_active=True, parent__isnull=True),
+        "seo_landing": seo_landing,
+        "seo_editorial_links": seo_editorial_links,
         **_product_filter_context(product_base_qs),  # ✅ base_qs
         **selected_family,
         **selected_prod,
@@ -309,6 +347,9 @@ def application_detail(request, slug):
         families = families.filter(products__in=product_qs).distinct()
 
     page_obj = _paginate(request, families)
+    cluster_categories = Category.objects.filter(
+        pk__in=product_base_qs.values("category_id")
+    ).select_related("parent")
 
     context = {
         "application": app,
@@ -320,6 +361,10 @@ def application_detail(request, slug):
         ),
         "site_settings": SiteSettings.get(),
         "categories": Category.objects.filter(is_active=True, parent__isnull=True),
+        "seo_cluster_links": build_seo_cluster_links(
+            cluster_categories,
+            request.LANGUAGE_CODE,
+        ),
         **_product_filter_context(product_base_qs),  # ✅ base_qs
         **selected_family,
         **selected_prod,
@@ -345,6 +390,10 @@ def family_detail(request, cat_slug, child_slug, family_slug):
         "page_obj": page_obj,
         "meta_title": family.meta_title or family.name,
         "categories": Category.objects.filter(is_active=True, parent__isnull=True),
+        "seo_cluster_links": build_seo_cluster_links(
+            [child],
+            request.LANGUAGE_CODE,
+        ),
         **_product_filter_context(base_products),  # ✅ base_qs
         **selected,
     }
@@ -423,11 +472,22 @@ def project_detail(request, slug):
             "downloads",
             "products",
             "products__category",  # needed for the "View Products" category link
+            "products__category__parent",
         ),
         slug=slug,
         is_published=True,
     )
-    return render(request, "projects/project_detail.html", {"project": project})
+    return render(
+        request,
+        "projects/project_detail.html",
+        {
+            "project": project,
+            "seo_cluster_links": build_seo_cluster_links(
+                [product.category for product in project.products.all()],
+                request.LANGUAGE_CODE,
+            ),
+        },
+    )
 
 
 
@@ -469,6 +529,10 @@ def family_detail_no_child(request, cat_slug, family_slug):
             is_active=True,
             parent__isnull=True
         ),
+        "seo_cluster_links": build_seo_cluster_links(
+            [category],
+            request.LANGUAGE_CODE,
+        ),
         **_product_filter_context(base_products),
         **selected,
     }
@@ -485,7 +549,8 @@ def product_detail_no_child(request, cat_slug, family_slug, slug):
     category = get_object_or_404(
         Category,
         slug=cat_slug,
-        is_active=True
+        is_active=True,
+        parent__isnull=True,
     )
 
     family = get_object_or_404(
@@ -513,12 +578,22 @@ def product_detail_no_child(request, cat_slug, family_slug, slug):
         is_active=True,
     ).exclude(pk=product.pk)[:4]
 
+    priority_product_seo = build_priority_product_context(
+        product.slug,
+        request.LANGUAGE_CODE,
+    )
     context = {
         "category": category,
         "family": family,
         "product": product,
         "related_products": related_products,
         "meta_title": product.meta_title or product.name,
+        "priority_product_seo": priority_product_seo,
+        "seo_cluster_links": (
+            None
+            if priority_product_seo
+            else build_seo_cluster_links([product.category], request.LANGUAGE_CODE)
+        ),
     }
 
     return render(request, "products/product_detail.html", context)

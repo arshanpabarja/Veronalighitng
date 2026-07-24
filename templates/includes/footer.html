@@ -27,10 +27,16 @@
                         </h3>
 
                         <div class="space-y-1 text-white">
-                            <p>{% trans "Tehran - Verona Lighting" %}</p>
-                            <p>{% trans "Zamani alley, South Sohrevardi Street" %}</p>
+                            <p>{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.address_locality_fa }} — {{ business_identity.alternate_name_fa }}{% else %}{{ business_identity.address_locality_en }} — {{ business_identity.name }}{% endif %}</p>
+                            <p>{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.street_address_fa }}{% else %}{{ business_identity.street_address_en }}{% endif %}</p>
                             <p class="mt-4 pt-2">
-                                {% trans "Tel:" %} {% if LANGUAGE_CODE == 'en' %}0912 726 2521{% else %}۲۵۲۱ ۷۲۶ ۰۹۱۲{% endif %}
+                                {% trans "Tel:" %}
+                                <a href="tel:{{ business_identity.telephone_e164 }}" class="hover:underline">
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
+                                </a>
+                            </p>
+                            <p>
+                                <a href="mailto:{{ business_identity.email }}" class="hover:underline">{{ business_identity.email }}</a>
                             </p>
                         </div>
                     </div>
@@ -159,7 +165,7 @@
                 <div class="w-full lg:w-1/3 flex justify-center lg:justify-end items-center gap-5 text-white">
 
                     <!-- Instagram -->
-                    <a href="https://www.instagram.com/veronalighting?igsh=cGprcXBob3I4cGIy"
+                    <a href="{{ business_identity.instagram }}"
                         class="hover:opacity-80 transition"
                         aria-label="{% trans 'Instagram' %}">
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -177,7 +183,7 @@
                     </a>
 
                     <!-- WhatsApp -->
-                    <a href="#"
+                    <a href="{{ business_identity.whatsapp }}"
                         class="hover:opacity-80 transition"
                         aria-label="{% trans 'WhatsApp' %}">
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">

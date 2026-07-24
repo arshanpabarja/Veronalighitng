@@ -4,7 +4,6 @@
 
 {% block title %}{{ category.meta_title|default:category.name }} {% endblock %}
 {% block seo %}
-<title>{{ category.meta_title|default:category.name }}</title>
 <meta name="description" content="{{ category.meta_description|default:category.description|striptags|truncatechars:160 }}">
 <meta name="keywords" content="{{ category.name }}{% for child in children %}, {{ child.name }}{% endfor %}, lighting, روشنایی">
 
@@ -42,7 +41,8 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ category.name|escapejs }}"
+      "name": "{{ category.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:category_detail' category.slug %}"
     }
   ]
 }
@@ -281,6 +281,7 @@
 
 </section>
 
+{% include "includes/seo_landing_content.html" %}
 
 <script>
 

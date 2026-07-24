@@ -3,8 +3,13 @@
 
 {% block title %}Our Services | Verona Lighting{% endblock %}
 
-{% block meta_tags %}
+{% block seo %}
 <meta name="description" content="Professional architectural lighting services: design, installation, technical support, and maintenance. Custom solutions for every project.">
+<link rel="canonical" href="{{ seo_canonical_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Architectural Lighting Services | Verona Lighting">
+<meta property="og:description" content="Professional architectural lighting services, including design, installation, technical support and maintenance.">
+<meta property="og:url" content="{{ seo_canonical_url }}">
 {% endblock %}
 
 {% block content %}

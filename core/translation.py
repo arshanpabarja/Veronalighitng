@@ -28,3 +28,19 @@ class SiteSettingsTranslationOptions(TranslationOptions):
         "news_og_title",
         "news_og_description"
     )
+
+
+@register(NewsCategory)
+class NewsCategoryTranslationOptions(TranslationOptions):
+    fields = ("name",)
+
+
+@register(NewsArticle)
+class NewsArticleTranslationOptions(TranslationOptions):
+    fields = (
+        "title",
+        "excerpt",
+        "body",
+        "meta_title",
+        "meta_description",
+    )

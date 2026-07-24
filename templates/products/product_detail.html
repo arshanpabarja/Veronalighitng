@@ -13,7 +13,7 @@
 <meta property="og:type" content="product">
 <meta property="og:title" content="{{ product.get_meta_title|default:product.name }}">
 <meta property="og:description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:url" content="{{ product.canonical_url|default:seo_canonical_url }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ product.get_meta_title|default:product.name }}">
 <meta name="twitter:description" content="{{ product.get_meta_description|default:product.subtitle|striptags|truncatechars:160 }}">
@@ -27,7 +27,7 @@
 {% if product.canonical_url %}
 <link rel="canonical" href="{{ product.canonical_url }}">
 {% else %}
-<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+<link rel="canonical" href="{{ seo_canonical_url }}">
 {% endif %}
 
 
@@ -37,7 +37,7 @@
   "@type": "ItemPage",
   "name": "{{ product.name|escapejs }}",
   "description": "{{ product.get_meta_description|default:product.subtitle|striptags|escapejs }}",
-  "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+  "url": "{{ product.canonical_url|default:seo_canonical_url }}",
   {% if product.image1 %}
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -93,13 +93,14 @@
       "@type": "ListItem",
       "position": 5,
       "name": "{{ product.family.name|escapejs }}",
-      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'products:family_detail' product.category.parent.slug product.category.slug product.family.slug %}"
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ product.family.get_absolute_url }}"
     },
 
     {
       "@type": "ListItem",
       "position": 6,
-      "name": "{{ product.name|escapejs }}"
+      "name": "{{ product.name|escapejs }}",
+      "item": "{{ product.canonical_url|default:seo_canonical_url }}"
     }
 
     {% else %}
@@ -114,13 +115,15 @@
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "{{ product.family.name|escapejs }}"
+      "name": "{{ product.family.name|escapejs }}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{{ product.family.get_absolute_url }}"
     },
 
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "{{ product.name|escapejs }}"
+      "name": "{{ product.name|escapejs }}",
+      "item": "{{ product.canonical_url|default:seo_canonical_url }}"
     }
 
     {% endif %}
@@ -467,6 +470,10 @@
     </div>
   </div>
 </div>
+
+{% include "includes/seo_cluster_links.html" %}
+
+{% include "includes/priority_product_seo.html" %}
 
 <!-- RELATED PRODUCTS -->
 <div class="related-section">

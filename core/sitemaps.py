@@ -1,4 +1,5 @@
 from django.contrib.sitemaps import Sitemap
+from django.db.models import Q
 from django.urls import reverse
 
 from Products.models import (
@@ -47,7 +48,9 @@ class CategorySitemap(LocalizedSitemap):
     changefreq = "weekly"
 
     def items(self):
-        return Category.objects.filter(is_active=True)
+        return Category.objects.filter(is_active=True).filter(
+            Q(parent__isnull=True) | Q(parent__is_active=True)
+        )
 
     def lastmod(self, obj):
         return obj.updated_at
@@ -59,7 +62,13 @@ class FamilySitemap(LocalizedSitemap):
     changefreq = "weekly"
 
     def items(self):
-        return Family.objects.filter(is_active=True)
+        return Family.objects.filter(
+            is_active=True,
+            category__is_active=True,
+        ).filter(
+            Q(category__parent__isnull=True)
+            | Q(category__parent__is_active=True)
+        )
 
 
 class ProductSitemap(LocalizedSitemap):
@@ -68,7 +77,14 @@ class ProductSitemap(LocalizedSitemap):
     changefreq = "weekly"
 
     def items(self):
-        return Product.objects.filter(is_active=True)
+        return Product.objects.filter(
+            is_active=True,
+            category__is_active=True,
+            family__is_active=True,
+        ).filter(
+            Q(category__parent__isnull=True)
+            | Q(category__parent__is_active=True)
+        )
 
     def lastmod(self, obj):
         return obj.updated_at

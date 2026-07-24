@@ -45,11 +45,7 @@
   "description": "{{ site_settings.story_meta_description|escapejs }}",
   "url": "{{ canonical_url }}",
   "mainEntity": {
-    "@type": "LocalBusiness",
-    "name": "{{ site_settings.site_name|default:'Verona Lighting' }}",
-    "image": "{% if site_settings.story_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.story_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/showroom.webp' %}{% endif %}",
-    "description": "{% trans 'Premium architectural and decorative lighting solutions.' %}",
-    "priceRange": "$$$"
+    "@id": "{{ site_url }}#organization"
   }
 }
 </script>

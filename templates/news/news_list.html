@@ -5,11 +5,11 @@
 
 {% block seo %}
 <meta name="description" content="{{ site_settings.news_meta_description|default:'Lighting articles, product guidance and architectural project insights from Verona Lighting.' }}">
-<link rel="canonical" href="{{ site_settings.news_canonical_url|default:request.build_absolute_uri }}">
+<link rel="canonical" href="{{ site_settings.news_canonical_url|default:seo_canonical_url }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site_settings.news_og_title|default:site_settings.news_meta_title|default:'Verona Lighting Journal' }}">
 <meta property="og:description" content="{{ site_settings.news_og_description|default:site_settings.news_meta_description }}">
-<meta property="og:url" content="{{ site_settings.news_canonical_url|default:request.build_absolute_uri }}">
+<meta property="og:url" content="{{ site_settings.news_canonical_url|default:seo_canonical_url }}">
 {% if site_settings.news_og_image %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.news_og_image.url }}">
 {% else %}

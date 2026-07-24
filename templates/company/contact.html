@@ -4,8 +4,26 @@
 
 {% block title %}{% trans "Contact Us | Verona Lighting" %}{% endblock %}
 
-{% block meta_tags %}
+{% block seo %}
 <meta name="description" content="{% trans 'Get in touch with Verona Lighting. We\'re here to help with your architectural lighting needs.' %}">
+<link rel="canonical" href="{{ seo_canonical_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% trans 'Contact Verona Lighting' %}">
+<meta property="og:description" content="{% trans 'Get in touch with Verona Lighting for architectural lighting products and project support.' %}">
+<meta property="og:url" content="{{ seo_canonical_url }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "{{ seo_canonical_url }}#contactpage",
+  "url": "{{ seo_canonical_url }}",
+  "name": "{% trans 'Contact Verona Lighting' %}",
+  "mainEntity": {
+    "@id": "{{ site_url }}#organization"
+  },
+  "inLanguage": "{{ LANGUAGE_CODE }}"
+}
+</script>
 {% endblock %}
 
 {% block content %}
@@ -56,12 +74,12 @@
                     {% trans "Questions about our products, custom lighting solutions, or project specifications?" %}
                 </p>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Email" %}</p>
-                <a href="mailto:veronalightingco@gmail.com" class="text-[#727272] hover:text-[#a01010] font-light underline mb-8">
-                    veronalightingco@gmail.com
+                <a href="mailto:{{ business_identity.email }}" class="text-[#727272] hover:text-[#a01010] font-light underline mb-8">
+                    {{ business_identity.email }}
                 </a>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Phone" %}</p>
-                <a href="tel:+989127262521" class="text-gray-700 hover:text-[#727272] font-light">
-                    +98 912 726 2521
+                <a href="tel:{{ business_identity.telephone_e164 }}" class="text-gray-700 hover:text-[#727272] font-light">
+                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
                 </a>
             </div>
 
@@ -95,8 +113,8 @@
                 </p>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Address" %}</p>
                 <p class="text-gray-700 font-light mb-6">
-                    {% trans "Tehran - Verona Lighting" %}<br>
-                    {% trans "Zamani alley, South Sohrevardi Street" %}
+                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.address_locality_fa }} — {{ business_identity.alternate_name_fa }}{% else %}{{ business_identity.address_locality_en }} — {{ business_identity.name }}{% endif %}<br>
+                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.street_address_fa }}{% else %}{{ business_identity.street_address_en }}{% endif %}
                 </p>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Hours" %}</p>
                 <p class="text-gray-700 font-light text-sm">

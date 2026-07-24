@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
+{% block title %}{% if LANGUAGE_CODE == "fa" %}پروژه‌های نورپردازی معماری | ورونا لایتینگ{% else %}Architectural Lighting Projects | Verona Lighting{% endif %}{% endblock %}
+
+{% block seo %}
+<meta name="description" content="{% if LANGUAGE_CODE == "fa" %}پروژه‌های اجراشده نورپردازی ورونا لایتینگ را در فضاهای مسکونی، تجاری، اداری و هتلداری مشاهده کنید.{% else %}Explore Verona Lighting projects across residential, retail, office and hospitality spaces.{% endif %}">
+<link rel="canonical" href="{{ seo_canonical_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if LANGUAGE_CODE == "fa" %}پروژه‌های نورپردازی ورونا لایتینگ{% else %}Verona Lighting Projects{% endif %}">
+<meta property="og:description" content="{% if LANGUAGE_CODE == "fa" %}نمونه پروژه‌های نورپردازی معماری ورونا لایتینگ در ایران.{% else %}Completed architectural lighting projects by Verona Lighting.{% endif %}">
+<meta property="og:url" content="{{ seo_canonical_url }}">
+{% endblock %}
+
 {% block content %}
 <section class="bg-white min-h-screen text-zinc-800 antialiased">
 

@@ -31,10 +31,10 @@ CATEGORY_CONTENT = {
             "light distribution and whether each module will provide general or accent lighting. Family and "
             "product pages present the available images and recorded specifications for project evaluation."
         ),
-        meta_title_fa="چراغ مگنتی ریلی و مولتی ترک | ورونا لایتینگ",
-        meta_title_en="Magnetic Track Lighting Systems | Verona Lighting",
-        meta_description_fa="چراغ مگنتی ریلی ورونا را در مدل‌های اسمال، لارج، کرو، بلت و فلکسی بررسی کنید؛ مناسب مقایسه ریل و ماژول‌های نورپردازی معماری.",
-        meta_description_en="Compare Verona magnetic track systems, including Small, Large, Curve, Belt and Flexi ranges with recessed, surface and pendant options.",
+        meta_title_fa="چراغ مگنتی و ریل مگنتی | ورونا لایتینگ",
+        meta_title_en="Magnetic Track Lighting | Verona Lighting",
+        meta_description_fa="مدل‌های چراغ مگنتی و ریل مگنتی ورونا را در سری‌های اسمال، لارج، کرو، بلت و فلکسی بررسی و برای پروژه‌های نورپردازی معماری مقایسه کنید.",
+        meta_description_en="Explore Verona magnetic track lighting systems, rails and modules across Small, Large, Curve, Belt and Flexi collections for architectural projects.",
     ),
     "linear": CategoryContent(
         description_fa=(
@@ -54,7 +54,7 @@ CATEGORY_CONTENT = {
             "result. Use the subcategories to compare related families and review the available technical data "
             "before specifying a luminaire."
         ),
-        meta_title_fa="چراغ خطی توکار، روکار و آویز | ورونا لایتینگ",
+        meta_title_fa="چراغ خطی معماری؛ روکار، آویز و دفنی | ورونا لایتینگ",
         meta_title_en="Architectural Linear Lighting | Verona Lighting",
         meta_description_fa="مدل‌های چراغ خطی توکار، روکار، آویز، دفنی و نور مخفی ورونا را براساس نوع نصب، ابعاد پروفیل و مشخصات فنی مقایسه کنید.",
         meta_description_en="Explore recessed, surface, pendant, in-ground and cove linear lighting by Verona, with product families and technical details.",
@@ -435,10 +435,10 @@ CATEGORY_CONTENT = {
             "dimensions, wattage, luminous flux, light distribution and the recorded data of each model alongside "
             "the required length of the lighting line."
         ),
-        meta_title_fa="چراغ خطی توکار و بدون لبه | ورونا",
+        meta_title_fa="چراغ خطی توکار سقفی و بدون لبه | ورونا لایتینگ",
         meta_title_en="Recessed Linear Lighting | Verona Lighting",
-        meta_description_fa="چراغ خطی توکار SP و BD LINEO ورونا را براساس ابعاد شیار، نوع لبه، عرض پروفیل، توان و خروجی نور ثبت‌شده مقایسه کنید.",
-        meta_description_en="Compare Verona SP and BD LINEO recessed lights by channel dimensions, edge detail, profile width and recorded lighting output.",
+        meta_description_fa="مدل‌های چراغ خطی توکار سقفی ورونا را در نسخه‌های لبه‌دار و بدون لبه بررسی کنید؛ مقایسه ابعاد شیار، عرض پروفیل، توان و شار نوری برای انتخاب پروژه.",
+        meta_description_en="Compare Verona recessed linear lighting in trimmed and trimless profiles, including cut-out dimensions, profile widths, power and lumen output.",
     ),
     "panel": CategoryContent(
         description_fa=(
