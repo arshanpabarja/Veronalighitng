@@ -221,6 +221,14 @@
     <p class="product-subtitle">{{ product.subtitle }}</p>
 
     <div class="key-specs">
+      {% if product.wattage %}
+      <div class="spec-item">
+        <span class="spec-label">
+          {% if product.lamp_base_type %}{% trans "Maximum Lamp Power" %}{% else %}{% trans "Wattage" %}{% endif %}
+        </span>
+        <span class="spec-value">{{ product.wattage }} W</span>
+      </div>
+      {% endif %}
       {% if product.lumens %}
       <div class="spec-item">
         <span class="spec-label">{% trans "Lumens Output" %}</span>
@@ -229,7 +237,7 @@
       {% endif %}
       {% if product.voltage %}
       <div class="spec-item">
-        <span class="spec-label">{% trans "Power" %}</span>
+        <span class="spec-label">{% trans "Input Voltage" %}</span>
         <span class="spec-value">{{ product.voltage }}</span>
       </div>
       {% endif %}
@@ -363,7 +371,12 @@
       </thead>
       <tbody>
         {% if product.wattage %}
-        <tr><td>{% trans "Power Consumption" %}</td><td>{{ product.wattage }} W</td></tr>
+        <tr>
+          <td>
+            {% if product.lamp_base_type %}{% trans "Maximum Lamp Power" %}{% else %}{% trans "Power Consumption" %}{% endif %}
+          </td>
+          <td>{{ product.wattage }} W</td>
+        </tr>
         {% endif %}
         {% if product.lumens %}
         <tr><td>{% trans "Luminous Flux" %}</td><td>{{ product.lumens }} lm</td></tr>
@@ -392,6 +405,9 @@
         {% if product.lamp_base_type %}
         <tr><td>{% trans "Lamp Base" %}</td><td>{{ product.lamp_base_type }}</td></tr>
         {% endif %}
+        {% if product.mounting_type and product.mounting_type != "afds" %}
+        <tr><td>{% trans "Mounting Type" %}</td><td>{{ product.mounting_type|title }}</td></tr>
+        {% endif %}
       </tbody>
     </table>
   </div>
@@ -418,7 +434,6 @@
 
 </div>
 
-<!-- MODELS / SIZES -->
 <div class="models-section">
   <div class="models-inner">
     <div class="section-header">
@@ -432,7 +447,9 @@
         <thead>
           <tr>
             <th>{% trans "Model Code" %}</th>
-            <th>{% trans "Power" %}</th>
+            <th>
+              {% if product.lamp_base_type %}{% trans "Maximum Lamp Power" %}{% else %}{% trans "Power" %}{% endif %}
+            </th>
             <th>{% trans "Dimensions" %}</th>
             <th>{% trans "Weight" %}</th>
             <th>{% trans "Notes" %}</th>
@@ -443,12 +460,12 @@
           {% if variant.is_active %}
           <tr>
             <td>{{ variant.model_name }}</td>
-            <td>{{ variant.wattage }}W</td>
+            <td>{% if variant.wattage %}{{ variant.wattage }}W{% else %}—{% endif %}</td>
             <td>
               {% if variant.dimension %}
                 {% if variant.dimension.label %}<strong>{{ variant.dimension.label }}</strong><br>{% endif %}
-                {% if variant.dimension.width and variant.dimension.height and variant.dimension.depth %}
-                  {{ variant.dimension.depth }} × {{ variant.dimension.height }} × {{ variant.dimension.width }}
+                {% if variant.dimension.width or variant.dimension.height or variant.dimension.depth %}
+                  {{ variant.dimension.depth|default:"" }} × {{ variant.dimension.height|default:"" }} × {{ variant.dimension.width|default:"" }}
                 {% else %}—{% endif %}
               {% else %}—{% endif %}
             </td>

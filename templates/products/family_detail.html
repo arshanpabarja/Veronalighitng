@@ -157,7 +157,7 @@
       {{ family.name|upper }}
     </h1>
 
-    <p class="mt-3 sm:mt-6 text-xs sm:text-base text-justify md:text-md text-gray-600 leading-relaxed max-w-4xl mx-auto">
+    <p class="{% if LANGUAGE_CODE == 'fa' %}persian-justify{% endif %} text-justify mt-3 sm:mt-6 text-xs sm:text-base md:text-md text-gray-600 leading-relaxed max-w-4xl mx-auto">
       {{ family.subtitle|default:"Browse our range of indoor lighting solutions designed for performance, efficiency, and visual comfort." }}
     </p>
   </div>

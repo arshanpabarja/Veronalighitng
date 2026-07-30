@@ -212,6 +212,9 @@ class ProductAdmin(TranslationAdmin):
             'classes': ('collapse',),
             'fields': ('image4', 'image4_alt')
         }),
+        ('Desktop hover image', {
+            'fields': ('hover_image',)
+        }),
         ('پیش‌نمایش تصاویر', {
             'fields': ('images_preview',)
         }),
@@ -232,7 +235,13 @@ class ProductAdmin(TranslationAdmin):
     thumbnail_preview.short_description = 'تصویر'
 
     def images_preview(self, obj):
-        images   = [obj.image1, obj.image2, obj.image3, obj.image4]
+        images = [
+            obj.image1,
+            obj.image2,
+            obj.image3,
+            obj.image4,
+            obj.hover_image,
+        ]
         existing = [img for img in images if img]
 
         if not existing:

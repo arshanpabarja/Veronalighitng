@@ -3,12 +3,17 @@
 
   <!-- Image Container -->
   <div class="relative aspect-square w-full bg-[#f4f5f6] overflow-hidden mb-4 flex items-center justify-center">
-    
-    <!-- Added mix-blend-multiply here -->
-    <img src="{{ product.image1.url }}" 
-         alt="{{ product.image1.alt }}" 
-         class="w-[85%] h-[85%] object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-         
+    <img src="{{ product.image1.url }}"
+         alt="{{ product.get_image1_alt }}"
+         loading="lazy"
+         class="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-opacity duration-300 ease-out {% if product.hover_image %}sm:group-hover:opacity-0{% endif %}">
+
+    {% if product.hover_image %}
+    <img src="{{ product.hover_image.url }}?v=4"
+         alt="{{ product.name }} technical dimensions"
+         loading="lazy"
+         class="hidden sm:block absolute inset-0 w-full h-full object-contain bg-white opacity-0 pointer-events-none transition-opacity duration-300 ease-out sm:group-hover:opacity-100">
+    {% endif %}
   </div>
 
   <!-- Text Content -->

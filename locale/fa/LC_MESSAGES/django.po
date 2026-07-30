@@ -1747,6 +1747,14 @@ msgstr "مقدار"
 msgid "Power Consumption"
 msgstr "مصرف انرژی"
 
+#: .\templates\products\product_detail.html
+msgid "Maximum Lamp Power"
+msgstr "حداکثر توان لامپ"
+
+#: .\templates\products\product_detail.html
+msgid "Wattage"
+msgstr "توان"
+
 #: .\templates\products\product_detail.html:388
 msgid "Luminous Flux"
 msgstr "شار نوری"
@@ -2059,9 +2067,6 @@ msgstr "پاک کردن فیلترها"
 #, python-format
 #~ msgid "%(cat_name)s – All Products"
 #~ msgstr "%(cat_name)s – همه محصولات"
-
-#~ msgid "Open menu"
-#~ msgstr "باز کردن منو"
 
 #~ msgid ""
 #~ "Every beam, every shadow, every reflection is an opportunity to transform "

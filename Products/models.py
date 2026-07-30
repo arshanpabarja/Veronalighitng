@@ -433,6 +433,8 @@ class Product(models.Model):
     image4 = models.ImageField(upload_to='products/', blank=True, null=True, verbose_name='تصویر ۴')
     image4_alt = models.CharField(max_length=125, blank=True, verbose_name='alt تصویر ۴')
 
+    hover_image = models.ImageField(upload_to='products/', blank=True, null=True)
+
     # SEO
     meta_title = models.CharField(
         max_length=90,

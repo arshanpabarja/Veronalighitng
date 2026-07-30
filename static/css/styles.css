@@ -5860,6 +5860,14 @@ footer {
     font-size: 0.75rem;
     line-height: 1rem;
   }
+
+  .group:hover .sm\:group-hover\:opacity-0 {
+    opacity: 0;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-100 {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 768px) {

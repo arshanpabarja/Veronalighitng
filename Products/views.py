@@ -299,6 +299,7 @@ def child_detail(request, cat_slug, child_slug):
     parent = get_object_or_404(Category, slug=cat_slug, is_active=True, parent__isnull=True)
     child  = get_object_or_404(Category, slug=child_slug, is_active=True, parent=parent)
 
+    siblings = parent.children.all().order_by("order")
     families = Family.objects.filter(category=child, is_active=True).prefetch_related('applications')
     families, selected_family = _apply_family_filters(request, families)
 
@@ -323,6 +324,7 @@ def child_detail(request, cat_slug, child_slug):
         "child": child,
         "families": page_obj.object_list,
         "page_obj": page_obj,
+        "siblings": siblings,
         "meta_title": child.meta_title or child.name,
         "categories": Category.objects.filter(is_active=True, parent__isnull=True),
         "seo_landing": seo_landing,
