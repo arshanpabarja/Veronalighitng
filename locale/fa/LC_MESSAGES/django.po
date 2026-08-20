@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 02:27+0330\n"
+"POT-Creation-Date: 2026-08-08 08:04+0000\n"
 "PO-Revision-Date: 2026-07-20 02:25+0330\n"
 "Last-Translator: Gemini <ai-collaborator@example.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\Veronalighting\settings.py:108
+#: Veronalighting/settings.py:108
 msgid "فارسی"
 msgstr "فارسی"
 
-#: .\Veronalighting\settings.py:109
+#: Veronalighting/settings.py:109
 msgid "English"
 msgstr "انگلیسی"
 
-#: .\templates\company\about.html:9 .\templates\company\about.html:23
+#: templates/company/about.html:9 templates/company/about.html:23
 msgid "About Our Studio - Verona Lighting"
 msgstr "درباره استودیو ما - روشنایی ورونا"
 
-#: .\templates\company\about.html:17
+#: templates/company/about.html:17
 msgid ""
 "Verona Lighting engineers high-efficiency architectural illumination curated "
 "with a timeless design perspective."
@@ -37,7 +37,7 @@ msgstr ""
 "روشنایی ورونا سیستم‌های نورپردازی معماری با بازدهی بالا را با دیدگاهی از "
 "طراحی ماندگار مهندسی می‌کند."
 
-#: .\templates\company\about.html:18
+#: templates/company/about.html:18
 msgid ""
 "about verona lighting, architectural lighting studio, commercial fixtures, "
 "premium led lighting, sustainable lighting engineering"
@@ -45,39 +45,35 @@ msgstr ""
 "درباره روشنایی ورونا, استودیو نورپردازی معماری, چراغ‌های تجاری, نورپردازی LED "
 "پریمیوم, مهندسی نورپردازی پایدار"
 
-#: .\templates\company\about.html:24
+#: templates/company/about.html:24
 msgid "Verona Lighting engineers high-efficiency architectural illumination."
 msgstr "روشنایی ورونا نورپردازی معماری با بازدهی بالا را مهندسی می‌کند."
 
-#: .\templates\company\about.html:36
+#: templates/company/about.html:36
 msgid "About Our Studio"
 msgstr "درباره استودیو ما"
 
-#: .\templates\company\about.html:44 .\templates\company\story.html:44
+#: templates/company/about.html:44
 msgid "About Verona Lighting"
 msgstr "درباره روشنایی ورونا"
 
-#: .\templates\company\about.html:51 .\templates\company\story.html:51
-msgid "Premium architectural and decorative lighting solutions."
-msgstr "راهکارهای برتر نورپردازی معماری و تزئینی."
-
-#: .\templates\company\about.html:74 .\templates\company\story.html:74
+#: templates/company/about.html:70 templates/company/story.html:70
 msgid "About heading"
 msgstr "عنوان درباره ما"
 
-#: .\templates\company\about.html:81
+#: templates/company/about.html:77
 msgid "Our Studio Philosophy"
 msgstr "فلسفه استودیو ما"
 
-#: .\templates\company\about.html:84
+#: templates/company/about.html:80
 msgid "We design light"
 msgstr "ما نوری را طراحی می‌کنیم"
 
-#: .\templates\company\about.html:84
+#: templates/company/about.html:80
 msgid "that transforms spaces"
 msgstr "که فضاها را متحول می‌سازد"
 
-#: .\templates\company\about.html:87
+#: templates/company/about.html:83
 msgid ""
 "From elegant structural fixtures to comprehensive architectural systems, we "
 "develop high-efficiency illumination curated with a timeless design "
@@ -88,25 +84,25 @@ msgstr ""
 "بازدهی بالا را با دیدگاهی از طراحی ماندگار توسعه می‌دهیم. اصول ما مستقیماً بر "
 "عملکرد فنی محصول، انطباق تخصصی و اعتماد حرفه‌ای بلندمدت تمرکز دارد."
 
-#: .\templates\company\about.html:91
+#: templates/company/about.html:87
 msgid "Est. Verona Lighting"
 msgstr "تاسیس روشنایی ورونا"
 
-#: .\templates\company\about.html:94
+#: templates/company/about.html:90
 msgid "Read Our Journey ↓"
 msgstr "داستان مسیر ما را بخوانید ↓"
 
-#: .\templates\company\about.html:105
+#: templates/company/about.html:101
 msgid "Verona Lighting showroom overview floor layout"
 msgstr "پلان چیدمان کلی شوروم روشنایی ورونا"
 
-#: .\templates\company\about.html:122 .\templates\company\story.html:81
-#: .\templates\includes\footer.html:52 .\templates\includes\navbar.html:108
-#: .\templates\includes\navbar.html:399 .\templates\index.html:749
+#: templates/company/about.html:118 templates/company/story.html:77
+#: templates/includes/footer.html:58 templates/includes/navbar.html:108
+#: templates/includes/navbar.html:399 templates/index.html:682
 msgid "Our Story"
 msgstr "داستان ما"
 
-#: .\templates\company\about.html:126
+#: templates/company/about.html:122
 msgid ""
 "We began as an architectural engineering cell built around a single "
 "foundational ideal: making premium lighting accessible, practical, and "
@@ -120,7 +116,7 @@ msgstr ""
 "مسکونی لوکس، محیط‌های کاری مدرن، فضاهای مهمان‌نوازی و محیط‌های تجاری ممتاز "
 "تبدیل شده‌ایم."
 
-#: .\templates\company\about.html:129
+#: templates/company/about.html:125
 msgid ""
 "Every technical layout within our portfolio is curated or engineered for "
 "accurate chromatic metrics, product lifecycle durability, and visual spatial "
@@ -133,11 +129,11 @@ msgstr ""
 "حساسیت فضایی ترکیب می‌کنیم تا معماری سبک‌تر، منسجم‌تر و به زیبایی هماهنگ‌تر به "
 "نظر برسد."
 
-#: .\templates\company\about.html:136
+#: templates/company/about.html:132
 msgid "Mission"
 msgstr "ماموریت ما"
 
-#: .\templates\company\about.html:137
+#: templates/company/about.html:133
 msgid ""
 "Deliver precise, lower-energy structural solutions engineered to elevate how "
 "creative spaces operate."
@@ -145,11 +141,11 @@ msgstr ""
 "ارائه راهکارهای ساختاری دقیق و کم‌مصرف که برای ارتقای نحوه عملکرد فضاهای "
 "خلاقانه مهندسی شده‌اند."
 
-#: .\templates\company\about.html:140
+#: templates/company/about.html:136
 msgid "Vision"
 msgstr "چشم‌انداز ما"
 
-#: .\templates\company\about.html:141
+#: templates/company/about.html:137
 msgid ""
 "Evolve as the premier lighting destination celebrated for architectural "
 "integrity, product craft, and professional partnership."
@@ -157,35 +153,35 @@ msgstr ""
 "تکامل به عنوان مقصد برتر نورپردازی که به دلیل یکپارچگی معماری، ظرافت محصول و "
 "شراکت حرفه‌ای شناخته می‌شود."
 
-#: .\templates\company\about.html:144 .\templates\company\story.html:94
+#: templates/company/about.html:140 templates/company/story.html:90
 msgid "Core Values"
 msgstr "ارزش‌های محوری"
 
-#: .\templates\company\about.html:146
+#: templates/company/about.html:142
 msgid "Architectural quality above trade speed"
 msgstr "کیفیت معماری بالاتر از سرعت تجارت"
 
-#: .\templates\company\about.html:147
+#: templates/company/about.html:143
 msgid "Transparent metric reporting & verification"
 msgstr "گزارش‌دهی و راستی‌آزمایی شفاف معیارها"
 
-#: .\templates\company\about.html:148
+#: templates/company/about.html:144
 msgid "Durable integration planning with site teams"
 msgstr "برنامه‌ریزی یکپارچه‌سازی پایدار با تیم‌های کارگاهی"
 
-#: .\templates\company\about.html:162
+#: templates/company/about.html:158
 msgid "System Capabilities"
 msgstr "قابلیت‌های سیستم"
 
-#: .\templates\company\about.html:168
+#: templates/company/about.html:164
 msgid "Premium Specification"
 msgstr "مشخصات فنی ممتاز"
 
-#: .\templates\company\about.html:169
+#: templates/company/about.html:165
 msgid "Architectural Grade Standards"
 msgstr "استانداردهای گرید معماری"
 
-#: .\templates\company\about.html:170
+#: templates/company/about.html:166
 msgid ""
 "Rigorously evaluated components backed by robust commercial compliance "
 "metrics and predictable spectral output."
@@ -193,15 +189,15 @@ msgstr ""
 "قطعاتی که به دقت ارزیابی شده‌اند و توسط معیارهای قوی انطباق تجاری و خروجی "
 "طیفی قابل پیش‌بینی پشتیبانی می‌شوند."
 
-#: .\templates\company\about.html:173
+#: templates/company/about.html:169
 msgid "Optical Consultation"
 msgstr "مشاوره اپتیکال"
 
-#: .\templates\company\about.html:174
+#: templates/company/about.html:170
 msgid "Photometric Optimization"
 msgstr "بهینه‌سازی فتومتریک"
 
-#: .\templates\company\about.html:175
+#: templates/company/about.html:171
 msgid ""
 "Expert calibration assistance targeting precise Kelvin temperatures, complex "
 "beam spreads, and glare management indicators."
@@ -209,15 +205,15 @@ msgstr ""
 "کمک کالیبراسیون تخصصی با هدف قرار دادن دماهای دقیق کلوین، زوایای تابش پیچیده "
 "و شاخص‌های مدیریت خیرگی نور."
 
-#: .\templates\company\about.html:178
+#: templates/company/about.html:174
 msgid "Project Coordination"
 msgstr "هماهنگی پروژه"
 
-#: .\templates\company\about.html:179
+#: templates/company/about.html:175
 msgid "End-To-End Development"
 msgstr "توسعه سرتاسری (از ابتدا تا انتها)"
 
-#: .\templates\company\about.html:180
+#: templates/company/about.html:176
 msgid ""
 "From initial concept plans to site testing, we sync fluidly with interior "
 "architects, electrical partners, and general layout operators."
@@ -225,15 +221,15 @@ msgstr ""
 "از طرح‌های مفهومی اولیه تا تست‌های کارگاهی، ما به طور روان با معماران داخلی، "
 "شرکای الکتریکال و مجریان چیدمان کلی هماهنگ می‌شویم."
 
-#: .\templates\company\about.html:183
+#: templates/company/about.html:179
 msgid "High Efficiency"
 msgstr "بازدهی بالا"
 
-#: .\templates\company\about.html:184
+#: templates/company/about.html:180
 msgid "Luminous Efficacy Focus"
 msgstr "تمرکز بر بهره‌وری نوری"
 
-#: .\templates\company\about.html:185
+#: templates/company/about.html:181
 msgid ""
 "Next-generation diode systems built to reduce overall structural wattage "
 "overhead while retaining clean color fidelity."
@@ -241,15 +237,15 @@ msgstr ""
 "سیستم‌های دیودی نسل بعدی که برای کاهش توان مصرفی کلی ساختار و در عین حال حفظ "
 "دقت و تفکیک رنگ خالص ساخته شده‌اند."
 
-#: .\templates\company\about.html:188
+#: templates/company/about.html:184
 msgid "Technical Supply"
 msgstr "تامین فنی"
 
-#: .\templates\company\about.html:189
+#: templates/company/about.html:185
 msgid "Logistical Schedule Control"
 msgstr "کنترل زمان‌بندی لجستیک"
 
-#: .\templates\company\about.html:190
+#: templates/company/about.html:186
 msgid ""
 "Strategic parts forecasting and structured supply management to ensure "
 "project pipeline constraints are satisfied flawlessly."
@@ -257,15 +253,15 @@ msgstr ""
 "پیش‌بینی استراتژیک قطعات و مدیریت تامین ساختاریافته برای اطمینان از برآورده "
 "شدن بی‌نقص محدودیت‌های زمانی پروژه."
 
-#: .\templates\company\about.html:193
+#: templates/company/about.html:189
 msgid "Support Matrix"
 msgstr "ماتریس پشتیبانی"
 
-#: .\templates\company\about.html:194
+#: templates/company/about.html:190
 msgid "Post-Handover Continuity"
 msgstr "تداوم خدمات پس از تحویل"
 
-#: .\templates\company\about.html:195
+#: templates/company/about.html:191
 msgid ""
 "Immediate access channels addressing component adaptations, schematic "
 "adjustments, or system dimensional additions."
@@ -273,15 +269,15 @@ msgstr ""
 "کانال‌های دسترسی فوری برای رسیدگی به انطباق قطعات، تنظیمات نقشه‌ها یا افزودن "
 "ابعاد جدید به سیستم."
 
-#: .\templates\company\about.html:207
+#: templates/company/about.html:203
 msgid "Solution Sectors"
 msgstr "بخش‌های راهکار"
 
-#: .\templates\company\about.html:213
+#: templates/company/about.html:209
 msgid "Internal Systems"
 msgstr "سیستم‌های داخلی"
 
-#: .\templates\company\about.html:214
+#: templates/company/about.html:210
 msgid ""
 "Integrated architectural downlights, hidden profiles, specialized point "
 "sources, and decorative ambient components."
@@ -289,11 +285,11 @@ msgstr ""
 "چراغ‌های توکار یکپارچه معماری، پروفیل‌های مخفی، منابع نقطه‌ای تخصصی و قطعات "
 "تزئینی محیطی."
 
-#: .\templates\company\about.html:217
+#: templates/company/about.html:213
 msgid "External Scopes"
 msgstr "حوزه‌های بیرونی"
 
-#: .\templates\company\about.html:218
+#: templates/company/about.html:214
 msgid ""
 "High-protection facade projectors, structural wash arrays, technical pathway "
 "marker spikes, and landscape systems."
@@ -301,11 +297,11 @@ msgstr ""
 "پروژکتورهای نما با درجه حفاظت بالا، وال‌واشرهای ساختاری، چراغ‌های دفنی و "
 "نیزه‌ای مسیرهای فنی و سیستم‌های محوطه‌سازی."
 
-#: .\templates\company\about.html:221
+#: templates/company/about.html:217
 msgid "Commercial Layouts"
 msgstr "چیدمان‌های تجاری"
 
-#: .\templates\company\about.html:222
+#: templates/company/about.html:218
 msgid ""
 "Optimized administrative working grids, tailored retail illumination "
 "layouts, and broad high-ceiling industrial optics."
@@ -313,11 +309,11 @@ msgstr ""
 "شبکه‌های کاری اداری بهینه‌سازی شده، طرح‌های نورپردازی سفارشی فضاهای تجاری و "
 "اپتیک‌های صنعتی وسیع برای سقف‌های بلند."
 
-#: .\templates\company\about.html:225
+#: templates/company/about.html:221
 msgid "Digital Automation"
 msgstr "اتوماسیون دیجیتال"
 
-#: .\templates\company\about.html:226
+#: templates/company/about.html:222
 msgid ""
 "Advanced modulation hardware, sensor control mechanics, preset digital "
 "dimming panels, and protocol integration links."
@@ -325,11 +321,11 @@ msgstr ""
 "سخت‌افزار پیشرفته مدولاسیون، مکانیسم‌های کنترل سنسور، پنل‌های دیمر دیجیتال پیش-"
 "تنظیم و لینک‌های یکپارچه‌سازی پروتکل‌ها."
 
-#: .\templates\company\about.html:240
+#: templates/company/about.html:236
 msgid "Ecological Parameters"
 msgstr "پارامترهای زیست‌محیطی"
 
-#: .\templates\company\about.html:242
+#: templates/company/about.html:238
 msgid ""
 "We decrease systematic material impact through standard specification of "
 "highly circular aluminum chassis housings, minimized non-recyclable packing "
@@ -339,26 +335,26 @@ msgstr ""
 "شاسی آلومینیومی با قابلیت بازیافت بالا، به حداقل رساندن مواد بسته‌بندی "
 "غیرقابل بازیافت و مسیرهای تامین‌کننده کاملاً حسابرسی‌شده کاهش می‌دهیم."
 
-#: .\templates\company\about.html:245
+#: templates/company/about.html:241
 msgid "Modules with calculated operational lifecycles beyond 50,000 hrs."
 msgstr "ماژول‌هایی با چرخه عمر عملیاتی محاسبه‌شده بیش از ۵۰,۰۰۰ ساعت."
 
-#: .\templates\company\about.html:246
+#: templates/company/about.html:242
 msgid "Total elimination of plastic buffers in standard product delivery kits."
 msgstr "حذف کامل ضربه‌گیرهای پلاستیکی در کیت‌های تحویل استاندارد محصول."
 
-#: .\templates\company\about.html:247
+#: templates/company/about.html:243
 msgid ""
 "Procurement prioritizing regional processing nodes to mitigate transit load."
 msgstr ""
 "تامینی که گره‌های پردازش منطقه‌ای را برای کاهش بار ترانزیت در اولویت قرار "
 "می‌دهد."
 
-#: .\templates\company\about.html:253
+#: templates/company/about.html:249
 msgid "Laboratory Verification"
 msgstr "تاییدیه آزمایشگاهی"
 
-#: .\templates\company\about.html:255
+#: templates/company/about.html:251
 msgid ""
 "Each electrical lot undergoes structural quality benchmarking across thermal "
 "dispersion metrics, power factor behavior, driver stabilization, and "
@@ -368,71 +364,86 @@ msgstr ""
 "رفتار ضریب توان، تثبیت درایور و ثبات ماکرو کروماتیک مطلق در تست‌های طولانی‌مدت "
 "قرار می‌گیرد."
 
-#: .\templates\company\about.html:259
+#: templates/company/about.html:255
 msgid "Stress Evaluation"
 msgstr "ارزیابی تنش"
 
-#: .\templates\company\about.html:260
+#: templates/company/about.html:256
 msgid "Thermal Deflection"
 msgstr "انحراف حرارتی"
 
-#: .\templates\company\about.html:263
+#: templates/company/about.html:259
 msgid "Compliance Grid"
 msgstr "شبکه انطباق استانداردها"
 
-#: .\templates\company\about.html:264
+#: templates/company/about.html:260
 msgid "Photometric Norms"
 msgstr "هنجارهای فتومتریک"
 
-#: .\templates\company\about.html:267
+#: templates/company/about.html:263
 msgid "Coverage Terms"
 msgstr "شرایط پوشش گارانتی"
 
-#: .\templates\company\about.html:268
+#: templates/company/about.html:264
 msgid "Project Warranty"
 msgstr "گارانتی پروژه"
 
-#: .\templates\company\about.html:271
+#: templates/company/about.html:267
 msgid "Field Resources"
 msgstr "منابع کارگاهی و میدانی"
 
-#: .\templates\company\about.html:272
+#: templates/company/about.html:268
 msgid "Engineering Liaison"
 msgstr "رابط مهندسی"
 
-#: .\templates\company\about.html:285 .\templates\company\story.html:219
-#: .\templates\products\product_detail.html:219
-#: .\templates\products\product_detail.html:570
+#: templates/company/about.html:280 templates/company/story.html:214
+msgid "Expanded showroom image"
+msgstr "تصویر بزرگ‌شده نمایشگاه"
+
+#: templates/company/about.html:281 templates/company/story.html:215
+#: templates/products/product_detail.html:572
 msgid "Scroll to zoom · Drag to pan · Double-click to reset"
 msgstr ""
 "برای بزرگ‌نمایی اسکرول کنید · برای جابه‌جایی بکشید · برای بازنشانی دوبار کلیک "
 "کنید"
 
-#: .\templates\company\contact.html:5
+#: templates/company/contact.html:5
 msgid "Contact Us | Verona Lighting"
 msgstr "تماس با ما | روشنایی ورونا"
 
-#: .\templates\company\contact.html:8
+#: templates/company/contact.html:8
 msgid "Get in touch with Verona Lighting. We\\"
 msgstr "با روشنایی ورونا در ارتباط باشید. ما\\"
 
-#: .\templates\company\contact.html:22
+#: templates/company/contact.html:11 templates/company/contact.html:20
+#, fuzzy
+#| msgid "Contact Us | Verona Lighting"
+msgid "Contact Verona Lighting"
+msgstr "تماس با ما | روشنایی ورونا"
+
+#: templates/company/contact.html:12
+msgid ""
+"Get in touch with Verona Lighting for architectural lighting products and "
+"project support."
+msgstr ""
+
+#: templates/company/contact.html:40
 msgid "Get in Touch"
 msgstr "با ما در تماس باشید"
 
-#: .\templates\company\contact.html:27
+#: templates/company/contact.html:45
 msgid "Let's Create"
 msgstr "بیایید خلق کنیم"
 
-#: .\templates\company\contact.html:28
+#: templates/company/contact.html:46
 msgid "Something"
 msgstr "پدیده‌ای"
 
-#: .\templates\company\contact.html:29
+#: templates/company/contact.html:47
 msgid "Remarkable"
 msgstr "چشمگیر"
 
-#: .\templates\company\contact.html:34
+#: templates/company/contact.html:52
 msgid ""
 "Have a project in mind? Want to explore our products? Or just curious about "
 "architectural lighting? We'd love to hear from you."
@@ -440,50 +451,50 @@ msgstr ""
 "پروژه‌ای در ذهن دارید؟ می‌خواهید محصولات ما را بررسی کنید؟ یا صرفاً درباره "
 "نورپردازی معماری کنجکاو هستید؟ مشتاق شنیدن نظرات شما هستیم."
 
-#: .\templates\company\contact.html:54
+#: templates/company/contact.html:72
 msgid "Sales & Inquiry"
 msgstr "فروش و استعلام قیمت"
 
-#: .\templates\company\contact.html:56
+#: templates/company/contact.html:74
 msgid ""
 "Questions about our products, custom lighting solutions, or project "
 "specifications?"
 msgstr ""
 "سوالی درباره محصولات، راهکارهای نورپردازی سفارشی یا مشخصات فنی پروژه دارید؟"
 
-#: .\templates\company\contact.html:58
+#: templates/company/contact.html:76
 msgid "Email"
 msgstr "ایمیل"
 
-#: .\templates\company\contact.html:62 .\templates\company\contact.html:77
+#: templates/company/contact.html:80 templates/company/contact.html:95
 msgid "Phone"
 msgstr "تلفن"
 
-#: .\templates\company\contact.html:73
+#: templates/company/contact.html:91
 msgid "Technical Support"
 msgstr "پشتیبانی فنی"
 
-#: .\templates\company\contact.html:75
+#: templates/company/contact.html:93
 msgid ""
 "Need help with installation, specifications, or technical documentation?"
 msgstr "به کمک برای نصب، مشخصات فنی یا مستندات فنی نیاز دارید؟"
 
-#: .\templates\company\contact.html:81
+#: templates/company/contact.html:99
 msgid "Response Time"
 msgstr "زمان پاسخگویی"
 
-#: .\templates\company\contact.html:83
+#: templates/company/contact.html:101
 msgid ""
 "Our support team is available Saturday-Wednesday, 10 AM–6 PM (Tehran Time)."
 msgstr ""
 "تیم پشتیبانی ما از شنبه تا چهارشنبه، ساعت ۱۰ صبح تا ۶ عصر (به وقت تهران) در "
 "دسترس است."
 
-#: .\templates\company\contact.html:92
+#: templates/company/contact.html:110
 msgid "Show Room"
 msgstr "شوروم"
 
-#: .\templates\company\contact.html:94
+#: templates/company/contact.html:112
 msgid ""
 "Visit us to discuss your project in person or see our latest lighting "
 "installations."
@@ -491,43 +502,35 @@ msgstr ""
 "از ما دیدن کنید تا به صورت حضوری درباره پروژه خود گفتگو کنیم یا آخرین "
 "چیدمان‌های نورپردازی ما را ببینید."
 
-#: .\templates\company\contact.html:96
+#: templates/company/contact.html:114
 msgid "Address"
 msgstr "آدرس"
 
-#: .\templates\company\contact.html:98 .\templates\includes\footer.html:30
-msgid "Tehran - Verona Lighting"
-msgstr "تهران - روشنایی ورونا"
-
-#: .\templates\company\contact.html:99 .\templates\includes\footer.html:31
-msgid "Zamani alley, North Sohrevardi Street"
-msgstr "خیابان سهروردی شمالی، کوچه زمانی"
-
-#: .\templates\company\contact.html:101
+#: templates/company/contact.html:119
 msgid "Hours"
 msgstr "ساعات کاری"
 
-#: .\templates\company\contact.html:103
+#: templates/company/contact.html:121
 msgid "Saturday-Wednesday: 10 AM–6 PM"
-msgstr "شنبه تا چهارشنبه: ۱۰ صبح تا ۶ عصر"
+msgstr "شنبه تا چهارشنبه: ۹ صبح تا ۱۸ عصر"
 
-#: .\templates\company\contact.html:104
+#: templates/company/contact.html:122
 msgid "Thursday: 10 AM–3 PM"
-msgstr "پنجشنبه: ۱۰ صبح تا ۳ بعد از ظهر"
+msgstr "پنجشنبه: ۹ صبح تا ۱۵ بعد از ظهر"
 
-#: .\templates\company\contact.html:105
+#: templates/company/contact.html:123
 msgid "Friday: Closed"
 msgstr "جمعه: تعطیل"
 
-#: .\templates\company\contact.html:122
+#: templates/company/contact.html:140
 msgid "Why Work With Us"
 msgstr "چرا کار با ما؟"
 
-#: .\templates\company\contact.html:124
+#: templates/company/contact.html:142
 msgid "We're more than a supplier"
 msgstr "ما فراتر از یک تامین‌کننده هستیم"
 
-#: .\templates\company\contact.html:127
+#: templates/company/contact.html:145
 msgid ""
 "With over 30 years of experience and 1200+ completed projects across 40+ "
 "countries, Verona Lighting is your partner in creating extraordinary "
@@ -536,11 +539,11 @@ msgstr ""
 "با بیش از ۳۰ سال تجربه و بیش از ۱۲۰۰ پروژه تکمیل شده در بیش از ۴۰ کشور، "
 "روشنایی ورونا شریک شما در خلق فضاهای معماری فوق‌العاده است."
 
-#: .\templates\company\contact.html:134
+#: templates/company/contact.html:152
 msgid "Expertise"
 msgstr "تخصص"
 
-#: .\templates\company\contact.html:136
+#: templates/company/contact.html:154
 msgid ""
 "Our team of lighting designers and engineers bring deep technical knowledge "
 "and creative vision to every project, from concept through installation."
@@ -548,11 +551,11 @@ msgstr ""
 "تیم طراحان و مهندسان نورپردازی ما دانش فنی عمیق و دیدگاه خلاقانه‌ای را برای "
 "هر پروژه، از ایده اولیه تا نصب، به ارمغان می‌آورند."
 
-#: .\templates\company\contact.html:139
+#: templates/company/contact.html:157
 msgid "Custom Solutions"
 msgstr "راهکارهای سفارشی"
 
-#: .\templates\company\contact.html:141
+#: templates/company/contact.html:159
 msgid ""
 "We don't believe in one-size-fits-all. Each project gets tailored design, "
 "specifications, and support."
@@ -560,11 +563,11 @@ msgstr ""
 "ما به راهکارهای یکسان برای همه اعتقاد نداریم. هر پروژه طراحی، مشخصات فنی و "
 "پشتیبانی متناسب با خود را دریافت می‌کند."
 
-#: .\templates\company\contact.html:146
+#: templates/company/contact.html:164
 msgid "Quality & Innovation"
 msgstr "کیفیت و نوآوری"
 
-#: .\templates\company\contact.html:148
+#: templates/company/contact.html:166
 msgid ""
 "We invest in the latest LED technology, smart controls, and sustainable "
 "practices to deliver lighting that lasts."
@@ -572,11 +575,11 @@ msgstr ""
 "ما روی جدیدترین فناوری LED، کنترل‌های هوشمند و روش‌های پایدار سرمایه‌گذاری "
 "می‌کنیم تا نورپردازی ماندگاری را ارائه دهیم."
 
-#: .\templates\company\contact.html:151
+#: templates/company/contact.html:169
 msgid "Responsive Support"
 msgstr "پشتیبانی پاسخگو"
 
-#: .\templates\company\contact.html:153
+#: templates/company/contact.html:171
 msgid ""
 "From pre-sale consultation to post-install support, our team is here when "
 "you need us."
@@ -584,83 +587,83 @@ msgstr ""
 "از مشاوره پیش از فروش تا پشتیبانی پس از نصب، تیم ما هر زمان که نیاز داشته "
 "باشید در کنار شماست."
 
-#: .\templates\company\contact.html:171
+#: templates/company/contact.html:189
 msgid "Send us a Message"
 msgstr "ارسال پیام برای ما"
 
-#: .\templates\company\contact.html:174
+#: templates/company/contact.html:192
 msgid "Fill out the form below and we'll get back to you within 24 hours."
 msgstr "فرم زیر را پر کنید و ما ظرف ۲۴ ساعت با شما تماس خواهیم گرفت."
 
-#: .\templates\company\contact.html:183
+#: templates/company/contact.html:201
 msgid "Full Name"
 msgstr "نام و نام خانوادگی"
 
-#: .\templates\company\contact.html:190
+#: templates/company/contact.html:208
 msgid "Your full name"
 msgstr "نام کامل شما"
 
-#: .\templates\company\contact.html:195
+#: templates/company/contact.html:213
 msgid "Email Address"
 msgstr "آدرس ایمیل"
 
-#: .\templates\company\contact.html:207 .\templates\includes\footer.html:41
-#: .\templates\includes\navbar.html:96 .\templates\includes\navbar.html:253
-#: .\templates\includes\navbar.html:397
+#: templates/company/contact.html:225 templates/includes/footer.html:47
+#: templates/includes/navbar.html:96 templates/includes/navbar.html:253
+#: templates/includes/navbar.html:397
 msgid "Company"
 msgstr "شرکت"
 
-#: .\templates\company\contact.html:213
+#: templates/company/contact.html:231
 msgid "Your company name (optional)"
 msgstr "نام شرکت شما (اختیاری)"
 
-#: .\templates\company\contact.html:218
+#: templates/company/contact.html:236
 msgid "Phone Number"
 msgstr "شماره تلفن"
 
-#: .\templates\company\contact.html:229
-#: .\templates\projects\project_detail.html:150
+#: templates/company/contact.html:247
+#: templates/projects/project_detail.html:150
 msgid "Project Type"
 msgstr "نوع پروژه"
 
-#: .\templates\company\contact.html:234
+#: templates/company/contact.html:252
 msgid "Select a project type"
 msgstr "نوع پروژه را انتخاب کنید"
 
-#: .\templates\company\contact.html:235
+#: templates/company/contact.html:253
 msgid "Retail Space"
 msgstr "فضای تجاری"
 
-#: .\templates\company\contact.html:236 .\templates\index.html:676
-#: .\templates\index.html:681
+#: templates/company/contact.html:254 templates/index.html:609
+#: templates/index.html:614
 msgid "Hospitality"
 msgstr "مهمان‌نوازی"
 
-#: .\templates\company\contact.html:237
+#: templates/company/contact.html:255
 msgid "Office & Workplace"
 msgstr "اداری و محیط کار"
 
-#: .\templates\company\contact.html:238 .\templates\index.html:491
+#: templates/company/contact.html:256 templates/index.html:424
 msgid "Residential"
 msgstr "مسکونی"
 
-#: .\templates\company\contact.html:239
+#: templates/company/contact.html:257
 msgid "Facade & Exterior"
 msgstr "نما و محوطه بیرونی"
 
-#: .\templates\company\contact.html:240
+#: templates/company/contact.html:258
 msgid "Other"
 msgstr "سایر"
 
-#: .\templates\company\contact.html:246
+#: templates/company/contact.html:264
 msgid "Message"
 msgstr "پیام"
 
-#: .\templates\company\contact.html:253
+#: templates/company/contact.html:271
 msgid "Tell us about your project, requirements, or questions..."
 msgstr "درباره پروژه، نیازمندی‌ها یا سوالات خود به ما بگویید..."
 
-#: .\templates\company\contact.html:258
+#: templates/company/contact.html:276
 msgid ""
 "We respect your privacy. Your information will only be used to respond to "
 "your inquiry and won't be shared with third parties."
@@ -668,19 +671,19 @@ msgstr ""
 "ما به حریم خصوصی شما احترام می‌گذاریم. اطلاعات شما فقط برای پاسخگویی به "
 "درخواست شما استفاده خواهد شد و با شخص ثالثی به اشتراک گذاشته نمی‌شود."
 
-#: .\templates\company\contact.html:265
+#: templates/company/contact.html:283
 msgid "Send Message"
 msgstr "ارسال پیام"
 
-#: .\templates\company\contact.html:281
+#: templates/company/contact.html:299
 msgid "Frequently Asked Questions"
 msgstr "سوالات متداول"
 
-#: .\templates\company\contact.html:289
+#: templates/company/contact.html:307
 msgid "How long does a typical project take?"
 msgstr "یک پروژه معمولی چقدر زمان می‌برد؟"
 
-#: .\templates\company\contact.html:293
+#: templates/company/contact.html:311
 msgid ""
 "Project timelines vary based on scope and complexity. A simple retrofit can "
 "take 2–4 weeks, while a comprehensive facade lighting system may take 8–12 "
@@ -690,11 +693,11 @@ msgstr ""
 "۲ تا ۴ هفته طول بکشد، در حالی که یک سیستم جامع نورپردازی نما ممکن است از "
 "طراحی تا نصب ۸ تا ۱۲ هفته زمان ببرد."
 
-#: .\templates\company\contact.html:300
+#: templates/company/contact.html:318
 msgid "Do you provide design consultation?"
 msgstr "آیا مشاوره طراحی ارائه می‌دهید؟"
 
-#: .\templates\company\contact.html:304
+#: templates/company/contact.html:322
 msgid ""
 "Yes. We offer free initial consultation to discuss your vision, "
 "requirements, and budget. Our lighting design team will create a proposal "
@@ -704,11 +707,11 @@ msgstr ""
 "شما ارائه می‌دهیم. تیم طراحی نورپردازی ما پیشنهادی متناسب با پروژه شما ایجاد "
 "خواهد کرد."
 
-#: .\templates\company\contact.html:311
+#: templates/company/contact.html:329
 msgid "What warranty do you offer?"
 msgstr "چه گارانتی‌هایی ارائه می‌دهید؟"
 
-#: .\templates\company\contact.html:315
+#: templates/company/contact.html:333
 msgid ""
 "All Verona luminaires come with a 5-year warranty on components and labor. "
 "Extended warranties and service plans are available upon request."
@@ -716,11 +719,11 @@ msgstr ""
 "تمامی چراغ‌های ورونا دارای ۵ سال گارانتی قطعات و خدمات هستند. گارانتی‌های "
 "تمدید شده و برنامه‌های خدمات پس از فروش بنا به درخواست در دسترس هستند."
 
-#: .\templates\company\contact.html:322
+#: templates/company/contact.html:340
 msgid "Can you retrofit existing spaces?"
 msgstr "آیا امکان اصلاح و ارتقای فضاهای موجود وجود دارد؟"
 
-#: .\templates\company\contact.html:326
+#: templates/company/contact.html:344
 msgid ""
 "Absolutely. We specialize in upgrading existing lighting systems. Our team "
 "will assess your current setup and recommend the best solutions that "
@@ -729,11 +732,11 @@ msgstr ""
 "قطعاً. ما در ارتقای سیستم‌های نورپردازی موجود تخصص داریم. تیم ما وضعیت فعلی "
 "شما را ارزیابی کرده و بهترین راهکارها را با حداقل ایجاد اختلال توصیه می‌کند."
 
-#: .\templates\company\contact.html:333
+#: templates/company/contact.html:351
 msgid "How do I request a quote?"
 msgstr "چگونه می‌توانم درخواست پیش‌فاکتور کنم؟"
 
-#: .\templates\company\contact.html:337
+#: templates/company/contact.html:355
 msgid ""
 "You can reach out via this contact form, email our sales team, or call us "
 "directly. Share your project details and we'll prepare a comprehensive quote."
@@ -742,19 +745,19 @@ msgstr ""
 "مستقیماً با ما تماس بگیرید. جزئیات پروژه خود را به اشتراک بگذارید تا "
 "پیش‌فاکتور جامعی آماده کنیم."
 
-#: .\templates\company\story.html:9
+#: templates/company/story.html:9 templates/company/story.html:44
 msgid "Our Story - Verona Lighting"
 msgstr "داستان ما - روشنایی ورونا"
 
-#: .\templates\company\story.html:84
+#: templates/company/story.html:80
 msgid "Lighting a path of"
 msgstr "روشن کردن مسیری از"
 
-#: .\templates\company\story.html:84
+#: templates/company/story.html:80
 msgid "craftsmanship & trust"
 msgstr "هنر ساخت و اعتماد"
 
-#: .\templates\company\story.html:87
+#: templates/company/story.html:83
 msgid ""
 "What began as a small workshop grew into a lighting brand trusted by homes, "
 "offices, and commercial projects. We believe great lighting is a clean, "
@@ -766,19 +769,19 @@ msgstr ""
 "پاک و آگاهانه از زیبایی فضایی، عملکرد قطعات اولیه و قابلیت اطمینان فنی "
 "بلندمدت است."
 
-#: .\templates\company\story.html:91
+#: templates/company/story.html:87
 msgid "Our Journey ↓"
 msgstr "مسیر حرکت ما ↓"
 
-#: .\templates\company\story.html:105
+#: templates/company/story.html:101
 msgid "Verona Lighting showroom overview layout"
 msgstr "طرح کلی شوروم روشنایی ورونا"
 
-#: .\templates\company\story.html:122
+#: templates/company/story.html:118
 msgid "How It Started"
 msgstr "چگونه شروع شد"
 
-#: .\templates\company\story.html:126
+#: templates/company/story.html:122
 msgid ""
 "We started with a clear idea: lighting should be reliable, energy-efficient, "
 "and beautiful. In the early days, we focused on learning every technical "
@@ -789,7 +792,7 @@ msgstr ""
 "باشد. در روزهای اولیه، ما بر یادگیری تک‌تک جزئیات فنی طرح—اپتیک، مواد خالص، "
 "مدیریت حرارت و مهندسی خاصی که باعث دوام چراغ‌های ساختاری می‌شود، تمرکز کردیم."
 
-#: .\templates\company\story.html:129
+#: templates/company/story.html:125
 msgid ""
 "As our reputation grew, architects, contractors, and homeowners trusted us "
 "with larger projects. We expanded our catalog carefully while maintaining a "
@@ -799,7 +802,7 @@ msgstr ""
 "ما اعتماد کردند. ما کاتالوگ خود را با دقت گسترش دادیم و در عین حال استاندارد "
 "سختگیرانه و سازش‌ناپذیری را برای کنترل کیفیت صنعتی حفظ کردیم."
 
-#: .\templates\company\story.html:132
+#: templates/company/story.html:128
 msgid ""
 "Today, our team works continuously on projects across high-end residential, "
 "architectural workspaces, and hospitality envelopes, delivering technical "
@@ -810,11 +813,11 @@ msgstr ""
 "معماری و بخش‌های مهمان‌نوازی کار می‌کند و راهکارهای فنی را ارائه می‌دهد که "
 "عملکرد طولانی‌مدت را با چارچوب طراحی خالص کاملاً متعادل می‌کند."
 
-#: .\templates\company\story.html:139
+#: templates/company/story.html:135
 msgid "Our Mission"
 msgstr "ماموریت ما"
 
-#: .\templates\company\story.html:140
+#: templates/company/story.html:136
 msgid ""
 "Deliver lighting solutions that elevate everyday environments with lasting "
 "value and precise execution."
@@ -822,11 +825,11 @@ msgstr ""
 "ارائه راهکارهای نورپردازی که محیط‌های روزمره را با ارزش ماندگار و اجرای دقیق "
 "ارتقا می‌دهند."
 
-#: .\templates\company\story.html:143
+#: templates/company/story.html:139
 msgid "Our Vision"
 msgstr "چشم‌انداز ما"
 
-#: .\templates\company\story.html:144
+#: templates/company/story.html:140
 msgid ""
 "Be the most trusted architectural lighting partner known for immaculate "
 "craftsmanship and technical site service."
@@ -834,496 +837,502 @@ msgstr ""
 "تبدیل شدن به قابل اعتمادترین شریک نورپردازی معماری که به دلیل هنر ساخت بی‌نقص "
 "و خدمات فنی کارگاهی شناخته می‌شود."
 
-#: .\templates\company\story.html:147
+#: templates/company/story.html:143
 msgid "Our Values"
 msgstr "ارزش‌های ما"
 
-#: .\templates\company\story.html:149
+#: templates/company/story.html:145
 msgid "Quality without compromise"
 msgstr "کیفیت بدون قید و شرط"
 
-#: .\templates\company\story.html:150
+#: templates/company/story.html:146
 msgid "Transparent metrics & guidance"
 msgstr "معیارها و راهنمایی‌های شفاف"
 
-#: .\templates\company\story.html:151
+#: templates/company/story.html:147
 msgid "Thoughtful spatial design"
 msgstr "طراحی فضایی هوشمندانه"
 
-#: .\templates\company\story.html:152
+#: templates/company/story.html:148
 msgid "Long-term industry partnerships"
 msgstr "شراکت‌های صنعتی بلندمدت"
 
-#: .\templates\company\story.html:166
+#: templates/company/story.html:162
 msgid "Behind The Light"
 msgstr "پشت پرده نور"
 
-#: .\templates\company\story.html:167
+#: templates/company/story.html:163
 msgid "People Behind the Light"
 msgstr "افراد پشت پرده نور"
 
-#: .\templates\company\story.html:168
+#: templates/company/story.html:164
 msgid ""
 "A dedicated team of lighting designers, structural engineers, and support "
 "specialists."
 msgstr "تیمی اختصاصی از طراحان نورپردازی، مهندسان سازه و متخصصان پشتیبانی."
 
-#: .\templates\company\story.html:173
+#: templates/company/story.html:169
 msgid "PL"
 msgstr "PL"
 
-#: .\templates\company\story.html:175
+#: templates/company/story.html:171
 msgid "Project Lead"
 msgstr "مدیر پروژه"
 
-#: .\templates\company\story.html:176
+#: templates/company/story.html:172
 msgid "Lighting Design & Concepts"
 msgstr "طراحی نورپردازی و ایده‌پردازی"
 
-#: .\templates\company\story.html:180
+#: templates/company/story.html:176
 msgid "EH"
 msgstr "EH"
 
-#: .\templates\company\story.html:182
+#: templates/company/story.html:178
 msgid "Engineering Head"
 msgstr "رئیس مهندسی"
 
-#: .\templates\company\story.html:183
+#: templates/company/story.html:179
 msgid "Product Layout & Development"
 msgstr "طراحی و توسعه محصول"
 
-#: .\templates\company\story.html:187
+#: templates/company/story.html:183
 msgid "CS"
 msgstr "CS"
 
-#: .\templates\company\story.html:189
+#: templates/company/story.html:185
 msgid "Client Success"
 msgstr "موفقیت مشتریان"
 
-#: .\templates\company\story.html:190
+#: templates/company/story.html:186
 msgid "Support & Technical Solutions"
 msgstr "پشتیبانی و راهکارهای فنی"
 
-#: .\templates\company\story.html:202
+#: templates/company/story.html:198
 msgid "Collaborations"
 msgstr "همکاری‌ها"
 
-#: .\templates\company\story.html:203
+#: templates/company/story.html:199
 msgid "Trusted by Professional Clients"
 msgstr "مورد اعتماد مشتریان حرفه‌ای"
 
-#: .\templates\company\story.html:206
+#: templates/company/story.html:202
 msgid "Partner Studio 01"
 msgstr "استودیو همکار ۰۱"
 
-#: .\templates\company\story.html:207
+#: templates/company/story.html:203
 msgid "Partner Studio 02"
 msgstr "استودیو همکار ۰۲"
 
-#: .\templates\company\story.html:208
+#: templates/company/story.html:204
 msgid "Partner Studio 03"
 msgstr "استودیو همکار ۰۳"
 
-#: .\templates\company\story.html:209
+#: templates/company/story.html:205
 msgid "Partner Studio 04"
 msgstr "استودیو همکار ۰۴"
 
-#: .\templates\company\story.html:210
+#: templates/company/story.html:206
 msgid "Partner Studio 05"
 msgstr "استودیو همکار ۰۵"
 
-#: .\templates\company\story.html:211
+#: templates/company/story.html:207
 msgid "Partner Studio 06"
 msgstr "استودیو همکار ۰۶"
 
-#: .\templates\includes\filter_sections.html:11
-#: .\templates\includes\filter_sections.html:291 .\templates\index.html:636
+#: templates/includes/filter_sections.html:11
+#: templates/includes/filter_sections.html:291 templates/index.html:569
 msgid "Application"
 msgstr "کاربرد"
 
-#: .\templates\includes\filter_sections.html:37
-#: .\templates\includes\filter_sections.html:306
+#: templates/includes/filter_sections.html:37
+#: templates/includes/filter_sections.html:306
 msgid "Product Family"
 msgstr "خانواده محصول"
 
-#: .\templates\includes\filter_sections.html:63
-#: .\templates\includes\filter_sections.html:321
+#: templates/includes/filter_sections.html:63
+#: templates/includes/filter_sections.html:321
+#: templates/products/product_detail.html:409
 msgid "Mounting Type"
 msgstr "نوع نصب"
 
-#: .\templates\includes\filter_sections.html:89
-#: .\templates\includes\filter_sections.html:335
-#: .\templates\products\product_detail.html:67
-#: .\templates\products\product_detail.html:270
-#: .\templates\products\product_detail.html:352
-#: .\templates\products\product_detail.html:391
+#: templates/includes/filter_sections.html:89
+#: templates/includes/filter_sections.html:335
+#: templates/products/product_detail.html:246
+#: templates/products/product_detail.html:341
+#: templates/products/product_detail.html:385
 msgid "Color Temperature"
 msgstr "دمای رنگ"
 
-#: .\templates\includes\filter_sections.html:115
+#: templates/includes/filter_sections.html:115
 msgid "More Filters"
 msgstr "فیلترهای بیشتر"
 
-#: .\templates\includes\filter_sections.html:126
-#: .\templates\includes\filter_sections.html:362
+#: templates/includes/filter_sections.html:126
+#: templates/includes/filter_sections.html:362
 msgid "Lumens"
 msgstr "لومن"
 
-#: .\templates\includes\filter_sections.html:141
-#: .\templates\includes\filter_sections.html:376
+#: templates/includes/filter_sections.html:141
+#: templates/includes/filter_sections.html:376
 msgid "Voltage"
 msgstr "ولتاژ"
 
-#: .\templates\includes\filter_sections.html:156
-#: .\templates\includes\filter_sections.html:390
-#: .\templates\products\product_detail.html:282
-#: .\templates\products\product_detail.html:397
+#: templates/includes/filter_sections.html:156
+#: templates/includes/filter_sections.html:390
+#: templates/products/product_detail.html:258
+#: templates/products/product_detail.html:391
 msgid "Beam Angle"
 msgstr "زاویه تابش"
 
-#: .\templates\includes\filter_sections.html:175
-#: .\templates\includes\filter_sections.html:404
-#: .\templates\products\product_detail.html:75
-#: .\templates\products\product_detail.html:276
-#: .\templates\products\product_detail.html:406
+#: templates/includes/filter_sections.html:175
+#: templates/includes/filter_sections.html:404
+#: templates/products/product_detail.html:252
+#: templates/products/product_detail.html:400
 msgid "IP Rating"
 msgstr "استاندارد IP"
 
-#: .\templates\includes\filter_sections.html:190
-#: .\templates\includes\filter_sections.html:418
-#: .\templates\products\product_detail.html:355
-#: .\templates\products\product_detail.html:409
+#: templates/includes/filter_sections.html:190
+#: templates/includes/filter_sections.html:418
+#: templates/products/product_detail.html:344
+#: templates/products/product_detail.html:403
 msgid "Dimmable"
 msgstr "قابلیت تنظیم نور"
 
-#: .\templates\includes\filter_sections.html:197
-#: .\templates\includes\filter_sections.html:424
-#: .\templates\products\product_detail.html:409
+#: templates/includes/filter_sections.html:197
+#: templates/includes/filter_sections.html:424
+#: templates/products/product_detail.html:403
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:795
 msgid "Yes"
 msgstr "بله"
 
-#: .\templates\includes\filter_sections.html:204
-#: .\templates\includes\filter_sections.html:430
+#: templates/includes/filter_sections.html:204
+#: templates/includes/filter_sections.html:430
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:796
 msgid "No"
 msgstr "خیر"
 
-#: .\templates\includes\filter_sections.html:210
-#: .\templates\includes\filter_sections.html:436
+#: templates/includes/filter_sections.html:210
+#: templates/includes/filter_sections.html:436
 msgid "CRI/Ra"
 msgstr "شاخص نمود رنگ (CRI)"
 
-#: .\templates\includes\filter_sections.html:229
-#: .\templates\includes\filter_sections.html:450
+#: templates/includes/filter_sections.html:229
+#: templates/includes/filter_sections.html:450
 msgid "Certifications"
 msgstr "گواهی‌نامه‌ها"
 
-#: .\templates\includes\filter_sections.html:247
-#: .\templates\includes\filter_sections.html:469
-#: .\templates\projects\project_list.html:71
+#: templates/includes/filter_sections.html:247
+#: templates/includes/filter_sections.html:469
+#: templates/projects/project_list.html:82
 msgid "Reset"
 msgstr "بازنشانی"
 
-#: .\templates\includes\filter_sections.html:250
-#: .\templates\includes\filter_sections.html:472
+#: templates/includes/filter_sections.html:250
+#: templates/includes/filter_sections.html:472
 msgid "Apply Filters"
 msgstr "اعمال فیلترها"
 
-#: .\templates\includes\filter_sections.html:257
+#: templates/includes/filter_sections.html:257
 msgid "Reset All"
 msgstr "پاک کردن همه"
 
-#: .\templates\includes\filter_sections.html:278
-#: .\templates\products\category_detail.html:161
-#: .\templates\products\child_detail.html:164
+#: templates/includes/filter_sections.html:278
+#: templates/products/category_detail.html:167
+#: templates/products/child_detail.html:168
+#: templates/products/family_detail.html:188
 msgid "Filters"
 msgstr "فیلترها"
 
-#: .\templates\includes\filter_sections.html:349
+#: templates/includes/filter_sections.html:349
 msgid "Wattage (W)"
 msgstr "توان (وات)"
 
-#: .\templates\includes\filter_sections.html:351
+#: templates/includes/filter_sections.html:351
 msgid "Min"
 msgstr "حداقل"
 
-#: .\templates\includes\filter_sections.html:354
+#: templates/includes/filter_sections.html:354
 msgid "to"
 msgstr "تا"
 
-#: .\templates\includes\filter_sections.html:355
+#: templates/includes/filter_sections.html:355
 msgid "Max"
 msgstr "حداکثر"
 
-#: .\templates\includes\footer.html:13
+#: templates/includes/footer.html:13
 msgid "Verona Lighting Logo"
 msgstr "لوگوی روشنایی ورونا"
 
-#: .\templates\includes\footer.html:26
+#: templates/includes/footer.html:26
 msgid "Headquarters"
 msgstr "دفتر مرکزی"
 
-#: .\templates\includes\footer.html:33
+#: templates/includes/footer.html:33
 msgid "Tel:"
 msgstr "تلفن تماس:"
 
-#: .\templates\includes\footer.html:47
+#: templates/includes/footer.html:53
 msgid "About Us"
 msgstr "درباره ما"
 
-#: .\templates\includes\footer.html:57 .\templates\includes\footer.html:117
-#: .\templates\includes\navbar.html:109 .\templates\includes\navbar.html:400
-#: .\templates\index.html:779
+#: templates/includes/footer.html:63 templates/includes/footer.html:123
+#: templates/includes/navbar.html:109 templates/includes/navbar.html:400
+#: templates/index.html:712
 msgid "Contact Us"
 msgstr "تماس با ما"
 
-#: .\templates\includes\footer.html:71
+#: templates/includes/footer.html:77
 msgid "Legal Details"
 msgstr "اطلاعات حقوقی"
 
-#: .\templates\includes\footer.html:77
+#: templates/includes/footer.html:83
 msgid "Imprint"
 msgstr "صاحب امتیاز"
 
-#: .\templates\includes\footer.html:82
+#: templates/includes/footer.html:88
 msgid "Terms & Conditions"
 msgstr "شرایط و قوانین"
 
-#: .\templates\includes\footer.html:87
+#: templates/includes/footer.html:93
 msgid "Data Privacy Policy"
 msgstr "سیاست حریم خصوصی"
 
-#: .\templates\includes\footer.html:92
+#: templates/includes/footer.html:98
 msgid "Terms of Use"
 msgstr "شرایط استفاده"
 
-#: .\templates\includes\footer.html:97
+#: templates/includes/footer.html:103
 msgid "Guarantee Information"
 msgstr "اطلاعات گارانتی"
 
-#: .\templates\includes\footer.html:102
+#: templates/includes/footer.html:108
 msgid "Accessibility Statement"
 msgstr "بیانیه دسترسی‌پذیری"
 
-#: .\templates\includes\footer.html:111
+#: templates/includes/footer.html:117
 msgid "Support & Services"
 msgstr "پشتیبانی و خدمات"
 
-#: .\templates\includes\footer.html:122
+#: templates/includes/footer.html:128
 msgid "Our Services"
 msgstr "خدمات ما"
 
-#: .\templates\includes\footer.html:127
+#: templates/includes/footer.html:133
 msgid "Report a Product Vulnerability"
 msgstr "گزارش آسیب‌پذیری محصول"
 
-#: .\templates\includes\footer.html:132
-#: .\templates\products\product_detail.html:322
+#: templates/includes/footer.html:138
+#: templates/products/product_detail.html:298
 msgid "Request a Quote"
 msgstr "درخواست پیش‌فاکتور"
 
-#: .\templates\includes\footer.html:152
+#: templates/includes/footer.html:158
 msgid "Verona Lighting | Developed by"
 msgstr "روشنایی ورونا | طراحی و توسعه توسط"
 
-#: .\templates\includes\footer.html:164
+#: templates/includes/footer.html:170
 msgid "Instagram"
 msgstr "اینستاگرام"
 
-#: .\templates\includes\footer.html:173
+#: templates/includes/footer.html:179
 msgid "Telegram"
 msgstr "تلگرام"
 
-#: .\templates\includes\footer.html:182
+#: templates/includes/footer.html:188
 msgid "WhatsApp"
 msgstr "واتس‌اپ"
 
-#: .\templates\includes\navbar.html:20 .\templates\includes\navbar.html:26
+#: templates/includes/navbar.html:20 templates/includes/navbar.html:26
+#: templates/includes/navbar.html:223
 msgid "Verona Lighting logo"
 msgstr "لوگوی روشنایی ورونا"
 
-#: .\templates\includes\navbar.html:43 .\templates\includes\navbar.html:237
-#: .\templates\includes\navbar.html:307 .\templates\includes\navbar.html:333
-#: .\templates\products\category_detail.html:39
-#: .\templates\products\category_detail.html:77
-#: .\templates\products\child_detail.html:36
-#: .\templates\products\child_detail.html:82
-#: .\templates\products\product_detail.html:101
-#: .\templates\products\product_detail.html:173
+#: templates/includes/navbar.html:37 templates/includes/navbar.html:195
+#: templates/products/search.html:25 templates/products/search.html:56
+msgid "Search"
+msgstr "جستجو"
+
+#: templates/includes/navbar.html:43 templates/includes/navbar.html:237
+#: templates/includes/navbar.html:307 templates/includes/navbar.html:333
+#: templates/products/category_detail.html:38
+#: templates/products/category_detail.html:77
+#: templates/products/child_detail.html:35
+#: templates/products/child_detail.html:82
+#: templates/products/family_detail.html:127
+#: templates/products/product_detail.html:72
+#: templates/products/product_detail.html:147
 msgid "Products"
 msgstr "محصولات"
 
-#: .\templates\includes\navbar.html:50 .\templates\includes\navbar.html:310
+#: templates/includes/navbar.html:50 templates/includes/navbar.html:310
 msgid "All Products"
 msgstr "همه محصولات"
 
-#: .\templates\includes\navbar.html:51
+#: templates/includes/navbar.html:51
 msgid "Explore our complete range of professional lighting solutions."
 msgstr "مجموعه کامل راهکارهای روشنایی حرفه‌ای ما را کشف کنید."
 
-#: .\templates\includes\navbar.html:89 .\templates\includes\navbar.html:245
-#: .\templates\includes\navbar.html:364
-#: .\templates\products\application_detail.html:78
-#: .\templates\products\application_list.html:8
-#: .\templates\products\application_list.html:17
-#: .\templates\products\application_list.html:26
-#: .\templates\products\application_list.html:47
-#: .\templates\products\application_list.html:58
-#: .\templates\products\application_list.html:81
-#: .\templates\products\application_list.html:85
+#: templates/includes/navbar.html:89 templates/includes/navbar.html:245
+#: templates/includes/navbar.html:364
+#: templates/products/application_detail.html:44
+#: templates/products/application_detail.html:80
+#: templates/products/application_list.html:46
+#: templates/products/application_list.html:81
 msgid "Applications"
 msgstr "کاربردها"
 
-#: .\templates\includes\navbar.html:103
+#: templates/includes/navbar.html:103
 msgid "About Company"
 msgstr "درباره شرکت"
 
-#: .\templates\includes\navbar.html:104
+#: templates/includes/navbar.html:104
 msgid ""
 "Learn about our lighting philosophy, craftsmanship, innovation, and brand "
 "story."
 msgstr "درباره فلسفه روشنایی، مهارت، نوآوری و داستان برند ما بیشتر بدانید."
 
-#: .\templates\includes\navbar.html:107 .\templates\includes\navbar.html:398
+#: templates/includes/navbar.html:107 templates/includes/navbar.html:398
 msgid "About Verona"
 msgstr "درباره ورونا"
 
-#: .\templates\includes\navbar.html:119 .\templates\includes\navbar.html:261
-#: .\templates\includes\navbar.html:421
+#: templates/includes/navbar.html:119 templates/includes/navbar.html:261
+#: templates/includes/navbar.html:421
 msgid "Services"
 msgstr "خدمات"
 
-#: .\templates\includes\navbar.html:126 .\templates\includes\navbar.html:269
-#: .\templates\index.html:445 .\templates\projects\project_detail.html:78
+#: templates/includes/navbar.html:126 templates/includes/navbar.html:269
+#: templates/projects/project_detail.html:78
 msgid "Projects"
 msgstr "پروژه‌ها"
 
-#: .\templates\includes\navbar.html:233
+# Accessibility labels and product-list copy
+#: templates/includes/navbar.html:201
+msgid "Open menu"
+msgstr "باز کردن منو"
+
+#: templates/includes/navbar.html:225
+msgid "Close menu"
+msgstr "بستن منو"
+
+#: templates/includes/navbar.html:233
 msgid "Menu"
 msgstr "منو"
 
-#: .\templates\includes\navbar.html:273
+#: templates/includes/navbar.html:273
 msgid "Language"
 msgstr "زبان"
 
-#: .\templates\includes\navbar.html:298 .\templates\includes\navbar.html:355
-#: .\templates\includes\navbar.html:388 .\templates\includes\navbar.html:412
+#: templates/includes/navbar.html:298 templates/includes/navbar.html:355
+#: templates/includes/navbar.html:388 templates/includes/navbar.html:412
 msgid "All"
 msgstr "همه"
 
-#: .\templates\includes\navbar.html:367
+#: templates/includes/navbar.html:367
 msgid "All Applications"
 msgstr "همه کاربردها"
 
-#: .\templates\includes\navbar.html:422
+#: templates/includes/navbar.html:422
 msgid "All Services"
 msgstr "همه خدمات"
 
-#: .\templates\includes\navbar.html:423 .\templates\index.html:696
+#: templates/includes/navbar.html:423 templates/index.html:629
 msgid "Office"
 msgstr "اداری"
 
-#: .\templates\includes\navbar.html:424 .\templates\index.html:472
-#: .\templates\index.html:656
+#: templates/includes/navbar.html:424 templates/index.html:405
+#: templates/index.html:589
 msgid "Retail"
 msgstr "فضاهای تجاری"
 
-#: .\templates\includes\navbar.html:425
+#: templates/includes/navbar.html:425
 msgid "Urban"
 msgstr "شهری"
 
-#: .\templates\includes\navbar.html:426
+#: templates/includes/navbar.html:426
 msgid "Sports"
 msgstr "ورزشی"
 
-#: .\templates\index.html:296
+#: templates/index.html:271
 msgid "Verona Lighting"
 msgstr "روشنایی ورونا"
 
-#: .\templates\index.html:299
+#: templates/index.html:274
 msgid "Architectural lighting slide 2"
 msgstr "اسلاید ۲ روشنایی معماری"
 
-#: .\templates\index.html:302
+#: templates/index.html:277
 msgid "Architectural lighting slide 3"
 msgstr "اسلاید ۳ روشنایی معماری"
 
-#: .\templates\index.html:305
+#: templates/index.html:280
 msgid "Architectural lighting slide 4"
 msgstr "اسلاید ۴ روشنایی معماری"
 
-#: .\templates\index.html:308
+#: templates/index.html:283
 msgid "Architectural lighting slide 5"
 msgstr "اسلاید ۵ روشنایی معماری"
 
-#: .\templates\index.html:330
-msgid "Architectural Lighting"
-msgstr "روشنایی معماری"
-
-#: .\templates\index.html:343 .\templates\index.html:375
-msgid "Precision Lighting"
-msgstr "روشنایی دقیق"
-
-#: .\templates\index.html:344 .\templates\index.html:376
-msgid "for Modern"
-msgstr "برای معماری"
-
-#: .\templates\index.html:345 .\templates\index.html:377
-msgid "Architecture"
-msgstr "مدرن"
-
-#: .\templates\index.html:356
-msgid "Engineered luminaires for modern spaces."
-msgstr "چراغ‌های مهندسی‌شده برای فضاهای مدرن."
-
-#: .\templates\index.html:362
+#: templates/index.html:292
 msgid "Previous slide"
 msgstr "اسلاید قبلی"
 
-#: .\templates\index.html:365
+#: templates/index.html:295
 msgid "Next slide"
 msgstr "اسلاید بعدی"
 
-#: .\templates\index.html:380
+#: templates/index.html:304
+msgid "Architectural Lighting"
+msgstr "روشنایی معماری"
+
+#: templates/index.html:308
+msgid "Precision Lighting"
+msgstr "روشنایی دقیق"
+
+#: templates/index.html:309
+msgid "for Modern"
+msgstr "برای معماری"
+
+#: templates/index.html:310
+msgid "Architecture"
+msgstr "مدرن"
+
+#: templates/index.html:313
 msgid "Engineered luminaires for facade, landscape and exterior spaces."
 msgstr "چراغ‌های مهندسی‌شده برای نما، محوطه و فضاهای بیرونی."
 
-#: .\templates\index.html:386
+#: templates/index.html:319
 msgid "View Projects"
 msgstr "مشاهده پروژه‌ها"
 
-#: .\templates\index.html:392
+#: templates/index.html:325
 msgid "Explore Products"
 msgstr "مشاهده محصولات"
 
-#: .\templates\index.html:408
+#: templates/index.html:341
 msgid "Hero slides"
 msgstr "اسلایدهای اصلی"
 
-#: .\templates\index.html:409
+#: templates/index.html:342
 msgid "Slide 1"
 msgstr "اسلاید ۱"
 
-#: .\templates\index.html:413
+#: templates/index.html:346
 msgid "Slide 2"
 msgstr "اسلاید ۲"
 
-#: .\templates\index.html:417
+#: templates/index.html:350
 msgid "Slide 3"
 msgstr "اسلاید ۳"
 
-#: .\templates\index.html:421
+#: templates/index.html:354
 msgid "Slide 4"
 msgstr "اسلاید ۴"
 
-#: .\templates\index.html:425
+#: templates/index.html:358
 msgid "Slide 5"
 msgstr "اسلاید ۵"
 
-#: .\templates\index.html:445
-msgid "Featured"
-msgstr "پروژه‌های"
-
-#: .\templates\index.html:448
+#: templates/index.html:381
 msgid ""
 "Lighting solutions that transform architectural spaces across retail, "
 "hospitality, and commercial environments."
@@ -1331,120 +1340,119 @@ msgstr ""
 "راهکارهای روشنایی که فضاهای معماری را در محیط‌های فضاهای تجاری، مهمان‌نوازی و "
 "تجاری متحول می‌کنند."
 
-#: .\templates\index.html:455 .\templates\index.html:505
-#: .\templates\projects\project_list.html:14
+#: templates/index.html:388 templates/index.html:438
+#: templates/projects/project_list.html:25
 msgid "All Projects"
 msgstr "همه پروژه‌ها"
 
-#: .\templates\index.html:464 .\templates\index.html:474
+#: templates/index.html:397 templates/index.html:407
 msgid "Diamond Boutique"
 msgstr "بوتیک الماس"
 
-#: .\templates\index.html:472 .\templates\index.html:491
+#: templates/index.html:405 templates/index.html:424
 msgid "Tehran, Iran"
 msgstr "تهران، ایران"
 
-#: .\templates\index.html:475
+#: templates/index.html:408
 msgid "Track lighting system · 3000K warm white"
 msgstr "سیستم ریلی نورپردازی · نور سفید گرم ۳۰۰۰ کلوین"
 
-#: .\templates\index.html:483 .\templates\index.html:493
+#: templates/index.html:416 templates/index.html:426
 msgid "Private Villa"
 msgstr "ویلای خصوصی"
 
-#: .\templates\index.html:494
+#: templates/index.html:427
 msgid "Custom linear LED · DALI control"
 msgstr "چراغ خطی سفارشی LED · کنترل DALI"
 
-#: .\templates\index.html:523
+#: templates/index.html:456
 msgid "Product"
 msgstr "دسته‌بندی"
 
-#: .\templates\index.html:523
+#: templates/index.html:456
 msgid "Categories"
 msgstr "محصولات"
 
-#: .\templates\index.html:526
+#: templates/index.html:459
 msgid ""
 "Architectural lighting solutions designed for commercial, residential and "
 "outdoor applications."
 msgstr ""
 "راهکارهای روشنایی معماری طراحی‌شده برای کاربردهای تجاری، مسکونی و بیرونی."
 
-#: .\templates\index.html:533
+#: templates/index.html:466
 msgid "Previous category"
 msgstr "دسته قبلی"
 
-#: .\templates\index.html:537
+#: templates/index.html:470
 msgid "Next category"
 msgstr "دسته بعدی"
 
-#: .\templates\index.html:540 .\templates\index.html:619
-#: .\templates\projects\project_list.html:46
+#: templates/index.html:473 templates/index.html:552
+#: templates/projects/project_list.html:57
 msgid "All Categories"
 msgstr "همه دسته‌بندی‌ها"
 
-#: .\templates\index.html:550
+#: templates/index.html:483
 msgid "Magnet Linear"
 msgstr "خطی مگنتی"
 
-#: .\templates\index.html:554
+#: templates/index.html:487
 msgid "Low Voltage Magneto"
 msgstr "مگنتو ولتاژ پایین"
 
-#: .\templates\index.html:561 .\templates\index.html:565
+#: templates/index.html:494 templates/index.html:498
 msgid "Linear"
 msgstr "خطی"
 
-#: .\templates\index.html:572 .\templates\index.html:576
+#: templates/index.html:505 templates/index.html:509
 msgid "Industrial"
 msgstr "صنعتی"
 
-#: .\templates\index.html:583 .\templates\index.html:587
+#: templates/index.html:516 templates/index.html:520
 msgid "Panel & Downlights"
 msgstr "پنل و داونلایت"
 
-#: .\templates\index.html:595 .\templates\index.html:600
+#: templates/index.html:528 templates/index.html:533
 msgid "Decorative"
 msgstr "تزئینی"
 
-#: .\templates\index.html:607 .\templates\index.html:611
+#: templates/index.html:540 templates/index.html:544
 msgid "Outdoor"
 msgstr "محوطه بیرونی"
 
-#: .\templates\index.html:636
+#: templates/index.html:569
 msgid "Solutions by"
 msgstr "راهکارها بر اساس"
 
-#: .\templates\index.html:639
+#: templates/index.html:572
 msgid "Tailored lighting systems for every architectural context"
 msgstr "سیستم‌های روشنایی متناسب با هر بستر معماری"
 
-#: .\templates\index.html:645
+#: templates/index.html:578
 msgid "Previous application"
 msgstr "کاربرد قبلی"
 
-#: .\templates\index.html:648
+#: templates/index.html:581
 msgid "Next application"
 msgstr "کاربرد بعدی"
 
-#: .\templates\index.html:661
+#: templates/index.html:594
 msgid "Retail Spaces"
 msgstr "فضاهای تجاری"
 
-#: .\templates\index.html:663
+#: templates/index.html:596
 msgid ""
 "Precision lighting designed to highlight products and create immersive "
 "retail environments."
 msgstr ""
 "روشنایی دقیق طراحی‌شده برای برجسته‌سازی محصولات و ایجاد محیط‌های تجاری غوطه‌ور."
 
-#: .\templates\index.html:668 .\templates\index.html:688
-#: .\templates\index.html:708
+#: templates/index.html:601 templates/index.html:621 templates/index.html:641
 msgid "Explore Solutions"
 msgstr "مشاهده راهکارها"
 
-#: .\templates\index.html:683
+#: templates/index.html:616
 msgid ""
 "Elegant lighting systems that enhance ambience for hotels, restaurants and "
 "lounges."
@@ -1452,45 +1460,45 @@ msgstr ""
 "سیستم‌های روشنایی شیک که فضای هتل‌ها، رستوران‌ها و سالن‌های نشیمن را بهبود "
 "می‌بخشند."
 
-#: .\templates\index.html:701
+#: templates/index.html:634
 msgid "Office &amp; Workplace"
 msgstr "اداری و محیط کار"
 
-#: .\templates\index.html:703
+#: templates/index.html:636
 msgid ""
 "Human‑centric lighting solutions designed to improve productivity and visual "
 "comfort."
 msgstr "راهکارهای روشنایی انسان‌محور طراحی‌شده برای افزایش بهره‌وری و آسایش بصری."
 
-#: .\templates\index.html:725
+#: templates/index.html:658
 msgid "Architectural lighting detail"
 msgstr "جزئیات روشنایی معماری"
 
-#: .\templates\index.html:734
+#: templates/index.html:667
 msgid "Our Philosophy"
 msgstr "فلسفه ما"
 
-#: .\templates\index.html:738
+#: templates/index.html:671
 msgid "We believe light shapes"
 msgstr "ما معتقدیم نور شکل‌دهنده"
 
-#: .\templates\index.html:738
+#: templates/index.html:671
 msgid "experience"
 msgstr "تجربه است"
 
-#: .\templates\index.html:767
+#: templates/index.html:700
 msgid "Start a Project"
 msgstr "شروع یک پروژه"
 
-#: .\templates\index.html:770
+#: templates/index.html:703
 msgid "Ready to Illuminate Your"
 msgstr "آماده‌اید تا"
 
-#: .\templates\index.html:770
+#: templates/index.html:703
 msgid "Next Project?"
 msgstr "پروژه بعدی خود را روشن کنید؟"
 
-#: .\templates\index.html:773
+#: templates/index.html:706
 msgid ""
 "Get expert consultation and custom lighting solutions tailored to your "
 "architectural vision."
@@ -1498,140 +1506,139 @@ msgstr ""
 "از مشاوره تخصصی و راهکارهای روشنایی سفارشی متناسب با چشم‌انداز معماری خود "
 "بهره‌مند شوید."
 
-#: .\templates\index.html:785
+#: templates/index.html:718
 msgid "Download Catalog"
 msgstr "دانلود کاتالوگ"
 
-#: .\templates\products\application_detail.html:76
-#: .\templates\products\application_list.html:41
-#: .\templates\products\application_list.html:79
-#: .\templates\products\category_detail.html:33
-#: .\templates\products\category_detail.html:75
-#: .\templates\products\child_detail.html:30
-#: .\templates\products\child_detail.html:80
-#: .\templates\products\product_detail.html:94
-#: .\templates\products\product_detail.html:170
-#: .\templates\products\product_list.html:57
-#: .\templates\products\search.html:12
-#: .\templates\projects\project_detail.html:76
+#: templates/products/application_detail.html:43
+#: templates/products/application_detail.html:78
+#: templates/products/application_list.html:40
+#: templates/products/application_list.html:79
+#: templates/products/category_detail.html:32
+#: templates/products/category_detail.html:75
+#: templates/products/child_detail.html:29
+#: templates/products/child_detail.html:80
+#: templates/products/family_detail.html:124
+#: templates/products/product_detail.html:65
+#: templates/products/product_detail.html:144
+#: templates/products/product_list.html:57 templates/products/search.html:21
+#: templates/projects/project_detail.html:76
 msgid "Home"
 msgstr "خانه"
 
-#: .\templates\products\application_detail.html:101
+#: templates/products/application_detail.html:103
 msgid "No Cover Captured"
 msgstr "کاور یافت نشد"
 
-#: .\templates\products\application_detail.html:122
+#: templates/products/application_detail.html:124
 msgid "Solutions"
 msgstr "راهکارها"
 
-#: .\templates\products\application_detail.html:123
-#: .\templates\products\application_detail.html:211
+#: templates/products/application_detail.html:125
+#: templates/products/application_detail.html:213
 msgid "Case Studies"
 msgstr "نمونه‌های موردی"
 
-#: .\templates\products\application_detail.html:124
-#: .\templates\projects\project_detail.html:130
+#: templates/products/application_detail.html:126
+#: templates/projects/project_detail.html:130
 msgid "Downloads"
 msgstr "دانلودها"
 
-#: .\templates\products\application_detail.html:133
+#: templates/products/application_detail.html:135
 msgid "Our Solutions"
 msgstr "راهکارهای ما"
 
-#: .\templates\products\application_detail.html:191
+#: templates/products/application_detail.html:193
 msgid "View Solutions"
 msgstr "مشاهده راهکارها"
 
-#: .\templates\products\application_detail.html:202
-#: .\templates\products\child_detail.html:170
+#: templates/products/application_detail.html:204
+#: templates/products/child_detail.html:174
+#: templates/products/family_detail.html:195
 msgid "No products match your filters."
 msgstr "هیچ محصولی با فیلترهای شما مطابقت ندارد."
 
-#: .\templates\products\application_detail.html:241
+#: templates/products/application_detail.html:243
 msgid "Explore Project"
 msgstr "بررسی پروژه"
 
-#: .\templates\products\application_detail.html:249
+#: templates/products/application_detail.html:251
 msgid "No case studies available yet."
 msgstr "هنوز هیچ نمونه موردی در دسترس نیست."
 
-#: .\templates\products\application_detail.html:259
-#: .\templates\projects\project_detail.html:299
+#: templates/products/application_detail.html:261
+#: templates/projects/project_detail.html:301
 msgid "Documentation"
 msgstr "مستندات فنی"
 
-#: .\templates\products\application_detail.html:289
-#: .\templates\projects\project_detail.html:334
+#: templates/products/application_detail.html:291
+#: templates/projects/project_detail.html:336
 msgid "Download"
 msgstr "دانلود"
 
-#: .\templates\products\application_detail.html:296
+#: templates/products/application_detail.html:298
 msgid "No downloads available yet."
 msgstr "هنوز هیچ دانلودی در دسترس نیست."
 
-#: .\templates\products\application_list.html:5
-msgid "Lighting Applications"
-msgstr "کاربردهای روشنایی"
-
-#: .\templates\products\application_list.html:10
+#: templates/products/application_list.html:9
 msgid "B2B lighting, commercial lighting, industrial lighting applications"
 msgstr "روشنایی B2B، روشنایی تجاری، کاربردهای روشنایی صنعتی"
 
-#: .\templates\products\application_list.html:105
+#: templates/products/application_list.html:111
 msgid "lighting solutions"
 msgstr "راهکارهای روشنایی"
 
-#: .\templates\products\application_list.html:125
+#: templates/products/application_list.html:136
 msgid "No applications available yet"
 msgstr "هنوز هیچ کاربردی در دسترس نیست"
 
-#: .\templates\products\category_detail.html:152
+#: templates/products/category_detail.html:158
 #, python-format
 msgid "Showing <strong class=\"text-[#1a1a1a]\">%(count)s</strong> families in"
 msgstr "نمایش <strong class=\"text-[#1a1a1a]\">%(count)s</strong> خانواده در"
 
-#: .\templates\products\category_detail.html:167
+#: templates/products/category_detail.html:173
 msgid "No family match your filters."
 msgstr "هیچ خانواده‌ای با فیلترهای شما مطابقت ندارد."
 
-#: .\templates\products\category_detail.html:168
-#: .\templates\products\child_detail.html:171
+#: templates/products/category_detail.html:174
+#: templates/products/child_detail.html:175
+#: templates/products/family_detail.html:196
 msgid "Try adjusting the specs or reset to browse all."
 msgstr "مشخصات را تغییر دهید یا برای مشاهده همه، فیلترها را بازنشانی کنید."
 
-#: .\templates\products\category_detail.html:175
+#: templates/products/category_detail.html:181
 msgid "families"
 msgstr "خانواده‌ها"
 
-#: .\templates\products\category_detail.html:179
+#: templates/products/category_detail.html:185
 #, python-format
 msgid "Explore <span class=\"text-[#727272]\">%(name)s</span> families"
 msgstr "بررسی خانواده‌های <span class=\"text-[#727272]\">%(name)s</span>"
 
-#: .\templates\products\category_detail.html:182
-#: .\templates\products\child_detail.html:186
+#: templates/products/category_detail.html:188
+#: templates/products/child_detail.html:190
 msgid ""
 "Choose a family to discover the complete product lineup within this "
 "collection."
 msgstr "برای مشاهده مجموعه کامل محصولات این مجموعه، یک خانواده را انتخاب کنید."
 
-#: .\templates\products\category_detail.html:241
-#: .\templates\products\child_detail.html:250
+#: templates/products/category_detail.html:247
+#: templates/products/child_detail.html:254
 msgid "View Products"
 msgstr "مشاهده محصولات"
 
-#: .\templates\products\category_detail.html:251
-#: .\templates\products\child_detail.html:260
+#: templates/products/category_detail.html:257
+#: templates/products/child_detail.html:264
 msgid "Explore Product Sheet"
 msgstr "مشاهده برگه مشخصات محصول"
 
-#: .\templates\products\child_detail.html:59
-#: .\templates\products\child_detail.html:179
+#: templates/products/child_detail.html:59
+#: templates/products/child_detail.html:183
 msgid "Product Families"
 msgstr "خانواده‌های محصول"
 
-#: .\templates\products\child_detail.html:97
+#: templates/products/child_detail.html:97
 msgid ""
 "Browse our range of indoor lighting solutions designed for performance, "
 "efficiency, and visual comfort."
@@ -1639,7 +1646,7 @@ msgstr ""
 "مجموعه راهکارهای روشنایی داخلی ما را که برای عملکرد، بازدهی بالا و آسایش "
 "بصری طراحی شده‌اند، بررسی کنید."
 
-#: .\templates\products\child_detail.html:155
+#: templates/products/child_detail.html:159
 #, python-format
 msgid ""
 "\n"
@@ -1652,241 +1659,241 @@ msgstr ""
 "<strong class=\"text-[#727272]\">%(family_name)s</strong>\n"
 "      "
 
-#: .\templates\products\child_detail.html:183
+#: templates/products/child_detail.html:187
 #, python-format
 msgid "Explore <span class=\"text-[#727272]\">%(child_name)s</span> Families"
 msgstr "بررسی خانواده‌های <span class=\"text-[#727272]\">%(child_name)s</span>"
 
-#: .\templates\products\product_detail.html:228
+#: templates/products/family_detail.html:175
+#: templates/projects/project_list.html:93
+msgid "Showing"
+msgstr "در حال نمایش"
+
+#: templates/products/family_detail.html:175
+msgid "products in"
+msgstr "محصول در"
+
+#: templates/products/product_detail.html:196
 msgid "image 1"
 msgstr "تصویر ۱"
 
-#: .\templates\products\product_detail.html:233
-msgid "image 2"
-msgstr "تصویر ۲"
-
-#: .\templates\products\product_detail.html:238
-msgid "image 3"
-msgstr "تصویر ۳"
-
-#: .\templates\products\product_detail.html:243
-msgid "image 4"
-msgstr "تصویر ۴"
-
-#: .\templates\products\product_detail.html:258
-msgid "Lumens Output"
-msgstr "خروجی لومن"
-
-#: .\templates\products\product_detail.html:264
-#: .\templates\products\product_detail.html:454
-msgid "Power"
-msgstr "توان"
-
-#: .\templates\products\product_detail.html:288
-msgid "Lifespan"
-msgstr "طول عمر"
-
-#: .\templates\products\product_detail.html:301
-msgid "Finish"
-msgstr "رنگ و پرداخت نهایی"
-
-#: .\templates\products\product_detail.html:326
-msgid "Download Product Sheet"
-msgstr "دانلود برگه محصول"
-
-#: .\templates\products\product_detail.html:336
-msgid "Description"
-msgstr "توضیحات"
-
-#: .\templates\products\product_detail.html:366
-msgid "Description and Applications"
-msgstr "توضیحات و کاربردها"
-
-#: .\templates\products\product_detail.html:337
-msgid "Specifications"
-msgstr "مشخصات فنی"
-
-#: .\templates\products\product_detail.html:338
-msgid "Materials"
-msgstr "متریال"
-
-#: .\templates\products\product_detail.html:339
-msgid "Installation"
-msgstr "نصب"
-
-#: .\templates\products\product_detail.html:349
-msgid "Key Features"
-msgstr "ویژگی‌های کلیدی"
-
-#: .\templates\products\product_detail.html:358
-#: .\templates\products\product_detail.html:537
-msgid "CRI"
-msgstr "شاخص نمود رنگ (CRI)"
-
-#: .\templates\products\product_detail.html:361
-msgid "hour LED lifespan"
-msgstr "ساعت طول عمر LED"
-
-#: .\templates\products\product_detail.html:364
-msgid "rated"
-msgstr "رتبه‌بندی شده"
-
-#: .\templates\products\product_detail.html:367
-msgid "Base"
-msgstr "پایه"
-
-#: .\templates\products\product_detail.html:379
-msgid "Parameter"
-msgstr "پارامتر"
-
-#: .\templates\products\product_detail.html:380
-msgid "Value"
-msgstr "مقدار"
-
-#: .\templates\products\product_detail.html:385
-msgid "Power Consumption"
-msgstr "مصرف انرژی"
-
-#: .\templates\products\product_detail.html
+#: templates/products/product_detail.html:227
+#: templates/products/product_detail.html:376
+#: templates/products/product_detail.html:451
 msgid "Maximum Lamp Power"
 msgstr "حداکثر توان لامپ"
 
-#: .\templates\products\product_detail.html
+#: templates/products/product_detail.html:227
 msgid "Wattage"
 msgstr "توان"
 
-#: .\templates\products\product_detail.html:388
-msgid "Luminous Flux"
-msgstr "شار نوری"
+#: templates/products/product_detail.html:234
+msgid "Lumens Output"
+msgstr "خروجی لومن"
 
-#: .\templates\products\product_detail.html:394
-msgid "Color Rendering Index"
-msgstr "شاخص نمود رنگ"
-
-#: .\templates\products\product_detail.html:400
+#: templates/products/product_detail.html:240
+#: templates/products/product_detail.html:394
 msgid "Input Voltage"
 msgstr "ولتاژ ورودی"
 
-#: .\templates\products\product_detail.html:403
+#: templates/products/product_detail.html:264
+msgid "Lifespan"
+msgstr "طول عمر"
+
+#: templates/products/product_detail.html:277
+msgid "Finish"
+msgstr "رنگ و پرداخت نهایی"
+
+#: templates/products/product_detail.html:303
+msgid "Download Product Sheet"
+msgstr "دانلود برگه محصول"
+
+#: templates/products/product_detail.html:314
+msgid "Description"
+msgstr "توضیحات"
+
+#: templates/products/product_detail.html:315
+msgid "Specifications"
+msgstr "مشخصات فنی"
+
+#: templates/products/product_detail.html:316
+msgid "Materials"
+msgstr "متریال"
+
+#: templates/products/product_detail.html:317
+msgid "Installation"
+msgstr "نصب"
+
+#: templates/products/product_detail.html:338
+msgid "Key Features"
+msgstr "ویژگی‌های کلیدی"
+
+#: templates/products/product_detail.html:347
+#: templates/products/product_detail.html:539
+msgid "CRI"
+msgstr "شاخص نمود رنگ (CRI)"
+
+#: templates/products/product_detail.html:350
+msgid "hour LED lifespan"
+msgstr "ساعت طول عمر LED"
+
+#: templates/products/product_detail.html:353
+msgid "rated"
+msgstr "رتبه‌بندی شده"
+
+#: templates/products/product_detail.html:356
+msgid "Base"
+msgstr "پایه"
+
+#: templates/products/product_detail.html:368
+msgid "Parameter"
+msgstr "پارامتر"
+
+#: templates/products/product_detail.html:369
+msgid "Value"
+msgstr "مقدار"
+
+#: templates/products/product_detail.html:376
+msgid "Power Consumption"
+msgstr "مصرف انرژی"
+
+#: templates/products/product_detail.html:382
+msgid "Luminous Flux"
+msgstr "شار نوری"
+
+#: templates/products/product_detail.html:388
+msgid "Color Rendering Index"
+msgstr "شاخص نمود رنگ"
+
+#: templates/products/product_detail.html:397
 msgid "LED Lifespan"
 msgstr "طول عمر LED"
 
-#: .\templates\products\product_detail.html:412
+#: templates/products/product_detail.html:406
 msgid "Lamp Base"
 msgstr "سرپیچ لامپ"
 
-#: .\templates\products\product_detail.html:445
+#: templates/products/product_detail.html:441
 msgid "Complete Range"
 msgstr "مجموعه کامل"
 
-#: .\templates\products\product_detail.html:446
+#: templates/products/product_detail.html:442
 msgid "Models & Sizes"
 msgstr "مدل‌ها و اندازه‌ها"
 
-#: .\templates\products\product_detail.html:453
+#: templates/products/product_detail.html:449
 msgid "Model Code"
 msgstr "کد مدل"
 
-#: .\templates\products\product_detail.html:455
+#: templates/products/product_detail.html:451
+msgid "Power"
+msgstr "توان"
+
+#: templates/products/product_detail.html:453
 msgid "Dimensions"
 msgstr "ابعاد"
 
-#: .\templates\products\product_detail.html:456
+#: templates/products/product_detail.html:454
 msgid "Weight"
 msgstr "وزن"
 
-#: .\templates\products\product_detail.html:457
+#: templates/products/product_detail.html:455
 msgid "Notes"
 msgstr "یادداشت‌ها"
 
-#: .\templates\products\product_detail.html:476
+#: templates/products/product_detail.html:474
 msgid "kg"
 msgstr "کیلوگرم"
 
-#: .\templates\products\product_detail.html:484
+#: templates/products/product_detail.html:482
 msgid "No variants available"
 msgstr "هیچ گزینه‌ای موجود نیست"
 
-#: .\templates\products\product_detail.html:497
+#: templates/products/product_detail.html:499
 msgid "You May Also Like"
 msgstr "ممکن است این‌ها را هم بپسندید"
 
-#: .\templates\products\product_detail.html:498
+#: templates/products/product_detail.html:500
 msgid "Related Products"
 msgstr "محصولات مرتبط"
 
-#: .\templates\products\product_detail.html:500
+#: templates/products/product_detail.html:502
 msgid "Browse Collection"
 msgstr "مشاهده مجموعه"
 
-#: .\templates\products\product_detail.html:516
-#: .\templates\products\product_detail.html:525
+#: templates/products/product_detail.html:518
+#: templates/products/product_detail.html:527
 msgid "View Details"
 msgstr "مشاهده جزئیات"
 
-#: .\templates\products\product_detail.html:539
+#: templates/products/product_detail.html:541
 msgid "finishes"
 msgstr "پرداخت‌ها"
 
-#: .\templates\products\product_detail.html:544
+#: templates/products/product_detail.html:546
 msgid "No related products found."
 msgstr "محصول مرتبطی پیدا نشد."
 
-#: .\templates\products\product_detail.html:554
+#: templates/products/product_detail.html:556
 msgid "Full Product Range"
 msgstr "مجموعه کامل محصولات"
 
-#: .\templates\products\product_detail.html:555
+#: templates/products/product_detail.html:557
 msgid "Explore the Complete Verona Catalogue 2025"
 msgstr "کاتالوگ کامل ورونا ۲۰۲۵ را بررسی کنید"
 
-#: .\templates\products\product_detail.html:556
+#: templates/products/product_detail.html:558
 msgid "Download our full 2025 product catalogue featuring over 400 luminaires."
 msgstr "کاتالوگ کامل محصولات ۲۰۲۵ ما شامل بیش از ۴۰۰ چراغ را دانلود کنید."
 
-#: .\templates\products\product_detail.html:561
+#: templates/products/product_detail.html:563
 msgid "Download Catalogue"
 msgstr "دانلود کاتالوگ"
 
-#: .\templates\products\product_list.html:59
-#: .\templates\products\product_list.html:63
+#: templates/products/product_detail.html:571
+msgid "Expanded product image"
+msgstr "تصویر بزرگ‌شده محصول"
+
+#: templates/products/product_list.html:59
+#: templates/products/product_list.html:63
 msgid "Product Categories"
 msgstr "دسته بندی محصولات"
 
-#: .\templates\products\search.html:4
+#: templates/products/search.html:4
 msgid "Search Products"
 msgstr "جستجوی محصولات"
 
-#: .\templates\products\search.html:16 .\templates\products\search.html:47
-msgid "Search"
-msgstr "جستجو"
+#: templates/products/search.html:11
+msgid ""
+"Search Verona Lighting products by name, family, model code, or technical "
+"specification."
+msgstr ""
 
-#: .\templates\products\search.html:24
+#: templates/products/search.html:33
 msgid "Explore Our Lighting Collection"
 msgstr "مجموعه نورپردازی ما را کاوش کنید"
 
-#: .\templates\products\search.html:27
+#: templates/products/search.html:36
 msgid ""
 "Discover architectural lighting solutions that seamlessly blend structural "
 "functionality with elegant design."
 msgstr ""
-"راهکارهای نورپردازی معماری را کشف کنید که به طور یکپارچه کارایی ساختاری را با "
-"طراحی ظریف ترکیب می‌کنند."
+"راهکارهای نورپردازی معماری را کشف کنید که به طور یکپارچه کارایی ساختاری را "
+"با طراحی ظریف ترکیب می‌کنند."
 
-#: .\templates\products\search.html:43
+#: templates/products/search.html:52
 msgid "Search products, series, or specifications..."
 msgstr "جستجوی محصولات، سری‌ها، یا مشخصات فنی..."
 
-#: .\templates\products\search.html:61
+#: templates/products/search.html:70
 msgid "What are you looking for?"
 msgstr "به دنبال چه چیزی هستید؟"
 
-#: .\templates\products\search.html:62
+#: templates/products/search.html:71
 msgid "Type a product name, fixture family, or category above to get started."
-msgstr ""
-"برای شروع، نام محصول، خانواده چراغ یا دسته‌بندی را در بالا تایپ کنید."
+msgstr "برای شروع، نام محصول، خانواده چراغ یا دسته‌بندی را در بالا تایپ کنید."
 
-#: .\templates\products\search.html:71
+#: templates/products/search.html:80
 #, python-format
 msgid ""
 "\n"
@@ -1896,19 +1903,21 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        نمایش <strong class=\"text-[#1a1a1a] font-medium\">%(count)s</strong> نتیجه برای \"<strong class=\"text-[#1a1a1a] font-medium\">%(query)s</strong>\"\n"
+"        نمایش <strong class=\"text-[#1a1a1a] font-medium\">%(count)s</"
+"strong> نتیجه برای \"<strong class=\"text-[#1a1a1a] font-medium\">%(query)s</"
+"strong>\"\n"
 "      "
 
-#: .\templates\products\search.html:104
+#: templates/products/search.html:113
 msgid "Load more products"
 msgstr "بارگذاری محصولات بیشتر"
 
-#: .\templates\products\search.html:125
+#: templates/products/search.html:134
 #, python-format
 msgid "No products found for \"%(query)s\""
 msgstr "هیچ محصولی برای \"%(query)s\" یافت نشد"
 
-#: .\templates\products\search.html:128
+#: templates/products/search.html:137
 msgid ""
 "\n"
 "      We couldn't find matches matching your criteria. Double-check your "
@@ -1916,58 +1925,59 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ما نتوانستیم موردی مطابق با معیارهای شما پیدا کنیم. املای خود را دوباره بررسی کنید یا به \n"
+"      ما نتوانستیم موردی مطابق با معیارهای شما پیدا کنیم. املای خود را "
+"دوباره بررسی کنید یا به \n"
 "    "
 
-#: .\templates\products\search.html:131
+#: templates/products/search.html:140
 msgid "full catalog"
 msgstr "کاتالوگ کامل ما سر بزنید"
 
-#: .\templates\projects\project_detail.html:112
+#: templates/projects/project_detail.html:112
 msgid "No Frame Captured"
 msgstr "فریمی ثبت نشده است"
 
-#: .\templates\projects\project_detail.html:122
+#: templates/projects/project_detail.html:122
 msgid "Overview"
 msgstr "بررسی اجمالی"
 
-#: .\templates\projects\project_detail.html:124
+#: templates/projects/project_detail.html:124
 msgid "Gallery"
 msgstr "گالری تصاویر"
 
-#: .\templates\projects\project_detail.html:127
+#: templates/projects/project_detail.html:127
 msgid "Products Used"
 msgstr "محصولات استفاده شده"
 
-#: .\templates\projects\project_detail.html:133
+#: templates/projects/project_detail.html:133
 msgid "About Project"
 msgstr "درباره پروژه"
 
-#: .\templates\projects\project_detail.html:146
+#: templates/projects/project_detail.html:146
 msgid "Location"
 msgstr "موقعیت مکانی"
 
-#: .\templates\projects\project_detail.html:154
+#: templates/projects/project_detail.html:154
 msgid "Completion"
 msgstr "تاریخ اتمام"
 
-#: .\templates\projects\project_detail.html:190
+#: templates/projects/project_detail.html:190
 msgid "Visual Gallery"
 msgstr "گالری بصری"
 
-#: .\templates\projects\project_detail.html:213
+#: templates/projects/project_detail.html:213
 msgid "Products Specification"
 msgstr "مشخصات فنی محصولات"
 
-#: .\templates\projects\project_detail.html:348
+#: templates/projects/project_detail.html:350
 msgid "About This Project"
 msgstr "درباره این پروژه"
 
-#: .\templates\projects\project_list.html:12
+#: templates/projects/project_list.html:23
 msgid "Portfolio"
 msgstr "نمونه کارها"
 
-#: .\templates\projects\project_list.html:17
+#: templates/projects/project_list.html:28
 msgid ""
 "Explore our completed lighting architectural projects across residential, "
 "retail, office, and hospitality spaces."
@@ -1975,58 +1985,1435 @@ msgstr ""
 "پروژه‌های معماری نورپردازی تکمیل‌شده ما را در فضاهای مسکونی، تجاری، اداری و "
 "مهمان‌نوازی بررسی کنید."
 
-#: .\templates\projects\project_list.html:34
+#: templates/projects/project_list.html:45
 msgid "Search projects"
 msgstr "جستجوی پروژه‌ها"
 
-#: .\templates\projects\project_list.html:36
+#: templates/projects/project_list.html:47
 msgid "Search by project name, city..."
 msgstr "جستجو بر اساس نام پروژه، شهر..."
 
-#: .\templates\projects\project_list.html:56
+#: templates/projects/project_list.html:67
 msgid "All Cities"
 msgstr "همه شهرها"
 
-#: .\templates\projects\project_list.html:67
+#: templates/projects/project_list.html:78
 msgid "Apply"
 msgstr "اعمال فیلتر"
 
-#: .\templates\projects\project_list.html:82
-msgid "Showing"
-msgstr "در حال نمایش"
-
-#: .\templates\projects\project_list.html:82
+#: templates/projects/project_list.html:93
 msgid "Result"
 msgstr "نتیجه"
 
-#: .\projects\project_list.html:89
+#: templates/projects/project_list.html:100
 msgid "Sort By:"
 msgstr "مرتب‌سازی بر اساس:"
 
-#: .\templates\projects\project_list.html:92
+#: templates/projects/project_list.html:103
 msgid "Newest First"
 msgstr "جدیدترین‌ها"
 
-#: .\templates\projects\project_list.html:93
+#: templates/projects/project_list.html:104
 msgid "Oldest First"
 msgstr "قدیمی‌ترین‌ها"
 
-#: .\templates\projects\project_list.html:117
+#: templates/projects/project_list.html:128
 msgid "No Image Available"
 msgstr "تصویری موجود نیست"
 
-#: .\templates\projects\project_list.html:186
+#: templates/projects/project_list.html:197
 msgid "No matching projects"
 msgstr "پروژه‌ای یافت نشد"
 
-#: .\templates\projects\project_list.html:187
+#: templates/projects/project_list.html:198
 msgid ""
 "Try modifying your filter categories or checking your spelling selection."
 msgstr "تغییر دسته‌بندی فیلترها یا املای کلمه انتخاب شده را بررسی کنید."
 
-#: .\templates\projects\project_list.html:190
+#: templates/projects/project_list.html:201
 msgid "Clear filters"
 msgstr "پاک کردن فیلترها"
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/forms.py:6
+#, fuzzy
+#| msgid "Clear filters"
+msgid "Search files"
+msgstr "پاک کردن فیلترها"
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:5
+msgid "Select an image to embed"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:27
+msgid "Browse for the image you want, then click 'Embed Image' to continue..."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:29
+msgid ""
+"No images found. Upload images using the 'Image Button' dialog's 'Upload' "
+"tab."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:50
+msgid "Images in: "
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:62
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:80
+msgid "Embed Image"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:146
+msgid "Play Slideshow"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:147
+msgid "Pause Slideshow"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:148
+msgid "&lsaquo; Previous Photo"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:149
+msgid "Next Photo &rsaquo;"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:150
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:151
+msgid "&lsaquo; Prev"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/contrib/messages/apps.py:15
+#, fuzzy
+#| msgid "Message"
+msgid "Messages"
+msgstr "پیام"
+
+#: venv_old/lib/python3.9/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/contrib/syndication/apps.py:7
+#, fuzzy
+#| msgid "Specifications"
+msgid "Syndication"
+msgstr "مشخصات فنی"
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: venv_old/lib/python3.9/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/paginator.py:50
+msgid "That page number is not an integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/paginator.py:52
+msgid "That page number is less than 1"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/paginator.py:54
+msgid "That page contains no results"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:104
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:752
+msgid "Enter a valid URL."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:165
+msgid "Enter a valid integer."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:176
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:259
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:267
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:281
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:289
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:318
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:298
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:319
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:310
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:317
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:353
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:359
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:394
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:403
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:412
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:422
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:440
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:463
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:347
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:386
+msgid "Enter a number."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:465
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:470
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:475
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:546
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/core/validators.py:607
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/base.py:1423
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:893
+msgid "and"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/base.py:1425
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/constraints.py:17
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:128
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:129
+msgid "This field cannot be null."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:130
+msgid "This field cannot be blank."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:131
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:135
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:173
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1094
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1095
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1097
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1147
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1149
+msgid "String (unlimited)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1253
+msgid "Comma-separated integers"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1354
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1358
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1493
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1362
+msgid "Date (without time)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1489
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1497
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1502
+msgid "Date (with time)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1626
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1628
+msgid "Decimal number"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1789
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1793
+#, fuzzy
+#| msgid "Documentation"
+msgid "Duration"
+msgstr "مستندات فنی"
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1845
+#, fuzzy
+#| msgid "Email Address"
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1870
+msgid "File path"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1948
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1950
+msgid "Floating point number"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1990
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1992
+msgid "Integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2088
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2105
+msgid "Small integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2113
+#, fuzzy
+#| msgid "Address"
+msgid "IPv4 address"
+msgstr "آدرس"
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2144
+#, fuzzy
+#| msgid "Address"
+msgid "IP address"
+msgstr "آدرس"
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2237
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2238
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2240
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2291
+msgid "Positive big integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2306
+msgid "Positive integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2321
+msgid "Positive small integer"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2337
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2373
+msgid "Text"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2448
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2452
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2456
+msgid "Time"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2564
+msgid "URL"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2588
+msgid "Raw binary data"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2653
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2655
+msgid "Universally unique identifier"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/files.py:232
+msgid "File"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/files.py:393
+#, fuzzy
+#| msgid "image 1"
+msgid "Image"
+msgstr "تصویر ۱"
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/json.py:26
+msgid "A JSON object"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/json.py:28
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:919
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:921
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:1212
+msgid "One-to-one relationship"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:1269
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:1271
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/db/models/fields/related.py:1319
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: venv_old/lib/python3.9/site-packages/django/forms/boundfield.py:184
+msgid ":?.!"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:91
+msgid "This field is required."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:298
+msgid "Enter a whole number."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:467
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1241
+msgid "Enter a valid date."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:490
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1242
+msgid "Enter a valid time."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:517
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:551
+#, fuzzy
+#| msgid "Stress Evaluation"
+msgid "Enter a valid duration."
+msgstr "ارزیابی تنش"
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:552
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:621
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:622
+msgid "No file was submitted."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:623
+msgid "The submitted file is empty."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:625
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:630
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:694
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:857
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:949
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:1566
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:951
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1070
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:1564
+msgid "Enter a list of values."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1071
+msgid "Enter a complete value."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1313
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/fields.py:1343
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: venv_old/lib/python3.9/site-packages/django/forms/forms.py:98
+msgid ":"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/forms.py:244
+#: venv_old/lib/python3.9/site-packages/django/forms/forms.py:328
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:63
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:67
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:72
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:484
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:886
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:891
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:898
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:907
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:1338
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:1429
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/models.py:1568
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/utils.py:226
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:463
+msgid "Clear"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:464
+msgid "Currently"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:465
+msgid "Change"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/forms/widgets.py:794
+msgid "Unknown"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:874
+msgid "yes,no,maybe"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:904
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:921
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:923
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:925
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:927
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:929
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/template/defaultfilters.py:931
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:73
+msgid "p.m."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:74
+msgid "a.m."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:79
+msgid "PM"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:80
+msgid "AM"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:152
+msgid "midnight"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dateformat.py:154
+msgid "noon"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Friday: Closed"
+msgid "Friday"
+msgstr "جمعه: تعطیل"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:12
+#, fuzzy
+#| msgid "Featured"
+msgid "Saturday"
+msgstr "پروژه‌های"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:16
+#, fuzzy
+#| msgid "Min"
+msgid "Mon"
+msgstr "حداقل"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:25
+msgid "January"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:26
+msgid "February"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:27
+#, fuzzy
+#| msgid "Search"
+msgid "March"
+msgstr "جستجو"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:28
+msgid "April"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:29
+#, fuzzy
+#| msgid "Max"
+msgid "May"
+msgstr "حداکثر"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:30
+msgid "June"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:31
+msgid "July"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:32
+msgid "August"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:33
+msgid "September"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:34
+msgid "October"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:35
+#, fuzzy
+#| msgid "Phone Number"
+msgid "November"
+msgstr "شماره تلفن"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:36
+msgid "December"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:39
+msgid "jan"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:40
+msgid "feb"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:41
+msgid "mar"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:42
+msgid "apr"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:43
+#, fuzzy
+#| msgid "Company"
+msgid "may"
+msgstr "شرکت"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:44
+msgid "jun"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:45
+msgid "jul"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:46
+msgid "aug"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:47
+msgid "sep"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:48
+#, fuzzy
+#| msgid "Product"
+msgid "oct"
+msgstr "دسته‌بندی"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:49
+msgid "nov"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:50
+msgid "dec"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:55
+#, fuzzy
+#| msgid "Search"
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "جستجو"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:57
+#, fuzzy
+#| msgid "Max"
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "حداکثر"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:69
+#, fuzzy
+#| msgid "Search"
+msgctxt "alt. month"
+msgid "March"
+msgstr "جستجو"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:71
+#, fuzzy
+#| msgid "Max"
+msgctxt "alt. month"
+msgid "May"
+msgstr "حداکثر"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:77
+#, fuzzy
+#| msgid "Phone Number"
+msgctxt "alt. month"
+msgid "November"
+msgstr "شماره تلفن"
+
+#: venv_old/lib/python3.9/site-packages/django/utils/dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/text.py:138
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/text.py:323
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: venv_old/lib/python3.9/site-packages/django/utils/text.py:342
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:135
+msgid ", "
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:111
+msgid "Forbidden"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:112
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:116
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:122
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:127
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:136
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:142
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/csrf.py:148
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:64
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:115
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:349
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:380
+#, fuzzy, python-format
+#| msgid "No variants available"
+msgid "No %(verbose_name_plural)s available"
+msgstr "هیچ گزینه‌ای موجود نیست"
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:652
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/dates.py:692
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/generic/list.py:169
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/static.py:38
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/static.py:40
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/static.py:79
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:7
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:220
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:221
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:229
+#, fuzzy
+#| msgid "Documentation"
+msgid "Django Documentation"
+msgstr "مستندات فنی"
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:230
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:238
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:239
+msgid "Get started with Django"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:247
+msgid "Django Community"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:248
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:14
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:54
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:62
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:72
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:82
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:86
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:118
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:137
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:364
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:369
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:379
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:399
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:416
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:435
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:441
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:458
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:470
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:478
+msgid "title"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:18
+msgid "password"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:245
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:264
+msgid "title a"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:249
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:275
+msgid "title b"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:253
+msgid "title c"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:257
+msgid "title d"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/models.py:380
+msgid "visits"
+msgstr ""
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/tests/translation.py:62
+#, fuzzy
+#| msgid "No applications available yet"
+msgid "Sorry, translation is not available."
+msgstr "هنوز هیچ کاربردی در دسترس نیست"
+
+#: venv_old/lib/python3.9/site-packages/modeltranslation/widgets.py:32
+msgid "None"
+msgstr ""
+
+#~ msgid "Premium architectural and decorative lighting solutions."
+#~ msgstr "راهکارهای برتر نورپردازی معماری و تزئینی."
+
+#~ msgid "Tehran - Verona Lighting"
+#~ msgstr "تهران - روشنایی ورونا"
+
+#~ msgid "Zamani alley, North Sohrevardi Street"
+#~ msgstr "خیابان سهروردی شمالی، کوچه زمانی"
+
+#~ msgid "Engineered luminaires for modern spaces."
+#~ msgstr "چراغ‌های مهندسی‌شده برای فضاهای مدرن."
+
+#~ msgid "Lighting Applications"
+#~ msgstr "کاربردهای روشنایی"
+
+#~ msgid "image 2"
+#~ msgstr "تصویر ۲"
+
+#~ msgid "image 3"
+#~ msgstr "تصویر ۳"
+
+#~ msgid "image 4"
+#~ msgstr "تصویر ۴"
+
+#~ msgid "Description and Applications"
+#~ msgstr "توضیحات و کاربردها"
 
 #~ msgid "Let’s Build Something Bright Together"
 #~ msgstr "بیایید با هم اثری درخشان بسازیم"
@@ -2079,19 +3466,3 @@ msgstr "پاک کردن فیلترها"
 #~ "      بیش از سه دهه است که با معماران و طراحان همکاری کرده‌ایم تا "
 #~ "جاه‌طلبانه‌ترین چشم‌اندازهای آن‌ها را\n"
 #~ "      از طریق راهکارهای روشنایی مهندسی‌شده با دقت بالا محقق کنیم."
-
-# Accessibility labels and product-list copy
-msgid "Open menu"
-msgstr "باز کردن منو"
-
-msgid "Close menu"
-msgstr "بستن منو"
-
-msgid "Expanded product image"
-msgstr "تصویر بزرگ‌شده محصول"
-
-msgid "Expanded showroom image"
-msgstr "تصویر بزرگ‌شده نمایشگاه"
-
-msgid "products in"
-msgstr "محصول در"

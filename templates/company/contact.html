@@ -94,7 +94,7 @@
                 </p>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Phone" %}</p>
                 <a href="tel:+980217162521" class="text-gray-700 hover:text-[#727272] font-light mb-8">
-                    +98 021 716 2521
+                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
                 </a>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Response Time" %}</p>
                 <p class="text-gray-700 font-light">
