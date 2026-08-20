@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% if LANGUAGE_CODE == 'fa' %}کاتالوگ محصولات روشنایی | ورونا لایتینگ{% else %}Lighting Product Catalogs | Verona Lighting{% endif %}{% endblock %}
+
+{% block seo %}
+<meta name="description" content="{% if LANGUAGE_CODE == 'fa' %}کاتالوگ دیجیتال و نسخه PDF محصولات روشنایی معماری ورونا را مشاهده و برای پروژه‌های خود دریافت کنید.{% else %}Explore Verona Lighting's digital catalog and downloadable product catalog for architectural lighting projects.{% endif %}">
+<link rel="canonical" href="{{ seo_canonical_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if LANGUAGE_CODE == 'fa' %}کاتالوگ‌های ورونا لایتینگ{% else %}Verona Lighting Catalogs{% endif %}">
+<meta property="og:description" content="{% if LANGUAGE_CODE == 'fa' %}مجموعه محصولات و مشخصات فنی روشنایی ورونا در نسخه دیجیتال و قابل دانلود.{% else %}Verona product collections and technical lighting details in digital and downloadable editions.{% endif %}">
+<meta property="og:url" content="{{ seo_canonical_url }}">
+{% endblock %}
+
+{% block extra_head %}
+<style>
+  .catalog-grid-lines {
+    background-image:
+      linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  .catalog-cover {
+    box-shadow: 0 28px 70px rgba(0,0,0,.32);
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg);
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease;
+  }
+  [dir="rtl"] .catalog-cover {
+    transform: perspective(1000px) rotateY(8deg) rotateX(2deg);
+  }
+  .catalog-card:hover .catalog-cover {
+    transform: perspective(1000px) rotateY(0) rotateX(0) translateY(-5px);
+    box-shadow: 0 34px 80px rgba(0,0,0,.38);
+  }
+  [dir="rtl"] .catalog-arrow { transform: scaleX(-1); }
+  @media (prefers-reduced-motion: reduce) {
+    .catalog-cover { transition: none; transform: none !important; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bg-[#f5f4f0] text-zinc-900 antialiased overflow-hidden">
+  <section class="relative border-b border-black/10">
+    <div class="absolute inset-y-0 right-0 w-1/2 bg-[#ece9e1] hidden lg:block" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 sm:py-20 lg:py-28">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+        <div class="lg:col-span-7">
+          <p class="text-[11px] font-semibold tracking-[0.24em] uppercase text-[#9b7d3f] mb-7">
+            {% if LANGUAGE_CODE == 'fa' %}کتابخانه محصولات / ۲۰۲۶{% else %}Product library / 2026{% endif %}
+          </p>
+          <h1 class="text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.92] font-light tracking-[-0.055em] text-zinc-950">
+            {% if LANGUAGE_CODE == 'fa' %}کاتالوگ‌های<br><span class="text-[#a88947]">ورونا</span>{% else %}Verona<br><span class="text-[#a88947]">catalogs</span>{% endif %}
+          </h1>
+        </div>
+        <div class="lg:col-span-5 lg:pb-2">
+          <p class="text-base sm:text-lg leading-8 text-zinc-600 font-light max-w-lg">
+            {% if LANGUAGE_CODE == 'fa' %}مجموعه‌های روشنایی معماری ورونا را در قالب یک تجربه دیجیتال روان یا نسخه کامل قابل دانلود مرور کنید.{% else %}Explore Verona's architectural lighting collections through a fluid digital experience or the complete downloadable edition.{% endif %}
+          </p>
+          <div class="mt-8 flex items-center gap-3 text-[11px] tracking-[0.18em] uppercase text-zinc-500">
+            <span class="block w-10 h-px bg-[#a88947]"></span>
+            <span>{% if LANGUAGE_CODE == 'fa' %}طراحی برای انتخاب دقیق{% else %}Made for precise selection{% endif %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 sm:py-20 lg:py-28" aria-labelledby="catalog-editions-heading">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10 lg:mb-14">
+      <div>
+        <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#9b7d3f] mb-3">01 / {% if LANGUAGE_CODE == 'fa' %}نسخه‌ها{% else %}Editions{% endif %}</p>
+        <h2 id="catalog-editions-heading" class="text-3xl sm:text-4xl font-light tracking-tight">
+          {% if LANGUAGE_CODE == 'fa' %}روش مطالعه خود را انتخاب کنید{% else %}Choose how you explore{% endif %}
+        </h2>
+      </div>
+      <p class="text-xs text-zinc-500 max-w-xs leading-6">
+        {% if LANGUAGE_CODE == 'fa' %}نسخه دیجیتال و فایل کامل کاتالوگ اکنون در دسترس هستند.{% else %}The digital edition and complete catalog PDF are now available.{% endif %}
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+      <article class="catalog-card relative min-h-[560px] sm:min-h-[620px] bg-zinc-950 text-white overflow-hidden group">
+        <div class="absolute inset-0 catalog-grid-lines opacity-60" aria-hidden="true"></div>
+        <div class="absolute -right-24 top-12 w-72 h-72 rounded-full bg-[#b99a58]/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative h-full p-7 sm:p-10 flex flex-col">
+          <div class="flex items-start justify-between gap-4">
+            <p class="text-[10px] uppercase tracking-[0.22em] text-white/55">01 — {% if LANGUAGE_CODE == 'fa' %}نسخه تعاملی{% else %}Interactive edition{% endif %}</p>
+            <span class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-[#d1b77b]">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#b99a58]"></span>
+              {% if digital_catalog_url %}{% if LANGUAGE_CODE == 'fa' %}آنلاین{% else %}Live{% endif %}{% else %}{% if LANGUAGE_CODE == 'fa' %}به‌زودی{% else %}Coming soon{% endif %}{% endif %}
+            </span>
+          </div>
+
+          <div class="flex-1 flex items-center justify-center py-10">
+            <div class="catalog-cover relative w-[210px] sm:w-[250px] aspect-[4/5.35] bg-zinc-900 overflow-hidden border border-white/20">
+              <img src="{% static 'images/catalogs/digital-catalog-cover.png' %}"
+                   alt="{% if LANGUAGE_CODE == 'fa' %}جلد کاتالوگ دیجیتال ورونا لایتینگ{% else %}Verona Lighting digital catalog cover{% endif %}"
+                   class="absolute inset-0 w-full h-full object-cover object-right"
+                   loading="eager">
+            </div>
+          </div>
+
+          <div class="border-t border-white/15 pt-6 sm:pt-7">
+            <h3 class="text-2xl sm:text-3xl text-white font-light tracking-tight">{% if LANGUAGE_CODE == 'fa' %}کاتالوگ دیجیتال{% else %}Digital catalog{% endif %}</h3>
+            <p class="mt-3 text-sm leading-6 text-white/55 max-w-md">{% if LANGUAGE_CODE == 'fa' %}ورق بزنید، مجموعه‌ها را مقایسه کنید و سریع‌تر به محصول مناسب پروژه برسید.{% else %}Move through collections, compare ranges, and reach the right product for your project faster.{% endif %}</p>
+            {% if digital_catalog_url %}
+              <a href="{{ digital_catalog_url }}" target="_blank" rel="noopener" class="mt-6 min-h-11 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#d1b77b] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b99a58] focus-visible:ring-offset-4 focus-visible:ring-offset-zinc-950">
+                {% if LANGUAGE_CODE == 'fa' %}مشاهده کاتالوگ دیجیتال{% else %}Explore digital catalog{% endif %}
+                <svg class="catalog-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            {% else %}
+              <span class="mt-6 min-h-11 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/40" aria-disabled="true">
+                {% if LANGUAGE_CODE == 'fa' %}در حال آماده‌سازی برای انتشار{% else %}Being prepared for publication{% endif %}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+
+      <article class="catalog-card relative min-h-[560px] sm:min-h-[620px] bg-white border border-black/10 overflow-hidden group">
+        <div class="absolute inset-x-0 top-0 h-1 bg-[#b99a58]" aria-hidden="true"></div>
+        <div class="relative h-full p-7 sm:p-10 flex flex-col">
+          <div class="flex items-start justify-between gap-4">
+            <p class="text-[10px] uppercase tracking-[0.22em] text-zinc-400">02 — PDF</p>
+            <span class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-zinc-500">
+              <span class="w-1.5 h-1.5 rounded-full bg-zinc-300"></span>
+              {% if download_catalog_url %}{% if LANGUAGE_CODE == 'fa' %}آماده دانلود{% else %}Ready{% endif %}{% else %}{% if LANGUAGE_CODE == 'fa' %}در انتظار فایل{% else %}File pending{% endif %}{% endif %}
+            </span>
+          </div>
+
+          <div class="flex-1 flex items-center justify-center py-10">
+            <div class="catalog-cover relative w-[210px] sm:w-[250px] aspect-[4/5.35] bg-zinc-900 overflow-hidden border border-zinc-200">
+              <img src="{% static 'images/catalogs/product-catalog-cover.png' %}"
+                   alt="{% if LANGUAGE_CODE == 'fa' %}جلد کاتالوگ محصولات ورونا لایتینگ{% else %}Verona Lighting product catalog cover{% endif %}"
+                   class="absolute inset-0 w-full h-full object-cover"
+                   loading="lazy">
+            </div>
+          </div>
+
+          <div class="border-t border-zinc-200 pt-6 sm:pt-7">
+            <h3 class="text-2xl sm:text-3xl font-light tracking-tight">{% if LANGUAGE_CODE == 'fa' %}کاتالوگ محصولات{% else %}Product catalog{% endif %}</h3>
+            <p class="mt-3 text-sm leading-6 text-zinc-500 max-w-md">{% if LANGUAGE_CODE == 'fa' %}نسخه کامل PDF برای بررسی آفلاین، اشتراک‌گذاری با تیم و استفاده در جلسات پروژه.{% else %}The complete PDF edition for offline review, team sharing, and use in project meetings.{% endif %}</p>
+            {% if download_catalog_url %}
+              <a href="{{ download_catalog_url }}" download class="mt-6 min-h-11 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#8d7037] hover:text-zinc-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b99a58] focus-visible:ring-offset-4">
+                {% if LANGUAGE_CODE == 'fa' %}دانلود کاتالوگ PDF{% else %}Download PDF catalog{% endif %}
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              </a>
+            {% else %}
+              <span class="mt-6 min-h-11 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400" aria-disabled="true">
+                {% if LANGUAGE_CODE == 'fa' %}فایل به‌زودی اضافه می‌شود{% else %}File will be added shortly{% endif %}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="border-t border-black/10 bg-[#ded8ca]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7">
+          <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#846a35] mb-4">02 / {% if LANGUAGE_CODE == 'fa' %}در همین حال{% else %}In the meantime{% endif %}</p>
+          <h2 class="text-3xl sm:text-5xl font-light tracking-tight leading-tight">{% if LANGUAGE_CODE == 'fa' %}همین حالا مجموعه محصولات را آنلاین بررسی کنید.{% else %}Explore the product collection online now.{% endif %}</h2>
+        </div>
+        <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 lg:justify-end">
+          <a href="{% url 'products:product_list' %}" class="min-h-12 inline-flex items-center justify-center gap-3 bg-zinc-950 text-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#8d7037] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-4 focus-visible:ring-offset-[#ded8ca]">
+            {% if LANGUAGE_CODE == 'fa' %}مشاهده همه محصولات{% else %}Browse all products{% endif %}
+            <svg class="catalog-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="{% url 'contact' %}" class="min-h-12 inline-flex items-center justify-center border border-zinc-500/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] hover:border-zinc-950 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-4 focus-visible:ring-offset-[#ded8ca]">
+            {% if LANGUAGE_CODE == 'fa' %}درخواست راهنمایی{% else %}Ask for guidance{% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

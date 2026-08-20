@@ -35,6 +35,35 @@ class SiteSEOTests(TestCase):
         self.assertEqual(len(SITE_SEO), 6)
 
 
+class CatalogPageTests(TestCase):
+    def test_catalog_page_is_bilingual_indexable_and_linked(self):
+        for language, path, heading in (
+            ("fa", "/catalogs/", "کاتالوگ‌های"),
+            ("en", "/en/catalogs/", "Verona"),
+        ):
+            with self.subTest(language=language), override(language):
+                response = self.client.get(path)
+                html = response.content.decode()
+
+                self.assertEqual(response.status_code, 200)
+                self.assertContains(response, heading)
+                self.assertEqual(html.count("<h1"), 1)
+                self.assertEqual(html.count('rel="canonical"'), 1)
+                self.assertContains(response, 'href="/catalogs/"' if language == "fa" else 'href="/en/catalogs/"')
+                if language == "en":
+                    self.assertContains(response, "Digital catalog")
+                else:
+                    self.assertContains(response, "کاتالوگ دیجیتال")
+                self.assertContains(
+                    response,
+                    "/media/catalogs/verona-digital-catalog-2026.pdf",
+                )
+                self.assertContains(
+                    response,
+                    "/media/catalogs/verona-product-catalog-2026.pdf",
+                )
+
+
 class EditorialSEOClusterTests(TestCase):
     def setUp(self):
         self.sample_category = NewsCategory.objects.create(

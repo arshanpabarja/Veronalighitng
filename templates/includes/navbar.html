@@ -32,7 +32,7 @@
                 </logo>
             </a>
 
-            <div class="hidden lg:flex flex-row-reverse gap-8 h-full {% if request.path == '/' or request.path == '/en/' %}text-white{% endif %}">
+            <div class="hidden lg:flex flex-row-reverse gap-6 xl:gap-8 h-full {% if request.path == '/' or request.path == '/en/' %}text-white{% endif %}">
                 <div class="flex items-center mb-1">
                         <a href="{% url 'search' %}" aria-label="{% trans 'Search' %}">
                             <img id="search" class="w-6" src="{% if request.path == '/' or request.path == '/en/' %}{% static 'images/search2.svg' %}{% else %}{% static 'images/search.svg' %}{% endif %}" alt="">
@@ -87,6 +87,13 @@
                 <div class="group relative">
                     <a href="{% url 'products:application_list' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-[#B99A58] cursor-pointer">
                         {% trans "Applications" %}
+                    </a>
+                    <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
+                </div>
+
+                <div class="group relative">
+                    <a href="{% url 'catalog' %}" class="flex font-medium items-center h-24 border-b-2 border-transparent group-hover:border-[#B99A58] cursor-pointer">
+                        {% if LANGUAGE_CODE == 'fa' %}کاتالوگ‌ها{% else %}Catalogs{% endif %}
                     </a>
                     <div class="absolute top-24 left-0 w-full h-16 pointer-events-none"></div>
                 </div>
@@ -247,6 +254,11 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
+
+                <a href="{% url 'catalog' %}"
+                    class="w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#B99A58] transition-colors">
+                    {% if LANGUAGE_CODE == 'fa' %}کاتالوگ‌ها{% else %}Catalogs{% endif %}
+                </a>
 
                 <button type="button" data-target="screen-company"
                     class="mobile-nav-trigger w-full flex items-center justify-between py-4 text-base font-medium border-b border-gray-100 hover:text-[#B99A58] transition-colors">

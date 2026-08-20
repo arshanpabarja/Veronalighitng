@@ -55,6 +55,7 @@ urlpatterns += i18n_patterns(
     path('story/', story, name='story'),
     path('contact/', contact, name='contact'),
     path('services/', services, name='services'),
+    path('catalogs/', catalog, name='catalog'),
     path('news/', news_list, name='news_list'),
     path('news/<slug:slug>/', news_detail, name='news_detail'),
 

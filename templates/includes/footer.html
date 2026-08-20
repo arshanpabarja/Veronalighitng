@@ -63,6 +63,11 @@
                                     {% trans "Contact Us" %}
                                 </a>
                             </li>
+                            <li>
+                                <a href="{% url 'catalog' %}" class="hover:underline">
+                                    {% if LANGUAGE_CODE == 'fa' %}کاتالوگ‌ها{% else %}Catalogs{% endif %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
 

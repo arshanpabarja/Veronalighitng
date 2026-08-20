@@ -27,6 +27,15 @@ def services(request):
     return render(request, 'company/services.html', context)
 
 
+def catalog(request):
+    context = {
+        "site_settings": SiteSettings.get(),
+        "digital_catalog_url": "/media/catalogs/verona-digital-catalog-2026.pdf",
+        "download_catalog_url": "/media/catalogs/verona-product-catalog-2026.pdf",
+    }
+    return render(request, "catalog/catalog_list.html", context)
+
+
 
 def news_list(request):
     category_slug = request.GET.get('category')

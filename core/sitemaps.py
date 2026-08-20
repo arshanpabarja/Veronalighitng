@@ -32,6 +32,7 @@ class StaticViewSitemap(LocalizedSitemap):
             "story",
             "services",
             "contact",
+            "catalog",
             "news_list",
             "products:product_list",
             "products:project_list",
