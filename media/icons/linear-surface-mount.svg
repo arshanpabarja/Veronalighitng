@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title">
+  <title id="title">Surface mount linear lighting</title>
+  <path d="M17 31h94" stroke="#24364B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M33 37h62v13H33z" fill="#E9EDF0" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M39 51h50v17H39z" fill="#F6F7F8" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M45 61h38" stroke="#C6A15B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 81h52M45 92h38" stroke="#C6A15B" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+</svg>

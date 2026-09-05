@@ -72,8 +72,9 @@
 {% endblock %}
 
 {% block content %}
+<div id="application-list-page" class="bg-[#050505] text-white">
 <!-- Hero Section -->
-<section class="flex gap-11 flex-col items-center justify-center bg-white px-6">
+<section class="flex gap-11 flex-col items-center justify-center bg-[#050505] px-6">
     <div class="w-full flex items-center justify-start px-4 sm:px-6 lg:px-8 py-2 sm:py-4 text-left">
         <span class="text-[11px] sm:text-sm text-gray-500">
             <a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans "Home" %}</a>
@@ -96,10 +97,10 @@
 </section>
 
 <!-- Full Width Divider -->
-<div class="border-b border-gray-200"></div>
+<div class="border-b border-white/10"></div>
 
 <!-- Applications Grid -->
-<section class="bg-white py-20 px-6">
+<section class="bg-[#050505] py-20 px-6">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for application in applications %}
@@ -139,4 +140,26 @@
         </div>
     </div>
 </section>
+</div>
+
+<style>
+#application-list-page h1,
+#application-list-page h2,
+#application-list-page h3,
+#application-list-page h4,
+#application-list-page p {
+  color: #fff !important;
+}
+
+#application-list-page .text-gray-500,
+#application-list-page .text-gray-600,
+#application-list-page .text-gray-700,
+#application-list-page .text-gray-400 {
+  color: #c7c7c7 !important;
+}
+
+#application-list-page .bg-gray-100 {
+  background-color: #181818 !important;
+}
+</style>
 {% endblock %}

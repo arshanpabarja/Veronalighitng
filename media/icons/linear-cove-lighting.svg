@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title">
+  <title id="title">Cove lighting</title>
+  <path d="M24 24v79M24 24h80" stroke="#24364B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 36h56v17H53v38H36z" fill="#E9EDF0" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M48 57h35" stroke="#C6A15B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M59 66v26M70 66v18M81 66v10" stroke="#C6A15B" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+</svg>

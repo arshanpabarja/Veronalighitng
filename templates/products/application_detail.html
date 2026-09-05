@@ -70,7 +70,7 @@
 {% endblock %}
 
 {% block content %}
-<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
+<main id="application-detail-page" class="bg-[#050505] text-white antialiased selection:bg-white selection:text-black">
 
   <!-- ── BREADCRUMB ── -->
   <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 lg:px-10 py-5 text-left border-b border-zinc-100">
@@ -343,4 +343,57 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach(section => observer.observe(section));
 });
 </script>
+
+<style>
+/* Preserve the editorial layout while matching the site's black category palette. */
+#application-detail-page .bg-white,
+#application-detail-page .bg-zinc-50,
+#application-detail-page .bg-white\/90 {
+  background-color: #050505 !important;
+}
+
+#application-detail-page .border-zinc-100,
+#application-detail-page .border-zinc-200 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+#application-detail-page h1,
+#application-detail-page h2,
+#application-detail-page h3,
+#application-detail-page h4,
+#application-detail-page p {
+  color: #fff !important;
+}
+
+#application-detail-page .text-zinc-900,
+#application-detail-page .text-zinc-800 {
+  color: #fff !important;
+}
+
+#application-detail-page .text-zinc-300,
+#application-detail-page .text-zinc-400,
+#application-detail-page .text-zinc-500,
+#application-detail-page .text-zinc-600 {
+  color: #c7c7c7 !important;
+}
+
+#application-detail-page .bg-zinc-100,
+#application-detail-page .product-card {
+  background-color: #181818 !important;
+}
+
+#application-detail-page .bg-zinc-900 {
+  background-color: #222222 !important;
+}
+
+#application-detail-page nav[aria-label="Application sections"] a.border-zinc-900 {
+  border-color: #B99A58 !important;
+  color: #fff !important;
+}
+
+#application-detail-page nav[aria-label="Application sections"] a:hover,
+#application-detail-page .group:hover h3 {
+  color: #B99A58 !important;
+}
+</style>
 {% endblock %}

@@ -6,6 +6,7 @@ from core.editorial_content import build_editorial_links
 from .services.landing_page_content import build_landing_page_context
 from .services.priority_product_content import build_priority_product_context
 from .services.seo_internal_links import build_seo_cluster_links
+from .services.category_ordering import order_navigation_children
 from .models import (
     Category, Application, Family, Product, Project
 )
@@ -126,6 +127,7 @@ def _apply_product_filters(request, qs, include_family_filters=True):
 def _product_filter_context(products_qs):
     wattage_range = products_qs.aggregate(Min('wattage'), Max('wattage'))
     lumens_range  = products_qs.aggregate(Min('lumens'),  Max('lumens'))
+    family_ids = products_qs.exclude(family_id__isnull=True).values("family_id")
 
     return {
         "wattage_min_db": wattage_range['wattage__min'],
@@ -134,20 +136,22 @@ def _product_filter_context(products_qs):
         "lumens_max_db":  lumens_range['lumens__max'],
 
         "available_applications": Application.objects.filter(
-            is_active=True
-        ).order_by("name"),
+            is_active=True,
+            families__id__in=family_ids,
+        ).distinct().order_by("name"),
 
         "available_product_families": Family.objects.filter(
-            is_active=True
+            is_active=True,
+            id__in=family_ids,
         ).order_by("name"),
 
-        "available_mounting_types": products_qs.values_list('mounting_type', flat=True).distinct().order_by('mounting_type'),
-        "available_color_temps": products_qs.values_list('color_temperature', flat=True).distinct().order_by('color_temperature'),
-        "available_lumens":        products_qs.values_list('lumens', flat=True).distinct().order_by('lumens'),
-        "available_voltages":      products_qs.values_list('voltage', flat=True).distinct().order_by('voltage'),
-        "available_beam_angles":   products_qs.values_list('beam_angle', flat=True).distinct().order_by('beam_angle'),
-        "available_ip_ratings":    products_qs.values_list('ip_rating', flat=True).distinct().order_by('ip_rating'),
-        "available_cri":           products_qs.values_list('cri', flat=True).distinct().order_by('cri'),
+        "available_mounting_types": products_qs.exclude(mounting_type='').values_list('mounting_type', flat=True).distinct().order_by('mounting_type'),
+        "available_color_temps": products_qs.exclude(color_temperature__isnull=True).values_list('color_temperature', flat=True).distinct().order_by('color_temperature'),
+        "available_lumens": products_qs.exclude(lumens__isnull=True).values_list('lumens', flat=True).distinct().order_by('lumens'),
+        "available_voltages": products_qs.exclude(voltage='').values_list('voltage', flat=True).distinct().order_by('voltage'),
+        "available_beam_angles": products_qs.exclude(beam_angle__isnull=True).values_list('beam_angle', flat=True).distinct().order_by('beam_angle'),
+        "available_ip_ratings": products_qs.exclude(ip_rating='').values_list('ip_rating', flat=True).distinct().order_by('ip_rating'),
+        "available_cri": products_qs.exclude(cri__isnull=True).values_list('cri', flat=True).distinct().order_by('cri'),
     }
 
 def _has_product_filters(selected):
@@ -245,7 +249,9 @@ def product_list(request):
 def category_detail(request, cat_slug):
                 
     category = get_object_or_404(Category, slug=cat_slug, is_active=True, parent__isnull=True)
-    children = Category.objects.filter(parent=category, is_active=True).order_by("order")
+    children = order_navigation_children(
+        Category.objects.filter(parent=category, is_active=True),
+    )
 
     if children.exists():
         families = Family.objects.filter(
@@ -292,14 +298,16 @@ def category_detail(request, cat_slug):
     **selected_prod,
 }
 
-    return render(request, "products/category_detail.html", context)
+    return render(request, "products/category_detail_dark.html", context)
 
 
 def child_detail(request, cat_slug, child_slug):
     parent = get_object_or_404(Category, slug=cat_slug, is_active=True, parent__isnull=True)
     child  = get_object_or_404(Category, slug=child_slug, is_active=True, parent=parent)
 
-    siblings = parent.children.all().order_by("order")
+    siblings = order_navigation_children(
+        parent.children.filter(is_active=True),
+    )
     families = Family.objects.filter(category=child, is_active=True).prefetch_related('applications')
     families, selected_family = _apply_family_filters(request, families)
 

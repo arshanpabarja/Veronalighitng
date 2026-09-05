@@ -117,10 +117,11 @@
 {% endblock %}
 
 {% block content %}
+<div id="family-detail-page" class="bg-[#050505] text-white">
 
 <!-- Breadcrumb -->
-<div class="max-w-full overflow-x-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
-  <span class="inline-flex items-center whitespace-nowrap text-[11px] sm:text-sm text-gray-500">
+<div class="max-w-full overflow-x-auto border-b border-white/10 bg-[#111111] px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
+  <span class="inline-flex items-center whitespace-nowrap text-[11px] text-gray-300 sm:text-sm">
     <a href="{% url 'home' %}" class="hover:text-[#B99A58]">{% trans "Home" %}</a>
     <span class="mx-1 sm:mx-2">›</span>
 
@@ -135,29 +136,29 @@
     <span class="mx-1 sm:mx-2">›</span>
 
     <a href="{% url 'products:child_detail' child.parent.slug child.slug %}"
-       class="font-medium hover:text-[#B99A58] text-gray-500">
+       class="font-medium hover:text-[#B99A58] text-white">
        {{ child.name }}
     </a>
     {% endif %}
 
     <span class="mx-1 sm:mx-2">›</span>
 
-    <span class="font-medium text-gray-800">
+    <span class="font-medium text-white">
       {{ family.name }}
     </span>
   </span>
 </div>
 
 <!-- Thorn-Style Hero -->
-<section class="bg-white">
+<section class="border-b border-white/10 bg-[#090909]">
 
   <!-- Hero Content -->
   <div class="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-    <h1 class="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+    <h1 class="text-white text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
       {{ family.name|upper }}
     </h1>
 
-    <p class="{% if LANGUAGE_CODE == 'fa' %}persian-justify{% endif %} text-justify mt-3 sm:mt-6 text-xs sm:text-base md:text-md text-gray-600 leading-relaxed max-w-4xl mx-auto">
+    <p class="text-white {% if LANGUAGE_CODE == 'fa' %}persian-justify{% endif %} text-justify mt-3 sm:mt-6 text-xs sm:text-base md:text-md leading-relaxed max-w-4xl mx-auto">
       {{ family.subtitle|default:"Browse our range of indoor lighting solutions designed for performance, efficiency, and visual comfort." }}
     </p>
   </div>
@@ -168,17 +169,17 @@
 {% include 'includes/filter_sections.html' %}
 
 <!-- ─── PRODUCTS SECTION ─── -->
-<section class="py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-[60px] bg-white">
+<section class="py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-[60px] bg-[#050505]">
 
   <div class="flex items-center justify-between gap-3 mb-6 sm:mb-9">
-    <p class="text-[13px] sm:text-[14px] text-[#888]">
-      {% trans "Showing" %} <strong class="text-[#1a1a1a]">{{ page_obj.paginator.count }}</strong> {% trans "products in" %}
-      <strong class="text-[#727272]">{{ family.name }}</strong>
+    <p class="text-white text-[13px] sm:text-[14px]">
+      {% trans "Showing" %} <strong class="text-white">{{ page_obj.paginator.count }}</strong> {% trans "products in" %}
+      <strong class="text-white">{{ family.name }}</strong>
     </p>
 
     <button type="button"
             onclick="openFilterOverlay()"
-            class="sm:hidden flex items-center gap-2 px-4 py-2 border-[1.5px] border-[#1a1a1a] rounded-[7px] text-[12px] font-semibold text-[#1a1a1a] hover:border-[#B99A58] hover:text-[#B99A58] transition-colors">
+            class="lg:hidden flex items-center gap-2 px-4 py-2 border-[1.5px] border-white/40 rounded-[7px] text-[12px] font-semibold text-white hover:border-[#B99A58] hover:text-[#B99A58] transition-colors">
 
       <svg viewBox="0 0 24 24"
            class="w-4 h-4 stroke-current fill-none stroke-2 [stroke-linecap:round] [stroke-linejoin:round]">
@@ -192,8 +193,8 @@
   {% if page_obj.paginator.count == 0 %}
 
   <div class="text-center py-16">
-    <p class="text-lg text-gray-700">{% trans "No products match your filters." %}</p>
-    <p class="text-sm text-gray-400 mt-2">{% trans "Try adjusting the specs or reset to browse all." %}</p>
+    <p class="text-white text-lg">{% trans "No products match your filters." %}</p>
+    <p class="text-white text-sm mt-2">{% trans "Try adjusting the specs or reset to browse all." %}</p>
   </div>
 
   {% else %}
@@ -213,15 +214,16 @@
   <div class="text-center mt-8">
     <button id="load-more-btn" data-next-page="{{ page_obj.next_page_number }}">
       <div class="flex space-x-2 justify-center">
-        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_infinite]"></div>
-        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.2s_infinite]"></div>
-        <div class="w-3 h-3 bg-black rounded-full animate-[pulse_1s_0.4s_infinite]"></div>
+        <div class="w-3 h-3 bg-[#B99A58] rounded-full animate-[pulse_1s_infinite]"></div>
+        <div class="w-3 h-3 bg-[#B99A58] rounded-full animate-[pulse_1s_0.2s_infinite]"></div>
+        <div class="w-3 h-3 bg-[#B99A58] rounded-full animate-[pulse_1s_0.4s_infinite]"></div>
       </div>
     </button>
   </div>
   {% endif %}
 
 </section>
+</div>
 
 <script>
 
@@ -388,6 +390,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
 .animate-float-delay {
   animation: float 3s ease-in-out 1.5s infinite;
+}
+
+#family-detail-page #filtersBar,
+#family-detail-page #filterOverlay,
+#family-detail-page #filtersBar .bg-white,
+#family-detail-page #filterOverlay .bg-white {
+  background-color: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+#family-detail-page #filtersBar .text-gray-900,
+#family-detail-page #filtersBar .text-gray-700,
+#family-detail-page #filtersBar .text-gray-600,
+#family-detail-page #filtersBar .text-black,
+#family-detail-page #filterOverlay .text-gray-900,
+#family-detail-page #filterOverlay .text-gray-700,
+#family-detail-page #filterOverlay .text-gray-600,
+#family-detail-page #filterOverlay .text-black,
+#family-detail-page h1,
+#family-detail-page h2,
+#family-detail-page h3,
+#family-detail-page h4,
+#family-detail-page p {
+  color: #fff !important;
+}
+
+#family-detail-page #filtersBar h4,
+#family-detail-page #filterOverlay h4 {
+  color: #fff !important;
+}
+
+#family-detail-page #filtersBar input,
+#family-detail-page #filterOverlay select {
+  color: #fff;
+  background-color: #151515;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+#family-detail-page #filterBackdrop { background-color: rgba(0, 0, 0, 0.72) !important; }
+#family-detail-page #product-grid > a > div:first-child {
+  /* Product cutouts are black; a light neutral panel keeps the fixture visible. */
+  background-color: #f4f5f6;
+}
+
+#family-detail-page #product-grid > a > div:last-child > span {
+  color: #B99A58 !important;
+}
+
+#family-detail-page #product-grid > a > div:last-child > h3 {
+  color: #fff !important;
+}
+
+#family-detail-page #product-grid > a > div:last-child > div {
+  color: #c7c7c7 !important;
+}
+#family-detail-page [aria-labelledby="seo-cluster-links-heading"],
+#family-detail-page [aria-labelledby="seo-cluster-links-heading"] .bg-white {
+  background-color: #090909 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 </style>

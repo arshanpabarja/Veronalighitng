@@ -13,6 +13,7 @@
 {% endblock %}
 
 {% block content %}
+<div id="search-page" class="bg-[#050505] text-white">
 
 <!-- Breadcrumb -->
 <nav class="mx-auto max-w-[1440px] px-4 sm:px-8 md:px-[60px] py-4" aria-label="Breadcrumb">
@@ -143,6 +144,28 @@
 {% endif %}
 
 <!-- Infinite Scroll Script -->
+</div>
+
+<style>
+#search-page .bg-white { background-color: #050505 !important; }
+#search-page .bg-gray-50 { background-color: #181818 !important; }
+#search-page .border-gray-100,
+#search-page .border-gray-300 { border-color: rgba(255,255,255,.18) !important; }
+#search-page h1,
+#search-page h2,
+#search-page h3,
+#search-page h4,
+#search-page p { color: #fff !important; }
+#search-page .text-gray-400,
+#search-page .text-\[\#888\],
+#search-page .text-\[\#4a4a4a\] { color: #c7c7c7 !important; }
+#search-page .text-\[\#001427\],
+#search-page .text-\[\#1a1a1a\] { color: #fff !important; }
+#search-page form { background-color: #181818 !important; }
+#search-page input { color: #fff !important; }
+#search-page input::placeholder { color: #9ca3af !important; }
+</style>
+
 <script>
   const loadMoreBtn = document.getElementById('load-more-btn');
   const productGrid = document.getElementById('product-grid');

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title">
+  <title id="title">Pendant mount linear lighting</title>
+  <path d="M17 25h94" stroke="#24364B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M42 28v42M86 28v42" stroke="#24364B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M31 70h66v16H31z" fill="#E9EDF0" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M39 86h50" stroke="#C6A15B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M40 101h48" stroke="#C6A15B" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+</svg>

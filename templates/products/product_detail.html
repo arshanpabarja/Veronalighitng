@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load catalog_tags %}
 
 {% block title %}
 {{ product.get_meta_title|default:product.name }}
@@ -135,6 +136,7 @@
 
 
 {% block content %}
+<div id="product-detail-page" class="bg-[#050505] text-white">
 <!-- PAGE LOADER -->
 <div id="page-loader">
   <div class="loader-spinner"></div>
@@ -217,8 +219,8 @@
   <!-- Info -->
   <div class="product-info">
     <div class="product-category">{{ product.category }}</div>
-    <h1 class="product-title text-black">{{ product.name }}</h1>
-    <p class="product-subtitle">{{ product.subtitle }}</p>
+    <h1 class="product-title text-white">{{ product.name }}</h1>
+    <p class="product-subtitle text-white">{{ product.subtitle }}</p>
 
     <div class="key-specs">
       {% if product.wattage %}
@@ -273,7 +275,7 @@
     {% with finishes=product.finishes.all %}
     {% if finishes %}
     <div class="finish-section">
-      <p class="finish-title">
+      <p class="finish-title text-white">
         {% trans "Finish" %} — <span id="finishName">{{ finishes.0.name }}</span>
       </p>
       <div class="finish-swatches">
@@ -291,12 +293,15 @@
     {% endif %}
     {% endwith %}
 
-    <!-- Buttons — fixed: removed <a> inside <button>, fixed icon, fixed typo -->
+    <!-- Product actions -->
     <div class="action-btns">
-      <button class="btn-primary">
-        <i class="fa-solid fa-envelope"></i>
+      <a href="/media/catalogs/verona-digital-catalog-2026.pdf" download class="btn-outline">
+        {% if LANGUAGE_CODE == 'fa' %}دانلود کاتالوگ دیجیتال{% else %}Download digital catalogue{% endif %}
+      </a>
+      <a href="{{ business_identity.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="{% trans 'Request a Quote on WhatsApp' %}">
+        <i class="fa-brands fa-whatsapp"></i>
         {% trans "Request a Quote" %}
-      </button>
+      </a>
       {% if product.catelog %}
       <a href="{{ product.catelog.url }}" download class="btn-outline">
         <i class="fa-solid fa-file-arrow-down"></i>
@@ -322,20 +327,20 @@
     <div class="description-grid">
       <div class="desc-text text-justify">
         {% get_current_language as CURRENT_LANGUAGE %}
-        <h2 class="section-title">
+        <h2 class="section-title text-white">
           {{ product.name }} —
           {% if CURRENT_LANGUAGE == "fa" %}توضیحات و کاربردها{% else %}Description and Applications{% endif %}
         </h2>
         {% if product.full_description %}
-        <p>{{ product.full_description|linebreaksbr }}</p>
+        <p class="text-white">{{ product.full_description|linebreaksbr }}</p>
         {% elif product.description %}
-        <p>{{ product.description|linebreaksbr }}</p>
+        <p class="text-white">{{ product.description|linebreaksbr }}</p>
         {% else %}
-        <p>{{ product.subtitle }}</p>
+        <p class="text-white">{{ product.subtitle }}</p>
         {% endif %}
       </div>
       <div class="desc-highlights">
-        <h4>{% trans "Key Features" %}</h4>
+        <h4 class="text-white">{% trans "Key Features" %}</h4>
         <ul class="highlight-list">
           {% if product.color_temperature %}
           <li><i class="fa-solid fa-check"></i> {% trans "Color Temperature" %}: {{ product.color_temperature }} K</li>
@@ -439,7 +444,7 @@
     <div class="section-header">
       <div>
         <div class="section-label">{% trans "Complete Range" %}</div>
-        <h2 class="section-title">{% trans "Models & Sizes" %}</h2>
+        <h2 class="section-title text-white">{% trans "Models & Sizes" %}</h2>
       </div>
     </div>
     <div class="models-table-wrap">
@@ -459,11 +464,11 @@
           {% for variant in product.variants.all %}
           {% if variant.is_active %}
           <tr>
-            <td>{{ variant.model_name }}</td>
-            <td>{% if variant.wattage %}{{ variant.wattage }}W{% else %}—{% endif %}</td>
+            <td>{% if LANGUAGE_CODE == 'fa' %}{{ variant.model_name|catalog_fa }}{% else %}{{ variant.model_name }}{% endif %}</td>
+            <td>{% if variant.wattage %}{{ variant.wattage }}{% if LANGUAGE_CODE == 'fa' %} وات{% else %}W{% endif %}{% else %}—{% endif %}</td>
             <td>
               {% if variant.dimension %}
-                {% if variant.dimension.label %}<strong>{{ variant.dimension.label }}</strong><br>{% endif %}
+                {% if variant.dimension.label %}<strong>{% if LANGUAGE_CODE == 'fa' %}{{ variant.dimension.label|catalog_fa }}{% else %}{{ variant.dimension.label }}{% endif %}</strong><br>{% endif %}
                 {% if variant.dimension.width or variant.dimension.height or variant.dimension.depth %}
                   {{ variant.dimension.depth|default:"" }} × {{ variant.dimension.height|default:"" }} × {{ variant.dimension.width|default:"" }}
                 {% else %}—{% endif %}
@@ -471,10 +476,10 @@
             </td>
             <td>
               {% if variant.dimension and variant.dimension.weight %}
-                {{ variant.dimension.weight }} {% trans "kg" %}
+                {{ variant.dimension.weight }} {% if LANGUAGE_CODE == 'fa' %}کیلوگرم{% else %}{% trans "kg" %}{% endif %}
               {% else %}—{% endif %}
             </td>
-            <td>{% if variant.note %}{{ variant.note }}{% else %}—{% endif %}</td>
+            <td>{% if variant.note %}{% if LANGUAGE_CODE == 'fa' %}{{ variant.note|catalog_fa }}{% else %}{{ variant.note }}{% endif %}{% else %}—{% endif %}</td>
           </tr>
           {% endif %}
           {% empty %}
@@ -497,7 +502,7 @@
   <div class="section-header" style="margin-bottom:48px;">
     <div>
       <div class="section-label">{% trans "You May Also Like" %}</div>
-      <h2 class="section-title">{% trans "Related Products" %}</h2>
+      <h2 class="section-title text-white">{% trans "Related Products" %}</h2>
     </div>
     <a href="#" class="view-all-link">{% trans "Browse Collection" %}</a>
   </div>
@@ -543,19 +548,19 @@
       </div>
     </div>
     {% empty %}
-    <p style="color: var(--gray-text);">{% trans "No related products found." %}</p>
+    <p class="text-white">{% trans "No related products found." %}</p>
     {% endfor %}
   </div>
 </div>
 
 <!-- CATALOG BANNER -->
-<div class="relative bg-gray-50 border-t border-gray-200 overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-r from-red-50 to-transparent pointer-events-none"></div>
+<div class="catalog-range relative border-t overflow-hidden">
+
   <div class="max-w-7xl mx-auto px-6 py-16 relative flex flex-col sm:flex-row items-center justify-between gap-8">
     <div>
       <span class="text-[#727272] text-xs font-semibold uppercase tracking-widest">{% trans "Full Product Range" %}</span>
-      <h2 class="text-2xl font-bold text-gray-900 mt-2">{% trans "Explore the Complete Verona Catalogue 2025" %}</h2>
-      <p class="text-gray-500 mt-2 text-sm">{% trans "Download our full 2025 product catalogue featuring over 400 luminaires." %}</p>
+      <h2 class="text-white text-2xl font-bold mt-2">{% if LANGUAGE_CODE == 'fa' %}مجموعه کامل کاتالوگ ورونا ۲۰۲۶{% else %}Explore the complete Verona catalogue 2026{% endif %}</h2>
+      <p class="text-white mt-2 text-sm">{% if LANGUAGE_CODE == 'fa' %}مجموعه کامل محصولات روشنایی ورونا را در کاتالوگ دیجیتال ببینید.{% else %}Discover the complete Verona lighting collection in our digital catalogue.{% endif %}</p>
     </div>
     <a href="{% url 'catalog' %}"
        class="flex-shrink-0 flex items-center gap-2 bg-[#727272] hover:bg-[#B99A58] text-white font-semibold py-3 px-7 rounded-md transition-colors whitespace-nowrap">
@@ -571,6 +576,64 @@
   <img class="lightbox-img" id="lightboxImg" alt="{% trans 'Expanded product image' %}" onclick="event.stopPropagation()" />
   <div class="lightbox-hint">{% trans "Scroll to zoom · Drag to pan · Double-click to reset" %}</div>
 </div>
+</div>
+
+<style>
+/* Product detail follows the same dark Verona palette as the index and navbar. */
+#product-detail-page { --primary: #727272; --accent: #B99A58; --gray-mid: #292929; --gray-light: #151515; --gray-text: #c7c7c7; --text: #fff; background: #050505; }
+#product-detail-page #page-loader { background: #050505; }
+#product-detail-page .loader-spinner { border-color: #292929; border-top-color: #B99A58; }
+#product-detail-page .breadcrumb { background: #111111; color: #c7c7c7; border-color: rgba(255,255,255,.12); }
+#product-detail-page .breadcrumb a { color: #c7c7c7; }
+#product-detail-page .breadcrumb .current,
+#product-detail-page .product-subtitle,
+#product-detail-page .spec-label,
+#product-detail-page .finish-title,
+#product-detail-page .finish-title span,
+#product-detail-page .spec-value,
+#product-detail-page .desc-text,
+#product-detail-page .highlight-list li,
+#product-detail-page .spec-table tbody td,
+#product-detail-page .spec-table tbody td:first-child,
+#product-detail-page .models-table tbody td,
+#product-detail-page .models-table tbody td:first-child,
+#product-detail-page .product-card-cat,
+#product-detail-page .product-card-name,
+#product-detail-page .product-card-sub { color: #fff; }
+#product-detail-page .main-image-wrap,
+#product-detail-page .thumb,
+#product-detail-page .desc-highlights,
+#product-detail-page .models-section,
+#product-detail-page .models-table,
+#product-detail-page .product-card-img,
+#product-detail-page .bg-gray-50 { background: #151515 !important; }
+#product-detail-page .divider,
+#product-detail-page .tab-nav,
+#product-detail-page .spec-table tbody tr,
+#product-detail-page .highlight-list li,
+#product-detail-page .models-table tbody tr { border-color: rgba(255,255,255,.12); }
+#product-detail-page .spec-table tbody tr:hover,
+#product-detail-page .models-table tbody tr:hover,
+#product-detail-page .models-table tbody tr.current-model { background: #292929; }
+#product-detail-page .tab-btn { color: #c7c7c7; }
+#product-detail-page .tab-btn.active,
+#product-detail-page .tab-btn:hover,
+#product-detail-page .product-category,
+#product-detail-page .section-label { color: #B99A58; }
+#product-detail-page h1,
+#product-detail-page h2,
+#product-detail-page h3,
+#product-detail-page h4,
+#product-detail-page p { color: #fff !important; }
+#product-detail-page .relative.bg-gray-50 { border-color: rgba(255,255,255,.12); }
+#product-detail-page [aria-labelledby="seo-cluster-links-heading"],
+#product-detail-page [aria-labelledby="priority-product-guide"],
+#product-detail-page [aria-labelledby="seo-cluster-links-heading"] .bg-white,
+#product-detail-page [aria-labelledby="priority-product-guide"] .bg-white {
+  background-color: #090909 !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+</style>
 
 <script>
 /* ── Page Loader ── */

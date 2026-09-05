@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div id="filtersBar" class="hidden xl:block sticky top-24 z-40 bg-white border-b border-t border-gray-200 shadow-sm">
+<div id="filtersBar" class="hidden lg:block sticky top-24 z-40 bg-white border-b border-t border-gray-200 shadow-sm">
     <div class="px-7 py-2">
         <div class="flex items-center justify-center gap-3 flex-wrap">
             <div class="relative">
@@ -108,7 +108,7 @@
             </div>
 
             <div class="relative">
-                <button type="button" onclick="toggleDropdown('moreFiltersDropdown')" class="flex items-center gap-2 px-4 py-2.5 text-black rounded-lg transition-colors">
+                <button type="button" onclick="toggleDropdown('moreFiltersDropdown')" class="flex items-center gap-2 px-4 py-2.5 text-white rounded-lg transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
                     </svg>
@@ -270,7 +270,7 @@
 
 <div id="filterOverlay"
     class="fixed bottom-0 left-0 right-0 z-[1001] bg-white rounded-t-[20px] shadow-[0_-8px_32px_rgba(0,0,0,0.15)]
-           translate-y-full transition-transform duration-300 ease-out max-h-[85vh] flex flex-col sm:hidden">
+           translate-y-full transition-transform duration-300 ease-out max-h-[85vh] flex flex-col lg:hidden">
 
   <div class="flex-shrink-0 px-4 pt-3 pb-4 border-b border-[#f0f0f0]">
     <div class="w-10 h-1 bg-[#e0e0e0] rounded-full mx-auto mb-4"></div>
@@ -294,7 +294,6 @@
           <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
             <input type="checkbox" name="application" value="{{ app.slug }}"
                    {% if app.slug in selected_applications %}checked{% endif %}
-                   onchange="updateFilterBadge(); applyFilters();"
                    class="w-4 h-4 text-blue-600 rounded">
             <span class="text-sm text-gray-700">{{ app.name }}</span>
           </label>
@@ -309,7 +308,6 @@
           <label class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded cursor-pointer">
             <input type="checkbox" name="product_family" value="{{ family.slug }}"
                    {% if family.slug in selected_product_families %}checked{% endif %}
-                   onchange="updateFilterBadge(); applyFilters();"
                    class="w-4 h-4 text-blue-600 rounded">
             <span class="text-sm text-gray-700">{{ family.name }}</span>
           </label>
@@ -757,6 +755,7 @@ let lastScroll = 0;
 const mobileBtn = document.getElementById('mobileFilterBtn');
 
 window.addEventListener('scroll', () => {
+    if (!mobileBtn) return;
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {

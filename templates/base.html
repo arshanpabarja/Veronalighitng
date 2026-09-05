@@ -38,6 +38,7 @@
     <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.ico' %}">
     <link rel="apple-touch-icon" href="{% static 'images/favicon.ico' %}">
     <link href="{% static 'css/styles.css' %}?v=20260820-catalog" rel="stylesheet">
+    <link href="{% static 'css/site-refinements.css' %}?v=20260905n" rel="stylesheet">
     {% block extra_head %}{% endblock %}
     <script type="application/ld+json">
     {
@@ -86,11 +87,11 @@
 <style>
 /* Default (mobile) */
 .main-padding {
-    padding-top: 68px;
+    padding-top: 64px;
 }
 
 /* Desktop */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .main-padding {
         padding-top: 96px;
     }

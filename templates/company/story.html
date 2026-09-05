@@ -62,9 +62,26 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  #story-page .bg-white,
+  #story-page .bg-zinc-50 { background-color: #050505 !important; }
+  #story-page .bg-zinc-100 { background-color: #181818 !important; }
+  #story-page .border-zinc-100,
+  #story-page .border-zinc-200 { border-color: rgba(255,255,255,.12) !important; }
+  #story-page h1,
+  #story-page h2,
+  #story-page h3,
+  #story-page h4,
+  #story-page p { color: #fff !important; }
+  #story-page .text-zinc-900,
+  #story-page .text-zinc-800 { color: #fff !important; }
+  #story-page .text-zinc-400,
+  #story-page .text-zinc-500,
+  #story-page .text-zinc-600 { color: #c7c7c7 !important; }
+  #story-page .bg-zinc-900 { background-color: #222222 !important; }
 </style>
 
-<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
+<main id="story-page" class="bg-[#050505] text-white antialiased selection:bg-white selection:text-black">
 
   <!-- ── HERO SECTION WITH SIDE CANVAS GRID ── -->
   <section class="border-b border-zinc-100 bg-zinc-50" aria-label="{% trans 'About heading' %}">

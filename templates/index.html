@@ -1,835 +1,1874 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}{{ site_settings.index_meta_title|default:"Verona Lighting - Architectural Lighting Solutions" }}{% endblock %}
 
-{% block seo %}
-<meta name="description" content="{{ site_settings.index_meta_description|default:'Engineered luminaires for facade, landscape and exterior spaces. Premium architectural lighting by Verona.' }}">
-<meta name="keywords" content="{{ site_settings.index_meta_keywords|default:'architectural lighting, facade lighting, LED luminaires, outdoor lighting' }}">
-<link rel="canonical" href="{{ site_settings.index_canonical_url|default:seo_canonical_url }}">
-<meta property="og:title" content="{{ site_settings.index_og_title|default:site_settings.index_meta_title|default:'Verona Lighting' }}">
-<meta property="og:description" content="{{ site_settings.index_og_description|default:site_settings.index_meta_description|default:'Precision lighting for modern architecture' }}">
-<meta property="og:image" content="{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
-<meta property="og:url" content="{{ site_settings.index_canonical_url|default:seo_canonical_url }}">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ site_settings.index_og_title|default:site_settings.index_meta_title|default:'Verona Lighting' }}">
-<meta name="twitter:description" content="{{ og_description|default:site_settings.index_meta_description|default:'Precision lighting for modern architecture' }}">
-<meta name="twitter:image" content="{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "{{ request.scheme }}://{{ request.get_host }}/#website",
-
-  "url": "{{ request.scheme }}://{{ request.get_host }}/",
-  "name": "Verona Lighting",
-  "description": "{{ site_settings.index_meta_description|default:'Precision architectural lighting solutions'|escapejs }}",
-  "inLanguage": [
-    "fa",
-    "en"
-  ],
-
-  "publisher": {
-    "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization"
-  },
-
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "{{ request.scheme }}://{{ request.get_host }}{% url 'search' %}?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "{{ canonical_url }}#webpage",
-
-  "url": "{{ canonical_url }}",
-
-  "name": "{{ site_settings.index_meta_title|default:'Verona Lighting'|escapejs }}",
-
-  "description": "{{ site_settings.index_meta_description|default:'Precision architectural lighting solutions'|escapejs }}",
-
-  "isPartOf": {
-    "@id": "{{ request.scheme }}://{{ request.get_host }}/#website"
-  },
-
-  "about": {
-    "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization"
-  },
-
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endif %}"
-  },
-
-  "inLanguage": "{{ LANGUAGE_CODE }}"
-}
-</script>
+{% block title %}
+    {{ site_settings.index_meta_title|default:"Verona Lighting — Architectural Lighting Solutions" }}
 {% endblock %}
 
+
+{% block seo %}
+
+<meta
+    name="description"
+    content="{{ site_settings.index_meta_description|default:'Verona Lighting — precision architectural lighting for modern spaces.' }}"
+>
+
+<meta
+    name="keywords"
+    content="{{ site_settings.index_meta_keywords|default:'architectural lighting, facade lighting, LED lighting, Verona Lighting' }}"
+>
+
+<link
+    rel="canonical"
+    href="{{ site_settings.index_canonical_url|default:seo_canonical_url }}"
+>
+
+<meta
+    property="og:title"
+    content="{{ site_settings.index_og_title|default:site_settings.index_meta_title|default:'Verona Lighting' }}"
+>
+
+<meta
+    property="og:description"
+    content="{{ site_settings.index_og_description|default:site_settings.index_meta_description|default:'Precision architectural lighting for modern spaces.' }}"
+>
+
+<meta
+    property="og:image"
+    content="{% if site_settings.index_og_image %}{{ request.scheme }}://{{ request.get_host }}{{ site_settings.index_og_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero55.png' %}{% endif %}"
+>
+
+<meta
+    property="og:url"
+    content="{{ site_settings.index_canonical_url|default:seo_canonical_url }}"
+>
+
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+
+{% endblock %}
+
+
+
 {% block content %}
-<style>
-  /* ── Scroll reveal ─────────────────────────────────── */
-  .animate-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-  .animate-fade.visible { opacity: 1; transform: none; }
+<!-- =========================================================
+     VERONA LIGHTING — INDEX
 
-  /* Card variant: subtle scale-up alongside the fade, used for grid/carousel cards */
-  .animate-fade-scale { opacity: 0; transform: translateY(20px) scale(0.94); transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1); }
-  .animate-fade-scale.visible { opacity: 1; transform: none; }
+     Navbar: base.html
+     Footer: base.html
 
-  /* Respect users who'd rather not see motion */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fade, .animate-fade-scale, .hero-fade-in { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
-  }
+     This page intentionally contains NO navbar/footer.
+     ========================================================= -->
 
-  /* ── Hero load-in (runs once on page load, no scroll needed) ── */
-  @keyframes heroFadeInUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-fade-in { opacity: 0; animation: heroFadeInUp 0.9s cubic-bezier(.22,.61,.36,1) forwards; }
-  .hero-copy { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85); }
-
-  /* ── Carousels: hide scrollbar ─────────────────────── */
-  #cat-carousel, .app-carousel { -ms-overflow-style: none; scrollbar-width: none; }
-  #cat-carousel::-webkit-scrollbar, .app-carousel::-webkit-scrollbar { display: none; }
-
-  /* ── Philosophy split grid ─────────────────────────── */
-  .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
-  @media (max-width: 900px) { .philosophy-grid { grid-template-columns: 1fr; } }
-
-  /* ── Cat card arrow ────────────────────────────────── */
-  .cat-arrow {
-    width: 36px; height: 36px; border-radius: 9999px;
-    background: #727272; display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 14px; flex-shrink: 0;
-    opacity: 0; transform: translateY(6px) scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 14px rgba(128,0,0,0.45);
-  }
-  .cat-card-link:hover .cat-arrow { opacity: 1; transform: translateY(0) scale(1); }
-
-  /* ── Project card arrow ────────────────────────────── */
-  .proj-arrow {
-    width: 36px; height: 36px; border-radius: 9999px;
-    background: #727272; display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 14px;
-    opacity: 0; transform: scale(0.7) rotate(-45deg);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-    box-shadow: 0 4px 16px rgba(128,0,0,0.5);
-  }
-  .group:hover .proj-arrow { opacity: 1; transform: scale(1) rotate(0deg); }
-
-  /* ══════════════════════════════════════════════════════
-    HERO — Desktop: full viewport, Navbar is absolute over it
-  ══════════════════════════════════════════════════════ */
-  .hero-section {
-    position: relative;
-    width: 100%;
-    background: #0a0a0a;
-    overflow: hidden;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-  }
-  .hero-slide {
-    position: absolute; inset: 0;
-  }
-  .hero-slide img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    display: block;
-  }
-
-  /* ── SVG ring dots ─────────────────────────────────── */
-  .dot-wrap {
-    position: relative; width: 32px; height: 32px;
-    flex-shrink: 0; cursor: pointer; background: transparent; border: none; padding: 0;
-  }
-  .dot-wrap svg { position: absolute; inset: 0; transform: rotate(-90deg); pointer-events: none; }
-  .dot-track { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 1.8; }
-  .dot-fill {
-    fill: none; stroke: #B99A58; stroke-width: 1.8; stroke-linecap: round;
-    stroke-dasharray: 75.4; stroke-dashoffset: 75.4;
-    transition: stroke-dashoffset 0.12s linear;
-  }
-  .dot-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
-  .dot-center span {
-    width: 7px; height: 7px; border-radius: 9999px;
-    background: rgba(255,255,255,0.3);
-    transition: background 0.3s, transform 0.3s; display: block;
-  }
-  .dot-wrap.active .dot-center span { background: #fff; transform: scale(1.2); }
-  .dot-wrap:not(.active):hover .dot-center span { background: rgba(255,255,255,0.65); }
-
-  /* ── Prev/Next ─────────────────────────────────────── */
-  .hero-nav-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    z-index: 20; width: 48px; height: 48px; border-radius: 9999px;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    background: rgba(0,0,0,0.25); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; backdrop-filter: blur(4px);
-    transition: background 0.25s, border-color 0.25s;
-  }
-  .hero-nav-btn:hover { background: #727272; border-color: #727272; }
-  .hero-nav-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; }
-  #hero-prev { left: 24px; }
-  #hero-next { right: 24px; }
-
-  /* ══════════════════════════════════════════════════════
-    MOBILE OVERRIDES  max-width: 639px
-  ══════════════════════════════════════════════════════ */
-  @media (max-width: 639px) {
-
-    /* ── Hero: sits below fixed navbar (h-16 = 64px) ── */
-    .hero-section {
-      min-height: unset;
-      height: 35vh;
-      margin-top: 64px;  /* push below fixed navbar */
-    }
-
-    .hero-overlay {
-      background: linear-gradient(to bottom, rgba(0,0,0,.58) 0%, rgba(0,0,0,.24) 42%, rgba(0,0,0,.7) 100%) !important;
-    }
-
-    .hero-desktop-content {
-      min-height: 100% !important;
-      padding-inline: 40px !important;
-    }
-    .hero-desktop-content h1 {
-      font-size: 20px !important;
-      line-height: 1.15 !important;
-      margin-bottom: 8px !important;
-    }
-    .hero-description {
-      max-width: 220px !important;
-      margin-bottom: 0 !important;
-      font-size: 12px !important;
-      line-height: 1.6 !important;
-      color: #fff !important;
-    }
-    .hero-actions { display: none !important; }
-    .hero-eyebrow { display: block !important; }
-
-    /* Hide scroll hint */
-    .hero-scroll-hint { display: none !important; }
-
-    /* Smaller nav arrows */
-    .hero-nav-btn { display: none; }
-    #hero-prev { left: 8px; }
-    #hero-next { right: 8px; }
-
-    /* Smaller dots, closer to bottom */
-    .dot-wrap { width: 22px; height: 22px; }
-    .hero-dots-wrap { bottom: 10px; }
-
-    /* ── Featured Projects: tighter padding ── */
-    .section-projects { padding-top: 40px !important; padding-bottom: 40px !important; }
-    .section-projects h2 { font-size: 1.75rem !important; margin-bottom: 8px !important; }
-    .section-projects .section-desc { font-size: 0.85rem !important; }
-
-    /* ── Categories: tighter padding ── */
-    .section-categories { padding-top: 40px !important; padding-bottom: 40px !important; }
-    .section-categories h2 { font-size: 1.75rem !important; }
-    .section-categories .section-desc { font-size: 0.85rem !important; }
-
-    /* ── Applications: tighter ── */
-    .section-applications { padding-top: 40px !important; padding-bottom: 40px !important; }
-    .section-applications h2 { font-size: 1.75rem !important; }
-    .section-applications .section-desc { font-size: 0.85rem !important; }
-
-    /* ── Philosophy ── */
-    .philosophy-grid { min-height: unset !important; }
-    .philosophy-text { padding: 40px 24px !important; }
-    .philosophy-text h2 { font-size: 1.6rem !important; }
-    .philosophy-text p { font-size: 0.85rem !important; margin-bottom: 24px !important; }
-
-    /* ── CTA ── */
-    .section-cta { padding-top: 48px !important; padding-bottom: 48px !important; }
-    .section-cta h2 { font-size: 1.6rem !important; }
-    .section-cta p { font-size: 0.85rem !important; }
-  }
-
-  .hero-eyebrow { display: none; }
-</style>
+<div
+    id="verona-home"
+    class="w-full overflow-x-hidden bg-[#050505] font-sans text-[#f5f5f2] antialiased"
+>
 
 
-<!-- ════════════════════════════════════════════════════
-    1. HERO
-════════════════════════════════════════════════════ -->
-<div style="direction: {% if LANGUAGE_CODE == 'fa' %} rtl {% else %} ltr {% endif %};">
+    <!-- =====================================================
+         1. HERO
+         ===================================================== -->
 
-<div  class="hero-section">
+    <section
+        id="top" data-brand-slide="true"
+        class="relative h-[850px] min-h-screen w-full overflow-hidden bg-[#090909]"
+        aria-label="{% trans 'Verona architectural lighting' %}"
+    >
 
-  <!-- Slides -->
-  <div class="hero-slide" style="opacity:1;">
-    <img src="{% static 'images/hero55.png' %}" alt="{% trans 'Verona Lighting' %}">
-  </div>
-  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="1" data-type="image">
-    <img src="{% static 'images/hero2.webp' %}" alt="{% trans 'Architectural lighting slide 2' %}">
-  </div>
-  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="2" data-type="image">
-    <img src="{% static 'images/hero3.png' %}" alt="{% trans 'Architectural lighting slide 3' %}">
-  </div>
-  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="3" data-type="image">
-    <img src="{% static 'images/hero4.jpg' %}" alt="{% trans 'Architectural lighting slide 4' %}">
-  </div>
-  <div class="hero-slide" style="opacity:0;transition:opacity .7s;" data-index="4" data-type="image">
-    <img src="{% static 'images/hero6.png' %}" alt="{% trans 'Architectural lighting slide 5' %}">
-  </div>
+        <!-- Hero images -->
 
-  <!-- Overlay -->
-  <div class="hero-overlay absolute inset-0 z-1"
-      style="background:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.6) 100%);">
-  </div>
+        <div class="absolute inset-0">
 
-  <!-- Prev / Next -->
-  <button id="hero-prev" class="hero-nav-btn" aria-label="{% trans 'Previous slide' %}">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <button id="hero-next" class="hero-nav-btn" aria-label="{% trans 'Next slide' %}">
-    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-  </button>
+            <img src="{% static 'images/verona-beam-hero.jpg' %}" alt="Verona" fetchpriority="high" width="8000" height="2917" class="hero-slide hero-brand-slide absolute inset-0 h-full w-full object-contain opacity-100 transition-[opacity,transform] duration-[850ms]" data-slide="0">
 
-  <!-- Desktop content -->
-  <div class="hero-desktop-content hero-copy relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full
-              min-h-[100svh] flex items-center">
-    <div class="max-w-3xl">
-      <p class="hero-eyebrow hero-fade-in text-[9px] tracking-[2px] uppercase text-white mb-1" style="animation-delay:0.05s;">
-        {% trans "Architectural Lighting" %}
-      </p>
-      <h1 class="hero-fade-in font-black uppercase leading-[0.95] tracking-tight text-white mb-6
-                text-5xl md:text-6xl lg:text-7xl" style="animation-delay:0.1s;">
-        {% trans "Precision Lighting" %}<br>
-        <span class="text-[#727272]">{% trans "for Modern" %}</span><br>
-        {% trans "Architecture" %}
-      </h1>
-      <p class="hero-description hero-fade-in text-[18px] text-gray-300 leading-relaxed max-w-xl mb-12" style="animation-delay:0.3s;">
-        {% trans "Engineered luminaires for facade, landscape and exterior spaces." %}
-      </p>
-      <div class="hero-actions hero-fade-in flex flex-row flex-wrap gap-4" style="animation-delay:0.5s;">
-        <a href="/projects"
-          class="group px-10 py-5 bg-[#727272] text-white text-[11px] tracking-[3px]
-                  uppercase font-semibold transition-all duration-300 hover:bg-[#B99A58]">
-          {% trans "View Projects" %} <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
-        </a>
-        <a href="/products"
-          class="group px-10 py-5 border-2 border-white/20 text-white text-[11px]
-                  tracking-[3px] uppercase font-semibold transition-all duration-300
-                  hover:border-white/40 hover:bg-white/5">
-          {% trans "Explore Products" %} <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
-        </a>
-      </div>
+            <img
+                src="{% static 'images/hero55.png' %}"
+                alt=""
+                class="hero-slide absolute inset-0 h-full w-full scale-[1.025] object-cover opacity-0 transition-[opacity,transform] duration-[850ms]"
+                data-slide="1"
+            >
+
+            <img
+                src="{% static 'images/hero2.webp' %}"
+                alt=""
+                class="hero-slide absolute inset-0 h-full w-full scale-[1.025] object-cover opacity-0 transition-[opacity,transform] duration-[850ms]"
+                data-slide="2"
+            >
+
+            <img
+                src="{% static 'images/hero3.png' %}"
+                alt=""
+                class="hero-slide absolute inset-0 h-full w-full scale-[1.025] object-cover opacity-0 transition-[opacity,transform] duration-[850ms]"
+                data-slide="3"
+            >
+
+            <img
+                src="{% static 'images/hero4.jpg' %}"
+                alt=""
+                class="hero-slide absolute inset-0 h-full w-full scale-[1.025] object-cover opacity-0 transition-[opacity,transform] duration-[850ms]"
+                data-slide="4"
+            >
+
+            <img
+                src="{% static 'images/hero6.png' %}"
+                alt=""
+                class="hero-slide absolute inset-0 h-full w-full scale-[1.025] object-cover opacity-0 transition-[opacity,transform] duration-[850ms]"
+                data-slide="5"
+            >
+
+        </div>
+
+
+        <!-- Hero dark overlay -->
+
+        <div
+            class="hero-overlay absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,.3)_50%,rgba(0,0,0,.06)),linear-gradient(0deg,rgba(0,0,0,.6),transparent_42%)]"
+        ></div>
+
+
+        <!-- Hero content -->
+
+        <div
+            class="hero-copy relative z-10 mx-auto flex h-full w-full max-w-[1360px] items-center px-6 pt-[72px] md:px-12"
+        >
+
+            <div
+                class="w-full max-w-[790px] text-shadow-[0_3px_26px_rgba(0,0,0,.72)]"
+            >
+
+                <p
+                    class="mb-[18px] text-[10px] font-semibold uppercase tracking-[.32em] text-[#a5a5a2]"
+                >
+                    {% trans "Architectural Lighting" %}
+                </p>
+
+
+                <h1
+                class="m-0 text-white text-[clamp(48px,6vw,82px)] font-extrabold uppercase leading-[.92] tracking-[-.06em]"
+                >
+
+                    {% trans "Precision lighting" %}
+
+                    <br>
+
+                    <span class="text-[#8a8a88]">
+                        {% trans "for modern" %}
+                    </span>
+
+                    <br>
+
+                    {% trans "architecture" %}
+
+                </h1>
+
+
+                <p
+                    class="mt-7 mb-10 max-w-[610px] text-[16px] leading-[1.6] text-[#deded9] md:text-[18px]"
+                >
+                    {% trans "Engineered luminaires for facade, landscape, commercial, and exterior spaces." %}
+                </p>
+
+
+                <div class="flex flex-wrap gap-3">
+
+                    <a
+                        href="{% url 'products:project_list' %}"
+                        class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#727272] bg-[#727272] px-[25px] text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-[#050505]"
+                    >
+
+                        {% trans "View projects" %}
+
+                        <span>→</span>
+
+                    </a>
+
+
+                    <a
+                        href="{% url 'products:product_list' %}"
+                        class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#3f3f3f] bg-[#121212] px-[25px] text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-[#050505]"
+                    >
+
+                        {% trans "Explore products" %}
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Previous -->
+
+        <button
+            type="button"
+            id="hero-prev"
+            aria-label="{% trans 'Previous hero image' %}"
+            class="absolute left-[26px] top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-black/30 text-white backdrop-blur-md transition hover:bg-[#727272]"
+        >
+            ←
+        </button>
+
+
+        <!-- Next -->
+
+        <button
+            type="button"
+            id="hero-next"
+            aria-label="{% trans 'Next hero image' %}"
+            class="absolute right-[26px] top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-black/30 text-white backdrop-blur-md transition hover:bg-[#727272]"
+        >
+            →
+        </button>
+
+
+        <!-- Scroll cue -->
+
+        <span
+            class="absolute bottom-[70px] left-1/2 z-10 hidden -translate-x-1/2 text-[9px] uppercase tracking-[.25em] text-[#aaa] [writing-mode:vertical-rl] md:block"
+            aria-hidden="true"
+        >
+            Scroll
+        </span>
+
+
+        <!-- Hero dots -->
+
+        <div
+            id="hero-dots"
+            class="absolute bottom-[30px] left-1/2 z-20 flex -translate-x-1/2 gap-[9px]"
+            role="tablist"
+            aria-label="{% trans 'Hero images' %}"
+        >
+
+            <button type="button" class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white transition duration-300" data-slide="0" role="tab" aria-label="{% trans 'Show image 1' %}" aria-selected="true"></button>
+
+            <button
+                type="button"
+                class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white transition duration-300"
+                data-slide="1"
+                role="tab"
+                aria-label="{% trans 'Show image 2' %}"
+                aria-selected="false"
+            ></button>
+
+            <button
+                type="button"
+                class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white/30 transition duration-300"
+                data-slide="2"
+                role="tab"
+                aria-label="{% trans 'Show image 3' %}"
+                aria-selected="false"
+            ></button>
+
+            <button
+                type="button"
+                class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white/30 transition duration-300"
+                data-slide="3"
+                role="tab"
+                aria-label="{% trans 'Show image 4' %}"
+                aria-selected="false"
+            ></button>
+
+            <button
+                type="button"
+                class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white/30 transition duration-300"
+                data-slide="4"
+                role="tab"
+                aria-label="{% trans 'Show image 5' %}"
+                aria-selected="false"
+            ></button>
+
+            <button
+                type="button"
+                class="hero-dot h-[7px] w-[7px] rounded-full border-0 bg-white/30 transition duration-300"
+                data-slide="5"
+                role="tab"
+                aria-label="{% trans 'Show image 6' %}"
+                aria-selected="false"
+            ></button>
+
+        </div>
+
+    </section>
+
+
+
+<!-- =====================================================
+     2. FEATURED PROJECTS
+     ===================================================== -->
+
+<section
+    id="projects"
+    class="bg-[#090909] py-[90px] md:py-[118px] lg:pb-[130px]"
+>
+
+    <div
+        class="mx-auto w-full max-w-[1360px] px-6 md:px-12"
+    >
+
+        <!-- =================================================
+             HEADING
+             ================================================= -->
+
+        <div
+            class="mb-10 flex flex-col items-start justify-between gap-8 md:mb-[50px] md:flex-row md:items-end"
+        >
+
+            <div>
+
+                <p
+                    class="mb-[18px] text-[10px] font-semibold uppercase tracking-[.32em] text-[#a5a5a2]"
+                >
+                    {% trans "Selected work" %}
+                </p>
+
+
+                <h2
+                    class="m-0 text-[42px] font-extrabold uppercase leading-[.95] tracking-[-.055em] text-white md:text-[58px]"
+                >
+
+                    {% if LANGUAGE_CODE == 'fa' %}
+
+                        پروژه‌های
+
+                        <span class="text-[#747474]">
+                            برگزیده
+                        </span>
+
+                    {% else %}
+
+                        {% trans "Featured" %}
+
+                        <span class="text-[#747474]">
+                            {% trans "projects" %}
+                        </span>
+
+                    {% endif %}
+
+                </h2>
+
+
+                <p
+                    class="mt-[22px] max-w-[620px] text-[14px] leading-[1.65] text-[#8e8e8a] md:text-[16px]"
+                >
+                    {% trans "Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments." %}
+                </p>
+
+            </div>
+
+
+            <!-- All Projects -->
+
+            <a
+                href="/projects"
+                class="inline-flex min-h-[52px] shrink-0 items-center justify-center gap-4 border border-[#3f3f3f] bg-[#121212] px-[25px] text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-[#050505]"
+            >
+
+                {% trans "All projects" %}
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PROJECT GRID
+             ================================================= -->
+
+        <div
+            class="grid grid-cols-1 gap-[14px] md:grid-cols-2"
+        >
+
+
+            <!-- =================================================
+                 PROJECT 1
+                 DIAMOND BOUTIQUE
+                 ================================================= -->
+
+            <a
+                href="/projects/diamond-boutique/"
+                class="group relative min-h-[420px] overflow-hidden bg-[#111] md:min-h-[480px]"
+            >
+
+                <img
+                    src="{% static 'images/projects/project1.jpg' %}"
+                    alt="{% trans 'Diamond Boutique' %}"
+                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.035]"
+                >
+
+
+                <!-- Dark Gradient -->
+
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.82),transparent_62%)]"
+                ></div>
+
+
+                <!-- Gold Hover -->
+
+                <div
+                    class="absolute inset-0 bg-[#B99A58]/0 transition-all duration-500 group-hover:bg-[#B99A58]/10"
+                ></div>
+
+
+                <!-- Content -->
+
+                <div
+                    class="absolute bottom-[26px] left-5 right-5 z-10 flex items-end justify-between gap-5 md:left-7 md:right-7"
+                >
+
+                    <div>
+
+                        <p
+                            class="mb-2 text-[9px] uppercase tracking-[.2em] text-[#bbb]"
+                        >
+                            {% trans "Retail" %} · {% trans "Tehran, Iran" %}
+                        </p>
+
+
+                        <h3
+                            class="m-0 text-[20px] font-semibold uppercase text-white md:text-[25px]"
+                        >
+                            {% trans "Diamond Boutique" %}
+                        </h3>
+
+
+                        <p
+                            class="mt-2 text-[11px] text-white/55 md:text-[12px]"
+                        >
+                            {% trans "Track lighting system · 3000K warm white" %}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Arrow -->
+
+                    <span
+                        class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-[-45deg]"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 PROJECT 2
+                 PRIVATE VILLA
+                 ================================================= -->
+
+            <a
+                href="/projects/private-villa/"
+                class="group relative min-h-[420px] overflow-hidden bg-[#111] md:min-h-[480px]"
+            >
+
+                <img
+                    src="{% static 'images/projects/project2.jpg' %}"
+                    alt="{% trans 'Private Villa' %}"
+                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.035]"
+                >
+
+
+                <!-- Dark Gradient -->
+
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.82),transparent_62%)]"
+                ></div>
+
+
+                <!-- Gold Hover -->
+
+                <div
+                    class="absolute inset-0 bg-[#B99A58]/0 transition-all duration-500 group-hover:bg-[#B99A58]/10"
+                ></div>
+
+
+                <!-- Content -->
+
+                <div
+                    class="absolute bottom-[26px] left-5 right-5 z-10 flex items-end justify-between gap-5 md:left-7 md:right-7"
+                >
+
+                    <div>
+
+                        <p
+                            class="mb-2 text-[9px] uppercase tracking-[.2em] text-[#bbb]"
+                        >
+                            {% trans "Residential" %} · {% trans "Tehran, Iran" %}
+                        </p>
+
+
+                        <h3
+                            class="m-0 text-[20px] font-semibold uppercase text-white md:text-[25px]"
+                        >
+                            {% trans "Private Villa" %}
+                        </h3>
+
+
+                        <p
+                            class="mt-2 text-[11px] text-white/55 md:text-[12px]"
+                        >
+                            {% trans "Custom linear LED · DALI control" %}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Arrow -->
+
+                    <span
+                        class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-[-45deg]"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 PROJECT 3
+                 HORMOZAN TOWER RESIDENCE
+                 ================================================= -->
+
+            <a
+                href="/projects/hormozan-tower-residence/"
+                class="group relative min-h-[420px] overflow-hidden bg-[#111] md:min-h-[480px]"
+            >
+
+                <img
+                    src="{% static 'images/projects/kitchen_hero_under_100kb.jpg' %}"
+                    alt="{% trans 'Hormozan Tower Residence' %}"
+                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.035]"
+                >
+
+
+                <!-- Dark Gradient -->
+
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.82),transparent_62%)]"
+                ></div>
+
+
+                <!-- Gold Hover -->
+
+                <div
+                    class="absolute inset-0 bg-[#B99A58]/0 transition-all duration-500 group-hover:bg-[#B99A58]/10"
+                ></div>
+
+
+                <!-- Content -->
+
+                <div
+                    class="absolute bottom-[26px] left-5 right-5 z-10 flex items-end justify-between gap-5 md:left-7 md:right-7"
+                >
+
+                    <div>
+
+                        <p
+                            class="mb-2 text-[9px] uppercase tracking-[.2em] text-[#bbb]"
+                        >
+                            {% trans "Residential" %} · {% trans "Tehran - Shahrak Gharb" %}
+                        </p>
+
+
+                        <h3
+                            class="m-0 text-[20px] font-semibold uppercase text-white md:text-[25px]"
+                        >
+                            {% trans "Hormozan Tower Residence" %}
+                        </h3>
+
+
+                        <p
+                            class="mt-2 text-[11px] text-white/55 md:text-[12px]"
+                        >
+                            {% trans "Architectural lighting design" %}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Arrow -->
+
+                    <span
+                        class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-[-45deg]"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 PROJECT 4
+                 GOLD SHOP
+                 ================================================= -->
+
+            <a
+                href="/projects/gold-shop/"
+                class="group relative min-h-[420px] overflow-hidden bg-[#111] md:min-h-[480px]"
+            >
+
+                <img
+                    src="{% static 'images/projects/jewelry_hero_under_100kb.jpg' %}"
+                    alt="{% trans 'Gold Shop' %}"
+                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.035]"
+                >
+
+
+                <!-- Dark Gradient -->
+
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.82),transparent_62%)]"
+                ></div>
+
+
+                <!-- Gold Hover -->
+
+                <div
+                    class="absolute inset-0 bg-[#B99A58]/0 transition-all duration-500 group-hover:bg-[#B99A58]/10"
+                ></div>
+
+
+                <!-- Content -->
+
+                <div
+                    class="absolute bottom-[26px] left-5 right-5 z-10 flex items-end justify-between gap-5 md:left-7 md:right-7"
+                >
+
+                    <div>
+
+                        <p
+                            class="mb-2 text-[9px] uppercase tracking-[.2em] text-[#bbb]"
+                        >
+                            {% trans "Retail" %} · {% trans "Ahvaz" %}
+                        </p>
+
+
+                        <h3
+                            class="m-0 text-[20px] font-semibold uppercase text-white md:text-[25px]"
+                        >
+                            {% trans "Gold Shop" %}
+                        </h3>
+
+
+                        <p
+                            class="mt-2 text-[11px] text-white/55 md:text-[12px]"
+                        >
+                            {% trans "Precision lighting for retail display" %}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Arrow -->
+
+                    <span
+                        class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-[-45deg]"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             MOBILE ALL PROJECTS BUTTON
+             ================================================= -->
+
+        <div
+            class="mt-8 flex justify-center md:hidden"
+        >
+
+            <a
+                href="/projects"
+                class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#3f3f3f] bg-[#121212] px-7 text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-[#050505]"
+            >
+
+                {% trans "All projects" %}
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
     </div>
-  </div>
 
-  <!-- Scroll hint (desktop only) -->
-  <div class="hero-scroll-hint absolute bottom-24 left-1/2 -translate-x-1/2 z-10
-              hidden md:flex flex-col items-center gap-2 opacity-50" aria-hidden="true">
-    <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-2">
-      <div class="w-1 h-2 bg-[#727272] rounded-full animate-bounce"></div>
+</section>
+
+
+
+    <!-- =====================================================
+         3. PRODUCT CATEGORIES
+         ===================================================== -->
+
+    <section
+        id="products"
+        class="overflow-hidden bg-[#151515] py-[90px] md:py-[118px]"
+    >
+
+        <div
+            class="mx-auto w-full max-w-[1360px] px-6 md:px-12"
+        >
+
+            <!-- Heading -->
+
+            <div
+                class="mb-10 flex flex-col items-start justify-between gap-8 md:mb-[50px] md:flex-row md:items-end"
+            >
+
+                <div>
+
+                    <p
+                        class="mb-[18px] text-[10px] font-semibold uppercase tracking-[.32em] text-[#a5a5a2]"
+                    >
+                        {% trans "Product families" %}
+                    </p>
+
+
+                    <h2
+                        class="m-0 text-white text-[42px] font-extrabold uppercase leading-[.95] tracking-[-.055em] md:text-[58px]"
+                    >
+
+                        {% trans "Product" %}
+
+                        <span class="text-[#747474]">
+                            {% trans "categories" %}
+                        </span>
+
+                    </h2>
+
+
+                    <p
+                        class="mt-[22px] max-w-[620px] text-[14px] leading-[1.65] text-[#8e8e8a] md:text-[16px]"
+                    >
+                        {% trans "Architectural lighting solutions for commercial, residential, and outdoor applications." %}
+                    </p>
+
+                </div>
+
+
+                <!-- Carousel buttons -->
+
+                <div class="flex gap-2.5">
+
+                    <button
+                        type="button"
+                        id="cat-prev"
+                        aria-label="{% trans 'Previous product categories' %}"
+                        class="grid h-11 w-11 place-items-center rounded-full border border-[#414141] bg-transparent text-white transition hover:bg-white hover:text-black"
+                    >
+                        ←
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="cat-next"
+                        aria-label="{% trans 'Next product categories' %}"
+                        class="grid h-11 w-11 place-items-center rounded-full border border-[#414141] bg-transparent text-white transition hover:bg-white hover:text-black"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Track -->
+
+            <div
+                id="categoryTrack"
+                class="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+
+
+                <!-- 01 -->
+
+                <a
+                    href="/low-voltage-magneto/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/magnet.jpg' %}"
+                        alt="{% trans 'Low Voltage Magneto' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        01
+                    </span>
+
+
+                    <h3
+                        class="absolute text-white bottom-[22px] left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Low Voltage Magneto" %}
+                    </h3>
+
+                </a>
+
+
+
+                <!-- 02 -->
+
+                <a
+                    href="/linear/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/linear.jpg' %}"
+                        alt="{% trans 'Linear lighting' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        02
+                    </span>
+
+
+                    <h3
+                        class="absolute text-white bottom-[22px] left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Linear" %}
+                    </h3>
+
+                </a>
+
+
+
+                <!-- 03 -->
+
+                <a
+                    href="/industrial/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/industrail.jpg' %}"
+                        alt="{% trans 'Industrial lighting' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        03
+                    </span>
+
+
+                    <h3
+                        class="absolute text-white bottom-[22px] left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Industrial" %}
+                    </h3>
+
+                </a>
+
+
+
+                <!-- 04 -->
+
+                <a
+                    href="/panel-downlight/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/panel.jpg' %}"
+                        alt="{% trans 'Panel and downlights' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        04
+                    </span>
+
+
+                    <h3
+                        class="absolute text-white bottom-[22px] left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Panel & Downlights" %}
+                    </h3>
+
+                </a>
+
+
+
+                <!-- 05 -->
+
+                <a
+                    href="/decorative/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/decorative.jpg' %}"
+                        alt="{% trans 'Decorative lighting' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        05
+                    </span>
+
+
+                    <h3
+                        class="absolute text-white bottom-[22px] left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Decorative" %}
+                    </h3>
+
+                </a>
+
+
+
+                <!-- 06 -->
+
+                <a
+                    href="/outdoor/"
+                    class="category-card group relative h-[400px] w-[270px] shrink-0 overflow-hidden bg-[#222] md:h-[475px] md:w-[310px]"
+                >
+
+                    <img
+                        src="{% static 'images/categories/outdoor.jpg' %}"
+                        alt="{% trans 'Outdoor lighting' %}"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    >
+
+
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.84),transparent_52%)]"
+                    ></div>
+
+
+                    <span
+                        class="absolute right-[18px] top-[18px] z-10 text-[9px] tracking-[.15em] text-white"
+                    >
+                        06
+                    </span>
+
+
+                    <h3
+                        class="absolute bottom-[22px] text-white left-[22px] right-[22px] z-10 m-0 text-[17px] font-semibold uppercase leading-[1.15] md:text-[19px]"
+                    >
+                        {% trans "Outdoor" %}
+                    </h3>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         4. SOLUTIONS BY APPLICATION
+         ===================================================== -->
+
+    <section
+        id="applications"
+        class="overflow-hidden bg-[#080808] py-[90px] md:py-[118px]"
+    >
+
+        <div
+            class="mx-auto w-full max-w-[1360px] px-6 md:px-12"
+        >
+
+            <!-- Heading -->
+
+            <div
+                class="mb-10 flex flex-col items-start justify-between gap-8 md:mb-[50px] md:flex-row md:items-end"
+            >
+
+                <div>
+
+                    <p
+                        class="mb-[18px] text-[10px] font-semibold uppercase tracking-[.32em] text-[#a5a5a2]"
+                    >
+                        {% trans "Lighting systems" %}
+                    </p>
+
+
+                    <h2
+                        class="m-0 text-white text-[42px] font-extrabold uppercase leading-[.95] tracking-[-.055em] md:text-[58px]"
+                    >
+
+                        {% trans "Solutions by" %}
+
+                        <span class="text-[#747474]">
+                            {% trans "application" %}
+                        </span>
+
+                    </h2>
+
+
+                    <p
+                        class="mt-[22px] max-w-[620px] text-[14px] leading-[1.65] text-[#8e8e8a] md:text-[16px]"
+                    >
+                        {% trans "Tailored lighting systems for every architectural context." %}
+                    </p>
+
+                </div>
+
+
+                <!-- Controls -->
+
+                <div class="flex gap-2.5">
+
+                    <button
+                        type="button"
+                        id="app-prev"
+                        aria-label="{% trans 'Previous applications' %}"
+                        class="grid h-11 w-11 place-items-center rounded-full border border-[#414141] bg-transparent text-white transition hover:bg-white hover:text-black"
+                    >
+                        ←
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="app-next"
+                        aria-label="{% trans 'Next applications' %}"
+                        class="grid h-11 w-11 place-items-center rounded-full border border-[#414141] bg-transparent text-white transition hover:bg-white hover:text-black"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Application track -->
+
+            <div
+                id="applicationTrack"
+                class="flex gap-[22px] overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+
+
+                {% for application in applications %}
+                <article class="application-card group">
+                    {% if application.cover_image %}
+                    <img src="{{ application.cover_image.url }}" alt="{{ application.cover_image_alt|default:application.name }}" loading="lazy">
+                    {% elif application.icon %}
+                    <img class="application-icon" src="{{ application.icon.url }}" alt="" loading="lazy">
+                    {% endif %}
+                    <div class="application-card-content">
+                        <p class="application-number">{% trans "Application" %} {{ forloop.counter|stringformat:"02d" }}</p>
+                        <h3>{{ application.name }}</h3>
+                        {% if application.short_description %}<p>{{ application.short_description }}</p>{% endif %}
+                        <a href="{% url 'products:application_detail' application.slug %}">{% trans "Explore solutions" %} <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         5. BRAND PHILOSOPHY
+         ===================================================== -->
+
+<!-- =====================================================
+     5. BRAND PHILOSOPHY
+     ===================================================== -->
+
+<section
+    id="about"
+    class="grid w-full grid-cols-1 bg-[#111111] md:grid-cols-2"
+>
+
+    <!-- =================================================
+         IMAGE — FULL IMAGE, NO CROPPING
+         ================================================= -->
+
+    <div
+        class="relative w-full overflow-hidden bg-[#111111]"
+    >
+
+        <img
+            src="{% static 'images/iii.jpg' %}"
+            alt="{% trans 'Verona architectural lighting philosophy' %}"
+            class="block h-auto w-full object-contain"
+        >
+
     </div>
-  </div>
 
-  <!-- Dots -->
-  <div class="hero-dots-wrap absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-    <div id="hero-dots" class="flex items-center gap-2" role="tablist" aria-label="{% trans 'Hero slides' %}">
-      <button class="dot-wrap active" data-index="0" role="tab" aria-selected="true" aria-label="{% trans 'Slide 1' %}">
-        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-        <div class="dot-center"><span></span></div>
-      </button>
-      <button class="dot-wrap" data-index="1" role="tab" aria-selected="false" aria-label="{% trans 'Slide 2' %}">
-        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-        <div class="dot-center"><span></span></div>
-      </button>
-      <button class="dot-wrap" data-index="2" role="tab" aria-selected="false" aria-label="{% trans 'Slide 3' %}">
-        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-        <div class="dot-center"><span></span></div>
-      </button>
-      <button class="dot-wrap" data-index="3" role="tab" aria-selected="false" aria-label="{% trans 'Slide 4' %}">
-        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-        <div class="dot-center"><span></span></div>
-      </button>
-      <button class="dot-wrap" data-index="4" role="tab" aria-selected="false" aria-label="{% trans 'Slide 5' %}">
-        <svg viewBox="0 0 32 32"><circle class="dot-track" cx="16" cy="16" r="12"/><circle class="dot-fill" cx="16" cy="16" r="12"/></svg>
-        <div class="dot-center"><span></span></div>
-      </button>
+
+    <!-- =================================================
+         CONTENT
+         ================================================= -->
+
+    <div
+        class="flex w-full items-center bg-[#111111] px-7 py-16 sm:px-10 md:min-h-full md:px-14 lg:px-20 xl:px-[90px]"
+    >
+
+        <div
+            class="w-full max-w-[650px]"
+        >
+
+            <!-- Eyebrow -->
+
+            <p
+                class="mb-5 text-[9px] font-semibold uppercase tracking-[0.32em] text-[#a5a5a2]"
+            >
+                {% trans "Our philosophy" %}
+            </p>
+
+
+            <!-- Heading -->
+
+            <h2
+                class="m-0 text-[42px] text-white font-extrabold uppercase leading-[0.92] tracking-[-0.055em] sm:text-[48px] lg:text-[54px] xl:text-[58px]"
+            >
+
+                {% trans "We believe light shapes" %}
+
+                <span class="text-[#747474]">
+                    {% trans "experience" %}
+                </span>
+
+            </h2>
+
+
+            <!-- Description -->
+
+            <p
+                class="my-7 max-w-[620px] text-[14px] leading-[1.7] text-[#8e8e8a] sm:text-[15px] lg:text-[16px]"
+            >
+                {% trans "Every beam, every shadow, every reflection is an opportunity to transform space into emotion. For over three decades, Verona has partnered with architects and designers to realize ambitious visions through precision-engineered lighting solutions." %}
+            </p>
+
+
+            <!-- Button -->
+
+            <a
+                href="{% url 'story' %}"
+                class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#3f3f3f] bg-[#121212] px-7 text-[10px] font-bold uppercase tracking-[0.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-[#050505]"
+            >
+
+                {% trans "Our story" %}
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
     </div>
-  </div>
 
-</div>
+</section>
 
 
-<!-- ════════════════════════════════════════════════════
-    2. FEATURED PROJECTS
-════════════════════════════════════════════════════ -->
-<section class="section-projects py-20 md:py-32 animate-section bg-[#f3f4f6]" aria-labelledby="projects-heading">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 md:mb-16">
-      <div class="max-w-2xl">
-        <h2 id="projects-heading"
-            class="animate-fade text-3xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl font-semibold  text-gray-900 mb-2 md:mb-4 uppercase">
-          {% if LANGUAGE_CODE == 'fa' %}پروژه‌های <span class="text-[#727272]">برگزیده</span>{% else %}Featured <span class="text-[#727272]">Projects</span>{% endif %}
-        </h2>
-        <p class="animate-fade section-desc text-gray-500 text-sm md:text-lg font-light">
-          {% trans "Lighting solutions that transform architectural spaces across retail, hospitality, and commercial environments." %}
-        </p>
-      </div>
-      <a href="/projects"
-        class="animate-fade all-btn hidden shrink-0 md:inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4
-                bg-[#727272] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
-                font-semibold hover:bg-[#B99A58] transition-all duration-300 self-start sm:self-auto">
-        {% trans "All Projects" %} <span>→</span>
-      </a>
-    </div>
+    <!-- =====================================================
+         6. CTA
+         ===================================================== -->
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <section
+        class="relative overflow-hidden border-t border-[#202020] bg-[#070707] py-[100px] text-center md:py-[130px]"
+    >
 
-      <a href="/projects/diamond-boutique/" class="animate-fade-scale group block">
-        <div class="relative overflow-hidden rounded-xl">
-          <img src="{% static 'images/projects/project1.jpg' %}"
-              alt="{% trans 'Diamond Boutique' %}"
-              class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-          <div class="absolute inset-0 bg-[#727272]/0 group-hover:bg-[#B99A58]/10 transition-all duration-500"></div>
-          <div class="proj-arrow absolute top-3 right-3">→</div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-            <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
-                        bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
-              {% trans "Retail" %} · {% trans "Tehran, Iran" %}
+        <!-- Background word -->
+
+        <div
+            class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none"
+            aria-hidden="true"
+        >
+
+            <span
+                class="whitespace-nowrap text-[110px] font-black uppercase leading-none tracking-[-.07em] text-white/[.025] sm:text-[160px] md:text-[240px]"
+            >
+                VERONA
             </span>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">{% trans "Diamond Boutique" %}</h3>
-            <p class="text-xs sm:text-sm text-white/60 font-light">{% trans "Track lighting system · 3000K warm white" %}</p>
-          </div>
+
         </div>
-      </a>
-
-      <a href="projects/private-villa/" class="animate-fade-scale group block">
-        <div class="relative overflow-hidden rounded-xl">
-          <img src="{% static 'images/projects/project2.jpg' %}"
-              alt="{% trans 'Private Villa' %}"
-              class="w-full h-[240px] sm:h-[300px] md:h-[380px] object-cover transition duration-700 group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-          <div class="absolute inset-0 bg-[#727272]/0 group-hover:bg-[#B99A58]/10 transition-all duration-500"></div>
-          <div class="proj-arrow absolute top-3 right-3">→</div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-            <span class="inline-block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[3px]
-                        bg-white/10 backdrop-blur-sm text-white/80 px-2 sm:px-3 py-1 rounded-full mb-2 sm:mb-3">
-              {% trans "Residential" %} · {% trans "Tehran, Iran" %}
-            </span>
-            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 leading-tight">{% trans "Private Villa" %}</h3>
-            <p class="text-xs sm:text-sm text-white/60 font-light">{% trans "Custom linear LED · DALI control" %}</p>
-          </div>
-        </div>
-      </a>
-
-    </div>
-        <div class="w-full items-center justify-center flex">
-            <a href="/projects"
-            class="animate-fade all-btn mt-4 inline-flex md:hidden items-center gap-2 px-6 sm:px-8 py-4 sm:py-4
-                    bg-[#727272] text-white text-[10px] sm:text-[11px] tracking-[3px] uppercase
-                    font-semibold hover:bg-[#B99A58] transition-all duration-300 self-start sm:self-auto">
-            {% trans "All Projects" %} <span>→</span>
-            </a>
-        </div>
-    </div>
-</section>
 
 
-<!-- ════════════════════════════════════════════════════
-    3. PRODUCT CATEGORIES
-════════════════════════════════════════════════════ -->
-<section class="section-categories py-20 md:py-28 animate-section bg-[#181818] overflow-hidden"
-        aria-labelledby="categories-heading">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Content -->
 
-    <div class="grid lg:grid-cols-2 gap-6 lg:gap-20 items-end mb-8 md:mb-16">
-      <div>
-        <h2 id="categories-heading"
-            class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase text-white">
-          {% trans "Product" %} <span class="text-[#727272]">{% trans "Categories" %}</span>
-        </h2>
-        <p class="animate-fade section-desc text-sm md:text-lg text-white/60 mt-2 md:mt-4 font-light">
-          {% trans "Architectural lighting solutions designed for commercial, residential and outdoor applications." %}
-        </p>
-      </div>
-      <div class="animate-fade hidden md:flex flex-wrap items-center gap-3 sm:justify-end">
-        <button id="cat-prev"
-            class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
-                  flex items-center justify-center hover:bg-[#B99A58] hover:border-[#727272] transition-all"
-            aria-label="{% trans 'Previous category' %}">←</button>
-        <button id="cat-next"
-            class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-transparent text-white
-                  flex items-center justify-center hover:bg-[#B99A58] hover:border-[#727272] transition-all"
-            aria-label="{% trans 'Next category' %}">→</button>
-            <a href="/products"
-  class="px-5 sm:px-6 py-4 hidden md:block sm:py-3 bg-[#727272] text-white text-[10px] sm:text-[11px]
-          tracking-[3px] uppercase font-semibold hover:bg-[#B99A58] transition-all">{% trans "All Categories" %}</a>
-        </div>
-    </div>
-    
-    <div id="cat-carousel"
-    class="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto scroll-smooth cursor-grab pb-2" role="list">
-    
-    <a href="/low-voltage-magnet-light/"
-    class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-    h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-    <img src="{% static 'images/categories/magnet.jpg' %}" alt="{% trans 'Magnet Linear' %}"
-    class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-    <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-        <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Low Voltage Magneto" %}</h3>
-    </div>
-</a>
+        <div
+            class="relative z-10 mx-auto w-full max-w-[1360px] px-6 md:px-12"
+        >
 
-<a href="/linear/"
-class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/linear.jpg' %}" alt="{% trans 'Linear' %}"
-class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Linear" %}</h3>
-</div>
-</a>
-
-<a href="/industrial/"
-class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/industrail.jpg' %}" alt="{% trans 'Industrial' %}"
-class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Industrial" %}</h3>
-</div>
-</a>
-
-<a href="/panel-downlight/"
-class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/panel.jpg' %}" alt="{% trans 'Panel & Downlights' %}"
-class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Panel & Downlights" %}</h3>
-</div>
-</a>
-
-<a href="/decorative"
-class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group bg-[#222]" role="listitem">
-<div class="absolute inset-0 flex items-center justify-center">
-    <img src="{% static 'images/categories/decorative.jpg' %}" alt="{% trans 'Decorative' %}"
-    class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Decorative" %}</h3>
-</div>
-</a>
-
-<a href="/outdoor/"
-class="animate-fade-scale cat-card-link relative shrink-0 w-[200px] sm:w-[260px] md:w-[300px]
-h-[320px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-xl group" role="listitem">
-<img src="{% static 'images/categories/outdoor.jpg' %}" alt="{% trans 'Outdoor' %}"
-class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-<div class="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 flex items-end justify-between gap-3">
-    <h3 class="text-white text-sm sm:text-lg md:text-xl font-semibold tracking-wide">{% trans "Outdoor" %}</h3>
-</div>
-</a>
-
-</div>
-<div class="w-full mt-2 md:hidden flex items-center justify-center">
-    <a href="/products"
-      class="animate-fade px-5 sm:px-6 py-4 sm:py-3 bg-[#727272] text-white text-[10px] sm:text-[11px]
-              tracking-[3px] uppercase font-semibold hover:bg-[#B99A58] transition-all">{% trans "All Categories" %}</a>
-    </div>
-</div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════
-4. SOLUTIONS BY APPLICATION
-════════════════════════════════════════════════════ -->
-<section class="section-applications py-20 md:py-28 animate-section bg-gray-50"
-aria-labelledby="applications-heading">
-<div class="max-w-7xl md:mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-8 md:mb-12">
-        <div>
-            <h2 id="applications-heading"
-            class="animate-fade text-3xl sm:text-4xl md:text-5xl font-semibold uppercase">
-          {% trans "Solutions by" %} <span class="text-[#727272]">{% trans "Application" %}</span>
-        </h2>
-        <p class="animate-fade section-desc text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
-          {% trans "Tailored lighting systems for every architectural context" %}
-        </p>
-      </div>
-      <div class="animate-fade hidden md:flex gap-3 self-start sm:self-auto">
-        <button class="app-prev w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
-                      rounded-full flex items-center justify-center transition text-black"
-                aria-label="{% trans 'Previous application' %}">←</button>
-        <button class="app-next w-9 h-9 sm:w-11 sm:h-11 border border-gray-300 hover:bg-gray-100
-                      rounded-full flex items-center justify-center transition text-black"
-                aria-label="{% trans 'Next application' %}">→</button>
-      </div>
-    </div>
-
-    <div class="app-carousel flex overflow-x-auto gap-4 sm:gap-6 md:gap-8 scroll-smooth cursor-grab pb-4" role="list">
-
-      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
-                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/retail1.png' %}" alt="{% trans 'Retail' %}"
-            class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
-          <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Retail Spaces" %}</h3>
-            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              {% trans "Precision lighting designed to highlight products and create immersive retail environments." %}
+            <p
+                class="mb-[18px] text-[10px] font-semibold uppercase tracking-[.32em] text-[#a5a5a2]"
+            >
+                {% trans "Start a project" %}
             </p>
-            <a href="/applications/retail"
-              class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
-                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              {% trans "Explore Solutions" %}
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
-                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/hospitaliti.jpg' %}" alt="{% trans 'Hospitality' %}"
-            class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
-          <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Hospitality" %}</h3>
-            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              {% trans "Elegant lighting systems that enhance ambience for hotels, restaurants and lounges." %}
+
+            <h2
+                class="mx-auto text-white max-w-[900px] text-[42px] font-extrabold uppercase leading-none tracking-[-.055em] md:text-[62px]"
+            >
+
+                {% trans "Ready to illuminate your" %}
+
+                <span class="text-[#747474]">
+                    {% trans "next project?" %}
+                </span>
+
+            </h2>
+
+
+            <p
+                class="mx-auto mt-6 mb-9 max-w-[630px] text-[14px] leading-[1.6] text-[#8e8e8a] md:text-[16px]"
+            >
+                {% trans "Get expert consultation and custom lighting solutions tailored to your architectural vision." %}
             </p>
-            <a href="/applications/hospitality"
-              class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
-                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              {% trans "Explore Solutions" %}
-            </a>
-          </div>
+
+
+            <div
+                class="flex flex-col justify-center gap-3 sm:flex-row"
+            >
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#727272] bg-[#727272] px-[25px] text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-black"
+                >
+
+                    {% trans "Contact us" %}
+
+                    <span>→</span>
+
+                </a>
+
+
+                <a
+                    href="{% url 'catalog' %}"
+                    class="inline-flex min-h-[52px] items-center justify-center gap-4 border border-[#3f3f3f] bg-[#121212] px-[25px] text-[10px] font-bold uppercase tracking-[.22em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-black"
+                >
+
+                    {% trans "Download catalog" %}
+
+                    <span>↓</span>
+
+                </a>
+
+            </div>
+
         </div>
-      </div>
 
-      <div class="animate-fade-scale relative shrink-0 w-[85vw] sm:w-[80%] lg:w-[65%]
-                  h-[260px] sm:h-[380px] lg:h-[520px] rounded-2xl overflow-hidden" role="listitem">
-        <img src="{% static 'images/categories/office1.webp' %}" alt="{% trans 'Office' %}"
-            class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-        <div class="relative z-10 h-full flex items-center p-6 sm:p-8 lg:p-16">
-          <div class="max-w-lg">
-            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 sm:mb-4 text-white">{% trans "Office &amp; Workplace" %}</h3>
-            <p class="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 hidden sm:block">
-              {% trans "Human‑centric lighting solutions designed to improve productivity and visual comfort." %}
-            </p>
-            <a href="/applications/office"
-              class="inline-flex items-center px-4 sm:px-5 py-3 sm:py-3 bg-white text-black
-                      text-xs sm:text-sm md:text-base font-medium rounded-lg hover:bg-gray-200 transition">
-              {% trans "Explore Solutions" %}
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
-<!-- ════════════════════════════════════════════════════
-    5. BRAND PHILOSOPHY
-════════════════════════════════════════════════════ -->
-<section id="about" class="philosophy-grid bg-[#0a0a0a]" aria-labelledby="about-heading">
-
-  <div class="relative overflow-hidden" style="min-height:320px;">
-    <img src="{% static 'images/iii.jpg' %}" alt="{% trans 'Architectural lighting detail' %}"
-        class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-110
-                transition-transform duration-[900ms] hover:scale-105">
-    <div class="absolute inset-0"
-        style="background:linear-gradient(to right, transparent 55%, #0a0a0a 100%);"></div>
-  </div>
-
-  <div class="philosophy-text flex flex-col justify-center px-6 sm:px-8 md:px-16 py-12 md:py-20">
-    <p class="text-[10px] font-semibold tracking-[4px] uppercase text-[#727272] mb-4 sm:mb-6 animate-fade">
-      {% trans "Our Philosophy" %}
-    </p>
-    <h2 id="about-heading"
-        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight uppercase text-white mb-4 sm:mb-6 animate-fade">
-      {% trans "We believe light shapes" %}<br><span class="text-[#727272]">{% trans "experience" %}</span>
-    </h2>
-    <p class="text-white/50 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-md mb-8 sm:mb-10 animate-fade">
-      {% if LANGUAGE_CODE == 'fa' %}هر پرتو نور، هر سایه، هر بازتاب فرصتی است برای تبدیل فضا به احساس.
-      بیش از سه دهه است که با معماران و طراحان همکاری کرده‌ایم تا جاه‌طلبانه‌ترین چشم‌اندازهای آن‌ها را
-      از طریق راهکارهای روشنایی مهندسی‌شده با دقت بالا محقق کنیم.
-{% else %}Every beam, every shadow, every reflection is an opportunity to transform space into emotion. For over three decades, we've partnered with architects and designers to realize their most ambitious visions through precision-engineered lighting solutions.{% endif %}
-    </p>
-    <a href="/about"
-      class="self-start px-6 sm:px-8 py-3 sm:py-4 bg-[#727272] text-white text-[10px] sm:text-[11px]
-              tracking-[3px] uppercase font-semibold hover:bg-[#B99A58] transition-all duration-300 animate-fade">
-      {% trans "Our Story" %} →
-    </a>
-  </div>
-
-</section>
-
-
-<!-- ════════════════════════════════════════════════════
-    6. CTA
-════════════════════════════════════════════════════ -->
-<section class="section-cta animate-section py-16 sm:py-20 md:py-28 relative overflow-hidden bg-gray-50"
-        aria-labelledby="cta-heading">
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-      aria-hidden="true">
-    <span class="text-[80px] sm:text-[120px] md:text-[200px] font-black uppercase tracking-tighter
-                text-black/[0.03] leading-none whitespace-nowrap">VERONA</span>
-  </div>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-    <p class="animate-fade text-[10px] font-semibold tracking-[4px] uppercase text-[#727272] mb-4 sm:mb-5">{% trans "Start a Project" %}</p>
-    <h2 id="cta-heading"
-        class="animate-fade text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-5 leading-tight uppercase">
-      {% trans "Ready to Illuminate Your" %} <span class="text-[#727272]">{% trans "Next Project?" %}</span>
-    </h2>
-    <p class="animate-fade text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto font-light">
-      {% trans "Get expert consultation and custom lighting solutions tailored to your architectural vision." %}
-    </p>
-    <div class="animate-fade flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-      <a href="/contact"
-        class="px-8 md:px-10 py-4 md:py-5 bg-[#727272] text-white text-[11px] tracking-[3px]
-                uppercase font-semibold hover:bg-[#B99A58] transition-all duration-300 w-full sm:w-auto">
-        {% trans "Contact Us" %} →
-      </a>
-      <a href="{% url 'catalog' %}"
-        class="px-8 md:px-10 py-4 md:py-5 border-2 border-gray-300 text-black text-[11px]
-                tracking-[3px] uppercase font-semibold hover:border-gray-500 hover:bg-black/5
-                transition-all duration-300 w-full sm:w-auto">
-        {% trans "Download Catalog" %} ↓
-      </a>
-    </div>
-  </div>
-</section>
 </div>
 
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
 
 <script>
-  // ══════════════════════════════════════════════════════
-  // HERO SLIDESHOW
-  // ══════════════════════════════════════════════════════
-  const IMAGE_DURATION = 4000;
-  const CIRCUMF = 2 * Math.PI * 12;
 
-  const slides   = Array.from(document.querySelectorAll('.hero-slide'));
-  const dotWraps = Array.from(document.querySelectorAll('.dot-wrap'));
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-  let current = 0, rafId = null, startTs = 0;
+        /* =====================================================
+           HERO SLIDER
+           ===================================================== */
 
-  function resetFills() {
-    dotWraps.forEach(w => w.querySelector('.dot-fill').style.strokeDashoffset = CIRCUMF);
-  }
-  function setActive(i) {
-    dotWraps.forEach((w, j) => {
-      w.classList.toggle('active', j === i);
-      w.setAttribute('aria-selected', String(j === i));
-    });
-  }
-  function goTo(index) {
-    cancelAnimationFrame(rafId);
-    resetFills();
-    slides.forEach(s => s.style.opacity = '0');
-    slides[index].style.opacity = '1';
-    setActive(index);
-    current = index;
-    startTs = performance.now();
-    const fill = dotWraps[current].querySelector('.dot-fill');
-    (function tick(now) {
-      const p = Math.min((now - startTs) / IMAGE_DURATION, 1);
-      fill.style.strokeDashoffset = CIRCUMF * (1 - p);
-      if (p >= 1) { goTo((current + 1) % slides.length); return; }
-      rafId = requestAnimationFrame(tick);
-    })(startTs);
-  }
-  function next() { goTo((current + 1) % slides.length); }
-  function prev() { goTo((current - 1 + slides.length) % slides.length); }
+        const heroSlides =
+            Array.from(
+                document.querySelectorAll(
+                    ".hero-slide"
+                )
+            );
 
-  dotWraps.forEach((w, i) => w.addEventListener('click', () => goTo(i)));
-  document.getElementById('hero-prev').addEventListener('click', prev);
-  document.getElementById('hero-next').addEventListener('click', next);
+        const heroDots =
+            Array.from(
+                document.querySelectorAll(
+                    ".hero-dot"
+                )
+            );
 
-  // Swipe
-  let tx = 0;
-  const heroEl = document.querySelector('.hero-section');
-  heroEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  heroEl.addEventListener('touchend',   e => {
-    const d = tx - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 50) d > 0 ? next() : prev();
-  }, { passive: true });
+        const heroPrev =
+            document.getElementById(
+                "hero-prev"
+            );
 
-  goTo(0);
+        const heroNext =
+            document.getElementById(
+                "hero-next"
+            );
+
+        let heroIndex = 0;
+
+        let heroTimer = null;
 
 
-  // ══════════════════════════════════════════════════════
-  // SCROLL REVEAL
-  // ══════════════════════════════════════════════════════
-  document.querySelectorAll('.animate-section').forEach(s => {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.animate-fade, .animate-fade-scale').forEach((el, i) =>
-            setTimeout(() => el.classList.add('visible'), i * 90));
+        function showHero(index) {
+
+            if (!heroSlides.length) {
+                return;
+            }
+
+
+            heroIndex =
+                (
+                    index +
+                    heroSlides.length
+                ) %
+                heroSlides.length;
+
+
+            document.getElementById('top').dataset.brandSlide = String(heroIndex === 0);
+
+            heroSlides.forEach(
+                function (
+                    slide,
+                    position
+                ) {
+
+                    const active =
+                        position ===
+                        heroIndex;
+
+
+                    slide.classList.toggle(
+                        "opacity-100",
+                        active
+                    );
+
+                    slide.classList.toggle(
+                        "opacity-0",
+                        !active
+                    );
+
+
+                    slide.classList.toggle(
+                        "scale-100",
+                        active
+                    );
+
+                    slide.classList.toggle(
+                        "scale-[1.025]",
+                        !active
+                    );
+
+                }
+            );
+
+
+            heroDots.forEach(
+                function (
+                    dot,
+                    position
+                ) {
+
+                    const active =
+                        position ===
+                        heroIndex;
+
+
+                    dot.classList.toggle(
+                        "bg-white",
+                        active
+                    );
+
+                    dot.classList.toggle(
+                        "bg-white/30",
+                        !active
+                    );
+
+
+                    dot.classList.toggle(
+                        "scale-[1.45]",
+                        active
+                    );
+
+                    dot.classList.toggle(
+                        "scale-100",
+                        !active
+                    );
+
+
+                    dot.setAttribute(
+                        "aria-selected",
+                        active
+                            ? "true"
+                            : "false"
+                    );
+
+                }
+            );
+
         }
-      });
-    }, { threshold: 0.1 }).observe(s);
-  });
-  document.querySelectorAll('#about .animate-fade').forEach(el => {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
+
+
+        function startHero() {
+
+            clearInterval(
+                heroTimer
+            );
+
+
+            heroTimer =
+                setInterval(
+                    function () {
+
+                        showHero(
+                            heroIndex + 1
+                        );
+
+                    },
+                    5200
+                );
+
         }
-      });
-    }, { threshold: 0.15 }).observe(el);
-  });
 
 
-  // ══════════════════════════════════════════════════════
-  // CAROUSELS
-  // ══════════════════════════════════════════════════════
-  function makeCarousel(carousel, prevBtn, nextBtn) {
-    if (!carousel || !prevBtn || !nextBtn) return;
-    const amt = () => {
-      const card = carousel.querySelector('[role="listitem"]');
-      return card ? card.offsetWidth + parseInt(getComputedStyle(carousel).gap || 16) : 220;
-    };
-    prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -amt(), behavior: 'smooth' }));
-    nextBtn.addEventListener('click', () => carousel.scrollBy({ left:  amt(), behavior: 'smooth' }));
+        if (heroPrev) {
 
-    let drag = false, sx, sl;
-    carousel.addEventListener('mousedown', e => { drag = true; sx = e.pageX - carousel.offsetLeft; sl = carousel.scrollLeft; });
-    carousel.addEventListener('mouseleave', () => drag = false);
-    carousel.addEventListener('mouseup',    () => drag = false);
-    carousel.addEventListener('mousemove',  e => {
-      if (!drag) return; e.preventDefault();
-      carousel.scrollLeft = sl - (e.pageX - carousel.offsetLeft - sx) * 1.4;
-    });
-    let tX = 0, tSL = 0;
-    carousel.addEventListener('touchstart', e => { tX = e.touches[0].pageX; tSL = carousel.scrollLeft; }, { passive: true });
-    carousel.addEventListener('touchmove',  e => { carousel.scrollLeft = tSL + (tX - e.touches[0].pageX); }, { passive: true });
-  }
+            heroPrev.addEventListener(
+                "click",
+                function () {
 
-  makeCarousel(document.getElementById('cat-carousel'), document.getElementById('cat-prev'), document.getElementById('cat-next'));
-  makeCarousel(document.querySelector('.app-carousel'), document.querySelector('.app-prev'), document.querySelector('.app-next'));
+                    showHero(
+                        heroIndex - 1
+                    );
+
+                    startHero();
+
+                }
+            );
+
+        }
+
+
+        if (heroNext) {
+
+            heroNext.addEventListener(
+                "click",
+                function () {
+
+                    showHero(
+                        heroIndex + 1
+                    );
+
+                    startHero();
+
+                }
+            );
+
+        }
+
+
+        heroDots.forEach(
+            function (dot) {
+
+                dot.addEventListener(
+                    "click",
+                    function () {
+
+                        showHero(
+                            Number(
+                                dot.dataset.slide
+                            )
+                        );
+
+                        startHero();
+
+                    }
+                );
+
+            }
+        );
+
+
+        showHero(0);
+
+        startHero();
+
+
+
+        /* =====================================================
+           CAROUSELS
+           ===================================================== */
+
+        function wireCarousel(
+            trackId,
+            previousId,
+            nextId,
+            amount
+        ) {
+
+            const track =
+                document.getElementById(
+                    trackId
+                );
+
+            const previous =
+                document.getElementById(
+                    previousId
+                );
+
+            const next =
+                document.getElementById(
+                    nextId
+                );
+
+
+            if (
+                !track ||
+                !previous ||
+                !next
+            ) {
+
+                return;
+
+            }
+
+
+            const scrollStep = () => {
+                const card = track.querySelector('.application-card');
+                const distance = card
+                    ? card.offsetWidth + (parseFloat(getComputedStyle(track).gap) || 0)
+                    : amount;
+                return getComputedStyle(track).direction === 'rtl' ? -distance : distance;
+            };
+
+            previous.addEventListener(
+                "click",
+                function () {
+
+                    track.scrollBy(
+                        {
+                            left:
+                                -scrollStep(),
+
+                            behavior:
+                                "smooth"
+                        }
+                    );
+
+                }
+            );
+
+
+            next.addEventListener(
+                "click",
+                function () {
+
+                    track.scrollBy(
+                        {
+                            left:
+                                scrollStep(),
+
+                            behavior:
+                                "smooth"
+                        }
+                    );
+
+                }
+            );
+
+
+            /* Desktop drag */
+
+            let isDragging =
+                false;
+
+            let startX =
+                0;
+
+            let startScroll =
+                0;
+
+
+            track.addEventListener(
+                "mousedown",
+                function (event) {
+
+                    isDragging =
+                        true;
+
+                    startX =
+                        event.pageX;
+
+                    startScroll =
+                        track.scrollLeft;
+
+                    track.style.cursor =
+                        "grabbing";
+
+                }
+            );
+
+
+            track.addEventListener(
+                "mousemove",
+                function (event) {
+
+                    if (!isDragging) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    const distance =
+                        (
+                            event.pageX -
+                            startX
+                        );
+
+
+                    track.scrollLeft =
+                        startScroll -
+                        distance;
+
+                }
+            );
+
+
+            track.addEventListener(
+                "mouseup",
+                function () {
+
+                    isDragging =
+                        false;
+
+                    track.style.cursor =
+                        "grab";
+
+                }
+            );
+
+
+            track.addEventListener(
+                "mouseleave",
+                function () {
+
+                    isDragging =
+                        false;
+
+                    track.style.cursor =
+                        "grab";
+
+                }
+            );
+
+        }
+
+
+        wireCarousel(
+            "categoryTrack",
+            "cat-prev",
+            "cat-next",
+            650
+        );
+
+
+        wireCarousel(
+            "applicationTrack",
+            "app-prev",
+            "app-next",
+            900
+        );
+
+
+
+        /* =====================================================
+           TOUCH SWIPE — HERO
+           ===================================================== */
+
+        const hero =
+            document.getElementById(
+                "top"
+            );
+
+        let touchStartX =
+            0;
+
+
+        if (hero) {
+
+            hero.addEventListener(
+                "touchstart",
+                function (event) {
+
+                    touchStartX =
+                        event.touches[0].clientX;
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            hero.addEventListener(
+                "touchend",
+                function (event) {
+
+                    const touchEndX =
+                        event.changedTouches[0].clientX;
+
+
+                    const difference =
+                        touchStartX -
+                        touchEndX;
+
+
+                    if (
+                        Math.abs(
+                            difference
+                        ) < 50
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        difference > 0
+                    ) {
+
+                        showHero(
+                            heroIndex + 1
+                        );
+
+                    } else {
+
+                        showHero(
+                            heroIndex - 1
+                        );
+
+                    }
+
+
+                    startHero();
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           KEYBOARD HERO CONTROL
+           ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "ArrowLeft"
+                ) {
+
+                    showHero(
+                        heroIndex - 1
+                    );
+
+                    startHero();
+
+                }
+
+
+                if (
+                    event.key ===
+                    "ArrowRight"
+                ) {
+
+                    showHero(
+                        heroIndex + 1
+                    );
+
+                    startHero();
+
+                }
+
+            }
+        );
+
+    }
+
+);
+
 </script>
 
 {% endblock %}

@@ -41,18 +41,18 @@
           </div>
         </div>
 
-        <div class="mt-14">
+        <div class="seo-faq mt-14">
           <h2 class="text-2xl font-semibold leading-tight text-black md:text-3xl">
             {{ content.faq_heading }}
           </h2>
           <div class="mt-6 divide-y divide-black/10 border-y border-black/10">
             {% for faq in content.faqs %}
               <details class="group py-5">
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold text-black">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold text-white">
                   <span>{{ faq.question }}</span>
                   <span aria-hidden="true" class="text-2xl font-light transition-transform group-open:rotate-45">+</span>
                 </summary>
-                <p class="max-w-4xl pt-4 leading-8 text-black/65">{{ faq.answer }}</p>
+                <p class="max-w-4xl pt-4 leading-8 text-white/70">{{ faq.answer }}</p>
               </details>
             {% endfor %}
           </div>

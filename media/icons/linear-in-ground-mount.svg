@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title">
+  <title id="title">In-ground mount linear lighting</title>
+  <path d="M17 42h94" stroke="#24364B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M34 42v13l9 9h42l9-9V42" fill="#E9EDF0" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M43 53h42" stroke="#C6A15B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M43 64v26h42V64" fill="#F6F7F8" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M31 101h66M39 110h50" stroke="#24364B" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+</svg>

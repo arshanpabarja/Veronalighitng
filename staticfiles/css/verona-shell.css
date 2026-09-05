@@ -1,0 +1,108 @@
+/* Verona site shell: shared across every Django page. */
+:root {
+  --shell-black: #050505;
+  --shell-surface: #0c0c0c;
+  --shell-surface-raised: #141414;
+  --shell-line: #292929;
+  --shell-white: #f5f5f2;
+  --shell-muted: #9b9b96;
+}
+
+html { background: var(--shell-black); }
+body.verona-site { min-width: 0; background: var(--shell-black); color: var(--shell-white); }
+body.verona-site > div { background: var(--shell-black); }
+
+/* Header becomes a thin architectural bar instead of a white application nav. */
+.verona-site #navbar {
+  background: rgba(5, 5, 5, .94) !important;
+  border-bottom: 1px solid var(--shell-line) !important;
+  color: var(--shell-white) !important;
+  backdrop-filter: blur(16px);
+}
+.verona-site #navbar .hidden.lg\\:flex { color: var(--shell-white) !important; }
+.verona-site #navbar a { color: inherit; }
+.verona-site #navbar a:hover { color: var(--shell-white); }
+.verona-site #navbar-logo-img { filter: grayscale(1) brightness(0) invert(1); }
+.verona-site #search, .verona-site #mobile-search-icon { filter: brightness(0) invert(1); }
+.verona-site #navbar .group > a { font-size: .68rem; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
+.verona-site #navbar .group > a:hover { border-color: var(--shell-white) !important; }
+.verona-site #navbar .fixed.bg-white,
+.verona-site #navbar [class*="fixed top-24"] {
+  background: #0e0e0e !important;
+  color: var(--shell-white) !important;
+  border-top: 1px solid var(--shell-line);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .55) !important;
+}
+.verona-site #navbar [class*="bg-gray-200"] { background: #171717 !important; }
+.verona-site #lang-dropdown { background: #171717 !important; color: var(--shell-white) !important; border-color: #353535 !important; border-radius: 0 !important; }
+.verona-site #lang-dropdown a { color: var(--shell-white) !important; }
+.verona-site #lang-menu-btn { color: var(--shell-white) !important; border-radius: 0 !important; }
+.verona-site .hamburger-line { background: var(--shell-white) !important; }
+
+/* Keep the drawer legible and consistent with the desktop navigation. */
+.verona-site #drawer-panel,
+.verona-site .drawer-screen { background: #0c0c0c !important; color: var(--shell-white) !important; }
+.verona-site #drawer-panel :is(.bg-white, .bg-gray-50) { background: #0c0c0c !important; }
+.verona-site #drawer-panel :is(.text-gray-800, .text-gray-700) { color: var(--shell-white) !important; }
+.verona-site #drawer-panel :is(.text-gray-500, .text-gray-400) { color: var(--shell-muted) !important; }
+.verona-site #drawer-panel :is(.border-gray-100, .border-gray-200) { border-color: var(--shell-line) !important; }
+
+/* Shared editorial rhythm for pages which predate the new component system. */
+.verona-main :is(section, article, nav, div)[class*="bg-white"],
+.verona-main :is(section, article, div)[class*="bg-gray-50"],
+.verona-main :is(section, article, div)[class*="bg-zinc-50"] { background-color: var(--shell-black) !important; }
+.verona-main :is(section, article, div)[class*="bg-gray-100"],
+.verona-main :is(section, article, div)[class*="bg-zinc-100"] { background-color: var(--shell-surface-raised) !important; }
+.verona-main :is(.bg-zinc-900, .bg-gray-900) { background-color: #171717 !important; }
+.verona-main :is(.text-zinc-900, .text-zinc-800, .text-gray-900, .text-gray-800, .text-black) { color: var(--shell-white) !important; }
+.verona-main :is(.text-zinc-700, .text-zinc-600, .text-gray-700, .text-gray-600) { color: #c7c7c2 !important; }
+.verona-main :is(.text-zinc-500, .text-zinc-400, .text-gray-500, .text-gray-400) { color: var(--shell-muted) !important; }
+.verona-main :is(.border-zinc-100, .border-zinc-200, .border-zinc-300, .border-gray-100, .border-gray-200, .border-gray-300) { border-color: var(--shell-line) !important; }
+.verona-main :is(h1, h2) { text-wrap: balance; }
+.verona-main h1:not(.hero-fade-in) { font-weight: 780 !important; letter-spacing: -.05em; line-height: .95; }
+.verona-main h2:not(.section-title) { font-weight: 720 !important; letter-spacing: -.04em; line-height: 1; }
+.verona-main :is(.product-card, [class*="product-card"], [class*="project-card"]) { border-radius: 0 !important; }
+.verona-main :is(.rounded-xl, .rounded-2xl, .rounded-lg) { border-radius: 0 !important; }
+.verona-main :is(button, input[type="submit"], input[type="button"]) { border-radius: 0; }
+.verona-main :is(a, button):focus-visible { outline: 1px solid var(--shell-white); outline-offset: 4px; }
+
+/* Recompose the legacy project cards into the concept's image-led gallery. */
+.verona-main .home-concept .home-project-track > a > div {
+  height: 100%;
+  min-height: 27rem;
+  border: 1px solid var(--shell-line);
+}
+.verona-main .home-concept .home-project-track > a img { height: 100% !important; }
+.verona-main .home-concept .home-project-track > a:hover img { transform: scale(1.035); }
+.verona-main .home-concept .home-project-track [class*="rounded"] { border-radius: 0 !important; }
+
+/* Product data, lists, filters and pagination. */
+.verona-main :is(table, .models-table, .spec-table) { background: var(--shell-surface) !important; color: var(--shell-white) !important; }
+.verona-main :is(th, td) { border-color: var(--shell-line) !important; }
+.verona-main option { background: #151515; color: var(--shell-white); }
+.verona-main :is(.pagination, [class*="pagination"]) a,
+.verona-main :is(.pagination, [class*="pagination"]) span { border-color: var(--shell-line) !important; }
+
+/* Footer: restrained, column-led, and visually connected to the page. */
+.verona-site footer {
+  background: #030303 !important;
+  border-top: 1px solid #1e1e1e;
+  color: var(--shell-muted) !important;
+}
+.verona-site footer :is(h1, h2, h3, a) { color: var(--shell-white) !important; }
+.verona-site footer h3 { font-size: .65rem !important; font-weight: 700 !important; letter-spacing: .18em; text-transform: uppercase; }
+.verona-site footer p, .verona-site footer li, .verona-site footer div { color: var(--shell-muted); }
+.verona-site footer a:hover { color: #fff !important; }
+.verona-site footer img { filter: grayscale(1) brightness(0) invert(1); opacity: .9; }
+
+@media (min-width: 1024px) {
+  .verona-site .home-page ~ footer { margin-top: 0; }
+  .verona-main:not(.home-page) { padding-top: 6rem; }
+}
+
+@media (max-width: 1023px) {
+  .verona-site #navbar { min-height: 4rem; }
+  .verona-main:not(.home-page) { padding-top: 4rem; }
+  .verona-site footer { padding-top: 3.5rem !important; }
+  .verona-main .home-concept .home-project-track > a > div { min-height: 22rem; }
+}

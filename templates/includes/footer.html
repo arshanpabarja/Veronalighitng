@@ -4,7 +4,7 @@
 <body class="min-h-screen flex flex-col justify-end">
 
     <footer
-        class="w-full flex flex-col bg-gradient-to-r from-[#727272] via-[#727272] to-[#727272] text-white font-sans pt-12 pb-8 px-6 relative overflow-hidden flex-shrink-0">
+        class="w-full flex flex-col border-t border-white/10 bg-[#151515] text-white font-sans pt-12 pb-8 px-6 relative overflow-hidden flex-shrink-0">
 
         <div class="w-full max-w-[1400px] mx-auto flex flex-col">
             <!-- Logo Section -->
@@ -32,7 +32,17 @@
                             <p class="mt-4 pt-2">
                                 {% trans "Tel:" %}
                                 <a href="tel:{{ business_identity.telephone_e164 }}" class="hover:underline">
-                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }} — {{ business_identity.telephone_contact_fa }}{% else %}{{ business_identity.telephone_display_en }} — {{ business_identity.telephone_contact_en }}{% endif %}
+                                </a>
+                            </p>
+                            <p>
+                                <a href="tel:{{ business_identity.telephone_secondary_e164 }}" class="hover:underline">
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_secondary_display_fa }} — {{ business_identity.telephone_secondary_contact_fa }}{% else %}{{ business_identity.telephone_secondary_display_en }} — {{ business_identity.telephone_secondary_contact_en }}{% endif %}
+                                </a>
+                            </p>
+                            <p>
+                                <a href="tel:{{ business_identity.telephone_tertiary_e164 }}" class="hover:underline">
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_tertiary_display_fa }} — {{ business_identity.telephone_tertiary_contact_fa }}{% else %}{{ business_identity.telephone_tertiary_display_en }} — {{ business_identity.telephone_tertiary_contact_en }}{% endif %}
                                 </a>
                             </p>
                             <p>

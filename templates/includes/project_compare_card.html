@@ -1,0 +1,51 @@
+{% load static i18n %}
+<article class="animate-fade-scale group block" data-project-slug="{{ project.slug }}">
+  <div class="project-compare h-[240px] sm:h-[300px] md:h-[380px] rounded-xl" data-project-compare>
+    {% if project.slug == "diamond-boutique" %}
+      <img src="{% static 'images/projects/diamond-boutique-before-no-lights-ai.png' %}"
+           alt="{% blocktrans with project_name=project.name %}{{ project_name }} before lighting installation{% endblocktrans %}">
+    {% elif project.slug == "hormozan-tower-residence" %}
+      <img src="{% static 'images/projects/hormozan-before-lighting-ai.png' %}"
+           alt="{% blocktrans with project_name=project.name %}{{ project_name }} before lighting installation{% endblocktrans %}">
+    {% elif project.slug == "tl-frosh" %}
+      <img src="{% static 'images/projects/gold-shop-before-lighting-ai.png' %}"
+           alt="{% blocktrans with project_name=project.name %}{{ project_name }} before lighting installation{% endblocktrans %}">
+    {% else %}
+      <img src="{% static 'images/projects/private-villa-before-lighting-ai.png' %}"
+           alt="{% blocktrans with project_name=project.name %}{{ project_name }} before lighting installation{% endblocktrans %}">
+    {% endif %}
+
+    <div class="project-compare-after" aria-hidden="true">
+      {% if project.slug == "diamond-boutique" %}
+        <img src="{% static 'images/projects/diamond-boutique-after-ai.png' %}" alt="">
+      {% elif project.hero_image %}
+        <img src="{{ project.hero_image.url }}" alt="">
+      {% endif %}
+    </div>
+
+    <span class="project-compare-label before">{% if LANGUAGE_CODE == 'fa' %}قبل{% else %}Before{% endif %}</span>
+    <span class="project-compare-label after">{% if LANGUAGE_CODE == 'fa' %}بعد{% else %}After{% endif %}</span>
+    <div class="project-compare-divider" aria-hidden="true"></div>
+    <input class="project-compare-range"
+           type="range"
+           min="0"
+           max="100"
+           value="50"
+           aria-label="{% blocktrans with project_name=project.name %}Compare {{ project_name }} before and after{% endblocktrans %}">
+  </div>
+
+  <div class="flex items-start justify-between gap-4 pt-4 px-1">
+    <div class="min-w-0">
+      <span class="block text-[9px] font-semibold uppercase tracking-[3px] text-gray-500 truncate">
+        {% if project.project_type %}{{ project.project_type }}{% else %}{% trans "Project" %}{% endif %}{% if project.location %} · {{ project.location }}{% endif %}
+      </span>
+      <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-1 leading-tight">
+        <a href="{{ project.get_absolute_url }}" class="hover:text-[#B99A58] transition-colors">{{ project.name }}</a>
+      </h3>
+      <p class="text-xs sm:text-sm text-gray-500 font-light mt-1 line-clamp-2">
+        {% if project.intro_text %}{{ project.intro_text|truncatechars:100 }}{% elif project.completion_year %}{{ project.completion_year }}{% else %}{% if LANGUAGE_CODE == 'fa' %}مقایسه قبل و بعد اجرای نورپردازی{% else %}Lighting installation before and after{% endif %}{% endif %}
+      </p>
+    </div>
+    <a href="{{ project.get_absolute_url }}" class="proj-arrow shrink-0 mt-1" aria-label="{{ project.name }}">→</a>
+  </div>
+</article>

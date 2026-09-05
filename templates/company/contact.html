@@ -27,11 +27,12 @@
 {% endblock %}
 
 {% block content %}
+<div id="contact-page" class="bg-[#050505] text-white">
 
 <!-- ════════════════════════════════════════════════════ -->
 <!-- CONTACT PAGE HERO                                    -->
 <!-- ════════════════════════════════════════════════════ -->
-<section class="bg-white pt-24 pb-32 md:pt-32 md:pb-40">
+<section class="bg-[#050505] pt-24 pb-32 md:pt-32 md:pb-40">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         
         <!-- Eyebrow -->
@@ -59,7 +60,7 @@
 <!-- ════════════════════════════════════════════════════ -->
 <!-- INFO CARDS — 3 COLUMNS                              -->
 <!-- ════════════════════════════════════════════════════ -->
-<section class="bg-[#f9f9f7] py-24 md:py-32">
+<section class="bg-[#101010] py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div class="grid md:grid-cols-3 gap-16 md:gap-12">
@@ -78,9 +79,17 @@
                     {{ business_identity.email }}
                 </a>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Phone" %}</p>
-                <a href="tel:{{ business_identity.telephone_e164 }}" class="text-gray-700 hover:text-[#727272] font-light">
-                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
-                </a>
+                <div class="flex flex-col gap-2 text-gray-700 font-light">
+                    <a href="tel:{{ business_identity.telephone_e164 }}" class="hover:text-[#727272]">
+                        {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }} — {{ business_identity.telephone_contact_fa }}{% else %}{{ business_identity.telephone_display_en }} — {{ business_identity.telephone_contact_en }}{% endif %}
+                    </a>
+                    <a href="tel:{{ business_identity.telephone_secondary_e164 }}" class="hover:text-[#727272]">
+                        {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_secondary_display_fa }} — {{ business_identity.telephone_secondary_contact_fa }}{% else %}{{ business_identity.telephone_secondary_display_en }} — {{ business_identity.telephone_secondary_contact_en }}{% endif %}
+                    </a>
+                    <a href="tel:{{ business_identity.telephone_tertiary_e164 }}" class="hover:text-[#727272]">
+                        {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_tertiary_display_fa }} — {{ business_identity.telephone_tertiary_contact_fa }}{% else %}{{ business_identity.telephone_tertiary_display_en }} — {{ business_identity.telephone_tertiary_contact_en }}{% endif %}
+                    </a>
+                </div>
             </div>
 
             <!-- Card 2: Support -->
@@ -92,9 +101,9 @@
                 <p class="text-gray-600 font-light leading-relaxed mb-6">
                     {% trans "Need help with installation, specifications, or technical documentation?" %}
                 </p>
-                <p class="text-sm font-semibold text-black mb-2">{% trans "Phone" %}</p>
-                <a href="tel:+980217162521" class="text-gray-700 hover:text-[#727272] font-light mb-8">
-                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}{% else %}{{ business_identity.telephone_display_en }}{% endif %}
+                <p class="text-sm font-semibold text-black mb-2">{% trans "WhatsApp" %}</p>
+                <a href="{{ business_identity.whatsapp }}" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-[#727272] font-light mb-8">
+                    {% trans "Chat with Verona Lighting" %}
                 </a>
                 <p class="text-sm font-semibold text-black mb-2">{% trans "Response Time" %}</p>
                 <p class="text-gray-700 font-light">
@@ -133,7 +142,7 @@
 <!-- ════════════════════════════════════════════════════ -->
 <!-- WHY US SECTION                                       -->
 <!-- ════════════════════════════════════════════════════ -->
-<section class="bg-white py-24 md:py-32">
+<section class="bg-[#050505] py-24 md:py-32">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
 
         <div class="mb-20">
@@ -181,7 +190,7 @@
 <!-- ════════════════════════════════════════════════════ -->
 <!-- CONTACT FORM                                         -->
 <!-- ════════════════════════════════════════════════════ -->
-<section class="bg-[#f9f9f7] py-24 md:py-32">
+<section class="bg-[#101010] py-24 md:py-32">
     <div class="max-w-2xl mx-auto px-6 lg:px-8">
 
         <div class="mb-16">
@@ -360,5 +369,30 @@
 
     </div>
 </section>
+</div>
+
+<style>
+#contact-page h1,
+#contact-page h2,
+#contact-page h3,
+#contact-page h4,
+#contact-page p,
+#contact-page label { color: #fff !important; }
+
+#contact-page .text-gray-500,
+#contact-page .text-gray-600,
+#contact-page .text-gray-700 { color: #c7c7c7 !important; }
+
+#contact-page input,
+#contact-page select,
+#contact-page textarea {
+  background-color: #181818 !important;
+  border-color: rgba(255,255,255,.2) !important;
+  color: #fff !important;
+}
+
+#contact-page input::placeholder,
+#contact-page textarea::placeholder { color: #9ca3af !important; }
+</style>
 
 {% endblock %}

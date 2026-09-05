@@ -1,0 +1,92 @@
+/* Shared header dimensions match the actual h-16 / lg:h-24 navigation. */
+#navbar { color: #fff; }
+#navbar .category-menu-image { height: 52px; object-fit: contain; }
+#navbar .category-item { min-height: 52px; }
+#drawer-panel, #drawer-panel .drawer-screen { background: #111; color: #fff; }
+#drawer-panel :is(.bg-white, .bg-gray-50) { background: #111; }
+#drawer-panel :is(.text-gray-800, .text-gray-700) { color: #fff; }
+#drawer-panel :is(.text-gray-500, .text-gray-400) { color: #bbb; }
+#drawer-panel :is(.border-gray-100, .border-gray-200) { border-color: #333; }
+#drawer-panel img[src$="logo3.png"] { filter: brightness(0) invert(1); }
+@media (max-width: 1023px) {
+  #navbar { background: #111 !important; border-bottom: 1px solid #292929; }
+  #navbar .hamburger-line { background: #fff; }
+  #navbar > div { padding-inline: 20px; }
+  #navbar a[aria-label="Search"] { width: 44px; height: 44px; }
+}
+/* Preserve the supplied wide artwork without changing the established desktop hero. */
+#top .hero-brand-slide { object-fit: contain; background: #050505; }
+#top .hero-copy, #top .hero-overlay { transition: opacity .45s; }
+@media (min-width: 1024px) {
+  #top { height: 720px; min-height: 720px; }
+}
+#applicationTrack { scroll-snap-type: x mandatory; }
+.application-card { position: relative; flex: 0 0 72%; min-width: 0; min-height: 480px; overflow: hidden; background: #171717; scroll-snap-align: start; }
+.application-card > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s; }
+.application-card:hover > img { transform: scale(1.03); }
+.application-card > img.application-icon { object-fit: contain; padding: 12%; opacity: .45; }
+.application-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.26) 40%,rgba(0,0,0,.04) 74%); }
+.application-card-content { position: relative; z-index: 1; padding: 56px; min-height: inherit; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 20px; overflow-wrap: anywhere; }
+.application-card-content .application-number { color: #bbb; font-size: 11px; letter-spacing: .15em; }
+.application-card-content h3 { font-size: clamp(26px,3vw,42px); color: white; line-height: 1.2; }
+.application-card-content p { max-width: 520px; color: #ddd; line-height: 1.7; }
+.application-card-content a { display: inline-flex; align-items: center; gap: 24px; min-height: 52px; padding: 12px 24px; border: 1px solid #777; background: #121212; color: #fff; }
+.application-card-content a:hover { background: #fff; color: #111; }
+.application-card-content a:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+/* Constrain grid children and keep wide data in their own scroll containers. */
+#product-detail-page :is(.product-hero > *, .description-grid > *, .spec-item, .models-inner, .product-info) { min-width: 0; }
+#product-detail-page :is(.product-title, .product-subtitle, .spec-value, .description-grid, .product-card) { overflow-wrap: anywhere; }
+#product-detail-page .thumb-row { max-width: 100%; overflow-x: auto; }
+#product-detail-page .thumb { flex-shrink: 0; }
+#product-detail-page .tab-nav { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+#product-detail-page .models-table-wrap { max-width: 100%; }
+#product-detail-page .spec-table { table-layout: fixed; width: 100%; overflow-wrap: anywhere; }
+#product-detail-page .catalog-range { background: #111; border-color: #333; }
+#product-detail-page .catalog-range > div > div { min-width: 0; }
+#product-detail-page .catalog-range a { white-space: normal; text-align: center; justify-content: center; }
+#product-detail-page .spec-label { font-size: .62rem; letter-spacing: .09em; line-height: 1.35; }
+#product-detail-page .spec-value { font-size: .86rem; }
+.seo-faq summary,
+.seo-faq summary span { color: #fff !important; }
+.seo-faq details > p { color: #bdbdb8 !important; }
+#filtersBar button { color: #fff; }
+#filtersBar [id$="Dropdown"] { max-width: calc(100vw - 2rem); }
+/* Use the same dark filter controls on every product listing and breakpoint. */
+#filtersBar,
+#filterOverlay,
+#filtersBar [id$="Dropdown"],
+#filtersBar .bg-white,
+#filtersBar .bg-gray-50,
+#filterOverlay .bg-white,
+#filterOverlay .bg-gray-50,
+#filterOverlay .bg-\[\#fafafa\] {
+  background-color: #111 !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+}
+#filterOverlay #mobileFiltersForm > div { background-color: #151515 !important; }
+#filtersBar :is(button, label, span, h4),
+#filterOverlay :is(button, label, span, h4) { color: #fff !important; }
+#filtersBar :is(.text-black, .text-gray-900, .text-gray-700, .text-gray-600),
+#filterOverlay :is(.text-black, .text-gray-900, .text-gray-700, .text-gray-600, .text-\[\#1a1a1a\], .text-\[\#444\]) { color: #fff !important; }
+#filtersBar :is(.hover\:bg-gray-50, .hover\:bg-gray-100):hover,
+#filterOverlay :is(.hover\:bg-gray-50, .hover\:bg-gray-100):hover { background-color: #242424 !important; }
+#filterOverlay :is(input[type="number"], select) { background-color: #0b0b0b !important; color: #fff !important; border-color: #444 !important; }
+#filtersBar input[type="checkbox"],
+#filterOverlay input[type="checkbox"] { accent-color: #b99a58; }
+@media (max-width: 767px) {
+  .application-card { flex-basis: 100%; min-height: 420px; }
+  .application-card-content { padding: 28px; }
+  #top { height: 330px; min-height: 330px; }
+  #top :is(#hero-prev, #hero-next) { display: none; }
+  #top h1 { font-size: clamp(24px, 6.5vw, 32px); }
+  #top .hero-copy { padding-top: 48px; }
+  #top .hero-copy > div > p:first-child { margin-bottom: 10px; font-size: 8px; }
+  #top .hero-copy > div > p:not(:first-child) { margin-top: 14px; margin-bottom: 0; max-width: 300px; font-size: 12px; line-height: 1.5; }
+  #top .hero-copy > div > .flex { display: none; }
+  #product-detail-page .catalog-range > div { flex-direction: column; align-items: stretch; }
+  #product-detail-page .spec-label { font-size: .57rem; }
+  #product-detail-page .spec-value { font-size: .8rem; }
+  .seo-faq h2 { font-size: clamp(1.55rem, 7vw, 2rem) !important; line-height: 1.15; }
+  .seo-faq summary { font-size: .95rem !important; line-height: 1.5; }
+}

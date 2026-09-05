@@ -1,0 +1,799 @@
+/*
+ * Verona concept system
+ * Scoped to the content area so the existing navbar and footer stay intact.
+ */
+.verona-main {
+  --verona-black: #050505;
+  --verona-surface: #0c0c0c;
+  --verona-surface-2: #151515;
+  --verona-surface-3: #1c1c1c;
+  --verona-line: #292929;
+  --verona-white: #f5f5f2;
+  --verona-muted: #9b9b96;
+  --verona-accent: #747474;
+  --verona-gold: #b99a58;
+  --verona-max: 1360px;
+  --verona-pad: clamp(1.25rem, 4vw, 3.375rem);
+  min-height: 70vh;
+  overflow: clip;
+  background: var(--verona-black);
+  color: var(--verona-white);
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+}
+
+.verona-main,
+.verona-main * {
+  box-sizing: border-box;
+}
+
+.verona-main ::selection {
+  color: var(--verona-black);
+  background: var(--verona-white);
+}
+
+.verona-main :focus-visible {
+  outline: 1px solid var(--verona-white);
+  outline-offset: 4px;
+}
+
+.verona-main :is(.max-w-7xl, .max-w-6xl),
+.verona-main [class*="max-w-[1800px]"] {
+  width: min(calc(100% - (var(--verona-pad) * 2)), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  margin-inline: auto;
+  padding-inline: 0 !important;
+}
+
+.verona-main section {
+  position: relative;
+}
+
+.verona-main h1 {
+  color: var(--verona-white) !important;
+  font-size: clamp(2.75rem, 6.2vw, 5.125rem);
+  line-height: .94;
+  font-weight: 800;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.verona-main :is(.section-title, [id$="-heading"]) {
+  color: var(--verona-white) !important;
+  font-size: clamp(2.15rem, 4.4vw, 3.625rem);
+  line-height: .98;
+  font-weight: 750;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.verona-main :is(.section-title, [id$="-heading"]) span {
+  color: var(--verona-accent) !important;
+}
+
+html:not([dir="rtl"]) .verona-main :is(h1, .section-title, [id$="-heading"]) {
+  text-transform: uppercase;
+}
+
+html[dir="rtl"] .verona-main [class*="tracking-"] {
+  letter-spacing: 0 !important;
+}
+
+.verona-main :is(.section-desc, .section-copy, .hero-description) {
+  max-width: 40rem;
+  color: var(--verona-muted) !important;
+  line-height: 1.75;
+}
+
+.verona-main :is(.bg-white, .bg-gray-50) {
+  background-color: #090909 !important;
+}
+
+.verona-main :is(.bg-zinc-50, .bg-gray-100),
+.verona-main [class*="bg-[#f9f9f7]"],
+.verona-main [class*="bg-[#f3f4f6]"] {
+  background-color: var(--verona-surface-2) !important;
+}
+
+.verona-main [class*="bg-[#eef0f3]"] {
+  background-color: var(--verona-surface-3) !important;
+}
+
+.verona-main :is(.text-black, .text-gray-900, .text-zinc-900, .text-zinc-800, .text-gray-800) {
+  color: var(--verona-white) !important;
+}
+
+.verona-main :is(.text-gray-700, .text-zinc-700, .text-gray-600, .text-zinc-600) {
+  color: #c7c7c2 !important;
+}
+
+.verona-main :is(.text-gray-500, .text-zinc-500, .text-gray-400, .text-zinc-400),
+.verona-main [class*="text-black/"] {
+  color: var(--verona-muted) !important;
+}
+
+.verona-main #icon-carousel h3 {
+  color: var(--verona-white) !important;
+}
+
+.verona-main :is(.border-zinc-100, .border-zinc-200, .border-gray-100, .border-gray-200, .border-gray-300) {
+  border-color: var(--verona-line) !important;
+}
+
+.verona-main :is(.divide-zinc-200, .divide-gray-200) > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--verona-line) !important;
+}
+
+/* Homepage and image-led collections */
+.verona-main .hero-section {
+  background: #090909;
+}
+
+.verona-main .hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .3) 58%, rgba(0, 0, 0, .08)),
+    linear-gradient(0deg, rgba(0, 0, 0, .62), transparent 45%) !important;
+}
+
+html[dir="rtl"] .verona-main .hero-overlay {
+  background:
+    linear-gradient(270deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .3) 58%, rgba(0, 0, 0, .08)),
+    linear-gradient(0deg, rgba(0, 0, 0, .62), transparent 45%) !important;
+}
+
+.verona-main .section-projects {
+  background: #090909 !important;
+}
+
+.verona-main .section-categories {
+  background: var(--verona-surface-2) !important;
+}
+
+.verona-main .section-applications,
+.verona-main .section-cta {
+  background: #080808 !important;
+}
+
+.verona-main .philosophy-grid {
+  background: #111 !important;
+}
+
+.verona-main :is(.project-compare, .cat-card-link, .app-slide, .product-card) {
+  border-radius: 0 !important;
+}
+
+.verona-main :is(.project-compare, .cat-card-link, .app-slide, .product-card, .group) img {
+  transition: transform .75s ease, opacity .35s ease;
+}
+
+.verona-main :is(.cat-card-link, .app-slide, .product-card):hover img {
+  transform: scale(1.035);
+}
+
+.verona-main [data-project-slug] {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--verona-line);
+}
+
+.verona-main .project-compare-label {
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(5, 5, 5, .72);
+}
+
+.verona-main .proj-arrow,
+.verona-main .project-arrow {
+  background: var(--verona-white) !important;
+  color: var(--verona-black) !important;
+}
+
+/* Shared buttons and compact actions */
+.verona-main :is(.all-btn, .btn-primary, .btn-outline, .overlay-btn, .view-all-link),
+.verona-main a[class*="bg-[#727272]"],
+.verona-main button[class*="bg-[#727272]"] {
+  min-height: 48px;
+  border: 1px solid #3f3f3f !important;
+  border-radius: 0 !important;
+  background: #121212 !important;
+  color: #fff !important;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transition: color .25s ease, background .25s ease, border-color .25s ease;
+}
+
+.verona-main :is(.all-btn, .btn-primary, .btn-outline, .overlay-btn, .view-all-link):hover,
+.verona-main a[class*="bg-[#727272]"]:hover,
+.verona-main button[class*="bg-[#727272]"]:hover {
+  border-color: var(--verona-white) !important;
+  background: var(--verona-white) !important;
+  color: var(--verona-black) !important;
+}
+
+.verona-main .hero-actions :is(a, button) {
+  min-height: 52px;
+  border-radius: 0 !important;
+}
+
+/* Homepage — faithful translation of the supplied landing-page concept. */
+.verona-main .home-concept {
+  background: var(--verona-black);
+}
+
+.verona-main .home-concept .hero-section {
+  height: 850px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #090909;
+}
+
+.verona-main .home-concept .hero-desktop-content {
+  width: min(calc(100% - 6rem), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  min-height: 100% !important;
+  margin-inline: auto;
+  padding: 4.5rem 0 0 !important;
+}
+
+.verona-main .home-concept .hero-desktop-content > div {
+  width: min(49rem, 62vw);
+  max-width: none;
+}
+
+.verona-main .home-concept .hero-desktop-content h1 {
+  margin: 0 0 1.75rem !important;
+  font-size: clamp(4.25rem, 5.7vw, 5.125rem) !important;
+  line-height: .92 !important;
+  letter-spacing: -.06em;
+}
+
+.verona-main .home-concept .hero-eyebrow,
+.verona-main .home-concept .home-eyebrow {
+  display: block !important;
+  margin: 0 0 1.125rem;
+  color: #a5a5a2 !important;
+  font-size: .625rem;
+  font-weight: 650;
+  letter-spacing: .32em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+html[dir="rtl"] .verona-main .home-concept :is(.hero-eyebrow, .home-eyebrow) {
+  letter-spacing: 0;
+}
+
+.verona-main .home-concept .hero-description {
+  max-width: 38rem !important;
+  margin: 0 0 2.5rem !important;
+  color: #deded9 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.65 !important;
+}
+
+.verona-main .home-concept :is(.section-projects, .section-categories, .section-applications) {
+  padding-block: 7.375rem 8.125rem !important;
+}
+
+.verona-main .home-concept :is(.section-projects, .section-applications) {
+  background: #090909 !important;
+}
+
+.verona-main .home-concept .section-categories {
+  background: #151515 !important;
+}
+
+.verona-main .home-concept :is(.section-projects, .section-categories, .section-applications) > div {
+  width: min(calc(100% - 6rem), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+.verona-main .home-concept .home-section-head {
+  display: flex !important;
+  align-items: end !important;
+  justify-content: space-between !important;
+  gap: 3.75rem !important;
+  margin-bottom: 3.125rem !important;
+}
+
+.verona-main .home-concept .home-section-copy {
+  max-width: 43rem !important;
+}
+
+.verona-main .home-concept .home-section-head h2 {
+  margin: 0 !important;
+  font-size: clamp(3rem, 4vw, 3.625rem) !important;
+  font-weight: 750 !important;
+  line-height: .95 !important;
+  letter-spacing: -.055em;
+}
+
+.verona-main .home-concept .home-section-head .section-desc {
+  max-width: 38.75rem;
+  margin-top: 1.375rem !important;
+  color: var(--verona-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+
+.verona-main .home-concept .home-project-track {
+  display: grid !important;
+  grid-template-columns: none !important;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 1.75rem) / 3);
+  gap: .875rem !important;
+  overflow-x: auto;
+  padding: 0 0 1rem;
+  scroll-snap-type: inline mandatory;
+  scrollbar-color: #4b4b4b transparent;
+  scrollbar-width: thin;
+}
+
+.verona-main .home-concept .home-project-track > article {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.verona-main .home-concept .home-project-track .project-compare {
+  height: 27rem !important;
+  border: 1px solid #202020;
+}
+
+.verona-main .home-concept .home-project-track [data-project-slug] {
+  border-bottom: 1px solid var(--verona-line);
+}
+
+.verona-main .home-concept #cat-carousel {
+  gap: 1rem !important;
+  padding-bottom: .75rem;
+}
+
+.verona-main .home-concept .cat-card-link {
+  width: 19.375rem !important;
+  height: 29.6875rem !important;
+  flex: 0 0 19.375rem;
+  border-radius: 0 !important;
+  background: #222;
+}
+
+.verona-main .home-concept .home-card-index {
+  position: absolute;
+  z-index: 3;
+  top: 1.125rem;
+  inset-inline-end: 1.125rem;
+  color: #fff;
+  font-size: .625rem;
+  font-weight: 650;
+  letter-spacing: .15em;
+}
+
+.verona-main .home-concept .cat-card-link h3 {
+  font-size: 1.1875rem !important;
+  line-height: 1.15;
+}
+
+.verona-main .home-concept .app-carousel {
+  gap: 1.375rem !important;
+  padding-bottom: .75rem;
+}
+
+.verona-main .home-concept .app-slide {
+  width: 72% !important;
+  height: 33.125rem !important;
+  flex: 0 0 72%;
+  border-radius: 0 !important;
+}
+
+.verona-main .home-concept .app-slide h3 {
+  margin-bottom: 1rem !important;
+  font-size: clamp(2rem, 3vw, 2.625rem) !important;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.verona-main .home-concept .app-slide p {
+  color: #d2d2ce !important;
+  line-height: 1.65;
+}
+
+.verona-main .home-concept .philosophy-grid {
+  min-height: 40.625rem;
+  background: #111 !important;
+}
+
+.verona-main .home-concept .philosophy-image img {
+  transition: transform .9s ease;
+}
+
+.verona-main .home-concept .philosophy-text {
+  padding: 5.625rem !important;
+}
+
+.verona-main .home-concept .philosophy-text h2 {
+  margin: 0 0 1.875rem !important;
+  font-size: clamp(3rem, 4vw, 3.5625rem) !important;
+  font-weight: 750;
+  line-height: .98;
+  letter-spacing: -.05em;
+}
+
+.verona-main .home-concept .philosophy-text > p:not(:first-child) {
+  max-width: 37.5rem;
+  margin-bottom: 2.375rem !important;
+  color: var(--verona-muted) !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.7;
+}
+
+.verona-main .home-concept .section-cta {
+  padding-block: 8.125rem !important;
+  border-top: 1px solid #202020;
+  background: #070707 !important;
+}
+
+.verona-main .home-concept .section-cta [aria-hidden="true"] span {
+  color: rgba(255, 255, 255, .025) !important;
+  font-size: clamp(9rem, 17vw, 15rem) !important;
+}
+
+.verona-main .home-concept .section-cta h2 {
+  max-width: 56.25rem;
+  margin-inline: auto;
+  font-size: clamp(3rem, 4.4vw, 3.875rem) !important;
+  line-height: 1 !important;
+  letter-spacing: -.055em;
+}
+
+.verona-main .home-concept .section-cta > div:last-child > p:not(:first-child) {
+  max-width: 39.375rem;
+  margin: 1.5rem auto 2.25rem !important;
+  color: var(--verona-muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.65;
+}
+
+/* Listing pages */
+.verona-main :is(.product-card, article) {
+  color: var(--verona-white);
+}
+
+.verona-main .product-card {
+  background: transparent !important;
+}
+
+.verona-main .product-card[class*="bg-[#eef0f3]"] {
+  background: #eeeeea !important;
+}
+
+.verona-main .product-card[class*="bg-[#eef0f3]"] h5 {
+  color: #111 !important;
+}
+
+.verona-main .product-card > :is(.product-card-img, [class*="aspect-"]) {
+  background: var(--verona-surface-3) !important;
+}
+
+.verona-main :is(.product-card-name, .product-title, .project-title) {
+  color: var(--verona-white) !important;
+}
+
+.verona-main .concept-category-grid {
+  background: var(--verona-surface) !important;
+}
+
+.verona-main .concept-category-visual {
+  min-height: 18rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #deded8;
+  background: #f1f1ed;
+}
+
+.verona-main .concept-category-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.verona-main [class*="bg-[#f7f7f5]"] {
+  background-color: var(--verona-surface-2) !important;
+}
+
+.verona-main :is(.product-card-cat, .product-card-sub, .product-subtitle, .product-category) {
+  color: var(--verona-muted) !important;
+}
+
+.verona-main :is(.product-card, [data-project-slug]) a:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Product detail */
+.verona-main :is(.breadcrumb, .product-hero, .info-section, .models-section, .related-section) {
+  background: var(--verona-black) !important;
+  color: var(--verona-white) !important;
+}
+
+.verona-main .breadcrumb {
+  width: min(calc(100% - (var(--verona-pad) * 2)), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  margin-inline: auto !important;
+  border-color: var(--verona-line) !important;
+}
+
+.verona-main .product-hero {
+  width: min(calc(100% - (var(--verona-pad) * 2)), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  margin-inline: auto !important;
+}
+
+.verona-main :is(.main-image-wrap, .thumb, .product-card-img, .desc-highlights) {
+  border-color: var(--verona-line) !important;
+  background: var(--verona-surface-2) !important;
+}
+
+.verona-main :is(.divider, .tab-nav, .key-specs, .spec-item) {
+  border-color: var(--verona-line) !important;
+}
+
+.verona-main .tab-btn {
+  min-height: 46px;
+  color: var(--verona-muted) !important;
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.verona-main .tab-btn:is(.active, :hover) {
+  color: var(--verona-white) !important;
+  border-color: var(--verona-white) !important;
+}
+
+.verona-main :is(.tab-content, .models-inner, .related-section) {
+  width: min(calc(100% - (var(--verona-pad) * 2)), var(--verona-max));
+  max-width: var(--verona-max) !important;
+  margin-inline: auto !important;
+}
+
+.verona-main :is(.models-table-wrap, .spec-table) {
+  overflow-x: auto;
+  border: 1px solid var(--verona-line) !important;
+  background: var(--verona-surface) !important;
+}
+
+.verona-main :is(.models-table, .spec-table) {
+  color: var(--verona-white) !important;
+  background: var(--verona-surface) !important;
+}
+
+.verona-main :is(.models-table, .spec-table) :is(th, td) {
+  border-color: var(--verona-line) !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.verona-main :is(.models-table, .spec-table) th {
+  color: var(--verona-muted) !important;
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Forms, filters and contact blocks */
+.verona-main :is(input, textarea, select) {
+  border-color: #3b3b3b !important;
+  border-radius: 0 !important;
+  background: #101010 !important;
+  color: var(--verona-white) !important;
+}
+
+.verona-main :is(input, textarea, select)::placeholder {
+  color: #72726e !important;
+}
+
+.verona-main :is(input, textarea, select):focus {
+  border-color: var(--verona-white) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.verona-main iframe {
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Fine-grain visual rhythm */
+.verona-main .border-t,
+.verona-main .border-b,
+.verona-main .border,
+.verona-main [class*="divide-"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--verona-line) !important;
+}
+
+.verona-main [class*="shadow-"] {
+  box-shadow: none !important;
+}
+
+.verona-main .rounded-xl,
+.verona-main .rounded-2xl {
+  border-radius: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .verona-main > section,
+  .verona-main > main > section {
+    scroll-margin-top: 6rem;
+  }
+
+  .verona-main .section-head {
+    gap: 3.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .verona-main {
+    --verona-pad: 1rem;
+  }
+
+  .verona-main h1 {
+    font-size: clamp(2.45rem, 13vw, 4rem);
+    line-height: .98;
+  }
+
+  .verona-main .hero-desktop-content h1 {
+    font-size: clamp(2rem, 10vw, 2.7rem) !important;
+    line-height: 1.02 !important;
+    margin-bottom: .75rem !important;
+  }
+
+  .verona-main :is(.section-title, [id$="-heading"]) {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .verona-main :is(.section-projects, .section-categories, .section-applications, .section-cta) {
+    padding-block: 4.75rem !important;
+  }
+
+  .verona-main :is(button, [role="button"], .all-btn, .btn-primary, .btn-outline) {
+    min-height: 44px;
+  }
+
+  .verona-main .product-hero {
+    width: calc(100% - 2rem);
+  }
+
+  .verona-main :is(.models-table-wrap, .spec-table) {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .verona-main .home-concept .hero-section {
+    height: 74svh !important;
+    min-height: 38rem !important;
+    margin-top: 4rem;
+  }
+
+  .verona-main .home-concept .hero-desktop-content {
+    width: calc(100% - 2rem);
+    padding: 2rem 0 1.5rem !important;
+    align-items: center;
+  }
+
+  .verona-main .home-concept .hero-desktop-content > div {
+    width: 100%;
+  }
+
+  .verona-main .home-concept .hero-desktop-content h1 {
+    max-width: 22rem;
+    margin-bottom: 1rem !important;
+    font-size: clamp(2.5rem, 12vw, 3.5rem) !important;
+    line-height: .96 !important;
+  }
+
+  .verona-main .home-concept .hero-description {
+    max-width: 20rem !important;
+    margin-bottom: 1.5rem !important;
+    font-size: .875rem !important;
+  }
+
+  .verona-main .home-concept .hero-actions {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: min(100%, 18rem);
+    gap: .5rem !important;
+  }
+
+  .verona-main .home-concept .hero-actions a {
+    min-height: 2.875rem !important;
+    padding: .75rem 1rem !important;
+    font-size: .625rem;
+    text-align: center;
+  }
+
+  .verona-main .home-concept :is(.section-projects, .section-categories, .section-applications) {
+    padding-block: 4.75rem 5rem !important;
+  }
+
+  .verona-main .home-concept :is(.section-projects, .section-categories, .section-applications) > div {
+    width: calc(100% - 2rem);
+  }
+
+  .verona-main .home-concept .home-section-head {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .verona-main .home-concept .home-section-head h2 {
+    font-size: clamp(2.25rem, 11vw, 3rem) !important;
+  }
+
+  .verona-main .home-concept .home-section-head .section-desc {
+    margin-top: 1rem !important;
+    font-size: .875rem !important;
+  }
+
+  .verona-main .home-concept .home-project-track {
+    grid-auto-columns: 86%;
+    gap: .75rem !important;
+  }
+
+  .verona-main .home-concept .home-project-track .project-compare {
+    height: 22rem !important;
+  }
+
+  .verona-main .home-concept .cat-card-link {
+    width: 78vw !important;
+    height: 26rem !important;
+    flex-basis: 78vw;
+  }
+
+  .verona-main .home-concept .app-slide {
+    width: 88% !important;
+    height: 25rem !important;
+    flex-basis: 88%;
+  }
+
+  .verona-main .home-concept .app-slide > div:last-child {
+    padding: 1.5rem !important;
+  }
+
+  .verona-main .home-concept .philosophy-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .verona-main .home-concept .philosophy-image {
+    min-height: 25rem !important;
+  }
+
+  .verona-main .home-concept .philosophy-text {
+    padding: 4.75rem 1rem !important;
+  }
+
+  .verona-main .home-concept .philosophy-text h2 {
+    font-size: clamp(2.25rem, 10vw, 3rem) !important;
+  }
+
+  .verona-main .home-concept .section-cta {
+    padding-block: 5.5rem !important;
+  }
+
+  .verona-main .home-concept .section-cta h2 {
+    font-size: clamp(2.25rem, 10vw, 3rem) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .verona-main *,
+  .verona-main *::before,
+  .verona-main *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

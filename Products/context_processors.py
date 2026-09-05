@@ -4,7 +4,8 @@ from django.urls import translate_url
 
 from core.business_identity import BUSINESS_IDENTITY
 
-from .models import Application, Category
+from .models import Application
+from .services.category_ordering import navigation_categories
 
 
 def navbar_categories(request):
@@ -12,10 +13,7 @@ def navbar_categories(request):
     این context processor در تمام تمپلیت‌ها
     متغیر categories را در دسترس قرار می‌دهد
     """
-    categories = Category.objects.filter(
-        is_active=True,
-        parent=None
-    ).prefetch_related('products')
+    categories = navigation_categories()
 
     applications = Application.objects.filter(
         is_active=True,

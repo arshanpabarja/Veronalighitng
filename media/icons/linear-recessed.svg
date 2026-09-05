@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title">
+  <title id="title">Recessed linear lighting</title>
+  <path d="M17 34h94" stroke="#24364B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M37 34v17l8 8h38l8-8V34" fill="#E9EDF0" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M47 51h34" stroke="#C6A15B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M47 67v27h34V67" fill="#F6F7F8" stroke="#24364B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M51 103h26" stroke="#C6A15B" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+</svg>

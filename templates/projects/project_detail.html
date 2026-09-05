@@ -68,7 +68,7 @@
 {% endblock %}
 
 {% block content %}
-<main class="bg-white text-zinc-800 antialiased selection:bg-zinc-900 selection:text-white">
+<main id="project-detail-page" class="bg-[#050505] text-white antialiased selection:bg-white selection:text-black">
 
   <!-- ── BREADCRUMB ── -->
   <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 lg:px-10 py-5 text-left border-b border-zinc-100">
@@ -423,4 +423,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+<style>
+#project-detail-page .bg-white,
+#project-detail-page .bg-zinc-50,
+#project-detail-page .bg-white\/90 { background-color: #050505 !important; }
+
+#project-detail-page .bg-zinc-100,
+#project-detail-page .bg-zinc-200,
+#project-detail-page .product-card { background-color: #181818 !important; }
+
+#project-detail-page .border-zinc-100,
+#project-detail-page .border-zinc-200,
+#project-detail-page .divide-zinc-200 { border-color: rgba(255,255,255,.12) !important; }
+
+#project-detail-page h1,
+#project-detail-page h2,
+#project-detail-page h3,
+#project-detail-page h4,
+#project-detail-page p { color: #fff !important; }
+
+#project-detail-page .text-zinc-800,
+#project-detail-page .text-zinc-900 { color: #fff !important; }
+
+#project-detail-page .text-zinc-300,
+#project-detail-page .text-zinc-400,
+#project-detail-page .text-zinc-500,
+#project-detail-page .text-zinc-600 { color: #c7c7c7 !important; }
+
+#project-detail-page .bg-zinc-900 { background-color: #222222 !important; }
+
+#project-detail-page nav[aria-label="Project sections"] a.border-zinc-900 {
+  border-color: #B99A58 !important;
+  color: #fff !important;
+}
+
+#project-detail-page nav[aria-label="Project sections"] a:hover,
+#project-detail-page .group:hover h3 { color: #B99A58 !important; }
+</style>
 {% endblock %}
