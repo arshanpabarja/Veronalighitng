@@ -257,6 +257,47 @@ class BusinessIdentitySEOTests(TestCase):
                         "IR",
                     )
 
+    def test_homepage_exposes_bilingual_website_identity(self):
+        response = self.client.get("/")
+        schemas = self._schemas(response.content.decode())
+        website = next(
+            schema for schema in schemas if schema.get("@type") == "WebSite"
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(website["@id"], "http://testserver/#website")
+        self.assertEqual(website["url"], "http://testserver/")
+        self.assertEqual(website["name"], "Verona Lighting")
+        self.assertEqual(
+            website["alternateName"],
+            ["ورونا لایتینگ", "veronalighting.co"],
+        )
+        self.assertEqual(
+            website["publisher"]["@id"],
+            "http://testserver/#organization",
+        )
+
+        english_response = self.client.get("/en/")
+        english_schemas = self._schemas(english_response.content.decode())
+        self.assertFalse(
+            any(schema.get("@type") == "WebSite" for schema in english_schemas)
+        )
+
+    def test_homepage_visibly_connects_bilingual_brand_names(self):
+        with override("fa"):
+            response = self.client.get("/")
+            self.assertContains(
+                response,
+                "ورونا لایتینگ (Verona Lighting) طراح و تولیدکننده",
+            )
+
+        with override("en"):
+            response = self.client.get("/en/")
+            self.assertContains(
+                response,
+                "Verona Lighting (ورونا لایتینگ) designs and manufactures",
+            )
+
     def test_company_pages_reference_the_canonical_entity(self):
         expected_id = "http://testserver/#organization"
         for path, schema_type in (

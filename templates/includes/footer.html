@@ -30,19 +30,21 @@
                             <p>{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.address_locality_fa }} — {{ business_identity.alternate_name_fa }}{% else %}{{ business_identity.address_locality_en }} — {{ business_identity.name }}{% endif %}</p>
                             <p>{% if LANGUAGE_CODE == 'fa' %}{{ business_identity.street_address_fa }}{% else %}{{ business_identity.street_address_en }}{% endif %}</p>
                             <p class="mt-4 pt-2">
-                                {% trans "Tel:" %}
+                                <p>
+                                    {% trans "Tel:" %}
+                                </p>
                                 <a href="tel:{{ business_identity.telephone_e164 }}" class="hover:underline">
-                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }} — {{ business_identity.telephone_contact_fa }}{% else %}{{ business_identity.telephone_display_en }} — {{ business_identity.telephone_contact_en }}{% endif %}
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_display_fa }}  {{ business_identity.telephone_contact_fa }}{% else %}{{ business_identity.telephone_display_en }}  {{ business_identity.telephone_contact_en }}{% endif %}
                                 </a>
                             </p>
                             <p>
                                 <a href="tel:{{ business_identity.telephone_secondary_e164 }}" class="hover:underline">
-                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_secondary_display_fa }} — {{ business_identity.telephone_secondary_contact_fa }}{% else %}{{ business_identity.telephone_secondary_display_en }} — {{ business_identity.telephone_secondary_contact_en }}{% endif %}
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_secondary_display_fa }}  {{ business_identity.telephone_secondary_contact_fa }}{% else %}{{ business_identity.telephone_secondary_display_en }}  {{ business_identity.telephone_secondary_contact_en }}{% endif %}
                                 </a>
                             </p>
                             <p>
                                 <a href="tel:{{ business_identity.telephone_tertiary_e164 }}" class="hover:underline">
-                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_tertiary_display_fa }} — {{ business_identity.telephone_tertiary_contact_fa }}{% else %}{{ business_identity.telephone_tertiary_display_en }} — {{ business_identity.telephone_tertiary_contact_en }}{% endif %}
+                                    {% if LANGUAGE_CODE == 'fa' %}{{ business_identity.telephone_tertiary_display_fa }}  {{ business_identity.telephone_tertiary_contact_fa }}{% else %}{{ business_identity.telephone_tertiary_display_en }}  {{ business_identity.telephone_tertiary_contact_en }}{% endif %}
                                 </a>
                             </p>
                             <p>

@@ -48,6 +48,26 @@
 
 <meta name="twitter:card" content="summary_large_image">
 
+{% if request.path == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ site_url }}#website",
+  "url": "{{ site_url }}",
+  "name": "Verona Lighting",
+  "alternateName": [
+    "ورونا لایتینگ",
+    "veronalighting.co"
+  ],
+  "publisher": {
+    "@id": "{{ site_url }}#organization"
+  },
+  "inLanguage": ["fa", "en"]
+}
+</script>
+{% endif %}
+
 {% endblock %}
 
 
@@ -168,7 +188,11 @@
                 <p
                     class="mt-7 mb-10 max-w-[610px] text-[16px] leading-[1.6] text-[#deded9] md:text-[18px]"
                 >
-                    {% trans "Engineered luminaires for facade, landscape, commercial, and exterior spaces." %}
+                    {% if LANGUAGE_CODE == 'fa' %}
+                        ورونا لایتینگ (Verona Lighting) طراح و تولیدکننده چراغ‌های معماری برای فضاهای مسکونی، تجاری، نما و محوطه است.
+                    {% else %}
+                        Verona Lighting (ورونا لایتینگ) designs and manufactures architectural luminaires for residential, commercial, facade, and landscape projects.
+                    {% endif %}
                 </p>
 
 
