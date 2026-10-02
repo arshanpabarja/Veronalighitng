@@ -6,7 +6,10 @@ from core.editorial_content import build_editorial_links
 from .services.landing_page_content import build_landing_page_context
 from .services.priority_product_content import build_priority_product_context
 from .services.seo_internal_links import build_seo_cluster_links
-from .services.category_ordering import order_navigation_children
+from .services.category_ordering import (
+    order_magnetic_families,
+    order_navigation_children,
+)
 from .models import (
     Category, Application, Family, Product, Project
 )
@@ -271,6 +274,9 @@ def category_detail(request, cat_slug):
 
     if _has_product_filters(selected_prod):
         families = families.filter(products__in=product_qs).distinct()
+
+    if category.slug == "low-voltage-magneto":
+        families = order_magnetic_families(families)
 
     page_obj = _paginate(request, families)
     seo_landing = None

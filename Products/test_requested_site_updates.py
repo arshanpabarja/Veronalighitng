@@ -203,6 +203,49 @@ class RequestedSiteUpdatesTests(TestCase):
             [slug for _, slug, _ in requested_children],
         )
 
+    def test_magnetic_landing_groups_families_by_system_size(self):
+        magnetic = Category.objects.create(
+            name="Magnetic Landing",
+            slug="low-voltage-magneto",
+            number=9110,
+        )
+        child_slugs = (
+            "magent-large4cm-family",
+            "magent-small-family",
+            "magnet-curve",
+            "mmagne-tbelt",
+            "magnet-flexi",
+            "magnet-super-slim",
+        )
+
+        for child_position, slug in enumerate(child_slugs):
+            child = Category.objects.create(
+                name=slug,
+                slug=slug,
+                number=9120 + child_position,
+                order=len(child_slugs) - child_position,
+                parent=magnetic,
+            )
+            # Deliberately reuse family numbers across categories: the landing
+            # page must group by system before considering family order.
+            for family_number in (2, 1):
+                Family.objects.create(
+                    name=f"{slug} family {family_number}",
+                    slug=f"{slug}-family-{family_number}",
+                    number=family_number,
+                    category=child,
+                )
+
+        response = self.client.get(magnetic.get_absolute_url())
+        rendered_category_order = [
+            family.category.slug for family in response.context["families"]
+        ]
+
+        self.assertEqual(
+            rendered_category_order,
+            [slug for slug in child_slugs for _ in range(2)],
+        )
+
     def test_models_and_sizes_are_localized_on_persian_product_pages(self):
         with override("fa"):
             response = self.client.get(self.product.get_absolute_url())

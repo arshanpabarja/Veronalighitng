@@ -8,6 +8,8 @@ MAGNETIC_CHILD_SLUGS = (
     "magent-small-family",
     "magnet-curve",
     "mmagne-tbelt",
+    "magnet-flexi",
+    "magnet-super-slim",
 )
 
 
@@ -24,6 +26,21 @@ def order_navigation_children(queryset):
             output_field=IntegerField(),
         ),
     ).order_by("_navigation_priority", "number", "order", "pk")
+
+
+def order_magnetic_families(queryset):
+    """Group landing-page families by magnetic system before family order."""
+    priority_cases = [
+        When(category__slug=slug, then=Value(position))
+        for position, slug in enumerate(MAGNETIC_CHILD_SLUGS)
+    ]
+    return queryset.annotate(
+        _magnetic_category_priority=Case(
+            *priority_cases,
+            default=Value(len(MAGNETIC_CHILD_SLUGS)),
+            output_field=IntegerField(),
+        ),
+    ).order_by("_magnetic_category_priority", "number", "pk")
 
 
 def navigation_categories():
